@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -15,14 +18,16 @@ const Header = () => {
       const sections = ['about', 'businesses', 'books', 'mentorship', 'manifesto', 'contact'];
       let current = '';
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // Check if section is near the middle of the viewport or top
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            current = section;
-            break;
+      if (location.pathname === '/') {
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            // Check if section is near the middle of the viewport or top
+            if (rect.top <= 150 && rect.bottom >= 150) {
+              current = section;
+              break;
+            }
           }
         }
       }
@@ -32,7 +37,19 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initially
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const targetSection = location.state?.scrollTo;
+    if (location.pathname !== '/' || !targetSection) return undefined;
+
+    const timer = window.setTimeout(() => {
+      document.getElementById(targetSection)?.scrollIntoView({ behavior: 'smooth' });
+      navigate('/', { replace: true, state: null });
+    }, 100);
+
+    return () => window.clearTimeout(timer);
+  }, [location.pathname, location.state, navigate]);
 
   // Lock body scroll when menu is open to prevent background content from moving
   useEffect(() => {
@@ -48,6 +65,12 @@ const Header = () => {
 
   const scrollToSection = (id) => {
     setIsMobileMenuOpen(false);
+
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: id } });
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       setTimeout(() => {
@@ -56,24 +79,19 @@ const Header = () => {
     }
   };
 
-  // Removed navigateToEpitafio function as it's no longer needed for header navigation
-  // The Epitáfio page is now solely accessible via the footer link
-
   const navItems = [
     { label: 'Sobre', id: 'about', type: 'scroll' },
     { label: 'Ecossistema', id: 'businesses', type: 'scroll' },
     { label: 'Acervo', id: 'books', type: 'scroll' },
+    { label: 'Docks', id: 'docks', type: 'route', path: '/docks' },
     { label: 'Mentoria', id: 'mentorship', type: 'scroll' },
     { label: 'Princípios', id: 'manifesto', type: 'scroll' },
-    // { label: 'Epitáfio', id: 'epitafio', type: 'navigate' }, // Removed as per request
     { label: 'Contato', id: 'contact', type: 'scroll' }
   ];
 
   const handleNavClick = (item) => {
-    if (item.type === 'navigate') {
-      // This case is now theoretically not hit for the current navItems,
-      // but keeping it for future flexibility if needed elsewhere.
-      window.location.hash = '#/' + item.id;
+    if (item.type === 'route') {
+      navigate(item.path);
       setIsMobileMenuOpen(false);
     } else {
       scrollToSection(item.id);
@@ -108,13 +126,14 @@ const Header = () => {
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-5">
               {navItems.map((item) => {
-                const isActive = activeSection === item.id;
-                // Removed isEpitafio check as Epitáfio is no longer in the header nav
+                const isActive = item.type === 'route'
+                  ? location.pathname === item.path
+                  : activeSection === item.id;
                 return (
                   <button
-                    key={item.id}
+                    key={item.path || item.id}
                     onClick={() => handleNavClick(item)}
                     className={`text-sm font-medium tracking-wide transition-colors duration-300 relative group py-2 ${
                       isActive ? 'text-[#d8ff57]' : 'text-white/80 hover:text-[#d8ff57]'
@@ -143,7 +162,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white hover:text-[#d8ff57] transition-colors relative z-50 p-2 focus:outline-none"
+              className="lg:hidden text-white hover:text-[#d8ff57] transition-colors relative z-50 p-2 focus:outline-none"
               aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -160,7 +179,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-xl md:hidden flex items-center justify-center pt-20"
+            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-xl lg:hidden flex items-center justify-center pt-20"
           >
              {/* Decorative Background Elements */}
             <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#d8ff57]/5 rounded-full blur-[80px] pointer-events-none"></div>
@@ -168,16 +187,18 @@ const Header = () => {
 
             <div className="flex flex-col items-center gap-6 w-full px-6 max-h-[85vh] overflow-y-auto no-scrollbar">
               {navItems.map((item, idx) => {
-                // Removed isEpitafio check as Epitáfio is no longer in the header nav
+                const isActive = item.type === 'route'
+                  ? location.pathname === item.path
+                  : activeSection === item.id;
                 return (
                   <motion.button
-                    key={item.id}
+                    key={item.path || item.id}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + idx * 0.05, duration: 0.4, ease: "easeOut" }}
                     onClick={() => handleNavClick(item)}
                     className={`text-3xl font-bold transition-all duration-300 w-full text-center py-3 border-b border-white/5 last:border-0 active:scale-95 ${
-                      activeSection === item.id ? 'text-[#d8ff57]' : 'text-white hover:text-[#d8ff57]'
+                      isActive ? 'text-[#d8ff57]' : 'text-white hover:text-[#d8ff57]'
                     }`}
                   >
                     {item.label}
