@@ -1,11 +1,13 @@
 import React from 'react';
 import { Sprout } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
   const navigateToEpitafio = () => {
-    window.location.hash = '#/epitafio';
+    navigate('/epitafio');
   };
 
   return (
