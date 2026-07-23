@@ -15,8 +15,8 @@
 
 const presentations = [
   {
-    title: 'IA para Negócios — Human First',
-    description: 'Uma visão prática sobre fundamentos, ferramentas, riscos, governança e oportunidades da inteligência artificial no mundo corporativo.',
+    title: 'AI Human First',
+    description: 'Uma visão prática sobre fundamentos, ferramentas, riscos, governança e oportunidades da inteligência artificial no mundo corporativo — com a tese de que a IA amplifica, mas quem decide é o humano.',
     category: 'Inteligência Artificial',
     year: '2026',
     topics: ['Letramento em IA', 'Governança', 'Futuro do trabalho'],
