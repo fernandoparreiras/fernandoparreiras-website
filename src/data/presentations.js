@@ -20,6 +20,16 @@ const presentations = [
     category: 'Inteligência Artificial',
     year: '2026',
     topics: ['Letramento em IA', 'Governança', 'Futuro do trabalho'],
+    cover: '/presentations/ai-human-first-cover.svg',
+    presentationUrl: '/presentations/ai-human-first.html',
+    downloadUrl: '/presentations/ai-human-first.html'
+  },
+  {
+    title: 'IA para Negócios',
+    description: 'Letramento em IA para um público misto: fundamentos, as principais ferramentas do mercado (ChatGPT, Claude, Gemini), custos e tokens, casos reais por área e adoção responsável nas empresas.',
+    category: 'Inteligência Artificial',
+    year: '2026',
+    topics: ['Letramento em IA', 'Ferramentas práticas', 'IA para empresas'],
     cover: '/presentations/ia-para-negocios-cover.svg',
     presentationUrl: '/presentations/ia-para-negocios.html',
     downloadUrl: '/presentations/ia-para-negocios.html'

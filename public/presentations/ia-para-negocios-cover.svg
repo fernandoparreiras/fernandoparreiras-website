@@ -1,12 +1,37 @@
-<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" font-family="&#39;Raleway&#39;, &#39;Helvetica Neue&#39;, Arial, sans-serif">
+  <defs>
+    <radialGradient id="glow" cx="82%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="#D8FF57" stop-opacity="0.14"></stop>
+      <stop offset="55%" stop-color="#D8FF57" stop-opacity="0.03"></stop>
+      <stop offset="100%" stop-color="#060607" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+
   <rect width="1600" height="1000" fill="#060607"></rect>
-  <circle cx="1390" cy="100" r="470" fill="#D8FF57" fill-opacity="0.12"></circle>
-  <circle cx="1520" cy="930" r="300" stroke="#D8FF57" stroke-opacity="0.12" stroke-width="80"></circle>
-  <path d="M120 114H290" stroke="#D8FF57" stroke-width="8"></path>
-  <text x="120" y="175" fill="#D8FF57" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="9">LETRAMENTO EM IA</text>
-  <text x="120" y="490" fill="#F5F5F2" font-family="Arial, sans-serif" font-size="150" font-weight="900" letter-spacing="-6">AI <tspan fill="#D8FF57">HUMAN</tspan></text>
-  <text x="120" y="645" fill="#F5F5F2" font-family="Arial, sans-serif" font-size="150" font-weight="900" letter-spacing="-6">FIRST</text>
-  <text x="128" y="735" fill="#F5F5F2" fill-opacity="0.62" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="11">O FUTURO É UMA PARCERIA</text>
-  <text x="120" y="900" fill="#F5F5F2" font-family="Arial, sans-serif" font-size="31" font-weight="600">Fernando Parreiras</text>
-  <text x="1480" y="900" fill="#D8FF57" font-family="Arial, sans-serif" font-size="31" font-weight="700" text-anchor="end">2026</text>
+  <rect width="1600" height="1000" fill="url(#glow)"></rect>
+
+
+  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">
+    <line x1="120" y1="150" x2="1480" y2="150"></line>
+    <line x1="120" y1="850" x2="1480" y2="850"></line>
+  </g>
+
+
+  <g transform="translate(120, 250)">
+    <rect x="0" y="-26" width="42" height="6" rx="3" fill="#D8FF57"></rect>
+    <text x="64" y="-14" fill="#D8FF57" font-size="26" font-weight="700" letter-spacing="7">PALESTRA · LETRAMENTO EM IA · 2026</text>
+  </g>
+
+
+  <text x="118" y="470" fill="#F4F5F2" font-size="168" font-weight="900" letter-spacing="-6">IA para</text>
+  <text x="118" y="640" fill="#D8FF57" font-size="168" font-weight="900" letter-spacing="-6">Negócios</text>
+
+
+  <text x="122" y="740" fill="#9A9C97" font-size="34" font-weight="500" letter-spacing="0.5">Fundamentos, ferramentas práticas e uso responsável da IA generativa</text>
+
+
+  <line x1="120" y1="884" x2="1480" y2="884" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"></line>
+  <text x="120" y="936" fill="#F4F5F2" font-size="30" font-weight="700" letter-spacing="0.5">Fernando Parreiras</text>
+  <text x="120" y="972" fill="#6E706B" font-size="24" font-weight="500" letter-spacing="0.5">Tech Human · Trustyu.ai</text>
+  <text x="1480" y="952" fill="#D8FF57" font-size="52" font-weight="900" letter-spacing="-1" text-anchor="end">2026</text>
 </svg>
