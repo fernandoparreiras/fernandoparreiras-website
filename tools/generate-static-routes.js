@@ -100,7 +100,15 @@ export function validateArticles(articles) {
     }
     canonicals.add(article.canonicalUrl);
 
-    if (!ISO_DATE.test(article.publishedAt) || Number.isNaN(Date.parse(article.publishedAt))) {
+    const publishedDate = new Date(article.publishedAt);
+    const normalizedPublishedAt = Number.isNaN(publishedDate.getTime())
+      ? null
+      : publishedDate.toISOString().replace('.000Z', 'Z');
+    if (
+      !ISO_DATE.test(article.publishedAt) ||
+      Number.isNaN(publishedDate.getTime()) ||
+      normalizedPublishedAt !== article.publishedAt
+    ) {
       throw new Error(`${location}.publishedAt precisa usar UTC no formato ISO 8601.`);
     }
     if (!SHA256.test(article.approvalDigest)) {
@@ -152,11 +160,12 @@ ${urls}
 export function renderRedirects(articles) {
   const articleGate = articles.length === 0
     ? '/artigos      /404.html  404\n/artigos/*    /404.html  404\n'
-    : '';
+    : '/artigos      /artigos/   301\n';
 
   return `/dock          /docks/     301
-${articleGate}/*             /index.html 200
-`;
+/docks         /docks/     301
+/epitafio      /epitafio/  301
+${articleGate}`;
 }
 
 function renderNotFoundHtml(sourceHtml) {

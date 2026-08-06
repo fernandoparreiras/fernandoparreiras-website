@@ -48,6 +48,13 @@ test('o validator rejeita asset sem digest de aprovação', () => {
   );
 });
 
+test('o validator rejeita data de calendário que o JavaScript normalizaria', () => {
+  assert.throws(
+    () => validateArticles([{ ...SYNTHETIC_ARTICLE, publishedAt: '2026-02-29T12:00:00Z' }]),
+    /UTC no formato ISO 8601/
+  );
+});
+
 test('metadados de autor usam canonical apex e perfis fornecidos', () => {
   const seo = renderSeoBlock(ROUTE_METADATA['/']);
   assert.match(seo, /https:\/\/fernandoparreiras\.com\.br\//);
@@ -68,6 +75,7 @@ test('build vazio não cria rota, menu semântico ou sitemap de artigos', () => 
   assert.equal(fs.existsSync(path.join(outputDirectory, 'epitafio', 'index.html')), true);
   assert.doesNotMatch(fs.readFileSync(path.join(outputDirectory, 'sitemap.xml'), 'utf8'), /artigos/);
   assert.match(fs.readFileSync(path.join(outputDirectory, '_redirects'), 'utf8'), /\/artigos\/\*/);
+  assert.doesNotMatch(fs.readFileSync(path.join(outputDirectory, '_redirects'), 'utf8'), /\/index\.html 200/);
   assert.doesNotMatch(generateLlmsTxt([]), /Artigos publicados/);
 });
 
@@ -87,5 +95,6 @@ test('primeiro asset aprovado ativa HTML estático, SEO e descoberta juntos', ()
   assert.doesNotMatch(articleHtml, /<script[^>]+type="module"/);
   assert.match(sitemap, /https:\/\/fernandoparreiras\.com\.br\/artigos\//);
   assert.doesNotMatch(renderRedirects([SYNTHETIC_ARTICLE]), /\/artigos\/\*/);
+  assert.doesNotMatch(renderRedirects([SYNTHETIC_ARTICLE]), /\/index\.html 200/);
   assert.match(generateLlmsTxt([SYNTHETIC_ARTICLE]), /Artigos publicados na Trustyu Forge/);
 });

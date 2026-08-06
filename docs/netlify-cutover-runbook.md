@@ -7,7 +7,7 @@ Este documento prepara a migração de hospedagem sem executá-la. O domínio ca
 
 - build reproduzível com Node.js 22 e saída em `dist/`;
 - redirect de `www` para o domínio apex e arquivo `_redirects` gerado pelo estado editorial;
-- fallback de SPA sem sobrescrever arquivos estáticos existentes;
+- rotas públicas materializadas como HTML e URLs desconhecidas respondendo 404, sem soft 404;
 - headers de segurança e cache imutável para assets versionados;
 - `robots.txt`, `sitemap.xml`, `llms.txt` e metadados gerados apenas para rotas públicas;
 - rota `/artigos/` respondendo 404 enquanto não existir publicação aprovada.
