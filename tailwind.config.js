@@ -16,6 +16,9 @@ module.exports = {
 			},
 		},
 		extend: {
+			fontFamily: {
+				academy: ['"Raleway Variable"', 'Raleway', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

@@ -84,6 +84,7 @@ const Header = () => {
     { label: 'Ecossistema', id: 'businesses', type: 'scroll' },
     { label: 'Acervo', id: 'books', type: 'scroll' },
     { label: 'Docks', id: 'docks', type: 'route', path: '/docks' },
+    { label: 'Academy', id: 'academy', type: 'route', path: '/academy/ia-sem-confusao' },
     { label: 'Mentoria', id: 'mentorship', type: 'scroll' },
     { label: 'Princípios', id: 'manifesto', type: 'scroll' },
     { label: 'Contato', id: 'contact', type: 'scroll' }
