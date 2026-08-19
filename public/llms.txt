@@ -1,3 +1,3 @@
 ## Pages
-- [IA sem Confusão | TECH HUMAN ACADEMY](/academy/ia-sem-confusao): Formação presencial e introdutória para entender as diferenças da IA e aplicar um processo seguro no dia a dia e no trabalho.
-- [Privacidade | Fernando Parreiras](/privacidade): Informações sobre o uso de dados pessoais no site de Fernando Parreiras e na lista de interesse da TECH HUMAN ACADEMY.
+- [IA sem Confusão | TECH HUMAN ACADEMY](/academy/ia-sem-confusao): A formação IA sem Confusão agora está na plataforma TECH HUMAN ACADEMY.
+- [Privacidade | Fernando Parreiras](/privacidade): Informações sobre o uso de dados pessoais nos canais públicos de Fernando Parreiras.

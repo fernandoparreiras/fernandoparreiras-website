@@ -84,14 +84,17 @@ const Header = () => {
     { label: 'Ecossistema', id: 'businesses', type: 'scroll' },
     { label: 'Acervo', id: 'books', type: 'scroll' },
     { label: 'Docks', id: 'docks', type: 'route', path: '/docks' },
-    { label: 'Academy', id: 'academy', type: 'route', path: '/academy/ia-sem-confusao' },
+    { label: 'Academy', id: 'academy', type: 'external', path: 'https://www.techhuman.com.br/academy' },
     { label: 'Mentoria', id: 'mentorship', type: 'scroll' },
     { label: 'Princípios', id: 'manifesto', type: 'scroll' },
     { label: 'Contato', id: 'contact', type: 'scroll' }
   ];
 
   const handleNavClick = (item) => {
-    if (item.type === 'route') {
+    if (item.type === 'external') {
+      window.location.assign(item.path);
+      setIsMobileMenuOpen(false);
+    } else if (item.type === 'route') {
       navigate(item.path);
       setIsMobileMenuOpen(false);
     } else {
