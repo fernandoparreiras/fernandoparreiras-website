@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { BrowserRouter as Router, Navigate, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -13,6 +13,8 @@ import Footer from '@/components/Footer';
 import EpitafioPage from '@/components/EpitafioPage';
 import ScrollToTop from '@/components/ScrollToTop';
 import DocksPage from '@/pages/DocksPage';
+import AcademyLandingPage from '@/pages/AcademyLandingPage';
+import PrivacyPage from '@/pages/PrivacyPage';
 import { Toaster } from '@/components/ui/toaster';
 
 function HomePage() {
@@ -35,14 +37,17 @@ function HomePage() {
   );
 }
 
-function App() {
+function SiteRoutes() {
+  const location = useLocation();
+  const isAcademyLanding = location.pathname.startsWith('/academy/');
+
   return (
-    <Router>
-      <div className="min-h-screen bg-black text-white">
-        <ScrollToTop />
-        <Header />
+      <div className={isAcademyLanding ? 'min-h-screen' : 'min-h-screen bg-black text-white'}>
+        {!isAcademyLanding && <Header />}
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/academy/ia-sem-confusao" element={<AcademyLandingPage />} />
+          <Route path="/privacidade" element={<PrivacyPage />} />
           <Route path="/docks" element={
             <>
               <Helmet>
@@ -63,9 +68,17 @@ function App() {
             </>
           } />
         </Routes>
-        <Footer />
+        {!isAcademyLanding && <Footer />}
         <Toaster />
       </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <SiteRoutes />
     </Router>
   );
 }
