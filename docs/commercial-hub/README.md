@@ -41,6 +41,23 @@ Fazer o site cumprir quatro funções sem misturá-las:
 
 O status de cada issue deve usar esses termos de forma literal. `IMPLEMENTED` ou `VERIFIED` não significa `OPERATING`.
 
+## Rastreamento no GitHub
+
+- EPIC: [#18 — Transformar o site em hub comercial e de negócios](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/18)
+
+| Workstream | Issue | Estado da issue |
+| --- | --- | --- |
+| Estratégia, home e ecossistema | [#10](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/10) | `VERIFIED` |
+| Ofertas e cases | [#11](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/11) | `VERIFIED` |
+| Captação e instrumentação frontend | [#12](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/12) | `VERIFIED` |
+| Backend, proteção e CRM | [#13](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/13) | `PLANNED` |
+| Palestras, media kit e assets | [#14](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/14) | `IMPLEMENTED` |
+| Conteúdo, Forge e SEO estático | [#15](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/15) | `VERIFIED` |
+| Acessibilidade e responsividade | [#16](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/16) | `IMPLEMENTED` |
+| Experimentação comercial | [#17](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/17) | `PLANNED` |
+
+O deploy Netlify permanece acompanhado pela [#1](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/1); o hub autoral/Forge, pela [#5](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/5); e o débito global de lint e dependências, pela [#6](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/6).
+
 ## Atualização
 
 Ao mudar posicionamento, maturidade de produto, CTA, rota ou métrica:
@@ -50,4 +67,3 @@ Ao mudar posicionamento, maturidade de produto, CTA, rota ou métrica:
 3. alterar código e testes;
 4. registrar a validação;
 5. só então elevar o estado da entrega.
-
