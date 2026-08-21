@@ -2,6 +2,7 @@ node_modules/
 dist/
 build/
 .vite/
+.playwright-cli/
 
 .env
 .env.*

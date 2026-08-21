@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { hasPublishedForgeArticles } from '@/data/forgeArticles';
 
 const Header = () => {
   const location = useLocation();
@@ -9,6 +10,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const currentPath = location.pathname.replace(/\/+$/, '') || '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,13 +55,14 @@ const Header = () => {
 
   // Lock body scroll when menu is open to prevent background content from moving
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = previousOverflow;
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = previousOverflow;
     };
   }, [isMobileMenuOpen]);
 
@@ -83,6 +86,9 @@ const Header = () => {
     { label: 'Sobre', id: 'about', type: 'scroll' },
     { label: 'Ecossistema', id: 'businesses', type: 'scroll' },
     { label: 'Acervo', id: 'books', type: 'scroll' },
+    ...(hasPublishedForgeArticles
+      ? [{ label: 'Artigos', id: 'articles', type: 'route', path: '/artigos' }]
+      : []),
     { label: 'Docks', id: 'docks', type: 'route', path: '/docks' },
     { label: 'Academy', id: 'academy', type: 'external', path: 'https://www.techhuman.com.br/academy' },
     { label: 'Mentoria', id: 'mentorship', type: 'scroll' },
@@ -111,35 +117,37 @@ const Header = () => {
           isScrolled && !isMobileMenuOpen ? 'bg-black/95 backdrop-blur-sm border-b border-white/10' : 'bg-transparent'
         }`}
       >
-        <nav className="container mx-auto px-6 py-4">
+        <nav className="container mx-auto px-4 py-3 sm:px-6 sm:py-4" aria-label="Navegação principal">
           <div className="flex items-center justify-between">
             <button
               onClick={() => {
                 scrollToSection('hero');
                 setIsMobileMenuOpen(false);
               }}
-              className="flex items-center gap-2 text-xl font-bold tracking-tight hover:text-[#d8ff57] transition-colors relative z-50 group"
+              className="group relative z-50 flex min-h-11 items-center gap-2 whitespace-nowrap text-lg font-bold tracking-tight transition-colors hover:text-[#d8ff57] sm:text-xl"
+              aria-label="Ir para o início"
             >
-              <img 
-                src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/c7ce7ff499a602167ff2cb419d0318db.png" 
-                alt="Brain Lightbulb Logo" 
-                className="h-10 w-10 transition-transform duration-300 group-hover:scale-110" 
+              <img
+                src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/c7ce7ff499a602167ff2cb419d0318db.png"
+                alt=""
+                className="h-10 w-10 transition-transform duration-300 group-hover:scale-110"
               />
               <span className="text-white">Fernando</span>
               <span className="text-[#d8ff57]">Parreiras</span>
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-5">
+            <div className="hidden items-center gap-3 lg:flex xl:gap-5">
               {navItems.map((item) => {
                 const isActive = item.type === 'route'
-                  ? location.pathname === item.path
+                  ? currentPath === item.path
                   : activeSection === item.id;
                 return (
                   <button
                     key={item.path || item.id}
                     onClick={() => handleNavClick(item)}
-                    className={`text-sm font-medium tracking-wide transition-colors duration-300 relative group py-2 ${
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`relative py-2 text-xs font-medium tracking-wide transition-colors duration-300 group xl:text-sm ${
                       isActive ? 'text-[#d8ff57]' : 'text-white/80 hover:text-[#d8ff57]'
                     }`}
                   >
@@ -166,8 +174,10 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden text-white hover:text-[#d8ff57] transition-colors relative z-50 p-2 focus:outline-none"
+              className="relative z-50 flex min-h-11 min-w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/5 hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d8ff57] lg:hidden"
               aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -183,7 +193,8 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 bg-black/98 backdrop-blur-xl lg:hidden flex items-center justify-center pt-20"
+            id="mobile-navigation"
+            className="fixed inset-0 z-40 flex items-center justify-center bg-black/98 pt-20 backdrop-blur-xl lg:hidden"
           >
              {/* Decorative Background Elements */}
             <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#d8ff57]/5 rounded-full blur-[80px] pointer-events-none"></div>
@@ -192,7 +203,7 @@ const Header = () => {
             <div className="flex flex-col items-center gap-6 w-full px-6 max-h-[85vh] overflow-y-auto no-scrollbar">
               {navItems.map((item, idx) => {
                 const isActive = item.type === 'route'
-                  ? location.pathname === item.path
+                  ? currentPath === item.path
                   : activeSection === item.id;
                 return (
                   <motion.button
@@ -201,6 +212,7 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + idx * 0.05, duration: 0.4, ease: "easeOut" }}
                     onClick={() => handleNavClick(item)}
+                    aria-current={isActive ? 'page' : undefined}
                     className={`text-3xl font-bold transition-all duration-300 w-full text-center py-3 border-b border-white/5 last:border-0 active:scale-95 ${
                       isActive ? 'text-[#d8ff57]' : 'text-white hover:text-[#d8ff57]'
                     }`}
