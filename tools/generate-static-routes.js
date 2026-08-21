@@ -158,14 +158,15 @@ ${urls}
 }
 
 export function renderRedirects(articles) {
+  const routeRedirects = PUBLIC_BASE_ROUTES
+    .filter(({ path: routePath }) => routePath !== '/')
+    .map(({ path: routePath }) => `${routePath.replace(/\/$/, '')}  ${routePath}  301`)
+    .join('\n');
   const articleGate = articles.length === 0
     ? '/artigos      /404.html  404\n/artigos/*    /404.html  404\n'
     : '/artigos      /artigos/   301\n';
 
-  return `/dock          /docks/     301
-/docks         /docks/     301
-/epitafio      /epitafio/  301
-${articleGate}`;
+  return `/dock  /docks/  301\n${routeRedirects}\n${articleGate}`;
 }
 
 function renderNotFoundHtml(sourceHtml) {

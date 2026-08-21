@@ -1,104 +1,40 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Linkedin, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Linkedin, Youtube } from 'lucide-react';
+import LeadForm from '@/components/LeadForm';
+import SectionIntro from '@/components/SectionIntro';
 
-const Contact = () => {
-  const line1Links = [
-    { 
-      icon: Mail, 
-      label: 'Email', 
-      url: 'mailto:fernando@fernandoparreiras.com.br' 
-    },
-    { 
-      icon: MessageCircle, 
-      label: 'WhatsApp', 
-      url: 'https://wa.me/5531992789574' 
-    }
-  ];
-
-  const line2Links = [
-    { 
-      icon: Linkedin, 
-      label: 'LinkedIn', 
-      url: 'https://www.linkedin.com/in/fernandoparreiras/' 
-    },
-    { 
-      icon: Instagram, 
-      label: 'Instagram', 
-      url: 'https://www.instagram.com/parreiras.fernando/' 
-    },
-    { 
-      icon: Youtube, 
-      label: 'YouTube', 
-      url: 'https://www.youtube.com/@sertalks' 
-    }
-  ];
-
-  const Button = ({ link, index, delayOffset = 0 }) => (
-    <motion.a
-      key={link.label}
-      href={link.url}
-      target={link.label === 'Email' ? '_self' : '_blank'}
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay: (index + delayOffset) * 0.1 }}
-      className="flex items-center gap-3 bg-[#2a2b2d] border border-white/10 px-8 py-4 hover:border-[#d8ff57]/50 hover:bg-[#d8ff57]/10 transition-all duration-300 group cursor-pointer rounded-sm min-w-[200px] justify-center"
-    >
-      <link.icon className="w-5 h-5 text-[#d8ff57] group-hover:scale-110 transition-transform duration-300" />
-      <span className="font-medium text-white">{link.label}</span>
-    </motion.a>
-  );
-
-  return (
-    <section id="contact" className="py-24 bg-black border-t border-[#d8ff57]/20">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Vamos <span className="text-[#d8ff57]">conversar?</span>
-          </h2>
-          
-          <p className="text-white/70 text-lg mb-12 leading-relaxed max-w-2xl mx-auto">
-            Estou sempre aberto a conversas significativas sobre negócios, liderança e transformação. 
-            Entre em contato através dos canais abaixo.
-          </p>
-
-          <div className="flex flex-col items-center gap-4 mb-12">
-            {/* Line 1: Email & WhatsApp */}
-            <div className="flex flex-wrap justify-center gap-4 w-full">
-              {line1Links.map((link, index) => (
-                <Button key={link.label} link={link} index={index} delayOffset={0} />
-              ))}
-            </div>
-
-            {/* Line 2: Social Media */}
-            <div className="flex flex-wrap justify-center gap-4 w-full">
-              {line2Links.map((link, index) => (
-                <Button key={link.label} link={link} index={index} delayOffset={2} />
-              ))}
-            </div>
+const Contact = ({ full = false, defaultIntent = '', headingLevel = 'h2' }) => (
+  <section id="contact" aria-labelledby="contact-title" className={`relative overflow-hidden bg-black ${full ? 'pb-24 pt-36 md:pb-32 md:pt-44' : 'border-t border-white/10 py-24 md:py-32'}`}>
+    <div className="pointer-events-none absolute -right-24 top-24 h-80 w-80 rounded-full bg-[#d8ff57]/10 blur-[120px]" />
+    <div className="container relative z-10 mx-auto px-6">
+      <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-5">
+          <SectionIntro
+            id="contact-title"
+            eyebrow="Próximo passo"
+            title="Conte o desafio."
+            highlight="A rota vem depois."
+            description="Você não precisa escolher a empresa ou o formato correto antes de conversar. O contexto permite encaminhar a demanda com responsabilidade."
+            headingLevel={headingLevel}
+          />
+          <div className="mt-10 border-l border-[#d8ff57]/40 pl-6 text-sm leading-relaxed text-white/55">
+            <p>Fernando responde pessoalmente às conversas relevantes e, quando necessário, conecta a demanda à Tech Human, Trustyu/FORGE, Needyu ou outra frente do ecossistema.</p>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-white/50 text-sm"
-          >
-            <p>Respondo pessoalmente a todas as mensagens relevantes.</p>
-          </motion.div>
-        </motion.div>
+          <div className="mt-8 flex gap-4">
+            <a href="https://www.linkedin.com/in/fernandoparreiras/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-white/60 hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">
+              <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn
+            </a>
+            <a href="https://www.youtube.com/@sertalks" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-white/60 hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">
+              <Youtube className="h-4 w-4" aria-hidden="true" /> YouTube
+            </a>
+          </div>
+        </div>
+        <div className="lg:col-span-7">
+          <LeadForm defaultIntent={defaultIntent} compact={!full} />
+        </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Contact;

@@ -73,10 +73,29 @@ test('build vazio não cria rota, menu semântico ou sitemap de artigos', () => 
   assert.equal(fs.existsSync(path.join(outputDirectory, '404.html')), true);
   assert.equal(fs.existsSync(path.join(outputDirectory, 'docks', 'index.html')), true);
   assert.equal(fs.existsSync(path.join(outputDirectory, 'epitafio', 'index.html')), true);
+  assert.equal(fs.existsSync(path.join(outputDirectory, 'solucoes', 'index.html')), true);
+  assert.equal(fs.existsSync(path.join(outputDirectory, 'solucoes', 'advisory-executivo', 'index.html')), true);
+  assert.equal(fs.existsSync(path.join(outputDirectory, 'negocios', 'index.html')), true);
+  assert.equal(fs.existsSync(path.join(outputDirectory, 'contato', 'index.html')), true);
   assert.doesNotMatch(fs.readFileSync(path.join(outputDirectory, 'sitemap.xml'), 'utf8'), /artigos/);
   assert.match(fs.readFileSync(path.join(outputDirectory, '_redirects'), 'utf8'), /\/artigos\/\*/);
   assert.doesNotMatch(fs.readFileSync(path.join(outputDirectory, '_redirects'), 'utf8'), /\/index\.html 200/);
   assert.doesNotMatch(generateLlmsTxt([]), /Artigos publicados/);
+});
+
+test('as rotas comerciais públicas participam de SEO, sitemap e redirects', () => {
+  const outputDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'fernando-site-commercial-'));
+  generateStaticRoutes({ sourceHtml: SOURCE_HTML, outputDirectory, articles: [] });
+
+  const sitemap = fs.readFileSync(path.join(outputDirectory, 'sitemap.xml'), 'utf8');
+  const redirects = fs.readFileSync(path.join(outputDirectory, '_redirects'), 'utf8');
+  const advisoryHtml = fs.readFileSync(path.join(outputDirectory, 'solucoes', 'advisory-executivo', 'index.html'), 'utf8');
+
+  assert.match(sitemap, /https:\/\/fernandoparreiras\.com\.br\/solucoes\/advisory-executivo\//);
+  assert.match(sitemap, /https:\/\/fernandoparreiras\.com\.br\/palestras\//);
+  assert.match(redirects, /\/contato\s+\/contato\/\s+301/);
+  assert.match(advisoryHtml, /Advisory executivo/);
+  assert.match(advisoryHtml, /application\/ld\+json/);
 });
 
 test('primeiro asset aprovado ativa HTML estático, SEO e descoberta juntos', () => {

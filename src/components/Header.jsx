@@ -1,241 +1,122 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight, Menu, X } from 'lucide-react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { hasPublishedForgeArticles } from '@/data/forgeArticles';
+import { trackEvent } from '@/lib/analytics';
+
+const baseItems = [
+  { label: 'Soluções', href: '/solucoes' },
+  { label: 'Negócios', href: '/negocios' },
+  { label: 'Cases', href: '/cases' },
+  { label: 'Conteúdo', href: '/conteudos' },
+  { label: 'Sobre', href: '/sobre' }
+];
 
 const Header = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  const reduceMotion = useReducedMotion();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
-  const currentPath = location.pathname.replace(/\/+$/, '') || '/';
+  const firstMobileLinkRef = useRef(null);
+  const menuButtonRef = useRef(null);
+  const navItems = hasPublishedForgeArticles
+    ? [...baseItems.slice(0, 4), { label: 'Artigos', href: '/artigos' }, ...baseItems.slice(4)]
+    : baseItems;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      // Determine active section based on scroll position
-      const sections = ['about', 'businesses', 'books', 'mentorship', 'manifesto', 'contact'];
-      let current = '';
-
-      if (location.pathname === '/') {
-        for (const section of sections) {
-          const element = document.getElementById(section);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            // Check if section is near the middle of the viewport or top
-            if (rect.top <= 150 && rect.bottom >= 150) {
-              current = section;
-              break;
-            }
-          }
-        }
-      }
-      setActiveSection(current);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initially
+    const handleScroll = () => setIsScrolled(window.scrollY > 32);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
-    const targetSection = location.state?.scrollTo;
-    if (location.pathname !== '/' || !targetSection) return undefined;
-
-    const timer = window.setTimeout(() => {
-      document.getElementById(targetSection)?.scrollIntoView({ behavior: 'smooth' });
-      navigate('/', { replace: true, state: null });
-    }, 100);
-
-    return () => window.clearTimeout(timer);
-  }, [location.pathname, location.state, navigate]);
-
-  // Lock body scroll when menu is open to prevent background content from moving
-  useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = previousOverflow;
-    }
+    if (!isMobileMenuOpen) return undefined;
+    document.body.style.overflow = 'hidden';
+    firstMobileLinkRef.current?.focus();
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isMobileMenuOpen]);
 
-  const scrollToSection = (id) => {
-    setIsMobileMenuOpen(false);
-
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: id } });
-      return;
-    }
-
-    const element = document.getElementById(id);
-    if (element) {
-      setTimeout(() => {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
-  };
-
-  const navItems = [
-    { label: 'Sobre', id: 'about', type: 'scroll' },
-    { label: 'Ecossistema', id: 'businesses', type: 'scroll' },
-    { label: 'Acervo', id: 'books', type: 'scroll' },
-    ...(hasPublishedForgeArticles
-      ? [{ label: 'Artigos', id: 'articles', type: 'route', path: '/artigos' }]
-      : []),
-    { label: 'Docks', id: 'docks', type: 'route', path: '/docks' },
-    { label: 'Academy', id: 'academy', type: 'external', path: 'https://www.techhuman.com.br/academy' },
-    { label: 'Mentoria', id: 'mentorship', type: 'scroll' },
-    { label: 'Princípios', id: 'manifesto', type: 'scroll' },
-    { label: 'Contato', id: 'contact', type: 'scroll' }
-  ];
-
-  const handleNavClick = (item) => {
-    if (item.type === 'external') {
-      window.location.assign(item.path);
-      setIsMobileMenuOpen(false);
-    } else if (item.type === 'route') {
-      navigate(item.path);
-      setIsMobileMenuOpen(false);
-    } else {
-      scrollToSection(item.id);
-    }
-  };
+  const navClass = ({ isActive }) => `relative py-2 text-sm font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] ${isActive ? 'text-[#d8ff57]' : 'text-white/72 hover:text-white'}`;
 
   return (
     <>
+      <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
       <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled && !isMobileMenuOpen ? 'bg-black/95 backdrop-blur-sm border-b border-white/10' : 'bg-transparent'
-        }`}
+        initial={reduceMotion ? false : { y: -100 }}
+        animate={reduceMotion ? undefined : { y: 0 }}
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${isScrolled || isMobileMenuOpen ? 'border-white/10 bg-black/95 backdrop-blur-md' : 'border-transparent bg-gradient-to-b from-black/70 to-transparent'}`}
       >
-        <nav className="container mx-auto px-4 py-3 sm:px-6 sm:py-4" aria-label="Navegação principal">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => {
-                scrollToSection('hero');
-                setIsMobileMenuOpen(false);
-              }}
-              className="group relative z-50 flex min-h-11 items-center gap-2 whitespace-nowrap text-lg font-bold tracking-tight transition-colors hover:text-[#d8ff57] sm:text-xl"
-              aria-label="Ir para o início"
+        <nav className="container mx-auto flex min-h-20 items-center justify-between px-6" aria-label="Navegação principal">
+          <Link to="/" className="flex items-center gap-2 text-lg font-black tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]" aria-label="Fernando Parreiras — início">
+            <img src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/c7ce7ff499a602167ff2cb419d0318db.png" alt="" width="40" height="40" className="h-10 w-10" />
+            <span className="text-white">Fernando</span><span className="text-[#d8ff57]">Parreiras</span>
+          </Link>
+
+          <div className="hidden items-center gap-6 lg:flex">
+            {navItems.map((item) => <NavLink key={item.href} to={item.href} className={navClass}>{item.label}</NavLink>)}
+            <Link
+              to="/contato"
+              onClick={() => trackEvent('hero_cta_click', { cta: 'header', destination: 'contato' })}
+              className="inline-flex min-h-11 items-center gap-2 bg-[#d8ff57] px-5 text-sm font-black text-black transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]"
             >
-              <img
-                src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/c7ce7ff499a602167ff2cb419d0318db.png"
-                alt=""
-                className="h-10 w-10 transition-transform duration-300 group-hover:scale-110"
-              />
-              <span className="text-white">Fernando</span>
-              <span className="text-[#d8ff57]">Parreiras</span>
-            </button>
-
-            {/* Desktop Navigation */}
-            <div className="hidden items-center gap-3 lg:flex xl:gap-5">
-              {navItems.map((item) => {
-                const isActive = item.type === 'route'
-                  ? currentPath === item.path
-                  : activeSection === item.id;
-                return (
-                  <button
-                    key={item.path || item.id}
-                    onClick={() => handleNavClick(item)}
-                    aria-current={isActive ? 'page' : undefined}
-                    className={`relative py-2 text-xs font-medium tracking-wide transition-colors duration-300 group xl:text-sm ${
-                      isActive ? 'text-[#d8ff57]' : 'text-white/80 hover:text-[#d8ff57]'
-                    }`}
-                  >
-                    {item.label}
-                    
-                    {/* Active Indicator (Persistent Underline) */}
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeSection"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#d8ff57]"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    )}
-
-                    {/* Hover Underline (Animated) */}
-                    <span 
-                      className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#d8ff57] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ${isActive ? 'hidden' : ''}`}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="relative z-50 flex min-h-11 min-w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/5 hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d8ff57] lg:hidden"
-              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-navigation"
-            >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+              Falar sobre um desafio <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
+
+          <button
+            ref={menuButtonRef}
+            type="button"
+            onClick={() => setIsMobileMenuOpen((value) => !value)}
+            className="relative z-50 inline-flex h-11 w-11 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] lg:hidden"
+            aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
+          >
+            {isMobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
         </nav>
       </motion.header>
 
-      {/* Full Screen Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
             id="mobile-navigation"
-            className="fixed inset-0 z-40 flex items-center justify-center bg-black/98 pt-20 backdrop-blur-xl lg:hidden"
+            initial={reduceMotion ? false : { opacity: 0 }}
+            animate={reduceMotion ? undefined : { opacity: 1 }}
+            exit={reduceMotion ? undefined : { opacity: 0 }}
+            className="fixed inset-0 z-40 flex bg-black px-6 pb-10 pt-28 lg:hidden"
           >
-             {/* Decorative Background Elements */}
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#d8ff57]/5 rounded-full blur-[80px] pointer-events-none"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px] pointer-events-none"></div>
-
-            <div className="flex flex-col items-center gap-6 w-full px-6 max-h-[85vh] overflow-y-auto no-scrollbar">
-              {navItems.map((item, idx) => {
-                const isActive = item.type === 'route'
-                  ? currentPath === item.path
-                  : activeSection === item.id;
-                return (
-                  <motion.button
-                    key={item.path || item.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + idx * 0.05, duration: 0.4, ease: "easeOut" }}
-                    onClick={() => handleNavClick(item)}
-                    aria-current={isActive ? 'page' : undefined}
-                    className={`text-3xl font-bold transition-all duration-300 w-full text-center py-3 border-b border-white/5 last:border-0 active:scale-95 ${
-                      isActive ? 'text-[#d8ff57]' : 'text-white hover:text-[#d8ff57]'
-                    }`}
-                  >
-                    {item.label}
-                  </motion.button>
-                );
-              })}
-              
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-8 pt-8 w-full text-center"
-              >
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-white/30 text-xs uppercase tracking-widest mb-2">Contato</span>
-                  <a href="mailto:contato@fernandoparreiras.com.br" className="text-white/60 hover:text-[#d8ff57] transition-colors">
-                    contato@fernandoparreiras.com.br
-                  </a>
-                </div>
-              </motion.div>
-            </div>
+            <nav className="flex w-full flex-col" aria-label="Navegação móvel">
+              {navItems.map((item, index) => (
+                <NavLink
+                  ref={index === 0 ? firstMobileLinkRef : undefined}
+                  key={item.href}
+                  to={item.href}
+                  className={({ isActive }) => `border-b border-white/10 py-5 text-3xl font-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#d8ff57] ${isActive ? 'text-[#d8ff57]' : 'text-white'}`}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+              <Link to="/contato" className="mt-auto inline-flex min-h-14 items-center justify-between bg-[#d8ff57] px-6 font-black text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                Falar sobre um desafio <ArrowRight className="h-5 w-5" aria-hidden="true" />
+              </Link>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
