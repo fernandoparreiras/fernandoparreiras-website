@@ -246,40 +246,76 @@ export const ecosystemGroups = Object.freeze([
 
 export const caseStudies = Object.freeze([
   {
-    id: 'phygtl',
-    client: 'Phygtl.world',
-    category: 'Advisor em tecnologia',
-    challenge: 'Apoiar a evolução tecnológica e a estruturação de soluções escaláveis para uma plataforma com ambição global.',
-    role: 'Fernando, representando a Tech Human, atua como advisor em tecnologia.',
-    work: 'Direcionamento estratégico e contribuição para decisões de evolução da plataforma.',
-    sourceUrl: 'https://www.techhuman.com.br/clientes-solucoes-personalizadas'
+    id: 'trustyu',
+    client: 'Trustyu.ai',
+    category: 'IA + SaaS',
+    challenge: 'Sustentar tese, produto e operação de uma aceleradora de SaaS IA com tecnologia confiável.',
+    role: 'A Tech Human assumiu a entrega da tecnologia de IA.',
+    work: 'Produto, engenharia, arquitetura e cadência de execução conectados em uma base preparada para evoluir.',
+    sourceUrl: 'https://www.techhuman.com.br/cases/'
+  },
+  {
+    id: 'needyu',
+    client: 'NeedyU.ai',
+    category: 'IA, dados e pessoas',
+    challenge: 'Transformar informação em decisão por meio de processos e plataformas inteligentes.',
+    role: 'Parceria com a Tech Human em IA, dados e plataformas inteligentes.',
+    work: 'Conexão entre informação, insights e experiências mais úteis para pessoas e negócios.',
+    sourceUrl: 'https://www.techhuman.com.br/cases/'
+  },
+  {
+    id: 'oon-seguradora',
+    client: 'OON Seguradora',
+    category: 'Seguros automotivos',
+    challenge: 'Dar direção à evolução tecnológica a partir de decisões de negócio digital.',
+    role: 'A Tech Human atuou com assessment, liderança técnica e produto digital.',
+    work: 'Visão de produto, liderança técnica e squads especialistas conectados à evolução tecnológica.',
+    sourceUrl: 'https://www.techhuman.com.br/cases/'
+  },
+  {
+    id: 'grupo-csc',
+    client: 'Grupo CSC',
+    category: 'Transporte e logística',
+    challenge: 'Transformar oportunidades digitais em decisões técnicas, dados estruturados e plataformas com caminho de execução.',
+    role: 'A Tech Human atuou com assessment, CTO as a Service, dados e plataformas digitais.',
+    work: 'Direção técnica, estruturação de dados e caminho de execução para plataformas digitais.',
+    sourceUrl: 'https://www.techhuman.com.br/cases/'
+  },
+  {
+    id: 'inforlube-group',
+    client: 'Inforlube Group',
+    category: 'Tecnologia automotiva',
+    challenge: 'Evoluir planejamento, indicadores, organização de áreas e modernização de produtos.',
+    role: 'A Tech Human apoiou planejamento, indicadores e modernização de produtos.',
+    work: 'Conexão entre planejamento, indicadores, organização de áreas e modernização de produtos.',
+    sourceUrl: 'https://www.techhuman.com.br/cases/'
+  },
+  {
+    id: 'ag-immigration-usa',
+    client: 'AG Immigration USA',
+    category: 'Imigração e serviços internacionais',
+    challenge: 'Transformar conhecimento operacional em plataforma, automação e ganho de eficiência com responsabilidade.',
+    role: 'A Tech Human atuou com assessment, processos e GenAI.',
+    work: 'Mapeamento de processos e caminhos de GenAI para orientar plataforma e automação.',
+    sourceUrl: 'https://www.techhuman.com.br/cases/'
   },
   {
     id: 'eunerd',
     client: 'Encontre um Nerd',
-    category: 'CTO as a Service e conselho',
-    challenge: 'Evoluir uma plataforma que conecta empresas a profissionais de tecnologia e qualificar decisões de alto impacto.',
-    role: 'Tech Human atua como CTO as a Service e advisor no conselho.',
-    work: 'Liderança tecnológica, estrutura moderna e orientação estratégica.',
-    sourceUrl: 'https://www.techhuman.com.br/clientes-solucoes-personalizadas'
+    category: 'Marketplace de tecnologia',
+    challenge: 'Orientar decisões críticas de produto, plataforma e crescimento em um marketplace de tecnologia.',
+    role: 'A Tech Human atua com CTO as a Service e advisory.',
+    work: 'Liderança tecnológica e advisory aplicados às decisões de produto e plataforma.',
+    sourceUrl: 'https://www.techhuman.com.br/cases/'
   },
   {
     id: 'seedz',
     client: 'Seedz',
-    category: 'Scale-up de produto e tecnologia',
-    challenge: 'Acompanhar uma startup do agronegócio em fase de escala e evolução de plataforma.',
-    role: 'Fernando, representando a Tech Human, liderou tecnologia e produto durante o scale-up.',
-    work: 'Direção de tecnologia e produto conectada ao crescimento da operação.',
-    sourceUrl: 'https://www.techhuman.com.br/clientes-solucoes-personalizadas'
-  },
-  {
-    id: 'sicoob',
-    client: 'Sicoob Credicom',
-    category: 'Inovação e transformação',
-    challenge: 'Engajar times para a importância de inovação, agilidade e transformação digital.',
-    role: 'Atuação de Fernando pela Tech Human junto às equipes.',
-    work: 'Sensibilização e formação para apoiar uma agenda de transformação.',
-    sourceUrl: 'https://www.techhuman.com.br/clientes-solucoes-personalizadas'
+    category: 'Agrotech',
+    challenge: 'Sustentar escala em uma fase de crescimento por meio de tecnologia e produto.',
+    role: 'A Tech Human conectou liderança, produto e execução.',
+    work: 'Tecnologia, produto e execução alinhados para apoiar o movimento de scale-up.',
+    sourceUrl: 'https://www.techhuman.com.br/cases/'
   }
 ]);
 
@@ -301,4 +337,3 @@ export const talkTopics = Object.freeze([
     description: 'Do conhecimento de domínio ao produto, com arquitetura, evidência e humanos nos pontos críticos.'
   }
 ]);
-
