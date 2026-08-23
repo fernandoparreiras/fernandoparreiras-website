@@ -21,12 +21,13 @@ const About = () => {
             <div className="relative z-10 overflow-hidden border border-white/10 bg-[#111] shadow-2xl">
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
               <img
-                src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/e1036369bc8b7069aa3fd4b83fb7ec32.png"
+                src="/images/profile/fernando-parreiras-retrato-executivo.webp"
                 alt="Retrato executivo de Fernando Parreiras"
-                width="1024"
-                height="1280"
+                width="410"
+                height="500"
                 className="h-auto w-full object-cover"
                 decoding="async"
+                loading="lazy"
               />
             </div>
             <div className="absolute -bottom-5 -left-5 h-full w-full border border-[#d8ff57]/25" aria-hidden="true" />

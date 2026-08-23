@@ -64,7 +64,7 @@ const Header = () => {
       >
         <nav className="container mx-auto flex min-h-20 items-center justify-between px-6" aria-label="Navegação principal">
           <Link to="/" className="flex items-center gap-2 text-lg font-black tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]" aria-label="Fernando Parreiras — início">
-            <img src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/c7ce7ff499a602167ff2cb419d0318db.png" alt="" width="40" height="40" className="h-10 w-10" />
+            <img src="/images/brand/fernando-parreiras-monogram-256.webp" alt="" width="40" height="40" className="h-10 w-10" decoding="async" />
             <span className="text-white">Fernando</span><span className="text-[#d8ff57]">Parreiras</span>
           </Link>
 
