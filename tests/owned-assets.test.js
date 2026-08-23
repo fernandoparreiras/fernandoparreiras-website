@@ -9,7 +9,8 @@ const SOURCE_FILES = [
   'src/components/About.jsx',
   'src/components/Books.jsx',
   'src/components/EpitafioPage.jsx',
-  'src/components/Header.jsx'
+  'src/components/Header.jsx',
+  'src/components/Hero.jsx'
 ];
 
 test('ativos críticos não dependem do CDN legado da Hostinger', () => {

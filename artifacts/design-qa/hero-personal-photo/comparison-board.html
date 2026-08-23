@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA visual — hero com retrato pessoal</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #111; color: #fff; font: 600 16px/1.4 system-ui, sans-serif; }
+      main { display: grid; gap: 20px; padding: 20px; }
+      .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      figure { margin: 0; overflow: hidden; border: 1px solid #3a3a3a; background: #080909; }
+      figcaption { padding: 10px 12px; color: #d8ff57; text-transform: uppercase; letter-spacing: .08em; }
+      img { display: block; width: 100%; height: auto; }
+      .source { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 20px; align-items: start; }
+      .portrait img { aspect-ratio: 4 / 5; object-fit: cover; }
+      @media (max-width: 900px) {
+        .comparison, .source { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="source">
+        <figure>
+          <figcaption>Referência — hero atual em produção · 1440 × 900</figcaption>
+          <img src="./reference-production-1440x900.png" alt="Hero atual sem retrato" />
+        </figure>
+        <figure class="portrait">
+          <figcaption>Ativo selecionado</figcaption>
+          <img src="/images/em-cena/fernando-parreiras-palestra-principal-1122.webp" alt="Fernando Parreiras palestrando" />
+        </figure>
+      </div>
+      <div class="comparison">
+        <figure>
+          <figcaption>Implementação final · desktop 1440 × 900</figcaption>
+          <img src="./implementation-desktop-1440x900-v2.png" alt="Hero com retrato em desktop" />
+        </figure>
+        <figure>
+          <figcaption>Implementação final · mobile 390 × 844</figcaption>
+          <img src="./implementation-mobile-390x844-v2.png" alt="Hero com retrato em mobile" />
+        </figure>
+      </div>
+    </main>
+  </body>
+</html>
