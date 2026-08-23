@@ -13,10 +13,39 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative flex min-h-[92svh] items-end overflow-hidden bg-[#080909] pt-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_26%,rgba(216,255,87,0.12),transparent_24%),linear-gradient(135deg,rgba(255,255,255,0.03),transparent_45%)]" />
-      <div className="pointer-events-none absolute right-[8%] top-[18%] hidden h-[46vh] w-px bg-gradient-to-b from-transparent via-[#d8ff57]/35 to-transparent lg:block" />
-      <div className="container relative z-10 mx-auto px-6 pb-20 md:pb-28 lg:pb-24">
+    <section id="hero" className="relative flex min-h-[100svh] items-end overflow-hidden bg-[#080909] pt-28 lg:min-h-[92svh] lg:pt-32">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_24%,rgba(216,255,87,0.13),transparent_25%),linear-gradient(135deg,rgba(255,255,255,0.03),transparent_45%)]" />
+
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, scale: 1.035, x: 24 }}
+        animate={reduceMotion ? undefined : { opacity: 1, scale: 1, x: 0 }}
+        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute inset-x-0 top-20 h-[38svh] overflow-hidden sm:h-[42svh] lg:inset-y-0 lg:left-auto lg:right-0 lg:top-0 lg:h-full lg:w-[49%]"
+        aria-hidden="true"
+      >
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="/images/em-cena/fernando-parreiras-palestra-principal-720.webp"
+          />
+          <img
+            src="/images/em-cena/fernando-parreiras-palestra-principal-1122.webp"
+            alt=""
+            width="1122"
+            height="1402"
+            loading="eager"
+            className="h-full w-full object-cover object-[50%_24%] opacity-90 saturate-[0.92] lg:object-[50%_42%] lg:opacity-85"
+          />
+        </picture>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080909]/5 via-transparent to-[#080909] lg:bg-gradient-to-r lg:from-[#080909] lg:via-[#080909]/35 lg:to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_28%,transparent_0%,rgba(8,9,9,0.03)_42%,rgba(8,9,9,0.74)_100%)]" />
+      </motion.div>
+
+      <div className="pointer-events-none absolute inset-x-0 top-[39svh] h-40 bg-gradient-to-b from-transparent to-[#080909] sm:top-[43svh] lg:hidden" />
+      <div className="pointer-events-none absolute right-[6%] top-[17%] hidden h-[54vh] w-px bg-gradient-to-b from-transparent via-[#d8ff57]/45 to-transparent lg:block" />
+
+      <div className="container relative z-10 mx-auto px-6 pb-16 pt-[35svh] sm:pt-[39svh] md:pb-24 lg:pb-24 lg:pt-0">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 30 }}
           animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -31,7 +60,7 @@ const Hero = () => {
             <span aria-hidden="true">•</span>
             <span>Construtor de negócios</span>
           </div>
-          <h1 className="max-w-6xl text-5xl font-black leading-[0.94] tracking-[-0.045em] text-white sm:text-6xl md:text-7xl lg:text-[6.4rem]">
+          <h1 className="max-w-6xl text-[2.65rem] font-black leading-[0.94] tracking-[-0.045em] text-white sm:text-6xl md:text-7xl lg:max-w-[54rem] lg:text-[5rem] xl:max-w-[64rem] xl:text-[5.75rem] 2xl:max-w-6xl 2xl:text-[6.4rem]">
             Estratégia, tecnologia e IA para transformar decisões em{' '}
             <span className="text-[#d8ff57]">negócios que permanecem.</span>
           </h1>
