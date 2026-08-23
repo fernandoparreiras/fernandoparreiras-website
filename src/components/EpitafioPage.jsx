@@ -155,8 +155,12 @@ const EpitafioPage = () => {
                   initial={{ scale: 1.1, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
-                  src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/09cee075f233c3bd5221fcb29dfd6706.png"
+                  src="/images/legacy/legado-espiritual.webp"
                   alt="Legado Espiritual - Figura caminhando entre nuvens em direção à luz divina"
+                  width="1024"
+                  height="1536"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 

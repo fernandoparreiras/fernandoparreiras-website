@@ -11,7 +11,9 @@ const Books = () => {
       title: 'LIVRO SER',
       tag: 'Livro',
       tagType: 'book',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/e7183993654dde3988c10ea6477a7c1d.png",
+      image: '/images/content/books/livro-ser.webp',
+      width: 764,
+      height: 1024,
       description: 'Quem é o seu SER? Uma reflexão profunda sobre identidade, propósito e como curtir a jornada da vida além de profissões e negócios.',
       link: 'https://a.co/d/26dOrHC'
     },
@@ -19,7 +21,9 @@ const Books = () => {
       title: 'JORNADA CTO',
       tag: 'Ebook',
       tagType: 'ebook',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/3e79e4cee0cba89e0d81a4e99a169049.jpg",
+      image: '/images/content/books/jornada-cto.webp',
+      width: 298,
+      height: 466,
       description: 'Seu guia essencial para dominar o papel de Chief Technology Officer. Insights valiosos e estratégias práticas.',
       link: 'https://a.co/d/0lUTGDJ'
     },
@@ -28,7 +32,9 @@ const Books = () => {
       subtitle: 'PARA EMPRESAS E ORGANIZAÇÕES',
       tag: 'Ebook',
       tagType: 'ebook',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/6d057d33e42fdd8d86f0836b64b535bb.jpg",
+      image: '/images/content/books/principios-empresas-organizacoes.webp',
+      width: 326,
+      height: 522,
       description: 'Defina visão, missão e princípios inegociáveis. Construa empresas que prosperam sem abrir mão da ética.',
       link: 'https://a.co/d/1hu3LQY'
     }
@@ -39,25 +45,33 @@ const Books = () => {
       title: 'GESTÃO ESTRATÉGICA DE PESSOAS',
       tag: 'Ebook',
       link: 'https://a.co/d/5dmIvSO',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/a73f730de216fb18394a07e83cf7b556.png"
+      image: '/images/content/books/gestao-estrategica-pessoas.webp',
+      width: 1024,
+      height: 1600
     },
     {
       title: 'ANÁLISE DE MERCADO',
       tag: 'Ebook',
       link: 'https://a.co/d/aLfsdMP',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/7c0ab6f4094a0ec61807e12c4a67988b.png"
+      image: '/images/content/books/analise-de-mercado.webp',
+      width: 1024,
+      height: 1600
     },
     {
       title: 'GESTÃO OPERACIONAL',
       tag: 'Ebook',
       link: 'https://a.co/d/2kcr2nE',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/7c1b466f627539228d37cc91216de912.png"
+      image: '/images/content/books/gestao-operacional.webp',
+      width: 1024,
+      height: 1600
     },
     {
       title: 'GESTÃO DE MUDANÇAS',
       tag: 'Ebook',
       link: 'https://a.co/d/e2MJlOV',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/1972f9afe595f6da502fef7bd0831764.png"
+      image: '/images/content/books/gestao-de-mudancas.webp',
+      width: 1024,
+      height: 1600
     }
   ];
 
@@ -66,25 +80,33 @@ const Books = () => {
       title: 'REFLEXÕES - CARTAS PARA O SER',
       tag: 'Ebook',
       link: 'https://chk.eduzz.com/1924106',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/5ef2667ecbe12e9429789de76d4165af.png"
+      image: '/images/content/books/reflexoes-cartas-para-o-ser.webp',
+      width: 1410,
+      height: 2250
     },
     {
       title: 'CRIE SEU PLANO DE PROPÓSITO',
       tag: 'Ebook',
       link: 'https://chk.eduzz.com/1887737',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/51c19b660fbbbd111bc19539633651d2.png"
+      image: '/images/content/books/plano-de-proposito.webp',
+      width: 512,
+      height: 800
     },
     {
       title: 'LIDERANÇA HUMANIZADA',
       tag: 'Ebook',
       link: 'https://chk.eduzz.com/1887768',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/b9af623cdb801a40479bdc9ff2ddc80d.png"
+      image: '/images/content/books/lideranca-humanizada.webp',
+      width: 512,
+      height: 800
     },
     {
       title: 'AUTOCONHECIMENTO ATRAVÉS DAS ARTES MARCIAIS',
       tag: 'Ebook',
       link: 'https://chk.eduzz.com/1887789',
-      image: "https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/73f294718d23bb260df52f55ce489638.png"
+      image: '/images/content/books/autoconhecimento-artes-marciais.webp',
+      width: 1080,
+      height: 1920
     }
   ];
 
@@ -126,13 +148,16 @@ const Books = () => {
                   <img 
                     src={book.image}
                     alt={`Capa do livro ${book.title}`} 
+                    width={book.width}
+                    height={book.height}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105" 
                   />
                ) : (
-                  <img 
-                    alt={`Capa elegante do livro ${book.title} com detalhes em verde limão`} 
-                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
-                   src="https://images.unsplash.com/photo-1626723126989-0f44514d5103" />
+                  <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_top,rgba(216,255,87,0.16),transparent_55%)] text-[#d8ff57]" aria-hidden="true">
+                    <Book className="h-10 w-10" />
+                  </div>
                )}
                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                <div className="absolute bottom-2 left-2 right-2">
@@ -190,6 +215,10 @@ const Books = () => {
                   <img 
                     src={book.image} 
                     alt={book.title}
+                    width={book.width}
+                    height={book.height}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
@@ -257,7 +286,7 @@ const Books = () => {
               className="group relative overflow-hidden rounded-lg bg-black border border-white/10 hover:border-[#d8ff57] transition-all duration-300 flex flex-col h-full"
             >
               <div className="relative aspect-video w-full overflow-hidden">
-                 <img alt="TEDx Ibituruna stage with 'SER' text on screen and Fernando Parreiras presenting" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/f88af370bc3e0fc601083101acc73a4e.png" />
+                 <img alt="Fernando Parreiras no palco do TEDx Ibituruna durante a palestra SER" width="1600" height="900" loading="lazy" decoding="async" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" src="/images/content/media/tedx-ser.webp" />
                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-300" />
                  <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-16 h-16 rounded-full bg-[#d8ff57] text-black flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-[0_0_30px_rgba(216,255,87,0.4)]">
@@ -291,7 +320,7 @@ const Books = () => {
               className="group relative overflow-hidden rounded-lg bg-black border border-white/10 hover:border-[#1DB954] transition-all duration-300 flex flex-col h-full"
             >
               <div className="relative aspect-video w-full overflow-hidden">
-                 <img alt="Fernando Parreiras with 'POR Music' branding and lime green design, Spotify player cover image" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" src="https://horizons-cdn.hostinger.com/14a398b6-efb9-41a9-82b2-d6d468f204e2/906516f6ba5e0a65b739e772d8bff476.png" />
+                 <img alt="Capa do projeto POR Music de Fernando Parreiras no Spotify" width="1600" height="900" loading="lazy" decoding="async" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" src="/images/content/media/por-music.webp" />
                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-300" />
                  <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-16 h-16 rounded-full bg-[#1DB954] text-white flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-[0_0_30px_rgba(29,185,84,0.4)]">
