@@ -51,5 +51,11 @@ Trustyu Forge; este site funciona como vínculo autoral e índice canônico de s
 ## Hospedagem
 
 `netlify.toml` contém build, redirects, headers e cache. O procedimento de DNS e rollback está em
-[`docs/netlify-cutover-runbook.md`](docs/netlify-cutover-runbook.md); o cutover continua sendo uma
-ação humana separada.
+[`docs/netlify-cutover-runbook.md`](docs/netlify-cutover-runbook.md). O domínio canônico opera na
+Netlify desde 23 de agosto de 2026, com HTTPS forçado e `www` redirecionado para o domínio apex.
+
+## Higiene de dependências
+
+O diretório `src/components/ui/` contém somente primitives realmente importadas pelo produto.
+Antes de adicionar uma nova primitive, instale apenas a dependência correspondente e mantenha os
+gates `npm run lint`, `npm test`, `npm run build` e `npm audit --omit=dev` verdes.
