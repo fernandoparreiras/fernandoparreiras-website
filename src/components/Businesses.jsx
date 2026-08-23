@@ -18,7 +18,7 @@ const BusinessCard = ({ item, group, index }) => {
       </div>
       <h4 className="mt-6 text-2xl font-black text-white transition-colors group-hover:text-[#d8ff57]">{item.name}</h4>
       <p className="mt-4 flex-1 leading-relaxed text-white/60">{item.description}</p>
-      <p className="mt-6 border-t border-white/10 pt-5 text-xs font-semibold uppercase tracking-[0.12em] text-white/38">{item.audience}</p>
+      <p className="mt-6 border-t border-white/10 pt-5 text-xs font-semibold uppercase tracking-[0.12em] text-white/60">{item.audience}</p>
       <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-white">
         {item.cta}
         {external ? <ArrowUpRight className="h-4 w-4" aria-hidden="true" /> : <ArrowRight className="h-4 w-4" aria-hidden="true" />}

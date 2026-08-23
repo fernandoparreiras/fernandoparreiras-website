@@ -191,7 +191,7 @@ const EpitafioPage = () => {
             Voltar ao Topo
           </Button>
           
-          <p className="text-white/20 text-xs tracking-widest uppercase">
+          <p className="text-white/60 text-xs tracking-widest uppercase">
             Fernando Parreiras • Legado
           </p>
         </div>

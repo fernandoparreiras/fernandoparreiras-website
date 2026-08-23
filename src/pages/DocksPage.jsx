@@ -87,7 +87,7 @@ const DocksPage = () => {
               <div className="absolute -right-10 -top-12 h-40 w-40 rounded-full border-[28px] border-[#d8ff57]/10" />
               <div>
                 <Layers3 className="mb-6 h-8 w-8 text-[#d8ff57]" />
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/40">Coleção</p>
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">Coleção</p>
                 <p className="mt-1 text-xl font-bold text-white">Fernando Parreiras</p>
               </div>
               <span className="font-mono text-6xl font-black leading-none text-[#d8ff57]">
@@ -118,14 +118,14 @@ const DocksPage = () => {
               </div>
 
               <label className="flex min-w-0 items-center gap-3 border-b border-white/20 pb-2 focus-within:border-[#d8ff57] lg:w-80">
-                <Search className="h-4 w-4 shrink-0 text-white/40" />
+                <Search className="h-4 w-4 shrink-0 text-white/60" aria-hidden="true" />
                 <span className="sr-only">Buscar no Dock</span>
                 <input
                   type="search"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Buscar no Dock"
-                  className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/30"
+                  className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/55"
                 />
               </label>
             </div>
@@ -160,7 +160,7 @@ const DocksPage = () => {
                     </div>
 
                     <div className="flex flex-1 flex-col p-6">
-                      <div className="mb-3 flex items-center gap-3 text-xs uppercase tracking-wider text-white/40">
+                      <div className="mb-3 flex items-center gap-3 text-xs uppercase tracking-wider text-white/60">
                         {item.year && <span>{item.year}</span>}
                         {item.event && (
                           <>
@@ -237,7 +237,7 @@ const DocksPage = () => {
             </div>
 
             <div className="border-t border-white/10 bg-black/20 p-8 md:p-12 lg:border-l lg:border-t-0">
-              <p className="mb-8 text-xs font-bold uppercase tracking-[0.24em] text-white/35">Como o acervo será organizado</p>
+              <p className="mb-8 text-xs font-bold uppercase tracking-[0.24em] text-white/60">Como o acervo será organizado</p>
               {[
                 ['01', 'Palestras e keynotes'],
                 ['02', 'Workshops e conteúdos práticos'],

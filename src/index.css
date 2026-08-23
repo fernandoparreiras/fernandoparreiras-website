@@ -58,6 +58,7 @@
 
   :focus-visible {
     scroll-margin-top: 7rem;
+    scroll-margin-bottom: 6rem;
   }
 }
 
@@ -95,6 +96,12 @@
 
 .skip-link:focus {
   transform: translateY(0);
+}
+
+@media (max-width: 1023px) {
+  html {
+    scroll-padding-bottom: 6rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

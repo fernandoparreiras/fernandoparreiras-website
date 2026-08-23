@@ -19,7 +19,7 @@ const urgencyOptions = [
   { value: 'exploracao', label: 'Ainda estou explorando possibilidades' }
 ];
 
-const fieldClassName = 'min-h-12 w-full border border-white/15 bg-black/30 px-4 py-3 text-base text-white outline-none transition placeholder:text-white/30 focus:border-[#d8ff57] focus:ring-1 focus:ring-[#d8ff57]';
+const fieldClassName = 'min-h-12 w-full border border-white/15 bg-black/30 px-4 py-3 text-base text-white outline-none transition placeholder:text-white/55 focus:border-[#d8ff57] focus:ring-1 focus:ring-[#d8ff57]';
 
 const LeadForm = ({ defaultIntent = '', compact = false }) => {
   const [submitted, setSubmitted] = useState(false);
@@ -96,7 +96,7 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
         </div>
 
         <div>
-          <label htmlFor={`company-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Empresa e cargo <span className="font-normal text-white/40">(quando aplicável)</span></label>
+          <label htmlFor={`company-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Empresa e cargo <span className="font-normal text-white/60">(quando aplicável)</span></label>
           <input id={`company-${compact ? 'compact' : 'full'}`} name="company" autoComplete="organization" maxLength="160" placeholder="Empresa, estágio ou responsabilidade" className={fieldClassName} />
         </div>
 
@@ -114,8 +114,8 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
         </div>
 
         <label className="flex items-start gap-3 text-sm leading-relaxed text-white/55">
-          <input type="checkbox" name="consent" required className="mt-1 h-4 w-4 accent-[#d8ff57]" />
-          <span>Autorizo o uso dessas informações exclusivamente para responder a esta solicitação, conforme a <a href="/privacidade" className="underline decoration-white/30 underline-offset-4 hover:text-white">política de privacidade</a>.</span>
+          <input type="checkbox" name="consent" required className="mt-1 h-4 w-4 accent-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]" />
+          <span>Autorizo o uso dessas informações exclusivamente para responder a esta solicitação, conforme a <a href="/privacidade" className="underline decoration-white/30 underline-offset-4 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">política de privacidade</a>.</span>
         </label>
 
         <button type="submit" className="group inline-flex min-h-14 w-full items-center justify-center gap-3 bg-[#d8ff57] px-7 font-black text-black transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] sm:w-auto">
@@ -136,4 +136,3 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
 };
 
 export default LeadForm;
-

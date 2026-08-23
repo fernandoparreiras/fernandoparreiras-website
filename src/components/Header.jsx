@@ -20,6 +20,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const firstMobileLinkRef = useRef(null);
   const menuButtonRef = useRef(null);
+  const mobileNavigationRef = useRef(null);
   const navItems = hasPublishedForgeArticles
     ? [...baseItems.slice(0, 4), { label: 'Artigos', href: '/artigos' }, ...baseItems.slice(4)]
     : baseItems;
@@ -37,17 +38,40 @@ const Header = () => {
 
   useEffect(() => {
     if (!isMobileMenuOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     firstMobileLinkRef.current?.focus();
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
+        event.preventDefault();
         setIsMobileMenuOpen(false);
         menuButtonRef.current?.focus();
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const navigationLinks = mobileNavigationRef.current
+          ? [...mobileNavigationRef.current.querySelectorAll('a[href]')]
+          : [];
+        const focusableElements = [menuButtonRef.current, ...navigationLinks].filter(Boolean);
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements.at(-1);
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement?.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement?.focus();
+        } else if (!focusableElements.includes(document.activeElement)) {
+          event.preventDefault();
+          firstMobileLinkRef.current?.focus();
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isMobileMenuOpen]);
@@ -55,7 +79,11 @@ const Header = () => {
   const navClass = ({ isActive }) => `relative py-2 text-sm font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] ${isActive ? 'text-[#d8ff57]' : 'text-white/72 hover:text-white'}`;
 
   return (
-    <>
+    <div
+      role={isMobileMenuOpen ? 'dialog' : undefined}
+      aria-modal={isMobileMenuOpen ? 'true' : undefined}
+      aria-label={isMobileMenuOpen ? 'Menu principal' : undefined}
+    >
       <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
       <motion.header
         initial={reduceMotion ? false : { y: -100 }}
@@ -97,6 +125,7 @@ const Header = () => {
         {isMobileMenuOpen && (
           <motion.div
             id="mobile-navigation"
+            ref={mobileNavigationRef}
             initial={reduceMotion ? false : { opacity: 0 }}
             animate={reduceMotion ? undefined : { opacity: 1 }}
             exit={reduceMotion ? undefined : { opacity: 0 }}
@@ -120,7 +149,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 
