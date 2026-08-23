@@ -31,7 +31,6 @@ import SolutionsPage from '@/pages/SolutionsPage';
 import TalksPage from '@/pages/TalksPage';
 import { hasPublishedForgeArticles } from '@/data/forgeArticles';
 import { ROUTE_METADATA } from '@/data/siteMetadata';
-import { Toaster } from '@/components/ui/toaster';
 
 function HomePage() {
   return (
@@ -100,14 +99,13 @@ function SiteRoutes() {
       </div>
       {!isAcademyLanding && <Footer />}
       {!isAcademyLanding && <MobileCommercialCTA />}
-      <Toaster />
     </div>
   );
 }
 
 function App() {
   return (
-    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <Router>
       <ScrollToTop />
       <SiteRoutes />
     </Router>
