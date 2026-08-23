@@ -358,7 +358,7 @@ const Books = () => {
                 </span>
             </button>
             {!isExpanded && (
-                <p className="text-xs text-white/40 animate-pulse">
+                <p className="text-xs text-white/60 animate-pulse">
                     Clique para ver mais publicações
                 </p>
             )}

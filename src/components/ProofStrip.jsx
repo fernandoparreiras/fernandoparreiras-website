@@ -15,7 +15,7 @@ const ProofStrip = () => (
         >
           <strong className="block text-3xl font-black text-white transition-colors group-hover:text-[#d8ff57]">{item.value}</strong>
           <span className="mt-2 block text-sm leading-relaxed text-white/55">{item.label}</span>
-          <span className="mt-3 block text-[10px] font-bold uppercase tracking-[0.18em] text-white/35">Fonte: {item.source}</span>
+          <span className="mt-3 block text-[10px] font-bold uppercase tracking-[0.18em] text-white/60">Fonte: {item.source}</span>
         </a>
       ))}
     </div>
@@ -23,4 +23,3 @@ const ProofStrip = () => (
 );
 
 export default ProofStrip;
-

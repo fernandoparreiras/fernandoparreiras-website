@@ -96,7 +96,7 @@ const Manifesto = () => {
 
                 <div className="pt-4 border-t border-white/5 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#d8ff57]"></span>
-                  <span className="text-xs font-medium text-white/40 uppercase tracking-wider font-mono">
+                  <span className="text-xs font-medium text-white/60 uppercase tracking-wider font-mono">
                     {item.reference}
                   </span>
                 </div>
@@ -134,7 +134,7 @@ const Manifesto = () => {
 
                 <div className="pt-4 border-t border-white/5 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#d8ff57]"></span>
-                  <span className="text-xs font-medium text-white/40 uppercase tracking-wider font-mono">
+                  <span className="text-xs font-medium text-white/60 uppercase tracking-wider font-mono">
                     {item.reference}
                   </span>
                 </div>

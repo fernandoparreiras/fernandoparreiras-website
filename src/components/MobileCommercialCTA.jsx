@@ -1,12 +1,9 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics';
 
 const MobileCommercialCTA = () => {
-  const location = useLocation();
-  if (location.pathname === '/contato' || location.pathname.startsWith('/academy/')) return null;
-
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-black/95 p-3 backdrop-blur-md lg:hidden">
       <Link
@@ -22,4 +19,3 @@ const MobileCommercialCTA = () => {
 };
 
 export default MobileCommercialCTA;
-

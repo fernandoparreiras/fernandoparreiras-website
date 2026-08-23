@@ -1,4 +1,5 @@
 import React from 'react';
+import { MotionConfig } from 'framer-motion';
 import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import About from '@/components/About';
 import Books from '@/components/Books';
@@ -56,11 +57,12 @@ function HomePage() {
 function SiteRoutes() {
   const location = useLocation();
   const isAcademyLanding = location.pathname.startsWith('/academy/');
+  const showMobileCommercialCta = !isAcademyLanding && location.pathname !== '/contato';
 
   return (
-    <div className={isAcademyLanding ? 'min-h-screen' : 'min-h-screen bg-black text-white'}>
+    <div className={isAcademyLanding ? 'min-h-screen' : `min-h-screen bg-black text-white ${showMobileCommercialCta ? 'pb-20 lg:pb-0' : ''}`}>
       {!isAcademyLanding && <Header />}
-      <div id="main-content" tabIndex="-1">
+      <div id="main-content" tabIndex="-1" role="region" aria-label="Conteúdo principal">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/solucoes" element={<SolutionsPage />} />
@@ -98,17 +100,19 @@ function SiteRoutes() {
         </Routes>
       </div>
       {!isAcademyLanding && <Footer />}
-      {!isAcademyLanding && <MobileCommercialCTA />}
+      {showMobileCommercialCta && <MobileCommercialCTA />}
     </div>
   );
 }
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <SiteRoutes />
-    </Router>
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <ScrollToTop />
+        <SiteRoutes />
+      </Router>
+    </MotionConfig>
   );
 }
 

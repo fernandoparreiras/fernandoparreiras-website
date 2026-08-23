@@ -50,7 +50,7 @@ const ArticlesHubPage = () => (
             </h2>
             <p className="mt-4 flex-1 leading-relaxed text-white/55">{article.description}</p>
             <div className="mt-8 flex flex-col gap-5 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <time className="text-sm text-white/40" dateTime={article.publishedAt}>
+              <time className="text-sm text-white/60" dateTime={article.publishedAt}>
                 {dateFormatter.format(new Date(article.publishedAt))}
               </time>
               <a
