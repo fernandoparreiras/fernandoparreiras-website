@@ -53,10 +53,24 @@ O status de cada issue deve usar esses termos de forma literal. `IMPLEMENTED` ou
 | Backend, proteção e CRM | [#13](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/13) | `PLANNED` |
 | Palestras, media kit e assets | [#14](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/14) | `IMPLEMENTED` |
 | Conteúdo, Forge e SEO estático | [#15](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/15) | `VERIFIED` |
-| Acessibilidade e responsividade | [#16](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/16) | `IMPLEMENTED` |
+| Acessibilidade e responsividade | [#16](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/16) | `VERIFIED` |
 | Experimentação comercial | [#17](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/17) | `PLANNED` |
 
-O deploy Netlify permanece acompanhado pela [#1](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/1); o hub autoral/Forge, pela [#5](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/5); e o débito global de lint e dependências, pela [#6](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/6).
+A migração Netlify [#1](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/1) e o débito global [#6](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/6) estão concluídos. O escopo ainda válido do hub autoral [#5](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/5) foi incorporado pela [#15](https://github.com/fernandoparreiras/fernandoparreiras-website/issues/15); a rota `/artigos/` continua fail-closed até existir conteúdo aprovado.
+
+## Tranche final P1 — 23 de agosto de 2026
+
+Estado da branch: `VERIFIED`; a tranche só será `OPERATING` após merge, deploy e homologação pública.
+
+- redirect permanente da rota legada da Academy para a Tech Human;
+- CTA móvel normalizado para não cobrir a própria rota `/contato/`;
+- SEO estático e hidratado com a mesma fonte de verdade, canonical apex e imagem social;
+- metadados de privacidade com proprietário único;
+- instrumentação Horizons restrita ao desenvolvimento e retirada do build público;
+- CSP e headers de segurança validados com Netlify Dev;
+- 27 testes, lint, build, auditoria de dependências e QA visual desktop/mobile aprovados.
+
+A evidência reproduzível está em [`output/playwright/final-p1/`](../../output/playwright/final-p1/README.md).
 
 ## Atualização
 

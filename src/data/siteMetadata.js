@@ -1,5 +1,12 @@
 export const SITE_ORIGIN = 'https://fernandoparreiras.com.br';
 
+export const SOCIAL_IMAGE = Object.freeze({
+  path: '/images/em-cena/fernando-parreiras-palestra-principal-1122.webp',
+  width: 1122,
+  height: 1402,
+  alt: 'Fernando Parreiras em palestra sobre tecnologia, inteligência artificial e negócios'
+});
+
 export const AUTHOR = Object.freeze({
   id: `${SITE_ORIGIN}/#fernando-parreiras`,
   name: 'Fernando Parreiras',

@@ -66,7 +66,7 @@ test('preferência de movimento reduzido é aplicada a toda a árvore', () => {
 test('CTA móvel reserva área útil e não aparece na rota de contato', () => {
   const app = readSource('src/App.jsx');
 
-  assert.match(app, /location\.pathname !== '\/contato'/);
+  assert.match(app, /shouldShowMobileCommercialCta\(location\.pathname\)/);
   assert.match(app, /showMobileCommercialCta \? 'pb-20 lg:pb-0'/);
   assert.match(app, /showMobileCommercialCta && <MobileCommercialCTA \/>/);
 });

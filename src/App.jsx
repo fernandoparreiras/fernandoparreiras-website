@@ -32,6 +32,7 @@ import SolutionsPage from '@/pages/SolutionsPage';
 import TalksPage from '@/pages/TalksPage';
 import { hasPublishedForgeArticles } from '@/data/forgeArticles';
 import { ROUTE_METADATA } from '@/data/siteMetadata';
+import { isAcademyPath, shouldShowMobileCommercialCta } from '@/lib/navigation';
 
 function HomePage() {
   return (
@@ -56,8 +57,8 @@ function HomePage() {
 
 function SiteRoutes() {
   const location = useLocation();
-  const isAcademyLanding = location.pathname.startsWith('/academy/');
-  const showMobileCommercialCta = !isAcademyLanding && location.pathname !== '/contato';
+  const isAcademyLanding = isAcademyPath(location.pathname);
+  const showMobileCommercialCta = shouldShowMobileCommercialCta(location.pathname);
 
   return (
     <div className={isAcademyLanding ? 'min-h-screen' : `min-h-screen bg-black text-white ${showMobileCommercialCta ? 'pb-20 lg:pb-0' : ''}`}>

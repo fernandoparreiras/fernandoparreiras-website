@@ -89,11 +89,17 @@ test('as rotas comerciais públicas participam de SEO, sitemap e redirects', () 
 
   const sitemap = fs.readFileSync(path.join(outputDirectory, 'sitemap.xml'), 'utf8');
   const redirects = fs.readFileSync(path.join(outputDirectory, '_redirects'), 'utf8');
+  const rootHtml = fs.readFileSync(path.join(outputDirectory, 'index.html'), 'utf8');
   const advisoryHtml = fs.readFileSync(path.join(outputDirectory, 'solucoes', 'advisory-executivo', 'index.html'), 'utf8');
 
   assert.match(sitemap, /https:\/\/fernandoparreiras\.com\.br\/solucoes\/advisory-executivo\//);
   assert.match(sitemap, /https:\/\/fernandoparreiras\.com\.br\/palestras\//);
   assert.match(redirects, /\/contato\s+\/contato\/\s+301/);
+  assert.match(redirects, /\/academy\/ia-sem-confusao\s+https:\/\/www\.techhuman\.com\.br\/academy\/ia-sem-confusao\s+301!/);
+  assert.match(redirects, /\/academy\/ia-sem-confusao\/\s+https:\/\/www\.techhuman\.com\.br\/academy\/ia-sem-confusao\s+301!/);
+  assert.match(rootHtml, /Fernando Parreiras \| Estratégia, tecnologia e IA/);
+  assert.match(rootHtml, /property="og:image"/);
+  assert.match(rootHtml, /name="twitter:card" content="summary_large_image"/);
   assert.match(advisoryHtml, /Advisory executivo/);
   assert.match(advisoryHtml, /application\/ld\+json/);
 });
