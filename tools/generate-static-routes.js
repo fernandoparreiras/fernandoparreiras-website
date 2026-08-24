@@ -8,6 +8,7 @@ import {
   AUTHOR,
   PUBLIC_BASE_ROUTES,
   ROUTE_METADATA,
+  SOCIAL_IMAGE,
   SITE_ORIGIN,
   absoluteUrl,
   createStructuredData
@@ -121,6 +122,7 @@ export function validateArticles(articles) {
 
 export function renderSeoBlock(metadata, articles = []) {
   const canonical = absoluteUrl(metadata.path);
+  const socialImage = absoluteUrl(SOCIAL_IMAGE.path);
   const structuredData = createStructuredData(metadata, articles);
 
   return `<!-- SEO:START -->
@@ -134,9 +136,15 @@ export function renderSeoBlock(metadata, articles = []) {
 \t\t<meta data-react-helmet="true" property="og:title" content="${escapeHtml(metadata.title)}" />
 \t\t<meta data-react-helmet="true" property="og:description" content="${escapeHtml(metadata.description)}" />
 \t\t<meta data-react-helmet="true" property="og:url" content="${escapeHtml(canonical)}" />
-\t\t<meta data-react-helmet="true" name="twitter:card" content="summary" />
+\t\t<meta data-react-helmet="true" property="og:image" content="${escapeHtml(socialImage)}" />
+\t\t<meta data-react-helmet="true" property="og:image:width" content="${SOCIAL_IMAGE.width}" />
+\t\t<meta data-react-helmet="true" property="og:image:height" content="${SOCIAL_IMAGE.height}" />
+\t\t<meta data-react-helmet="true" property="og:image:alt" content="${escapeHtml(SOCIAL_IMAGE.alt)}" />
+\t\t<meta data-react-helmet="true" name="twitter:card" content="summary_large_image" />
 \t\t<meta data-react-helmet="true" name="twitter:title" content="${escapeHtml(metadata.title)}" />
 \t\t<meta data-react-helmet="true" name="twitter:description" content="${escapeHtml(metadata.description)}" />
+\t\t<meta data-react-helmet="true" name="twitter:image" content="${escapeHtml(socialImage)}" />
+\t\t<meta data-react-helmet="true" name="twitter:image:alt" content="${escapeHtml(SOCIAL_IMAGE.alt)}" />
 \t\t<script data-react-helmet="true" type="application/ld+json">${safeJson(structuredData)}</script>
 \t\t<!-- SEO:END -->`;
 }
@@ -165,8 +173,9 @@ export function renderRedirects(articles) {
   const articleGate = articles.length === 0
     ? '/artigos      /404.html  404\n/artigos/*    /404.html  404\n'
     : '/artigos      /artigos/   301\n';
+  const academyDestination = 'https://www.techhuman.com.br/academy/ia-sem-confusao';
 
-  return `/dock  /docks/  301\n${routeRedirects}\n${articleGate}`;
+  return `/academy/ia-sem-confusao   ${academyDestination}   301!\n/academy/ia-sem-confusao/  ${academyDestination}   301!\n/dock  /docks/  301\n${routeRedirects}\n${articleGate}`;
 }
 
 function renderNotFoundHtml(sourceHtml) {
@@ -259,11 +268,14 @@ export function generateStaticRoutes({ sourceHtml, outputDirectory, articles = F
     throw new Error('O bloco SEO versionado não foi encontrado no HTML de produção.');
   }
 
+  const rootHtml = sourceHtml.replace(SEO_BLOCK, renderSeoBlock(ROUTE_METADATA['/']));
+  fs.writeFileSync(path.join(outputDirectory, 'index.html'), rootHtml, 'utf8');
+
   for (const metadata of PUBLIC_BASE_ROUTES.filter(({ path: routePath }) => routePath !== '/')) {
     writeRoute(
       outputDirectory,
       metadata,
-      sourceHtml.replace(SEO_BLOCK, renderSeoBlock(metadata))
+      rootHtml.replace(SEO_BLOCK, renderSeoBlock(metadata))
     );
   }
 
@@ -274,7 +286,7 @@ export function generateStaticRoutes({ sourceHtml, outputDirectory, articles = F
     }
   } else {
     const metadata = ROUTE_METADATA['/artigos/'];
-    const articleHtml = sourceHtml
+    const articleHtml = rootHtml
       .replace(SEO_BLOCK, renderSeoBlock(metadata, articles))
       .replace(ROOT_ELEMENT, renderStaticArticlesRoot(articles))
       .replace(MODULE_SCRIPT, '');
@@ -286,7 +298,7 @@ export function generateStaticRoutes({ sourceHtml, outputDirectory, articles = F
     fs.rmSync(legacyHostConfig, { force: true });
   }
 
-  fs.writeFileSync(path.join(outputDirectory, '404.html'), renderNotFoundHtml(sourceHtml), 'utf8');
+  fs.writeFileSync(path.join(outputDirectory, '404.html'), renderNotFoundHtml(rootHtml), 'utf8');
   fs.writeFileSync(path.join(outputDirectory, '_redirects'), renderRedirects(articles), 'utf8');
   fs.writeFileSync(path.join(outputDirectory, 'sitemap.xml'), renderSitemap(articles), 'utf8');
 }

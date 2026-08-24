@@ -1,18 +1,7 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 const PrivacyPage = () => (
   <main className="bg-[#f7f7f2] px-5 pb-24 pt-36 text-[#080809] sm:px-8 lg:px-20">
-    <Helmet>
-      <html lang="pt-BR" />
-      <title>Privacidade | Fernando Parreiras</title>
-      <meta
-        name="description"
-        content="Informações sobre o uso de dados pessoais nos canais públicos de Fernando Parreiras."
-      />
-      <link rel="canonical" href="https://www.fernandoparreiras.com.br/privacidade" />
-    </Helmet>
-
     <article className="mx-auto max-w-4xl rounded-3xl bg-white p-7 shadow-[0_28px_80px_-56px_rgba(0,0,0,0.55)] sm:p-12">
       <p className="text-sm font-bold uppercase tracking-[0.12em] text-[#4e555e]">Privacidade</p>
       <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.025em] sm:text-5xl">

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { absoluteUrl, createStructuredData } from '@/data/siteMetadata';
+import { SOCIAL_IMAGE, absoluteUrl, createStructuredData } from '@/data/siteMetadata';
 
 const PageSeo = ({ metadata, articles = [] }) => {
   const canonical = absoluteUrl(metadata.path);
+  const socialImage = absoluteUrl(SOCIAL_IMAGE.path);
   const structuredData = createStructuredData(metadata, articles);
 
   return (
@@ -19,9 +20,15 @@ const PageSeo = ({ metadata, articles = [] }) => {
       <meta property="og:title" content={metadata.title} />
       <meta property="og:description" content={metadata.description} />
       <meta property="og:url" content={canonical} />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:image" content={socialImage} />
+      <meta property="og:image:width" content={SOCIAL_IMAGE.width} />
+      <meta property="og:image:height" content={SOCIAL_IMAGE.height} />
+      <meta property="og:image:alt" content={SOCIAL_IMAGE.alt} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={metadata.title} />
       <meta name="twitter:description" content={metadata.description} />
+      <meta name="twitter:image" content={socialImage} />
+      <meta name="twitter:image:alt" content={SOCIAL_IMAGE.alt} />
       <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
     </Helmet>
   );
