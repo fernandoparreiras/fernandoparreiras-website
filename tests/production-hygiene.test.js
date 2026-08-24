@@ -15,13 +15,27 @@ test('instrumentação do editor visual fica restrita ao servidor de desenvolvim
   assert.doesNotMatch(viteConfig, /TEMPLATE_BANNER_SCRIPT_URL/);
 });
 
-test('política de segurança pública limita origens e enquadramento', () => {
+test('política de segurança pública limita origens, scripts e enquadramento', () => {
   const netlify = readSource('netlify.toml');
 
   assert.match(netlify, /Content-Security-Policy/);
   assert.match(netlify, /default-src 'self'/);
   assert.match(netlify, /frame-ancestors 'none'/);
   assert.match(netlify, /object-src 'none'/);
+  assert.match(netlify, /script-src 'self'; script-src-attr 'none'/);
+  assert.match(netlify, /style-src 'self'; style-src-attr 'unsafe-inline'/);
+});
+
+test('apresentações recebem uma CSP isolada para os bundles autocontidos', () => {
+  const netlify = readSource('netlify.toml');
+  const presentationPolicy = netlify.match(
+    /for = "\/presentations\/\*"[\s\S]*?Content-Security-Policy = "([^"]+)"/
+  )?.[1];
+
+  assert.ok(presentationPolicy, 'a rota de apresentações precisa declarar uma CSP própria');
+  assert.match(presentationPolicy, /script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:/);
+  assert.match(presentationPolicy, /script-src-attr 'none'/);
+  assert.doesNotMatch(presentationPolicy, /unpkg|googleapis|gstatic/);
 });
 
 test('metadados têm um único proprietário durante a hidratação', () => {

@@ -18,7 +18,21 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), geolocation=(), microphone=()"
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self' data:; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; base-uri 'none'; connect-src 'self'; font-src 'self' data:; form-action 'self'; frame-ancestors 'none'; frame-src 'none'; img-src 'self' data: blob:; media-src 'self' data: blob:; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; style-src-attr 'unsafe-inline'; worker-src 'none'; upgrade-insecure-requests"
+
+# Os decks publicados sao artefatos autocontidos: React, Babel, fontes e demais
+# recursos ficam embutidos no proprio HTML. O bootstrap inline transforma JSX e
+# executa os bundles locais por URLs blob, por isso esta excecao nao se aplica ao
+# restante do site e nao libera CDNs externas. A regra vem depois da politica
+# geral porque o Netlify aplica a ultima regra coincidente para o mesmo header.
+[[headers]]
+  for = "/presentations/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), geolocation=(), microphone=()"
+    Content-Security-Policy = "default-src 'none'; base-uri 'none'; connect-src 'self'; font-src data:; form-action 'none'; frame-ancestors 'none'; img-src 'self' data: blob:; media-src data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; script-src-attr 'none'; style-src 'unsafe-inline'; upgrade-insecure-requests"
 
 [[headers]]
   for = "/assets/*"
