@@ -12,6 +12,7 @@ Código-fonte do [hub público de Fernando Parreiras](https://fernandoparreiras.
 
 - posicionamento profissional e apresentação das iniciativas Trustyu.ai e Tech Human;
 - páginas de soluções, advisory, conselho, transformação com IA e palestras;
+- área de conhecimento com artigos, trilhas, filtros e feed RSS;
 - cases, livros, apresentações e outros ativos autorais;
 - rotas estáticas e metadados próprios para descoberta, SEO e agentes de IA;
 - experiência responsiva, navegação por teclado e suporte a movimento reduzido;
@@ -27,11 +28,13 @@ Código-fonte do [hub público de Fernando Parreiras](https://fernandoparreiras.
 | `/negocios/` | Iniciativas e ecossistema empresarial |
 | `/cases/` | Trabalhos e resultados selecionados |
 | `/conteudos/` | Livros, mídia e acervo autoral |
+| `/artigos/` | Artigos sobre liderança, negócios, carreira e IA |
+| `/artigos/:slug/` | Leitura individual com metadados e HTML estático |
 | `/sobre/` | Trajetória, princípios e posicionamento |
 | `/contato/` | Canais de contato e conversão |
 | `/docks/` | Biblioteca de apresentações públicas |
 
-Rotas editoriais futuras são publicadas de forma fail-closed: enquanto não houver item aprovado no catálogo, elas não entram no menu, no sitemap nem no conjunto de páginas estáticas.
+O acervo de conhecimento é versionado junto com o código. Cada artigo publicado recebe rota estática, metadados `Article`, entrada no sitemap e item no feed RSS.
 
 ## Stack
 
@@ -64,13 +67,13 @@ npm run build
 npm audit --omit=dev
 ```
 
-O build produz o bundle Vite e, em seguida, gera o HTML inicial das rotas públicas, `robots.txt`, `sitemap.xml` e `llms.txt` a partir das mesmas fontes canônicas.
+O build produz o bundle Vite e, em seguida, gera o HTML inicial das rotas públicas e dos artigos, além de `robots.txt`, `sitemap.xml`, `llms.txt` e `/artigos/rss.xml` a partir das mesmas fontes canônicas.
 
 ## Conteúdo e publicação
 
-O site não depende de CMS. Navegação, soluções, cases, apresentações e metadados ficam versionados em `src/data/`.
+O site não depende de CMS. Navegação, soluções, cases, apresentações, artigos e metadados ficam versionados em `src/data/`.
 
-O catálogo `src/data/forgeArticles.js` é o gate do índice autoral da Trustyu FORGE. Um artigo só pode ser anunciado quando existir uma publicação canônica aprovada e o registro local carregar seu vínculo e digest editorial. Com o catálogo vazio, `/artigos/` permanece fora da navegação e responde 404 em produção.
+`src/data/articles.js` é a fonte canônica da área de conhecimento: define trilhas, títulos, resumos, tags, datas, imagens, natureza editorial, chamadas para ação e conteúdo. Um item adicionado ao array se torna público após merge e deploy; por isso, rascunhos e textos sem aprovação editorial devem permanecer fora desse catálogo.
 
 ## Estrutura do repositório
 
