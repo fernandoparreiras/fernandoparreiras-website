@@ -73,7 +73,9 @@ O build produz o bundle Vite e, em seguida, gera o HTML inicial das rotas públi
 
 O site não depende de CMS. Navegação, soluções, cases, apresentações, artigos e metadados ficam versionados em `src/data/`.
 
-`src/data/articles.js` é a fonte canônica da área de conhecimento: define trilhas, títulos, resumos, tags, datas, imagens, natureza editorial, chamadas para ação e conteúdo. Um item adicionado ao array se torna público após merge e deploy; por isso, rascunhos e textos sem aprovação editorial devem permanecer fora desse catálogo.
+`src/data/articles.js` é a fonte canônica dos artigos disponíveis e do gate de publicação. A fila aprovada fica em `src/data/scheduledArticles.js`, com um instante `scheduledAt` explícito para cada texto. Um build inclui somente os artigos cuja data já venceu; os demais permanecem fora das rotas, busca, RSS, sitemap e `llms.txt`.
+
+Como o site é estático, cada ativação exige um novo build de produção. O calendário e o contrato operacional estão documentados em [`docs/knowledge/editorial-calendar.md`](docs/knowledge/editorial-calendar.md). Rascunhos sem aprovação editorial devem continuar fora dos dois catálogos.
 
 ## Estrutura do repositório
 

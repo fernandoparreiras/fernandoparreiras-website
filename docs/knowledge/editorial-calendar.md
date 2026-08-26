@@ -1,0 +1,33 @@
+# Calendário editorial — Conhecimento
+
+## Objetivo
+
+Completar a coleção editorial inicial com doze artigos: três em cada trilha de Conhecimento. Os seis textos já publicados permanecem no acervo e os seis novos entram em produção a cada quatro dias, sempre às 9h no horário de São Paulo.
+
+## Agenda aprovada
+
+| Data | Trilha | Artigo | Estado inicial |
+| --- | --- | --- | --- |
+| 29 ago. 2026 | Negócios e liderança | Produtividade sem direção apenas acelera o desperdício | Agendado |
+| 2 set. 2026 | Carreira com IA | Você não precisa competir com a IA. Precisa redesenhar o valor que entrega | Agendado |
+| 6 set. 2026 | Jovens e futuro | Faculdade, curso, certificação ou projeto: onde investir primeiro? | Agendado |
+| 10 set. 2026 | Mudança de carreira | Competências que sobrevivem a uma mudança de carreira | Agendado |
+| 14 set. 2026 | Negócios e liderança | Equipes com agentes de IA ainda precisam de responsabilidade humana | Agendado |
+| 18 set. 2026 | Mudança de carreira | Um plano de 90 dias para uma transição profissional com IA | Agendado |
+
+## Contrato de publicação
+
+- `src/data/scheduledArticles.js` guarda a fila aprovada e o instante `scheduledAt` de cada texto.
+- `src/data/articles.js` expõe ao site somente artigos cuja ativação já venceu.
+- A data de referência do bundle é congelada quando o Vite inicia o build. Um visitante não consegue adiantar a fila alterando o relógio do navegador.
+- Antes da ativação, o texto permanece ausente da listagem, busca, página individual, dados estruturados, RSS, sitemap e `llms.txt`.
+- Na data agendada, um novo build de produção materializa a rota e os arquivos de descoberta.
+- `KNOWLEDGE_BUILD_AT` permite reproduzir um build futuro em QA sem alterar as datas da fila.
+- A automação operacional deve reconstruir o `main` a cada quatro dias, publicar o artefato correspondente e verificar rota, sitemap, RSS, CSP e console antes de classificar a entrada como publicada.
+
+## Critérios editoriais
+
+- Fernando Parreiras permanece como camada autoral: experiência profissional, carreira, liderança, escolhas e futuro do trabalho.
+- Conteúdo não é republicado literalmente da Tech Human ou Trustyu.
+- Afirmações permanecem como análise, orientação ou experiência profissional; não são inventados resultados, clientes, métricas ou certificações.
+- Cada artigo possui trilha, categoria, formato, três tags controladas, natureza editorial e CTA contextual.
