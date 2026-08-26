@@ -31,12 +31,6 @@ function articleBodyHtml(article) {
     </section>`).join('');
 }
 
-function staticStyles() {
-  return `<style>
-    .static-knowledge{background:#000;color:#fff;font-family:Raleway,Arial,sans-serif;min-height:100vh;padding:7rem 6vw 5rem}.static-knowledge main,.static-knowledge header{max-width:940px;margin:0 auto}.static-knowledge a{color:#d8ff57}.static-knowledge .eyebrow{color:#d8ff57;font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}.static-knowledge h1{font-size:clamp(2.6rem,7vw,5.6rem);line-height:1.02;margin:1rem 0 1.5rem}.static-knowledge h2{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.15;margin:3.5rem 0 1rem}.static-knowledge p,.static-knowledge li{color:rgba(255,255,255,.72);font-size:1.1rem;line-height:1.8}.static-knowledge .lede{font-size:1.35rem}.static-knowledge .meta{border-block:1px solid rgba(255,255,255,.14);margin:2rem 0;padding:1rem 0}.static-knowledge .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0}.static-knowledge .tags span{border:1px solid rgba(255,255,255,.2);padding:.45rem .7rem;font-size:.8rem}.static-knowledge img{display:block;width:100%;max-height:560px;object-fit:cover;margin:2rem 0}.static-knowledge blockquote{border-block:1px solid rgba(255,255,255,.15);font-size:1.65rem;font-weight:700;line-height:1.45;margin:2rem 0;padding:1.5rem 0}.static-knowledge .article-list{border-top:1px solid rgba(255,255,255,.15);margin-top:3rem}.static-knowledge .article-list article{border-bottom:1px solid rgba(255,255,255,.15);padding:1.5rem 0}.static-knowledge .article-list h2{font-size:1.6rem;margin:.5rem 0}.static-knowledge nav{margin-bottom:2rem}
-  </style>`;
-}
-
 function renderStaticArticle(article) {
   const track = getTrack(article.track);
   return `<div class="static-knowledge">
@@ -102,7 +96,7 @@ function buildPage(baseHtml, { title, description, canonical, image, type = 'web
   return baseHtml
     .replace(/<html\s+lang="[^"]*"/, '<html lang="pt-BR"')
     .replace(SEO_BLOCK, seoBlock)
-    .replace('</head>', `${staticStyles()}\n</head>`)
+    .replace('</head>', '    <link rel="stylesheet" href="/knowledge-static.css" data-knowledge-static="true" />\n</head>')
     .replace(ROOT_ELEMENT, `<div id="root">${body}</div>`);
 }
 
