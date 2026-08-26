@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, Search, X } from 'lucide-react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { hasPublishedForgeArticles } from '@/data/forgeArticles';
 import { trackEvent } from '@/lib/analytics';
 
 const baseItems = [
@@ -10,6 +9,7 @@ const baseItems = [
   { label: 'Negócios', href: '/negocios' },
   { label: 'Cases', href: '/cases' },
   { label: 'Conteúdo', href: '/conteudos' },
+  { label: 'Conhecimento', href: '/artigos', icon: Search },
   { label: 'Sobre', href: '/sobre' }
 ];
 
@@ -21,9 +21,7 @@ const Header = () => {
   const firstMobileLinkRef = useRef(null);
   const menuButtonRef = useRef(null);
   const mobileNavigationRef = useRef(null);
-  const navItems = hasPublishedForgeArticles
-    ? [...baseItems.slice(0, 4), { label: 'Artigos', href: '/artigos' }, ...baseItems.slice(4)]
-    : baseItems;
+  const navItems = baseItems;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 32);
@@ -76,7 +74,7 @@ const Header = () => {
     };
   }, [isMobileMenuOpen]);
 
-  const navClass = ({ isActive }) => `relative py-2 text-sm font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] ${isActive ? 'text-[#d8ff57]' : 'text-white/72 hover:text-white'}`;
+  const navClass = ({ isActive }) => `relative inline-flex items-center gap-1.5 py-2 text-sm font-bold transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-center after:bg-[#d8ff57] after:content-[''] after:transition-transform after:duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] motion-reduce:after:transition-none ${isActive ? 'text-[#d8ff57] after:scale-x-100' : 'text-white/72 after:scale-x-0 hover:text-white hover:after:scale-x-100 focus-visible:after:scale-x-100'}`;
 
   return (
     <div
@@ -97,7 +95,15 @@ const Header = () => {
           </Link>
 
           <div className="hidden items-center gap-6 lg:flex">
-            {navItems.map((item) => <NavLink key={item.href} to={item.href} className={navClass}>{item.label}</NavLink>)}
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <NavLink key={item.href} to={item.href} className={navClass}>
+                  {Icon && <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />}
+                  {item.label}
+                </NavLink>
+              );
+            })}
             <Link
               to="/contato"
               onClick={() => trackEvent('hero_cta_click', { cta: 'header', destination: 'contato' })}
@@ -132,16 +138,20 @@ const Header = () => {
             className="fixed inset-0 z-40 flex bg-black px-6 pb-10 pt-28 lg:hidden"
           >
             <nav className="flex w-full flex-col" aria-label="Navegação móvel">
-              {navItems.map((item, index) => (
-                <NavLink
-                  ref={index === 0 ? firstMobileLinkRef : undefined}
-                  key={item.href}
-                  to={item.href}
-                  className={({ isActive }) => `border-b border-white/10 py-5 text-3xl font-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#d8ff57] ${isActive ? 'text-[#d8ff57]' : 'text-white'}`}
-                >
-                  {item.label}
-                </NavLink>
-              ))}
+              {navItems.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <NavLink
+                    ref={index === 0 ? firstMobileLinkRef : undefined}
+                    key={item.href}
+                    to={item.href}
+                    className={({ isActive }) => `flex items-center gap-3 border-b border-white/10 py-5 text-3xl font-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#d8ff57] ${isActive ? 'text-[#d8ff57]' : 'text-white'}`}
+                  >
+                    {Icon && <Icon className="h-5 w-5 shrink-0" strokeWidth={2} aria-hidden="true" />}
+                    {item.label}
+                  </NavLink>
+                );
+              })}
               <Link to="/contato" className="mt-auto inline-flex min-h-14 items-center justify-between bg-[#d8ff57] px-6 font-black text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                 Falar sobre um desafio <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Link>

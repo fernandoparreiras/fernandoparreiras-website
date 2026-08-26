@@ -1,72 +1,90 @@
-# Design QA — hero com retrato pessoal
+# Design QA — Conhecimento / Modelo 3
 
-## Evidências
+## Evidence
 
-- Verdade visual de origem:
-  - hero público antes da mudança: `artifacts/design-qa/hero-personal-photo/reference-production-1440x900.png`
-  - retrato selecionado: `public/images/em-cena/fernando-parreiras-palestra-principal-1122.webp`
-  - anexo original do retrato: `/Users/parreiras/Pictures/OFICIAL-PARREIRAS-PALESTRAS.png`
-- Implementação final:
-  - desktop: `artifacts/design-qa/hero-personal-photo/implementation-desktop-1440x900-v2.png`
-  - transição de breakpoint: `artifacts/design-qa/hero-personal-photo/implementation-desktop-1024x900-v2.png`
-  - tablet: `artifacts/design-qa/hero-personal-photo/implementation-tablet-768x1024-v1.png`
-  - mobile: `artifacts/design-qa/hero-personal-photo/implementation-mobile-390x844-v2.png`
-- Comparação combinada: `artifacts/design-qa/hero-personal-photo/comparison-board.png`
-- Estado: home pública, tema escuro, visitante anônimo, hero no topo.
-- Normalização: referência pública e implementação desktop capturadas a 1440 × 900 CSS px e 1440 × 900 pixels; densidade 1:1. Mobile capturado a 390 × 844 CSS px e 390 × 844 pixels; densidade 1:1. Retrato-fonte com 1122 × 1402 pixels e variante responsiva com 720 × 900 pixels.
+- Source visual truth: `/Users/parreiras/.codex/generated_images/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/exec-d9b726d3-75ee-42ee-a0a2-f2678d17e9c1.png`
+- Source pixels: 1374 × 1145 at density 1.
+- Desktop implementation after production-baseline reconciliation: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/knowledge-version-reconciliation/local-knowledge-corrected-full.png`
+- Desktop CSS viewport: 1374 × 1145 at device scale factor 1.
+- Mobile implementation: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/knowledge-build/model3-implementation-mobile.png`
+- Mobile CSS viewport: 390 × 844 at device scale factor 1; full-page capture 390 × 5127.
+- Combined comparison: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/knowledge-build/model3-design-comparison.png`
+- Validated production home: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/knowledge-version-reconciliation/production-home.png`
+- Reconciled local home: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/knowledge-version-reconciliation/local-home-production-baseline.png`
+- State: landing page, unfiltered. Article detail, search result and selected-track states were verified separately.
+- Normalization: source and implementation first viewport were compared side by side at equal displayed width. Trilhas and Carta do Fernando were compared in a second, bottom-aligned focused pair.
 
-## Comparação final
+## Full-view comparison
 
-### Fontes e tipografia
+The implementation preserves the selected Personal Journal composition: charcoal editorial surface, signal-lime accents, split author hero, search-and-filter rail, serif featured essay, compact article rows, four guided tracks and a closing author letter. The existing Fernando Parreiras header and approved repository portrait were retained as product constraints.
 
-Raleway Variable, pesos, tracking, line-height e hierarquia foram preservados. A escala do título foi reduzida de forma responsiva entre 1024 e 1535 px para liberar o rosto e manter os CTAs no primeiro viewport; em 2xl a escala original retorna. O texto e as quebras continuam fortes e legíveis.
+The implementation is taller than the visual concept because it presents five complete recent-article rows with real metadata and tags rather than compressing or inventing reading-progress data. This is an intentional product-content adaptation and does not change the selected hierarchy or interaction model.
 
-### Espaçamento e ritmo de layout
+## Focused-region comparison
 
-O alinhamento do conteúdo, os três níveis de CTA e a estrutura do hero foram preservados. No desktop, o retrato ocupa a faixa direita e termina junto à base do hero. No mobile, a foto abre a experiência e se funde verticalmente ao conteúdo antes do eyebrow e do H1. Não há overflow horizontal em 390, 768, 1024 ou 1440 px.
+- Hero and search: source and implementation share the same split, author-first framing, headline hierarchy, image art direction and immediate discovery controls.
+- Featured essay and recent list: serif display type, minimal separators, lime labels and row-based density match the reference direction. The production title and metadata use the actual editorial dataset.
+- Trilhas and Carta do Fernando: the focused bottom comparison confirms four equal editorial columns and the newsletter conversion band.
+- Image fidelity: the visible portrait uses the supplied WebP repository asset; no placeholder or fabricated person was introduced.
 
-### Cores e tokens visuais
+## Required fidelity surfaces
 
-Preto, branco e verde `#d8ff57` permanecem como tokens dominantes. O azul do palco acrescenta profundidade sem criar uma nova cor de interface. Gradientes escuros e opacidade controlada integram a imagem ao fundo e mantêm contraste sobre a tipografia.
+- Fonts and typography: Raleway Variable remains the product font; Georgia/system serif is restricted to the journal signature and featured essay. Weight, tracking, line height and wrapping preserve the source hierarchy.
+- Spacing and layout rhythm: sharp borders, grid alignment, narrow labels and compact article rows reproduce the source grammar. The responsive layout removes columns cleanly without horizontal overflow.
+- Colors and visual tokens: black, charcoal, white and `#d8ff57` match both the source and the existing site identity.
+- Image quality and asset fidelity: the approved portrait remains sharp and uses a face-preserving crop on desktop and mobile.
+- Copy and content: all Portuguese copy is production-oriented and tied to the four real editorial tracks. No placeholder text or false reading-progress state remains.
 
-### Qualidade e fidelidade da imagem
+## Comparison history
 
-Foi usado o retrato oficial fornecido, sem geração artificial ou substituto. O desktop carrega 1122 × 1402 e o mobile seleciona 720 × 900. O rosto permanece nítido; o recorte móvel prioriza rosto e tronco, enquanto o desktop preserva rosto, gesto e marca Tech Human. Não foram observados halos, distorção ou compressão visível.
+### Model 3 pass 1
 
-### Copy e conteúdo
+- No actionable P0, P1 or P2 visual mismatches were found in the combined first-viewport and focused lower-section comparison.
+- Accepted product constraints: existing site header, actual article titles, real metadata and a scrollable full catalog instead of the concept's compressed single-artboard density.
+- Post-pass evidence: `model3-design-comparison.png`, `model3-implementation-desktop.png` and `model3-implementation-mobile.png`.
 
-Eyebrow, H1, parágrafo e CTAs permaneceram integralmente iguais. A foto é decorativa no contexto do hero (`alt=""` e contêiner fora da árvore assistiva), evitando repetir o nome já anunciado no cabeçalho e no texto.
+### Production-baseline reconciliation
 
-### Ícones, estados e acessibilidade
+- [P1] The first preview had been assembled on local `main` at `5cc3751`, 13 commits behind the production baseline `181e443`, so `/` rendered the retired home composition.
+- Fix: preserved the dirty local checkout and recreated the Conhecimento work on isolated branch `codex/knowledge-model-3`, based directly on `origin/main` at `181e443`.
+- Post-fix evidence: the local and production H1 are identical; the hero and all home sections have zero source diff against `origin/main`; navigation differs only by the intentional `Conhecimento` entry.
+- Post-fix visual evidence: `production-home.png`, `local-home-production-baseline.png` and `local-knowledge-corrected-full.png`.
 
-Ícones e estados de foco existentes foram preservados. A entrada do retrato respeita `prefers-reduced-motion`; com redução de movimento a animação não inicia. Há um único H1. O CTA primário foi acionado e levou corretamente a `#intentions`; links para negócios e palestras mantêm seus destinos. O console final não apresentou avisos ou erros.
+### Header interaction refinement
 
-## Histórico de comparação e correções
+- Added a one-pixel signal-lime underline that expands from the center on hover and keyboard focus; active routes retain the underline and lime label.
+- Added the search icon only to `Conhecimento`, on desktop and mobile. Applying icons to every item was rejected because it would add visual noise to the compact primary navigation and compete with the main CTA.
+- Motion follows the existing reduced-motion preference, and the original visible focus outline remains intact.
+- Post-pass evidence: `header-hover-audit/02-header-hover-negocios.png`, `header-hover-audit/03-header-hover-conhecimento.png`, `header-hover-audit/04-header-conhecimento-ativo.png` and `header-hover-audit/05-mobile-menu.png`.
 
-### Iteração 1 — bloqueada
+## Interaction and browser verification
 
-- [P2] Escala excessiva na transição para desktop em 1024 × 900.
-  - Evidência anterior: `artifacts/design-qa/hero-personal-photo/implementation-desktop-1024x900-v1.png`.
-  - Diferença: o título herdava 6.4rem no primeiro breakpoint desktop, elevava o hero a 1094 px e empurrava os CTAs para fora do primeiro viewport.
-  - Correção: escala passou a 5rem em `lg`, 5.75rem em `xl` e 6.4rem apenas em `2xl`, com limites de largura correspondentes.
+- Search for `jovens` returned two articles and persisted `?q=jovens`.
+- Track filter `Carreira com IA` returned two articles, persisted `?trilha=carreira-ia` and set `aria-pressed=true`.
+- Article detail rendered the feedback and sharing utilities.
+- Helpful feedback set `aria-pressed=true` and announced the response.
+- Copy link announced `Link copiado.` using the canonical article URL.
+- Mobile layout at 390 × 844 reported `clientWidth=390` and `scrollWidth=390`.
+- Browser console check on the article route returned no warnings or errors.
+- The reconciled home and Conhecimento route both reported `clientWidth=390` and `scrollWidth=390` at the mobile breakpoint.
+- Header rest, hover, active and mobile-menu states were visually verified after the navigation refinement.
 
-### Iteração 2 — aprovada
+## Findings
 
-- Evidência posterior: `artifacts/design-qa/hero-personal-photo/implementation-desktop-1024x900-v2.png`.
-- Resultado: hero reduzido a 828 px, rosto com área de respiro, mensagem preservada e três CTAs visíveis.
-- Não restam achados P0, P1 ou P2.
+No actionable P0, P1 or P2 findings remain.
 
-## Achados residuais
+## Follow-up polish
 
-- [P3] Em 390 × 844, o conteúdo completo do hero continua além do primeiro viewport para preservar foto e título em escala legível. O CTA comercial móvel permanece fixo e visível, portanto a conversão não fica sem ação disponível.
+- [P3] Unique key visuals may be commissioned for future essays. The current version deliberately reuses approved photography.
+- [P3] The newsletter form contract is implemented, but production submission remains to be verified after deployment.
 
-## Checklist de implementação
+## Implementation checklist
 
-- [x] Retrato oficial responsivo integrado.
-- [x] Fusão visual sem aparência de banner chapado.
-- [x] Entrada suave com redução de movimento.
-- [x] Desktop, tablet, transição de 1024 px e mobile verificados.
-- [x] CTA primário e destinos secundários verificados.
-- [x] Console sem erros ou avisos.
+- [x] Exact selected Model 3 implemented in the existing product.
+- [x] Desktop and mobile visual comparison completed.
+- [x] Search, filters, article feedback and copy sharing verified.
+- [x] Static article HTML, metadata, RSS, sitemap and LLM output regenerated.
+- [x] P0/P1/P2 visual gate cleared.
+- [x] Minimal header hover, active state and Conhecimento icon verified on desktop and mobile.
 
 final result: passed

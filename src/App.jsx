@@ -20,17 +20,17 @@ import ScrollToTop from '@/components/ScrollToTop';
 import EpitafioPage from '@/components/EpitafioPage';
 import AcademyLandingPage from '@/pages/AcademyLandingPage';
 import AboutPage from '@/pages/AboutPage';
-import ArticlesHubPage from '@/pages/ArticlesHubPage';
+import ArticlePage from '@/pages/ArticlePage';
 import BusinessHubPage from '@/pages/BusinessHubPage';
 import CasesPage from '@/pages/CasesPage';
 import ContactPage from '@/pages/ContactPage';
 import ContentHubPage from '@/pages/ContentHubPage';
 import DocksPage from '@/pages/DocksPage';
+import KnowledgePage from '@/pages/KnowledgePage';
 import PrivacyPage from '@/pages/PrivacyPage';
 import SolutionDetailPage from '@/pages/SolutionDetailPage';
 import SolutionsPage from '@/pages/SolutionsPage';
 import TalksPage from '@/pages/TalksPage';
-import { hasPublishedForgeArticles } from '@/data/forgeArticles';
 import { ROUTE_METADATA } from '@/data/siteMetadata';
 import { isAcademyPath, shouldShowMobileCommercialCta } from '@/lib/navigation';
 
@@ -96,7 +96,8 @@ function SiteRoutes() {
               <EpitafioPage />
             </>
           )} />
-          {hasPublishedForgeArticles && <Route path="/artigos" element={<ArticlesHubPage />} />}
+          <Route path="/artigos" element={<KnowledgePage />} />
+          <Route path="/artigos/:slug" element={<ArticlePage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
