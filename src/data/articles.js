@@ -1,3 +1,5 @@
+import { scheduledArticles } from './scheduledArticles.js';
+
 export const knowledgeTracks = [
   {
     id: 'lideranca-negocios',
@@ -25,7 +27,7 @@ export const knowledgeTracks = [
   },
 ];
 
-export const articles = [
+const publishedArticles = [
   {
     slug: 'carreira-com-ia-nao-comeca-pela-ferramenta',
     title: 'Carreira com IA não começa pela ferramenta',
@@ -306,6 +308,25 @@ export const articles = [
     ],
   },
 ];
+
+export const editorialArticles = [...scheduledArticles, ...publishedArticles];
+
+export function getPublishedArticles(referenceDate = new Date()) {
+  const now = referenceDate instanceof Date ? referenceDate : new Date(referenceDate);
+
+  if (Number.isNaN(now.getTime())) {
+    throw new TypeError('referenceDate precisa representar uma data válida.');
+  }
+
+  return editorialArticles.filter((article) => {
+    const scheduledAt = article.scheduledAt || `${article.publishedAt}T09:00:00-03:00`;
+    return new Date(scheduledAt).getTime() <= now.getTime();
+  });
+}
+
+const publicationReferenceDate = globalThis.__KNOWLEDGE_BUILD_AT__ || new Date();
+
+export const articles = getPublishedArticles(publicationReferenceDate);
 
 export function getArticleBySlug(slug) {
   return articles.find((article) => article.slug === slug);

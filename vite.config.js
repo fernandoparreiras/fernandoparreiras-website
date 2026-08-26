@@ -7,6 +7,7 @@ import iframeRouteRestorationPlugin from './plugins/vite-plugin-iframe-route-res
 import selectionModePlugin from './plugins/selection-mode/vite-plugin-selection-mode.js';
 
 const isDev = process.env.NODE_ENV !== 'production';
+const knowledgeBuildAt = process.env.KNOWLEDGE_BUILD_AT || new Date().toISOString();
 
 const configHorizonsViteErrorHandler = `
 const observer = new MutationObserver((mutations) => {
@@ -252,6 +253,9 @@ const addTransformIndexHtml = {
 };
 
 export default defineConfig({
+	define: {
+		'globalThis.__KNOWLEDGE_BUILD_AT__': JSON.stringify(knowledgeBuildAt),
+	},
 	plugins: [
 		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), selectionModePlugin()] : []),
 		react(),

@@ -3,7 +3,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { articles, getTrack, knowledgeTracks } from '../src/data/articles.js';
+
+if (process.env.KNOWLEDGE_BUILD_AT) {
+  globalThis.__KNOWLEDGE_BUILD_AT__ = process.env.KNOWLEDGE_BUILD_AT;
+}
+
+const { articles, getTrack, knowledgeTracks } = await import('../src/data/articles.js');
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
