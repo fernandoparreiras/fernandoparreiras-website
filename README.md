@@ -1,61 +1,101 @@
-# Site de Fernando Parreiras
+# Fernando Parreiras — site pessoal
 
-Hub público de Fernando Parreiras para liderança, produtos de IA, pensamento sistêmico, mentoria e iniciativas Tech Human.
+Código-fonte do [hub público de Fernando Parreiras](https://fernandoparreiras.com.br/): um ponto de entrada para advisory executivo, palestras, cases, iniciativas empresariais e conteúdo sobre inteligência artificial, liderança e tecnologia humanizada.
 
-## Identidade canônica
+[![Site](https://img.shields.io/badge/site-fernandoparreiras.com.br-111827?style=flat-square)](https://fernandoparreiras.com.br/)
+![React](https://img.shields.io/badge/React_18-111827?style=flat-square&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite_7-111827?style=flat-square&logo=vite&logoColor=FFD62E)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_3-111827?style=flat-square&logo=tailwindcss&logoColor=38BDF8)
+![Netlify](https://img.shields.io/badge/Netlify-deploy-111827?style=flat-square&logo=netlify&logoColor=00C7B7)
 
-O domínio canônico é [fernandoparreiras.com.br](https://fernandoparreiras.com.br/). O build publica
-metadados `ProfilePage`/`Person` com os perfis oficiais fornecidos pelo autor e redireciona `www`
-para o domínio apex.
+## O que este projeto entrega
 
-Iniciativas relacionadas:
+- posicionamento profissional e apresentação das iniciativas Trustyu.ai e Tech Human;
+- páginas de soluções, advisory, conselho, transformação com IA e palestras;
+- cases, livros, apresentações e outros ativos autorais;
+- rotas estáticas e metadados próprios para descoberta, SEO e agentes de IA;
+- experiência responsiva, navegação por teclado e suporte a movimento reduzido;
+- controles de segurança, cache e redirecionamento mantidos no próprio repositório.
 
-- [Trustyu.ai](https://trustyu.ai)
-- [Tech Human](http://techhuman.com.br)
+## Rotas principais
+
+| Rota | Conteúdo |
+| --- | --- |
+| `/` | Visão geral, proposta de valor e caminhos por intenção |
+| `/solucoes/` | Advisory executivo, conselho e transformação com tecnologia e IA |
+| `/palestras/` | Temas, formatos e chamada para conversa |
+| `/negocios/` | Iniciativas e ecossistema empresarial |
+| `/cases/` | Trabalhos e resultados selecionados |
+| `/conteudos/` | Livros, mídia e acervo autoral |
+| `/sobre/` | Trajetória, princípios e posicionamento |
+| `/contato/` | Canais de contato e conversão |
+| `/docks/` | Biblioteca de apresentações públicas |
+
+Rotas editoriais futuras são publicadas de forma fail-closed: enquanto não houver item aprovado no catálogo, elas não entram no menu, no sitemap nem no conjunto de páginas estáticas.
 
 ## Stack
 
-![React](https://img.shields.io/badge/React-111827?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-111827?style=for-the-badge&logo=vite&logoColor=FFD62E)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-111827?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-111827?style=for-the-badge&logo=framer&logoColor=white)
+- React 18 e React Router 7;
+- Vite 7;
+- Tailwind CSS 3 e Framer Motion;
+- metadados de página com React Helmet;
+- testes de contrato com o test runner nativo do Node.js;
+- hospedagem, redirects, headers e cache na Netlify.
 
 ## Desenvolvimento local
 
+Pré-requisito: Node.js `^20.19.0` ou `>=22.12.0`. O ambiente de produção usa Node.js 22.
+
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Validação e build de produção:
+O servidor local usa `http://localhost:3000`.
+
+## Validação
+
+Antes de abrir uma PR, execute os mesmos gates usados para validar uma entrega:
 
 ```bash
 npm test
 npm run lint
 npm run build
+npm audit --omit=dev
 ```
 
-O build gera HTML inicial e metadados específicos para as rotas públicas, além de `robots.txt`,
-`sitemap.xml` e `llms.txt` coerentes entre si.
+O build produz o bundle Vite e, em seguida, gera o HTML inicial das rotas públicas, `robots.txt`, `sitemap.xml` e `llms.txt` a partir das mesmas fontes canônicas.
 
-## Artigos da Trustyu Forge
+## Conteúdo e publicação
 
-O arquivo `src/data/forgeArticles.js` é o único ponto de ativação do hub autoral. Enquanto o
-catálogo estiver vazio, “Artigos” não aparece no menu, a rota `/artigos/` não é gerada, responde
-404 no Netlify e o sitemap não a anuncia. Um item futuro precisa apontar para a publicação canônica
-na Forge e carregar o digest exato da aprovação editorial.
+O site não depende de CMS. Navegação, soluções, cases, apresentações e metadados ficam versionados em `src/data/`.
 
-Não há CMS nem conteúdo editorial definido neste repositório. A publicação original pertence à
-Trustyu Forge; este site funciona como vínculo autoral e índice canônico de saída.
+O catálogo `src/data/forgeArticles.js` é o gate do índice autoral da Trustyu FORGE. Um artigo só pode ser anunciado quando existir uma publicação canônica aprovada e o registro local carregar seu vínculo e digest editorial. Com o catálogo vazio, `/artigos/` permanece fora da navegação e responde 404 em produção.
 
-## Hospedagem
+## Estrutura do repositório
 
-`netlify.toml` contém build, redirects, headers e cache. O procedimento de DNS e rollback está em
-[`docs/netlify-cutover-runbook.md`](docs/netlify-cutover-runbook.md). O domínio canônico opera na
-Netlify desde 23 de agosto de 2026, com HTTPS forçado e `www` redirecionado para o domínio apex.
+```text
+src/components/       componentes de seção e primitives de interface
+src/pages/            páginas e composição das rotas
+src/data/             conteúdo estruturado e metadados canônicos
+src/lib/              analytics, navegação e utilitários
+public/               imagens, apresentações e arquivos de descoberta
+tests/                contratos de acessibilidade, rotas e higiene de produção
+tools/                geração de páginas estáticas e arquivos para crawlers
+docs/                 estratégia, QA e runbooks operacionais
+netlify.toml           build, redirects, CSP, headers e cache
+```
 
-## Higiene de dependências
+## Deploy e segurança
 
-O diretório `src/components/ui/` contém somente primitives realmente importadas pelo produto.
-Antes de adicionar uma nova primitive, instale apenas a dependência correspondente e mantenha os
-gates `npm run lint`, `npm test`, `npm run build` e `npm audit --omit=dev` verdes.
+O domínio canônico é [fernandoparreiras.com.br](https://fernandoparreiras.com.br/); acessos por `www` são redirecionados para o domínio apex. A configuração da Netlify aplica CSP restritiva às rotas normais e uma política isolada apenas às apresentações autocontidas em `/presentations/*`.
+
+O procedimento de DNS, verificação e rollback está em [`docs/netlify-cutover-runbook.md`](docs/netlify-cutover-runbook.md). Evidências de QA versionadas ficam em [`docs/qa/`](docs/qa/) e `output/playwright/`.
+
+## Contribuição
+
+Este é um site pessoal mantido por Fernando Parreiras. Mudanças devem ser propostas por branch e pull request, preservar os gates editoriais e manter testes, lint, build e auditoria de dependências verdes.
+
+## Licença
+
+Este repositório não publica uma licença open source. Código, conteúdo e ativos visuais permanecem sob os direitos de seus respectivos titulares.
