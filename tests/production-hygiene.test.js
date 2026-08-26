@@ -38,6 +38,15 @@ test('apresentações recebem uma CSP isolada para os bundles autocontidos', () 
   assert.doesNotMatch(presentationPolicy, /unpkg|googleapis|gstatic/);
 });
 
+test('HTML estático de conhecimento respeita a CSP sem estilos inline', () => {
+  const generator = readSource('tools/generate-knowledge.mjs');
+  const staticStyles = readSource('public/knowledge-static.css');
+
+  assert.match(generator, /href="\/knowledge-static\.css"/);
+  assert.doesNotMatch(generator, /<style>/);
+  assert.match(staticStyles, /\.static-knowledge/);
+});
+
 test('metadados têm um único proprietário durante a hidratação', () => {
   const privacyPage = readSource('src/pages/PrivacyPage.jsx');
   const pageSeo = readSource('src/components/PageSeo.jsx');
