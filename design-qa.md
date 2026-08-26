@@ -87,4 +87,61 @@ No actionable P0, P1 or P2 findings remain.
 - [x] P0/P1/P2 visual gate cleared.
 - [x] Minimal header hover, active state and Conhecimento icon verified on desktop and mobile.
 
+## Share icon controls — 26 Aug 2026
+
+### Evidence
+
+- Source visual truth: `/var/folders/pb/dxb4gdl15ps8r4t_lzzv25d00000gn/T/codex-clipboard-61395277-c6da-4da2-a3c9-fd03a65b34af.png`.
+- Source pixels: 868 × 180 at density 1.
+- Desktop implementation viewport: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/share-icons/article-desktop-viewport.png`, 1280 × 900 CSS pixels at density 1.
+- Focused desktop implementation: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/share-icons/share-icons-desktop-crop.jpg`, 868 × 180 pixels at density 1.
+- Mobile implementation: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/share-icons/article-mobile-viewport.jpg`, 390 × 844 CSS pixels at density 1.
+- Hover implementation: `/Users/parreiras/.codex/visualizations/2026/08/25/01a03ada-a5a5-75b1-b21b-5b9f23ca0f29/share-icons/article-share-hover-desktop.jpg`, 1280 × 900 CSS pixels at density 1.
+- State: article detail with the share section visible; hover state was also captured for the first control.
+- Normalization: the source and focused implementation use the same 868 × 180 pixel canvas. The implementation keeps the original article container alignment and captures the same share region without browser chrome.
+
+### Full-view comparison
+
+The article structure, black background, lime uppercase heading, sharp one-pixel borders and eight-pixel control spacing remain unchanged. The six labeled controls were reduced to consistent 44 × 44 icon controls, which preserves the original action order while removing the second row on desktop.
+
+### Focused-region comparison
+
+- Icons: the five existing action glyphs were retained from the site's established Lucide set; the Instagram caption action now uses the distinct Instagram glyph rather than repeating the copy symbol.
+- Interaction: hover changes border and icon to signal lime and displays the action name in a compact tooltip. Keyboard-focus styling uses the existing two-pixel lime focus ring and exposes the same tooltip.
+- Accessibility: every control has an explicit Portuguese accessible name and a visually hidden label. All six measured 44 × 44 CSS pixels.
+- Responsive behavior: at 390 × 844, all six controls remain on one row with `clientWidth=390` and `scrollWidth=390`.
+
+### Required fidelity surfaces
+
+- Fonts and typography: the Raleway heading, weight, size, line height and tracking are unchanged; control labels appear only in tooltips.
+- Spacing and layout rhythm: heading gap, control gap and border treatment match the source. Icon-only controls use a uniform square footprint and a 44-pixel touch target.
+- Colors and visual tokens: black, white opacity, border opacity and `#d8ff57` remain mapped to the existing site tokens.
+- Image quality and asset fidelity: no raster assets were required. Icons come from the existing production icon library; no inline SVG, emoji or CSS drawing was introduced.
+- Copy and content: actions, URLs, share text, Instagram caption, analytics events and live status messages were preserved.
+
+### Comparison history
+
+#### Icon-control pass 1
+
+- No actionable P0, P1 or P2 mismatch was found in the equal-size focused comparison.
+- The intended product change is the removal of persistent labels; tooltips preserve discoverability on hover/focus without reversing that decision.
+- Browser verification confirmed all six accessible names, 44 × 44 targets, no mobile horizontal overflow, successful `Link copiado.` feedback and no console warnings or errors.
+
+### Findings
+
+No actionable P0, P1 or P2 findings remain.
+
+### Follow-up polish
+
+- [P3] If future usability data shows lower recognition for the generic speech-bubble WhatsApp glyph, the icon library can be revisited as a separate brand-icon decision.
+
+### Implementation checklist
+
+- [x] Visible text removed from all six share controls.
+- [x] Distinct Instagram icon implemented.
+- [x] Hover, keyboard focus, tooltips and accessible names preserved.
+- [x] Desktop and mobile layouts visually verified.
+- [x] Copy action and browser console verified.
+- [x] Automated tests, lint and production build passed.
+
 final result: passed

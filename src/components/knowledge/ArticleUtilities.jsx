@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Check, Copy, Linkedin, Mail, MessageCircle, Share2, ThumbsDown, ThumbsUp } from 'lucide-react';
+import { Check, Copy, Instagram, Linkedin, Mail, MessageCircle, Share2, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { trackKnowledgeEvent } from '@/lib/knowledge-analytics';
 
 const utilityButtonClass = 'inline-flex min-h-11 items-center justify-center gap-2 border border-white/15 px-3.5 text-sm text-white/70 transition-colors hover:border-[#d8ff57]/60 hover:text-[#d8ff57] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8ff57]';
+const shareIconButtonClass = 'group relative inline-flex h-11 w-11 shrink-0 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-[#d8ff57]/60 hover:bg-[#d8ff57]/5 hover:text-[#d8ff57] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8ff57]';
+const shareTooltipClass = 'pointer-events-none absolute bottom-[calc(100%+0.55rem)] left-1/2 z-10 -translate-x-1/2 whitespace-nowrap border border-white/10 bg-[#111] px-2.5 py-1.5 text-xs font-medium normal-case tracking-normal text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100';
 
 async function copyText(text) {
   if (navigator.clipboard?.writeText) {
@@ -110,23 +112,35 @@ const ArticleUtilities = ({ article }) => {
       <div className="mt-9">
         <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d8ff57]">Compartilhar</h3>
         <div className="mt-4 flex flex-wrap gap-2">
-          <button type="button" onClick={nativeShare} className={utilityButtonClass} aria-label="Abrir opções de compartilhamento">
-            <Share2 className="h-4 w-4" aria-hidden="true" /> Compartilhar
+          <button type="button" onClick={nativeShare} className={shareIconButtonClass} aria-label="Compartilhar artigo">
+            <Share2 className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Compartilhar artigo</span>
+            <span aria-hidden="true" className={shareTooltipClass}>Compartilhar</span>
           </button>
-          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`} target="_blank" rel="noreferrer" onClick={() => recordShare('linkedin')} className={utilityButtonClass}>
-            <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn
+          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`} target="_blank" rel="noreferrer" onClick={() => recordShare('linkedin')} className={shareIconButtonClass} aria-label="Compartilhar no LinkedIn">
+            <Linkedin className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Compartilhar no LinkedIn</span>
+            <span aria-hidden="true" className={shareTooltipClass}>LinkedIn</span>
           </a>
-          <a href={`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${canonicalUrl}`)}`} target="_blank" rel="noreferrer" onClick={() => recordShare('whatsapp')} className={utilityButtonClass}>
-            <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
+          <a href={`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${canonicalUrl}`)}`} target="_blank" rel="noreferrer" onClick={() => recordShare('whatsapp')} className={shareIconButtonClass} aria-label="Compartilhar no WhatsApp">
+            <MessageCircle className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Compartilhar no WhatsApp</span>
+            <span aria-hidden="true" className={shareTooltipClass}>WhatsApp</span>
           </a>
-          <a href={`mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(`${article.excerpt}\n\n${canonicalUrl}`)}`} onClick={() => recordShare('email')} className={utilityButtonClass}>
-            <Mail className="h-4 w-4" aria-hidden="true" /> E-mail
+          <a href={`mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(`${article.excerpt}\n\n${canonicalUrl}`)}`} onClick={() => recordShare('email')} className={shareIconButtonClass} aria-label="Compartilhar por e-mail">
+            <Mail className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Compartilhar por e-mail</span>
+            <span aria-hidden="true" className={shareTooltipClass}>E-mail</span>
           </a>
-          <button type="button" onClick={() => copy('copy_link', canonicalUrl)} className={utilityButtonClass}>
-            <Copy className="h-4 w-4" aria-hidden="true" /> Copiar link
+          <button type="button" onClick={() => copy('copy_link', canonicalUrl)} className={shareIconButtonClass} aria-label="Copiar link do artigo">
+            <Copy className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Copiar link do artigo</span>
+            <span aria-hidden="true" className={shareTooltipClass}>Copiar link</span>
           </button>
-          <button type="button" onClick={() => copy('instagram', instagramCaption)} className={utilityButtonClass}>
-            <Copy className="h-4 w-4" aria-hidden="true" /> Legenda para Instagram
+          <button type="button" onClick={() => copy('instagram', instagramCaption)} className={shareIconButtonClass} aria-label="Copiar legenda para Instagram">
+            <Instagram className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Copiar legenda para Instagram</span>
+            <span aria-hidden="true" className={shareTooltipClass}>Legenda para Instagram</span>
           </button>
         </div>
       </div>

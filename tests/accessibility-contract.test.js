@@ -63,6 +63,28 @@ test('preferência de movimento reduzido é aplicada a toda a árvore', () => {
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);
 });
 
+test('ações de compartilhamento usam ícones com nomes acessíveis e tooltips', () => {
+  const utilities = readSource('src/components/knowledge/ArticleUtilities.jsx');
+  const accessibleNames = [
+    'Compartilhar artigo',
+    'Compartilhar no LinkedIn',
+    'Compartilhar no WhatsApp',
+    'Compartilhar por e-mail',
+    'Copiar link do artigo',
+    'Copiar legenda para Instagram'
+  ];
+
+  for (const accessibleName of accessibleNames) {
+    assert.match(utilities, new RegExp(`aria-label="${accessibleName}"`));
+  }
+
+  assert.equal([...utilities.matchAll(/className="sr-only"/g)].length, 6);
+  assert.match(utilities, /group-hover:opacity-100 group-focus-visible:opacity-100/);
+  assert.match(utilities, /<Instagram className="h-5 w-5"/);
+  assert.doesNotMatch(utilities, /<Share2[^>]+\/>\s*Compartilhar/);
+  assert.doesNotMatch(utilities, /<Copy[^>]+\/>\s*Legenda para Instagram/);
+});
+
 test('CTA móvel reserva área útil e não aparece na rota de contato', () => {
   const app = readSource('src/App.jsx');
 
