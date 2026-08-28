@@ -140,7 +140,7 @@ const ArticleUtilities = ({ article }) => {
           <button type="button" onClick={() => copy('instagram', instagramCaption)} className={shareIconButtonClass} aria-label="Copiar legenda para Instagram">
             <Instagram className="h-5 w-5" aria-hidden="true" />
             <span className="sr-only">Copiar legenda para Instagram</span>
-            <span aria-hidden="true" className={shareTooltipClass}>Legenda para Instagram</span>
+            <span aria-hidden="true" className={`${shareTooltipClass} !left-auto right-0 !translate-x-0`}>Legenda para Instagram</span>
           </button>
         </div>
       </div>

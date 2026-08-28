@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { editorialHtml } from '../src/lib/editorial-links.js';
 
 if (process.env.KNOWLEDGE_BUILD_AT) {
   globalThis.__KNOWLEDGE_BUILD_AT__ = process.env.KNOWLEDGE_BUILD_AT;
@@ -30,8 +31,8 @@ function articleBodyHtml(article) {
   return article.content.map((section) => `
     <section>
       <h2>${escapeHtml(section.heading)}</h2>
-      ${(section.paragraphs || []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}
-      ${section.bullets ? `<ul>${section.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}</ul>` : ''}
+      ${(section.paragraphs || []).map((paragraph) => `<p>${editorialHtml(paragraph)}</p>`).join('')}
+      ${section.bullets ? `<ul>${section.bullets.map((bullet) => `<li>${editorialHtml(bullet)}</li>`).join('')}</ul>` : ''}
       ${section.quote ? `<blockquote>“${escapeHtml(section.quote)}”</blockquote>` : ''}
     </section>`).join('');
 }
