@@ -9,6 +9,11 @@ import KnowledgeMeta from '@/components/knowledge/KnowledgeMeta';
 import NewsletterForm from '@/components/knowledge/NewsletterForm';
 import { articles, getArticleBySlug, getTrack } from '@/data/articles';
 import { trackKnowledgeEvent } from '@/lib/knowledge-analytics';
+import { editorialSegments } from '@/lib/editorial-links';
+
+const renderEditorialText = (text) => editorialSegments(text).map((part, index) => part.href
+  ? <a key={index} data-testid="editorial-source-link" href={part.href} rel="noopener noreferrer" className="break-words text-[#d8ff57] underline underline-offset-4 focus-visible:outline focus-visible:outline-2">{part.text}</a>
+  : part.text);
 
 const ArticlePage = () => {
   const { slug } = useParams();
@@ -147,11 +152,11 @@ const ArticlePage = () => {
                 <section key={section.heading} aria-labelledby={`${article.slug}-${section.heading.replaceAll(' ', '-').toLowerCase()}`}>
                   <h2 id={`${article.slug}-${section.heading.replaceAll(' ', '-').toLowerCase()}`} className="text-3xl font-bold leading-tight md:text-4xl">{section.heading}</h2>
                   <div className="mt-5 space-y-5 text-lg font-light leading-[1.85] text-white/72">
-                    {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    {section.paragraphs?.map((paragraph) => <p key={paragraph}>{renderEditorialText(paragraph)}</p>)}
                   </div>
                   {section.bullets && (
                     <ul className="mt-6 space-y-3 border-l-2 border-[#d8ff57] pl-6 text-lg font-light leading-relaxed text-white/72">
-                      {section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                      {section.bullets.map((bullet) => <li key={bullet}>{renderEditorialText(bullet)}</li>)}
                     </ul>
                   )}
                   {section.quote && (

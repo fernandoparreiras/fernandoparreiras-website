@@ -2,18 +2,20 @@
 
 ## Objetivo
 
-Completar a coleção editorial inicial com doze artigos: três em cada trilha de Conhecimento. Os seis textos já publicados permanecem no acervo e os seis novos entram em produção a cada quatro dias, sempre às 9h no horário de São Paulo.
+Coleção de quatorze artigos: seis já publicados, seis evergreen e dois ensaios do Radar de Evidências. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026. A agenda foi conciliada com Tech Human e Trustyu Forge para uma publicação por dia no portfólio, sempre às 9h no horário de São Paulo.
 
 ## Agenda aprovada
 
 | Data | Trilha | Artigo | Estado inicial |
 | --- | --- | --- | --- |
-| 29 ago. 2026 | Negócios e liderança | Produtividade sem direção apenas acelera o desperdício | Agendado |
-| 2 set. 2026 | Carreira com IA | Você não precisa competir com a IA. Precisa redesenhar o valor que entrega | Agendado |
-| 6 set. 2026 | Jovens e futuro | Faculdade, curso, certificação ou projeto: onde investir primeiro? | Agendado |
-| 10 set. 2026 | Mudança de carreira | Competências que sobrevivem a uma mudança de carreira | Agendado |
-| 14 set. 2026 | Negócios e liderança | Equipes com agentes de IA ainda precisam de responsabilidade humana | Agendado |
-| 18 set. 2026 | Mudança de carreira | Um plano de 90 dias para uma transição profissional com IA | Agendado |
+| 2 set. 2026 | Negócios e liderança | O dia seguinte à primeira venda | Agendado |
+| 5 set. 2026 | Carreira com IA | Seu próximo diferencial pode estar no que você não aprova | Agendado |
+| 6 set. 2026 | Negócios e liderança | Produtividade sem direção apenas acelera o desperdício | Agendado |
+| 10 set. 2026 | Carreira com IA | Você não precisa competir com a IA. Precisa redesenhar o valor que entrega | Agendado |
+| 14 set. 2026 | Jovens e futuro | Faculdade, curso, certificação ou projeto: onde investir primeiro? | Agendado |
+| 18 set. 2026 | Mudança de carreira | Competências que sobrevivem a uma mudança de carreira | Agendado |
+| 22 set. 2026 | Negócios e liderança | Equipes com agentes de IA ainda precisam de responsabilidade humana | Agendado |
+| 26 set. 2026 | Mudança de carreira | Um plano de 90 dias para uma transição profissional com IA | Agendado |
 
 ## Contrato de publicação
 
@@ -23,7 +25,7 @@ Completar a coleção editorial inicial com doze artigos: três em cada trilha d
 - Antes da ativação, o texto permanece ausente da listagem, busca, página individual, dados estruturados, RSS, sitemap e `llms.txt`.
 - Na data agendada, um novo build de produção materializa a rota e os arquivos de descoberta.
 - `KNOWLEDGE_BUILD_AT` permite reproduzir um build futuro em QA sem alterar as datas da fila.
-- A automação operacional deve reconstruir o `main` a cada quatro dias, publicar o artefato correspondente e verificar rota, sitemap, RSS, CSP e console antes de classificar a entrada como publicada.
+- A automação operacional deve verificar diariamente a fila aprovada e reconstruir o `main` somente quando houver artigo vencido ainda não público. Deve verificar rota, sitemap, RSS, CSP e console antes de classificar a entrada como publicada. A cadência dos seis evergreen continua a cada quatro dias, a partir de 06/09.
 
 ## Critérios editoriais
 
@@ -31,3 +33,5 @@ Completar a coleção editorial inicial com doze artigos: três em cada trilha d
 - Conteúdo não é republicado literalmente da Tech Human ou Trustyu.
 - Afirmações permanecem como análise, orientação ou experiência profissional; não são inventados resultados, clientes, métricas ou certificações.
 - Cada artigo possui trilha, categoria, formato, três tags controladas, natureza editorial e CTA contextual.
+- Os dois ensaios do Radar distinguem opinião, proposta e achados exploratórios; mantêm links diretos, limitações, assistência de IA e auto-revisão do original em português. Aprovação autoral não equivale a revisão independente ou confirmação científica.
+- A tradução assistida por IA é identificada no Forge; o site pessoal mantém apenas o original português.

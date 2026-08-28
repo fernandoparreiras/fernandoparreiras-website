@@ -321,7 +321,7 @@ export function getPublishedArticles(referenceDate = new Date()) {
   return editorialArticles.filter((article) => {
     const scheduledAt = article.scheduledAt || `${article.publishedAt}T09:00:00-03:00`;
     return new Date(scheduledAt).getTime() <= now.getTime();
-  });
+  }).sort((left, right) => right.publishedAt.localeCompare(left.publishedAt));
 }
 
 const publicationReferenceDate = globalThis.__KNOWLEDGE_BUILD_AT__ || new Date();
