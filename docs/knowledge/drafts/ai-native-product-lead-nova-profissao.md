@@ -4,13 +4,15 @@ slug: "ai-native-product-lead-nova-profissao"
 brand: "Fernando Parreiras"
 track: "Carreira com IA"
 format: "Ensaio prático"
-status: "draft"
-publishable: false
+status: "promoted"
+publishable: true
 audience: "Product Owners, Product Managers, analistas de negócio, desenvolvedores, arquitetos, profissionais de dados e especialistas de domínio"
 objective: "Apresentar uma rota profissional responsável para quem deseja liderar produtos AI-native, sem reduzir a carreira a prompts ou vibe coding."
 research_cutoff: "2026-09-01"
-author_review: "pending"
-publication_approval: "pending"
+author_review: "approved"
+publication_approval: "approved"
+scheduled_at: "2026-09-05T09:00:00-03:00"
+implemented_path: "src/data/radarArticles.js"
 ---
 
 # A carreira que nasce entre o produto e o código: AI-Native Product Lead
@@ -57,7 +59,7 @@ Prompt é interface. Carreira é repertório, julgamento e responsabilidade.
 
 Uma pessoa pode produzir uma demonstração impressionante com poucas instruções e ainda não saber explicar o problema, a origem dos dados, a arquitetura, as falhas, o custo de operação ou a reação diante de um incidente. Isso não é uma crítica a quem está começando. É uma diferença entre experimentar uma tecnologia e liderar um produto.
 
-O estudo da Harvard Business School e da BCG, posteriormente publicado em *Organization Science*, descreveu uma [fronteira tecnológica irregular](https://aiinstitute.hbs.edu/back-to-the-beginnings-of-ai-at-work/): em tarefas dentro da fronteira da ferramenta, participantes ganharam velocidade e qualidade; fora dela, o desempenho podia piorar. A pesquisa envolveu 758 consultores e um conjunto específico de tarefas. Ela não prova o mesmo efeito em todo trabalho, mas oferece uma lição durável: usar bem IA exige reconhecer onde ela ajuda e onde ela engana.
+O estudo da Harvard Business School e da BCG, posteriormente publicado em _Organization Science_, descreveu uma [fronteira tecnológica irregular](https://aiinstitute.hbs.edu/back-to-the-beginnings-of-ai-at-work/): em tarefas dentro da fronteira da ferramenta, participantes ganharam velocidade e qualidade; fora dela, o desempenho podia piorar. A pesquisa envolveu 758 consultores e um conjunto específico de tarefas. Ela não prova o mesmo efeito em todo trabalho, mas oferece uma lição durável: usar bem IA exige reconhecer onde ela ajuda e onde ela engana.
 
 Na engenharia, a evidência também é heterogênea. A METR encontrou [19% de aumento no tempo de conclusão](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) em um experimento com 16 desenvolvedores experientes e ferramentas do início de 2025. Uma tentativa posterior sugeriu ganhos, mas a própria organização declarou [viés de seleção e medição insuficiente](https://metr.org/blog/2026-02-24-uplift-update/).
 
@@ -192,6 +194,6 @@ O título pode não sobreviver. Essa capacidade, provavelmente, sobreviverá.
 
 ### Nota autoral e de responsabilidade
 
-Este é um ensaio profissional. “Technical Product Owner” e “AI-Native Product Lead” são nomes propostos para uma convergência de responsabilidades; não constituem profissão regulamentada, classificação acadêmica universal ou garantia de demanda futura. Os pontos de vista apresentados são pessoais e profissionais, baseados na experiência e interpretação do autor. Eles não devem ser confundidos com fatos validados; quando há dados, a fonte, o recorte e as limitações são indicados. O texto é informativo e não substitui aconselhamento de carreira, jurídico, trabalhista, técnico ou financeiro. Fernando Parreiras, Tech Human e Trustyu atuam profissional e comercialmente em temas relacionados. Pesquisa, estrutura e redação tiveram assistência de IA; revisão factual, autoral e aprovação de publicação ainda estão pendentes.
+Este é um ensaio profissional. “Technical Product Owner” e “AI-Native Product Lead” são nomes propostos para uma convergência de responsabilidades; não constituem profissão regulamentada, classificação acadêmica universal ou garantia de demanda futura. Os pontos de vista apresentados são pessoais e profissionais, baseados na experiência e interpretação do autor. Eles não devem ser confundidos com fatos validados; quando há dados, a fonte, o recorte e as limitações são indicados. O texto é informativo e não substitui aconselhamento de carreira, jurídico, trabalhista, técnico ou financeiro. Fernando Parreiras, Tech Human e Trustyu atuam profissional e comercialmente em temas relacionados. Pesquisa, estrutura e redação tiveram assistência de IA; a versão publicável recebeu revisão factual, revisão autoral e aprovação editorial em 02/09/2026.
 
-Corte da pesquisa: 01/09/2026. Estado: rascunho não agendado e não publicável.
+Corte da pesquisa: 01/09/2026. Estado: promovido para a implementação canônica e agendado para 05/09/2026.
