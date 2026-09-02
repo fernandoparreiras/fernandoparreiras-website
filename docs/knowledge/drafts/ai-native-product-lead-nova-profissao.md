@@ -11,7 +11,7 @@ objective: "Apresentar uma rota profissional responsável para quem deseja lider
 research_cutoff: "2026-09-01"
 author_review: "approved"
 publication_approval: "approved"
-scheduled_at: "2026-09-05T09:00:00-03:00"
+scheduled_at: "2026-09-02T09:23:00-03:00"
 implemented_path: "src/data/radarArticles.js"
 ---
 
@@ -196,4 +196,4 @@ O título pode não sobreviver. Essa capacidade, provavelmente, sobreviverá.
 
 Este é um ensaio profissional. “Technical Product Owner” e “AI-Native Product Lead” são nomes propostos para uma convergência de responsabilidades; não constituem profissão regulamentada, classificação acadêmica universal ou garantia de demanda futura. Os pontos de vista apresentados são pessoais e profissionais, baseados na experiência e interpretação do autor. Eles não devem ser confundidos com fatos validados; quando há dados, a fonte, o recorte e as limitações são indicados. O texto é informativo e não substitui aconselhamento de carreira, jurídico, trabalhista, técnico ou financeiro. Fernando Parreiras, Tech Human e Trustyu atuam profissional e comercialmente em temas relacionados. Pesquisa, estrutura e redação tiveram assistência de IA; a versão publicável recebeu revisão factual, revisão autoral e aprovação editorial em 02/09/2026.
 
-Corte da pesquisa: 01/09/2026. Estado: promovido para a implementação canônica e agendado para 05/09/2026.
+Corte da pesquisa: 01/09/2026. Estado: promovido para a implementação canônica e antecipado por decisão editorial explícita para 02/09/2026 às 09h23 BRT.

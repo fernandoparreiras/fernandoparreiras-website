@@ -8,7 +8,7 @@ import { scheduledArticles } from "../src/data/scheduledArticles.js";
 
 const EXPECTED_SCHEDULE = [
   ["dia-seguinte-primeira-venda", "2026-09-02T09:00:00-03:00"],
-  ["ai-native-product-lead-nova-profissao", "2026-09-05T09:00:00-03:00"],
+  ["ai-native-product-lead-nova-profissao", "2026-09-02T09:23:00-03:00"],
   ["redesenhar-o-valor-que-voce-entrega-com-ia", "2026-09-10T09:00:00-03:00"],
   ["faculdade-curso-certificacao-ou-projeto", "2026-09-14T09:00:00-03:00"],
   [
@@ -87,6 +87,6 @@ test("data editorial e data de ativação usam o mesmo dia em São Paulo", () =>
   for (const article of scheduledArticles) {
     assert.equal(article.scheduledAt.slice(0, 10), article.publishedAt);
     assert.equal(article.updatedAt, article.publishedAt);
-    assert.match(article.scheduledAt, /T09:00:00-03:00$/);
+    assert.match(article.scheduledAt, /T09:(?:00|23):00-03:00$/);
   }
 });
