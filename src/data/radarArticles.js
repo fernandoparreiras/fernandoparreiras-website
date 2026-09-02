@@ -111,9 +111,9 @@ export const radarArticles = [
       "produto",
     ],
     readingMinutes: 12,
-    publishedAt: "2026-09-05",
-    updatedAt: "2026-09-05",
-    scheduledAt: "2026-09-05T09:00:00-03:00",
+    publishedAt: "2026-09-02",
+    updatedAt: "2026-09-02",
+    scheduledAt: "2026-09-02T09:23:00-03:00",
     image: "/images/em-cena/fernando-parreiras-palestra-principal-1122.webp",
     imageAlt:
       "Fernando Parreiras falando ao público durante uma palestra sobre tecnologia e negócios.",
