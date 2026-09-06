@@ -66,11 +66,11 @@ test('preferência de movimento reduzido é aplicada a toda a árvore', () => {
 test('ações de compartilhamento usam ícones com nomes acessíveis e tooltips', () => {
   const utilities = readSource('src/components/knowledge/ArticleUtilities.jsx');
   const accessibleNames = [
+    'Copiar copy e compartilhar no LinkedIn',
     'Compartilhar artigo',
-    'Compartilhar no LinkedIn',
-    'Compartilhar no WhatsApp',
-    'Compartilhar por e-mail',
-    'Copiar link do artigo',
+    'Compartilhar no WhatsApp com copy pronta',
+    'Compartilhar por e-mail com copy pronta',
+    'Copiar texto e links do artigo',
     'Copiar legenda para Instagram'
   ];
 

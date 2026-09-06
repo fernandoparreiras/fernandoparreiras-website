@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Check, Copy, Instagram, Linkedin, Mail, MessageCircle, Share2, ThumbsDown, ThumbsUp } from 'lucide-react';
+import { buildArticleShareKit } from '@/lib/article-share-copy';
 import { trackKnowledgeEvent } from '@/lib/knowledge-analytics';
 
 const utilityButtonClass = 'inline-flex min-h-11 items-center justify-center gap-2 border border-white/15 px-3.5 text-sm text-white/70 transition-colors hover:border-[#d8ff57]/60 hover:text-[#d8ff57] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8ff57]';
 const shareIconButtonClass = 'group relative inline-flex h-11 w-11 shrink-0 items-center justify-center border border-white/15 text-white/70 transition-colors hover:border-[#d8ff57]/60 hover:bg-[#d8ff57]/5 hover:text-[#d8ff57] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d8ff57]';
+const primaryShareIconButtonClass = `${shareIconButtonClass} border-[#d8ff57]/70 bg-[#d8ff57]/10 text-[#d8ff57]`;
 const shareTooltipClass = 'pointer-events-none absolute bottom-[calc(100%+0.55rem)] left-1/2 z-10 -translate-x-1/2 whitespace-nowrap border border-white/10 bg-[#111] px-2.5 py-1.5 text-xs font-medium normal-case tracking-normal text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100';
 
 async function copyText(text) {
@@ -24,7 +26,6 @@ async function copyText(text) {
 }
 
 const ArticleUtilities = ({ article }) => {
-  const canonicalUrl = `https://fernandoparreiras.com.br/artigos/${article.slug}/`;
   const [status, setStatus] = useState('');
   const [helpful, setHelpful] = useState(null);
   const [reason, setReason] = useState('');
@@ -35,26 +36,29 @@ const ArticleUtilities = ({ article }) => {
     if (saved === 'yes' || saved === 'no') setHelpful(saved);
   }, [storageKey]);
 
-  const shareText = useMemo(() => `${article.title} — uma leitura de Fernando Parreiras`, [article.title]);
-  const instagramCaption = useMemo(() => `${article.title}\n\n${article.excerpt}\n\nLeia em ${canonicalUrl}\n\n${article.tags.map((tag) => `#${tag.replaceAll(' ', '')}`).join(' ')}`, [article, canonicalUrl]);
+  const shareKit = useMemo(() => buildArticleShareKit(article), [article]);
 
   const notify = (message) => {
     setStatus(message);
     window.setTimeout(() => setStatus(''), 3200);
   };
 
-  const recordShare = (channel) => trackKnowledgeEvent('article_share_click', { slug: article.slug, channel });
+  const recordShare = (channel) => trackKnowledgeEvent('article_share_click', {
+    slug: article.slug,
+    channel,
+    has_commercial_cta: true,
+  });
 
   const nativeShare = async () => {
     if (!navigator.share) {
-      await copyText(canonicalUrl);
-      notify('Link copiado.');
+      await copyText(shareKit.copy.text);
+      notify('Texto e links copiados.');
       recordShare('copy_fallback');
       return;
     }
 
     try {
-      await navigator.share({ title: article.title, text: shareText, url: canonicalUrl });
+      await navigator.share(shareKit.native);
       recordShare('native');
     } catch (error) {
       if (error?.name !== 'AbortError') notify('Não foi possível compartilhar agora.');
@@ -64,7 +68,12 @@ const ArticleUtilities = ({ article }) => {
   const copy = async (kind, text) => {
     try {
       await copyText(text);
-      notify(kind === 'instagram' ? 'Legenda para Instagram copiada.' : 'Link copiado.');
+      const messages = {
+        linkedin: 'Copy do LinkedIn copiada. Cole no post que será aberto.',
+        instagram: 'Legenda para Instagram copiada.',
+        copy_text: 'Texto e links copiados.',
+      };
+      notify(messages[kind] || 'Copy copiada.');
       recordShare(kind);
     } catch {
       notify('Não foi possível copiar.');
@@ -111,33 +120,34 @@ const ArticleUtilities = ({ article }) => {
 
       <div className="mt-9">
         <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d8ff57]">Compartilhar</h3>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/55">Cada canal recebe uma copy pronta, com uma pergunta para discussão e um próximo passo. No LinkedIn, a copy será copiada antes de abrir a publicação.</p>
         <div className="mt-4 flex flex-wrap gap-2">
+          <a href={shareKit.linkedin.shareUrl} target="_blank" rel="noreferrer" onClick={() => copy('linkedin', shareKit.linkedin.text)} className={primaryShareIconButtonClass} aria-label="Copiar copy e compartilhar no LinkedIn">
+            <Linkedin className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Copiar copy e compartilhar no LinkedIn</span>
+            <span aria-hidden="true" className={`${shareTooltipClass} !left-0 !translate-x-0`}>LinkedIn · copy pronta</span>
+          </a>
           <button type="button" onClick={nativeShare} className={shareIconButtonClass} aria-label="Compartilhar artigo">
             <Share2 className="h-5 w-5" aria-hidden="true" />
             <span className="sr-only">Compartilhar artigo</span>
             <span aria-hidden="true" className={shareTooltipClass}>Compartilhar</span>
           </button>
-          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`} target="_blank" rel="noreferrer" onClick={() => recordShare('linkedin')} className={shareIconButtonClass} aria-label="Compartilhar no LinkedIn">
-            <Linkedin className="h-5 w-5" aria-hidden="true" />
-            <span className="sr-only">Compartilhar no LinkedIn</span>
-            <span aria-hidden="true" className={shareTooltipClass}>LinkedIn</span>
-          </a>
-          <a href={`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${canonicalUrl}`)}`} target="_blank" rel="noreferrer" onClick={() => recordShare('whatsapp')} className={shareIconButtonClass} aria-label="Compartilhar no WhatsApp">
+          <a href={shareKit.whatsapp.shareUrl} target="_blank" rel="noreferrer" onClick={() => recordShare('whatsapp')} className={shareIconButtonClass} aria-label="Compartilhar no WhatsApp com copy pronta">
             <MessageCircle className="h-5 w-5" aria-hidden="true" />
-            <span className="sr-only">Compartilhar no WhatsApp</span>
-            <span aria-hidden="true" className={shareTooltipClass}>WhatsApp</span>
+            <span className="sr-only">Compartilhar no WhatsApp com copy pronta</span>
+            <span aria-hidden="true" className={shareTooltipClass}>WhatsApp · copy pronta</span>
           </a>
-          <a href={`mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(`${article.excerpt}\n\n${canonicalUrl}`)}`} onClick={() => recordShare('email')} className={shareIconButtonClass} aria-label="Compartilhar por e-mail">
+          <a href={shareKit.email.shareUrl} onClick={() => recordShare('email')} className={shareIconButtonClass} aria-label="Compartilhar por e-mail com copy pronta">
             <Mail className="h-5 w-5" aria-hidden="true" />
-            <span className="sr-only">Compartilhar por e-mail</span>
-            <span aria-hidden="true" className={shareTooltipClass}>E-mail</span>
+            <span className="sr-only">Compartilhar por e-mail com copy pronta</span>
+            <span aria-hidden="true" className={shareTooltipClass}>E-mail · copy pronta</span>
           </a>
-          <button type="button" onClick={() => copy('copy_link', canonicalUrl)} className={shareIconButtonClass} aria-label="Copiar link do artigo">
+          <button type="button" onClick={() => copy('copy_text', shareKit.copy.text)} className={shareIconButtonClass} aria-label="Copiar texto e links do artigo">
             <Copy className="h-5 w-5" aria-hidden="true" />
-            <span className="sr-only">Copiar link do artigo</span>
-            <span aria-hidden="true" className={shareTooltipClass}>Copiar link</span>
+            <span className="sr-only">Copiar texto e links do artigo</span>
+            <span aria-hidden="true" className={shareTooltipClass}>Copiar texto e links</span>
           </button>
-          <button type="button" onClick={() => copy('instagram', instagramCaption)} className={shareIconButtonClass} aria-label="Copiar legenda para Instagram">
+          <button type="button" onClick={() => copy('instagram', shareKit.instagram.text)} className={shareIconButtonClass} aria-label="Copiar legenda para Instagram">
             <Instagram className="h-5 w-5" aria-hidden="true" />
             <span className="sr-only">Copiar legenda para Instagram</span>
             <span aria-hidden="true" className={`${shareTooltipClass} !left-auto right-0 !translate-x-0`}>Legenda para Instagram</span>
