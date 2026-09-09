@@ -22,7 +22,9 @@ const urgencyOptions = [
 const fieldClassName = 'min-h-12 w-full border border-white/15 bg-black/30 px-4 py-3 text-base text-white outline-none transition placeholder:text-white/55 focus:border-[#d8ff57] focus:ring-1 focus:ring-[#d8ff57]';
 
 const LeadForm = ({ defaultIntent = '', compact = false }) => {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('idle');
+  const [reference, setReference] = useState('');
+  const [whatsappUrl, setWhatsappUrl] = useState('');
   const startedRef = useRef(false);
   const attribution = useMemo(() => getAttribution(), []);
 
@@ -32,9 +34,10 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
     trackEvent('lead_start', { source: compact ? 'home' : 'contact_page' });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const values = Object.fromEntries(data.entries());
     const intentLabel = intentOptions.find((option) => option.value === values.intent)?.label || values.intent;
     const urgencyLabel = urgencyOptions.find((option) => option.value === values.urgency)?.label || values.urgency;
@@ -48,34 +51,75 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
       `Nome: ${values.name}`,
       values.company ? `Empresa / cargo: ${values.company}` : null,
       `Urgência: ${urgencyLabel}`,
-      `Contato para retorno: ${values.contact}`,
+      `E-mail para retorno: ${values.email}`,
+      values.phone ? `WhatsApp: ${values.phone}` : null,
       '',
       'Contexto:',
       values.challenge,
       attributionText
     ].filter(Boolean).join('\n');
 
-    trackEvent('lead_submit', {
-      intent: values.intent,
-      urgency: values.urgency,
-      has_company: Boolean(values.company),
-      source: compact ? 'home' : 'contact_page',
-      utm_source: attribution.utm_source || 'direct'
-    });
-    setSubmitted(true);
-    window.open(`https://wa.me/5531992789574?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    setWhatsappUrl(`https://wa.me/5531992789574?text=${encodeURIComponent(message)}`);
+    setStatus('submitting');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          formType: 'contact',
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          company: values.company,
+          interest: values.intent,
+          urgency: values.urgency,
+          message: values.challenge,
+          sourcePath: window.location.pathname || '/',
+          consent: values.consent === 'on',
+          website: values.website,
+          attribution,
+        }),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || payload.ok !== true) throw new Error('lead_delivery_failed');
+
+      trackEvent('lead_submit', {
+        intent: values.intent,
+        urgency: values.urgency,
+        has_company: Boolean(values.company),
+        source: compact ? 'home' : 'contact_page',
+        utm_source: attribution.utm_source || 'direct'
+      });
+      setReference(payload.reference || '');
+      setStatus('success');
+      form.reset();
+    } catch {
+      setStatus('error');
+      trackEvent('lead_submit_error', { source: compact ? 'home' : 'contact_page' });
+    }
   };
 
   return (
     <div className="border border-white/10 bg-[#111211] p-6 md:p-8 lg:p-10">
-      {submitted && (
+      {status === 'success' && (
         <div role="status" className="mb-7 flex gap-3 border border-[#d8ff57]/35 bg-[#d8ff57]/5 p-4 text-sm leading-relaxed text-white/75">
           <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#d8ff57]" aria-hidden="true" />
-          <p>Preparamos sua mensagem e abrimos o WhatsApp. Se a nova aba foi bloqueada, envie por email usando o atalho abaixo.</p>
+          <p>
+            Mensagem recebida com sucesso. Enviei uma confirmação para o seu e-mail e vou ler o contexto antes de responder.
+            {reference && <span className="mt-1 block text-xs text-white/50">Referência: {reference}</span>}
+          </p>
+        </div>
+      )}
+
+      {status === 'error' && (
+        <div role="alert" className="mb-7 border border-red-400/30 bg-red-400/5 p-4 text-sm leading-relaxed text-red-100">
+          Não consegui confirmar o envio agora. Tente novamente ou conclua a conversa pelo WhatsApp/e-mail abaixo.
         </div>
       )}
 
       <form onSubmit={handleSubmit} onFocus={handleStart} className="space-y-5">
+        <input type="text" name="website" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
         <div>
           <label htmlFor={`intent-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Como posso ajudar?</label>
           <select id={`intent-${compact ? 'compact' : 'full'}`} name="intent" defaultValue={defaultIntent} required className={fieldClassName}>
@@ -90,9 +134,14 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
             <input id={`name-${compact ? 'compact' : 'full'}`} name="name" autoComplete="name" required maxLength="100" placeholder="Como devo chamar você?" className={fieldClassName} />
           </div>
           <div>
-            <label htmlFor={`contact-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Email ou WhatsApp</label>
-            <input id={`contact-${compact ? 'compact' : 'full'}`} name="contact" autoComplete="email" required maxLength="140" placeholder="Seu melhor contato" className={fieldClassName} />
+            <label htmlFor={`email-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">E-mail</label>
+            <input id={`email-${compact ? 'compact' : 'full'}`} name="email" type="email" autoComplete="email" required maxLength="180" placeholder="voce@empresa.com" className={fieldClassName} />
           </div>
+        </div>
+
+        <div>
+          <label htmlFor={`phone-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">WhatsApp <span className="font-normal text-white/60">(opcional)</span></label>
+          <input id={`phone-${compact ? 'compact' : 'full'}`} name="phone" type="tel" autoComplete="tel" maxLength="40" placeholder="+55 31 99999-9999" className={fieldClassName} />
         </div>
 
         <div>
@@ -118,18 +167,20 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
           <span>Autorizo o uso dessas informações exclusivamente para responder a esta solicitação, conforme a <a href="/privacidade" className="underline decoration-white/30 underline-offset-4 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">política de privacidade</a>.</span>
         </label>
 
-        <button type="submit" className="group inline-flex min-h-14 w-full items-center justify-center gap-3 bg-[#d8ff57] px-7 font-black text-black transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] sm:w-auto">
-          Preparar conversa no WhatsApp
-          <MessageCircle className="h-4 w-4" aria-hidden="true" />
+        <button type="submit" disabled={status === 'submitting'} className="group inline-flex min-h-14 w-full items-center justify-center gap-3 bg-[#d8ff57] px-7 font-black text-black transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] disabled:cursor-wait disabled:opacity-70 sm:w-auto">
+          {status === 'submitting' ? 'Enviando…' : 'Enviar mensagem'}
+          {status !== 'submitting' && <ArrowRight className="h-4 w-4" aria-hidden="true" />}
         </button>
       </form>
 
       <div className="mt-7 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
-        <p>Nenhum dado é armazenado silenciosamente por este formulário.</p>
-        <a href="mailto:fernando@fernandoparreiras.com.br" className="inline-flex min-h-11 items-center gap-2 font-bold text-white hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">
-          <Mail className="h-4 w-4" aria-hidden="true" /> Enviar email
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </a>
+        <p>Você recebe confirmação por e-mail. Os dados são usados somente para responder à solicitação.</p>
+        <div className="flex flex-wrap gap-4">
+          {whatsappUrl && <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 font-bold text-white hover:text-[#d8ff57]"><MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp</a>}
+          <a href="mailto:fernando@fernandoparreiras.com.br" className="inline-flex min-h-11 items-center gap-2 font-bold text-white hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">
+            <Mail className="h-4 w-4" aria-hidden="true" /> E-mail
+          </a>
+        </div>
       </div>
     </div>
   );
