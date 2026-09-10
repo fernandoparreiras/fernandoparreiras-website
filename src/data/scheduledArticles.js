@@ -1,8 +1,9 @@
 import { radarArticles } from "./radarArticles.js";
 import { radarSeptember10Articles } from "./radarSeptember10Articles.js";
+import { isRadarArticleApproved } from "./radarPublicationApprovals.js";
 
 export const scheduledArticles = [
-  ...radarSeptember10Articles,
+  ...radarSeptember10Articles.filter(isRadarArticleApproved),
   ...radarArticles,
   {
     slug: "plano-de-90-dias-para-uma-transicao-profissional-com-ia",
