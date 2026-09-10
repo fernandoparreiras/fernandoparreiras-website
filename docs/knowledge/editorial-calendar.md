@@ -2,9 +2,14 @@
 
 ## Objetivo
 
-Coleção de dezesseis artigos: seis já publicados, sete evergreen e três ensaios especiais do Radar de Evidências. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026 e 10/09/2026. A agenda ordinária foi conciliada com Tech Human e Trustyu Forge para uma publicação por dia no portfólio, às 9h no horário de São Paulo.
+Coleção de dezessete artigos: seis já publicados, sete evergreen e quatro ensaios especiais do Radar de Evidências. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026 e 10/09/2026. A agenda ordinária foi conciliada com Tech Human e Trustyu Forge para uma publicação por dia no portfólio, às 9h no horário de São Paulo.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
+
+Em 10/09/2026, o Radar de Evidências originou uma edição especial coordenada para Tech Human,
+Fernando Parreiras e Trustyu Forge. O ensaio autoral ocupa um segundo slot no mesmo dia sem deslocar
+o evergreen já previsto; a promoção final permanece condicionada à confirmação humana do artefato
+exato e não cria precedente automático para o radar.
 
 ## Agenda aprovada
 
@@ -13,6 +18,7 @@ Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi a
 | 2 set. 2026 | Negócios e liderança | O dia seguinte à primeira venda | Agendado |
 | 2 set. 2026, 09h23 | Carreira com IA | A carreira que nasce entre o produto e o código: AI-Native Product Lead | Publicação especial antecipada |
 | 10 set. 2026 | Carreira com IA | Você não precisa competir com a IA. Precisa redesenhar o valor que entrega | Agendado |
+| 10 set. 2026, 13h46 | Liderança e julgamento | Saber pedir que a IA continue é fácil. Difícil é saber quando parar | Especial coordenado — artefato exato confirmado em 10/09/2026 |
 | 14 set. 2026 | Jovens e futuro | Faculdade, curso, certificação ou projeto: onde investir primeiro? | Agendado |
 | 18 set. 2026 | Mudança de carreira | Competências que sobrevivem a uma mudança de carreira | Agendado |
 | 22 set. 2026 | Negócios e liderança | Equipes com agentes de IA ainda precisam de responsabilidade humana | Agendado |

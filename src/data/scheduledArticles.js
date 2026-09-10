@@ -1,6 +1,8 @@
 import { radarArticles } from "./radarArticles.js";
+import { radarSeptember10Articles } from "./radarSeptember10Articles.js";
 
 export const scheduledArticles = [
+  ...radarSeptember10Articles,
   ...radarArticles,
   {
     slug: "plano-de-90-dias-para-uma-transicao-profissional-com-ia",
