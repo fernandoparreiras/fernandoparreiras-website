@@ -28,8 +28,8 @@ test("fontes HTTPS viram links sem HTML arbitrário", () => {
 
 test("três ensaios aprovados têm fontes diretas, nota e agenda sem colisões", () => {
   assert.equal(radarArticles.length, 3);
-  assert.equal(scheduledArticles.length, 9);
-  assert.equal(new Set(scheduledArticles.map((a) => a.scheduledAt)).size, 9);
+  assert.equal(scheduledArticles.length, 10);
+  assert.equal(new Set(scheduledArticles.map((a) => a.scheduledAt)).size, 10);
   for (const article of radarArticles) {
     const body = article.content
       .flatMap((section) => section.paragraphs)

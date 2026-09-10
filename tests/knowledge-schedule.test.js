@@ -10,6 +10,7 @@ const EXPECTED_SCHEDULE = [
   ["dia-seguinte-primeira-venda", "2026-09-02T09:00:00-03:00"],
   ["ai-native-product-lead-nova-profissao", "2026-09-02T09:23:00-03:00"],
   ["redesenhar-o-valor-que-voce-entrega-com-ia", "2026-09-10T09:00:00-03:00"],
+  ["saber-quando-parar-uma-ia", "2026-09-10T13:46:00-03:00"],
   ["faculdade-curso-certificacao-ou-projeto", "2026-09-14T09:00:00-03:00"],
   [
     "competencias-que-sobrevivem-a-uma-mudanca-de-carreira",
@@ -30,8 +31,8 @@ const EXPECTED_SCHEDULE = [
   ],
 ];
 
-test("coleção editorial possui quinze artigos com especial de carreira AI-native", () => {
-  assert.equal(editorialArticles.length, 15);
+test("coleção editorial possui dezesseis artigos com especiais AI-native", () => {
+  assert.equal(editorialArticles.length, 16);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -43,12 +44,12 @@ test("coleção editorial possui quinze artigos com especial de carreira AI-nati
   assert.deepEqual(countsByTrack, {
     "carreira-ia": 5,
     "jovens-futuro": 3,
-    "lideranca-negocios": 4,
+    "lideranca-negocios": 5,
     "mudanca-carreira": 3,
   });
 });
 
-test("fila inclui três especiais e preserva a agenda reconciliada", () => {
+test("fila inclui quatro especiais e preserva a agenda reconciliada", () => {
   const chronological = [...scheduledArticles].sort(
     (left, right) => new Date(left.scheduledAt) - new Date(right.scheduledAt),
   );
@@ -75,8 +76,8 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(immediatelyBeforeFirstRelease.length, 6);
   assert.equal(firstRelease.length, 7);
   assert.equal(firstRelease[0].slug, "dia-seguinte-primeira-venda");
-  assert.equal(septemberRelease.length, 13);
-  assert.equal(completeRelease.length, 15);
+  assert.equal(septemberRelease.length, 14);
+  assert.equal(completeRelease.length, 16);
   assert.equal(
     completeRelease[0].slug,
     "produtividade-sem-direcao-acelera-o-desperdicio",
@@ -87,6 +88,6 @@ test("data editorial e data de ativação usam o mesmo dia em São Paulo", () =>
   for (const article of scheduledArticles) {
     assert.equal(article.scheduledAt.slice(0, 10), article.publishedAt);
     assert.equal(article.updatedAt, article.publishedAt);
-    assert.match(article.scheduledAt, /T09:(?:00|23):00-03:00$/);
+    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:46):00-03:00$/);
   }
 });

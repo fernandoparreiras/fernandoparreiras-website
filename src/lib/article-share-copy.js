@@ -1,6 +1,11 @@
 const SITE_URL = 'https://fernandoparreiras.com.br';
 
 export const ARTICLE_SHARE_INTENTS = Object.freeze({
+  'saber-quando-parar-uma-ia': {
+    discussion: 'Qual evidência deveria interromper uma nova rodada de IA antes que atividade seja confundida com progresso?',
+    commercialCta: 'Leve esta discussão para sua liderança ou equipe: converse com Fernando sobre julgamento, produto e transformação responsável com IA.',
+    destination: '/contato/',
+  },
   'dia-seguinte-primeira-venda': {
     discussion: 'Depois da primeira venda, o que precisa deixar de depender do fundador para que o negócio se torne repetível?',
     commercialCta: 'Se sua empresa precisa transformar uma primeira entrega em operação sustentável, converse com Fernando sobre estratégia, produto e execução.',
