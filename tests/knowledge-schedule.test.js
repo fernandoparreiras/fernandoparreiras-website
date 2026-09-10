@@ -20,6 +20,10 @@ const EXPECTED_SCHEDULE = [
     "2026-09-22T09:00:00-03:00",
   ],
   [
+    "liderar-quando-toda-area-pode-criar-software",
+    "2026-09-24T09:00:00-03:00",
+  ],
+  [
     "plano-de-90-dias-para-uma-transicao-profissional-com-ia",
     "2026-09-26T09:00:00-03:00",
   ],
@@ -30,8 +34,8 @@ const EXPECTED_SCHEDULE = [
   ],
 ];
 
-test("coleção editorial possui quinze artigos com especial de carreira AI-native", () => {
-  assert.equal(editorialArticles.length, 15);
+test("coleção editorial possui dezesseis artigos com série de democratização da IA", () => {
+  assert.equal(editorialArticles.length, 16);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -43,7 +47,7 @@ test("coleção editorial possui quinze artigos com especial de carreira AI-nati
   assert.deepEqual(countsByTrack, {
     "carreira-ia": 5,
     "jovens-futuro": 3,
-    "lideranca-negocios": 4,
+    "lideranca-negocios": 5,
     "mudanca-carreira": 3,
   });
 });
@@ -75,8 +79,8 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(immediatelyBeforeFirstRelease.length, 6);
   assert.equal(firstRelease.length, 7);
   assert.equal(firstRelease[0].slug, "dia-seguinte-primeira-venda");
-  assert.equal(septemberRelease.length, 13);
-  assert.equal(completeRelease.length, 15);
+  assert.equal(septemberRelease.length, 14);
+  assert.equal(completeRelease.length, 16);
   assert.equal(
     completeRelease[0].slug,
     "produtividade-sem-direcao-acelera-o-desperdicio",

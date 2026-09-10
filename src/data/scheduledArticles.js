@@ -395,4 +395,70 @@ export const scheduledArticles = [
       },
     ],
   },
+  {
+    slug: "liderar-quando-toda-area-pode-criar-software",
+    title: "Liderar quando toda área pode criar software",
+    excerpt:
+      "A IA ampliou quem consegue transformar uma ideia em software. A liderança precisa combinar autonomia, fronteiras claras e responsabilidade compartilhada.",
+    track: "lideranca-negocios",
+    category: "Liderança e transformação",
+    format: "Ensaio prático",
+    tags: ["liderança", "democratização da IA", "responsabilidade"],
+    readingMinutes: 9,
+    publishedAt: "2026-09-24",
+    updatedAt: "2026-09-24",
+    scheduledAt: "2026-09-24T09:00:00-03:00",
+    image: "/images/em-cena/fernando-parreiras-palco-1600.webp",
+    imageAlt:
+      "Fernando Parreiras conduzindo uma conversa sobre liderança, tecnologia e negócios.",
+    nature:
+      "Reflexão autoral sobre liderança, autonomia e responsabilidade na adoção de inteligência artificial.",
+    cta: {
+      label: "Conversar sobre liderança e transformação com IA",
+      href: "/solucoes/transformacao-tecnologia-ia",
+    },
+    content: [
+      {
+        heading: "A autonomia chegou antes do desenho organizacional",
+        paragraphs: [
+          "Uma pessoa que conhece bem um processo já consegue montar uma automação, um agente ou uma pequena aplicação sem esperar o ciclo tradicional de desenvolvimento. Isso reduz a distância entre perceber um problema e testar uma resposta. Também muda uma relação antiga: a área de negócio deixa de depender integralmente de uma fila para transformar conhecimento em software.",
+          "A mudança não elimina a liderança nem a tecnologia. Ela exige que ambas deixem claro onde termina um experimento pessoal e começa um sistema pelo qual a organização precisa responder.",
+        ],
+      },
+      {
+        heading: "Liderar é tornar a fronteira compreensível",
+        paragraphs: [
+          "Proibir tudo preserva a fila e empurra parte do trabalho para a sombra. Liberar tudo confunde iniciativa com autorização para operar. O papel da liderança é oferecer uma fronteira simples: o que pode ser testado, com quais dados, por quanto tempo e em que momento a solução precisa entrar em um caminho corporativo.",
+          "Quanto mais reversível e interno for o experimento, maior pode ser a autonomia. Quando envolve clientes, dinheiro, direitos, dados sensíveis ou continuidade operacional, a decisão precisa de engenharia, governança e um responsável identificado.",
+        ],
+        bullets: [
+          "Experimento: hipótese, dono, prazo e dados seguros.",
+          "Uso interno recorrente: acesso, documentação, testes e suporte.",
+          "Processo crítico: produto formal, operação observável e autoridade para interromper.",
+        ],
+      },
+      {
+        heading: "Negócio e TI passam a dividir a responsabilidade",
+        paragraphs: [
+          "A área de negócio conhece o problema, o contexto e o resultado esperado. Tecnologia conhece as fronteiras de identidade, dados, integração, segurança e operação. Nenhuma das duas consegue assumir sozinha o sistema completo.",
+          "A parceria madura não começa com um pedido para TI executar nem termina quando a área consegue gerar código. Ela combina autoria sobre o problema com caminhos técnicos reutilizáveis. Assim, a empresa preserva a velocidade de quem está perto da dor e a capacidade de sustentar o que se torna importante.",
+        ],
+      },
+      {
+        heading: "As perguntas do líder mudam",
+        bullets: [
+          "Que problema real esta solução resolve e como saberemos se melhorou?",
+          "Quem responde pelo uso, pelos dados e pelas consequências?",
+          "O que pode ser desfeito sem impacto e o que exige revisão antes de operar?",
+          "Que parte deveria virar uma capacidade compartilhada para outras equipes?",
+          "Que evidência precisamos preservar para aprender ou interromper?",
+        ],
+        paragraphs: [
+          "Essas perguntas deslocam a conversa de ferramenta para julgamento. Vibe coding pode romper a espera para experimentar. O valor duradouro aparece quando a organização também sabe escolher, integrar, operar e retirar.",
+        ],
+        quote:
+          "Democratizar a capacidade de criar exige democratizar também a compreensão das consequências.",
+      },
+    ],
+  },
 ];
