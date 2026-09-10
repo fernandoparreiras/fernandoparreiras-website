@@ -1,10 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import fs from "node:fs";
 import {
   editorialHtml,
   editorialSegments,
 } from "../src/lib/editorial-links.js";
 import { radarArticles } from "../src/data/radarArticles.js";
+import { radarPublicationApprovals } from "../src/data/radarPublicationApprovals.js";
 import { scheduledArticles } from "../src/data/scheduledArticles.js";
 
 test("fontes HTTPS viram links sem HTML arbitrário", () => {
@@ -41,4 +44,17 @@ test("ensaios aprovados têm fontes diretas, nota e agenda sem colisões", () =>
       /pendentes neste rascunho|Revisão editorial humana: pendente/,
     );
   }
+});
+
+test("o especial de 10/09 só entra na fila com aprovação do conteúdo exato", () => {
+  const approval = radarPublicationApprovals["saber-quando-parar-uma-ia"];
+  const content = fs.readFileSync(approval.contentFile);
+  const digest = createHash("sha256").update(content).digest("hex");
+
+  assert.equal(digest, approval.contentSha256);
+  assert.equal(approval.approvedBy, "Fernando Parreiras");
+  assert.match(approval.evidenceUrl, /pullrequestreview-5171245449$/);
+  assert.ok(
+    scheduledArticles.some((article) => article.slug === "saber-quando-parar-uma-ia"),
+  );
 });
