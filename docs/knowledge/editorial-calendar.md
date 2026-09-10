@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Coleção de quinze artigos: seis já publicados, seis evergreen e três ensaios especiais do Radar de Evidências. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026 e 02/09/2026. A agenda ordinária foi conciliada com Tech Human e Trustyu Forge para uma publicação por dia no portfólio, às 9h no horário de São Paulo.
+Coleção de dezesseis artigos: seis já publicados, sete evergreen e três ensaios especiais do Radar de Evidências. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026 e 10/09/2026. A agenda ordinária foi conciliada com Tech Human e Trustyu Forge para uma publicação por dia no portfólio, às 9h no horário de São Paulo.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
 
@@ -16,6 +16,7 @@ Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi a
 | 14 set. 2026 | Jovens e futuro | Faculdade, curso, certificação ou projeto: onde investir primeiro? | Agendado |
 | 18 set. 2026 | Mudança de carreira | Competências que sobrevivem a uma mudança de carreira | Agendado |
 | 22 set. 2026 | Negócios e liderança | Equipes com agentes de IA ainda precisam de responsabilidade humana | Agendado |
+| 24 set. 2026 | Negócios e liderança | Liderar quando toda área pode criar software | Agendado — série Democratização da IA |
 | 26 set. 2026 | Mudança de carreira | Um plano de 90 dias para uma transição profissional com IA | Agendado |
 | 9 nov. 2026 | Carreira com IA | Seu próximo diferencial pode estar no que você não aprova | Agendado |
 | 10 nov. 2026 | Negócios e liderança | Produtividade sem direção apenas acelera o desperdício | Agendado |
@@ -33,6 +34,7 @@ Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi a
 ## Critérios editoriais
 
 - Fernando Parreiras permanece como camada autoral: experiência profissional, carreira, liderança, escolhas e futuro do trabalho.
+- Na série Democratização da IA, o site pessoal discute julgamento, autonomia e responsabilidade de líderes; mecanismos técnicos permanecem no Forge e desenho operacional na Tech Human.
 - Conteúdo não é republicado literalmente da Tech Human ou Trustyu.
 - Afirmações permanecem como análise, orientação ou experiência profissional; não são inventados resultados, clientes, métricas ou certificações.
 - Cada artigo possui trilha, categoria, formato, três tags controladas, natureza editorial e CTA contextual.

@@ -26,6 +26,11 @@ export const ARTICLE_SHARE_INTENTS = Object.freeze({
     commercialCta: 'Converse com Fernando sobre transformação com IA, governança e desenho responsável da operação.',
     destination: '/solucoes/transformacao-tecnologia-ia',
   },
+  'liderar-quando-toda-area-pode-criar-software': {
+    discussion: 'Na sua organização, quem define quando um experimento criado por uma área passa a ser um sistema pelo qual a empresa precisa responder?',
+    commercialCta: 'Leve esta discussão para sua liderança ou evento: converse com Fernando sobre transformação, governança e trabalho com IA.',
+    destination: '/solucoes/transformacao-tecnologia-ia',
+  },
   'competencias-que-sobrevivem-a-uma-mudanca-de-carreira': {
     discussion: 'Que competência da sua trajetória continua valiosa quando o cargo, o setor ou a ferramenta muda?',
     commercialCta: 'Para trabalhar reposicionamento, carreira e IA com pessoas ou equipes, converse com Fernando.',
