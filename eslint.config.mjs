@@ -50,4 +50,5 @@ export default [
 		},
 	},
 	{ files: ['tools/**/*.js', 'tailwind.config.js'], languageOptions: { globals: globals.node } },
+	{ files: ['tests/**/*.js', 'netlify/functions/**/*.mjs'], languageOptions: { globals: globals.node } },
 ];
