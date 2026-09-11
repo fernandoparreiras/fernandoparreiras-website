@@ -39,6 +39,8 @@ test('maps commercial and newsletter origins to the Base44 contract', () => {
   assert.equal(contact.source.form_type, 'fernando-contact');
   assert.equal(contact.source.route, '/contato');
   assert.equal(contact.contact.email, 'ana@example.com');
+  assert.equal(contact.contact.company_name, 'Example Inc.');
+  assert.equal(contact.contact.role_title, 'Chief Technology Officer');
   assert.equal(newsletter.source.form_type, 'fernando-newsletter');
   assert.equal(newsletter.source.route_type, 'content');
   assert.equal(newsletter.consent.scope, 'newsletter_subscription');
@@ -68,7 +70,10 @@ test('validates explicit consent and the route/form matrix', () => {
     consent: true,
   });
   assert.equal(contact.role, 'Chief Technology Officer');
-  assert.match(contact.message, /Cargo ou atuação: Chief Technology Officer/);
+  assert.equal(
+    contact.message,
+    'Momento: 30-60\nQuero estruturar os próximos passos da minha transição profissional.',
+  );
 });
 
 test('sends internal email, respondent confirmation and signed Base44 lead', async (t) => {
@@ -93,6 +98,8 @@ test('sends internal email, respondent confirmation and signed Base44 lead', asy
     if (String(url).includes('/functions/ingestLead')) {
       const body = String(init.body);
       const payload = JSON.parse(body);
+      assert.equal(payload.contact.company_name, 'Example Inc.');
+      assert.equal(payload.contact.role_title, 'Chief Technology Officer');
       const headers = new Headers(init.headers);
       const timestamp = headers.get('X-TechHuman-Timestamp');
       const expected = createHmac('sha256', signingSecret)

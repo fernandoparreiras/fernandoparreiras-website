@@ -72,6 +72,7 @@ export const buildFernandoCrmPayload = (input) => {
   const fullName = input.name.trim() || 'Assinante da Carta do Fernando';
   const email = input.email.trim().toLowerCase();
   const company = input.company?.trim();
+  const roleTitle = input.role?.trim();
   const phone = input.phone?.trim();
   const message = input.message?.trim();
   const attribution = cleanTouch(input.attribution);
@@ -100,6 +101,7 @@ export const buildFernandoCrmPayload = (input) => {
       email,
       ...(phone ? { phone } : {}),
       ...(company ? { company_name: company } : {}),
+      ...(roleTitle ? { role_title: roleTitle } : {}),
     },
     inquiry: {
       subject: source.offerLabel,

@@ -62,7 +62,7 @@ export const parseLeadRequest = (value) => {
       role,
       interest,
       urgency,
-      message: [`Momento: ${urgency}`, role ? `Cargo ou atuação: ${role}` : '', message].filter(Boolean).join('\n'),
+      message: `Momento: ${urgency}\n${message}`,
       sourcePath,
       attribution: normalizeAttribution(value.attribution),
     };
