@@ -72,7 +72,7 @@ test('validates explicit consent and the route/form matrix', () => {
   assert.equal(contact.role, 'Chief Technology Officer');
   assert.equal(
     contact.message,
-    'Momento: 30-60\nQuero estruturar os próximos passos da minha transição profissional.',
+    'Momento: Próximos 30–60 dias\nQuero estruturar os próximos passos da minha transição profissional.',
   );
 });
 
@@ -144,6 +144,7 @@ test('sends internal email, respondent confirmation and signed Base44 lead', asy
   assert.equal(calls.filter(([url]) => url.includes('/functions/ingestLead')).length, 1);
   const internalEmailBody = JSON.parse(calls.find(([url]) => url.includes('api.resend.com'))[1].body);
   assert.match(internalEmailBody.text, /Cargo ou atuação: Chief Technology Officer/);
+  assert.match(internalEmailBody.text, /Momento: Próximos 30–60 dias/);
 });
 
 test('provides branded, distinct respondent copies with useful links', () => {

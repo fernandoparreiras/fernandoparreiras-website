@@ -7,7 +7,13 @@ const MAX_BODY_BYTES = 64 * 1024;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const CONTACT_ROUTES = new Set(['/', '/contato']);
 const INTENTS = new Set(['tech-human', 'advisory', 'conselho', 'palestra', 'venture', 'formacao', 'mentoria', 'parceria']);
-const URGENCIES = new Set(['agora', '30-60', 'trimestre', 'exploracao']);
+const URGENCY_LABELS = Object.freeze({
+  agora: 'Agora — existe uma decisão ou projeto em andamento',
+  '30-60': 'Próximos 30–60 dias',
+  trimestre: 'Neste trimestre',
+  exploracao: 'Ainda estou explorando possibilidades',
+});
+const URGENCIES = new Set(Object.keys(URGENCY_LABELS));
 const NEWSLETTER_INTERESTS = new Set(['lideranca-negocios', 'carreira-ia', 'jovens-futuro', 'mudanca-carreira']);
 
 const readEnv = (name) => globalThis.Netlify?.env?.get(name) ?? process.env[name];
@@ -62,7 +68,7 @@ export const parseLeadRequest = (value) => {
       role,
       interest,
       urgency,
-      message: `Momento: ${urgency}\n${message}`,
+      message: `Momento: ${URGENCY_LABELS[urgency]}\n${message}`,
       sourcePath,
       attribution: normalizeAttribution(value.attribution),
     };
