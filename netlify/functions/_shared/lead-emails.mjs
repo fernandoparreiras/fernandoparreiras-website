@@ -43,12 +43,12 @@ export const buildRespondentEmail = ({ formType, name }) => {
   };
 };
 
-export const buildInternalEmail = ({ reference, formType, email, name, interest, company, phone, message, sourcePath }) => {
+export const buildInternalEmail = ({ reference, formType, email, name, interest, company, role, phone, message, sourcePath }) => {
   const title = formType === 'newsletter' ? 'Nova inscrição — Carta do Fernando' : 'Novo contato — Site Fernando Parreiras';
   const rows = [
     ['Referência', reference], ['Origem', sourcePath], ['Nome', name || 'Não informado'],
     ['E-mail', email], ['Telefone', phone || 'Não informado'], ['Interesse', interest],
-    ['Empresa / cargo', company || 'Não informado'], ['Contexto', message || 'Não informado'],
+    ['Empresa', company || 'Não informado'], ['Cargo ou atuação', role || 'Não informado'], ['Contexto', message || 'Não informado'],
   ];
   const htmlRows = rows.map(([label, value]) => `<tr><td style="padding:9px;color:#85888c;vertical-align:top">${escapeHtml(label)}</td><td style="padding:9px;color:#fff;white-space:pre-wrap">${escapeHtml(value)}</td></tr>`).join('');
   return {

@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { ArrowRight, CheckCircle2, Mail, MessageCircle } from 'lucide-react';
+import { AR, BR, CA, DE, ES, FR, GB, JP, MX, PT, US } from 'country-flag-icons/react/3x2';
 import { getAttribution, trackEvent } from '@/lib/analytics';
 
 const intentOptions = [
@@ -9,6 +10,7 @@ const intentOptions = [
   { value: 'palestra', label: 'Palestra ou workshop' },
   { value: 'venture', label: 'Produto ou venture de IA' },
   { value: 'formacao', label: 'Formação ou programa para times' },
+  { value: 'mentoria', label: 'Mentoria' },
   { value: 'parceria', label: 'Parceria ou outra conversa' }
 ];
 
@@ -21,12 +23,28 @@ const urgencyOptions = [
 
 const fieldClassName = 'min-h-12 w-full border border-white/15 bg-black/30 px-4 py-3 text-base text-white outline-none transition placeholder:text-white/55 focus:border-[#d8ff57] focus:ring-1 focus:ring-[#d8ff57]';
 
+const phoneCountries = [
+  { code: 'BR', label: 'Brasil', dialCode: '+55', placeholder: '(31) 99999-9999', Flag: BR },
+  { code: 'US', label: 'Estados Unidos', dialCode: '+1', placeholder: '(212) 555-0123', Flag: US },
+  { code: 'PT', label: 'Portugal', dialCode: '+351', placeholder: '912 345 678', Flag: PT },
+  { code: 'ES', label: 'Espanha', dialCode: '+34', placeholder: '612 345 678', Flag: ES },
+  { code: 'AR', label: 'Argentina', dialCode: '+54', placeholder: '9 11 1234-5678', Flag: AR },
+  { code: 'MX', label: 'México', dialCode: '+52', placeholder: '55 1234 5678', Flag: MX },
+  { code: 'CA', label: 'Canadá', dialCode: '+1', placeholder: '(416) 555-0123', Flag: CA },
+  { code: 'GB', label: 'Reino Unido', dialCode: '+44', placeholder: '7911 123456', Flag: GB },
+  { code: 'DE', label: 'Alemanha', dialCode: '+49', placeholder: '1512 3456789', Flag: DE },
+  { code: 'FR', label: 'França', dialCode: '+33', placeholder: '6 12 34 56 78', Flag: FR },
+  { code: 'JP', label: 'Japão', dialCode: '+81', placeholder: '90-1234-5678', Flag: JP },
+];
+
 const LeadForm = ({ defaultIntent = '', compact = false }) => {
   const [status, setStatus] = useState('idle');
   const [reference, setReference] = useState('');
   const [whatsappUrl, setWhatsappUrl] = useState('');
+  const [phoneCountry, setPhoneCountry] = useState('BR');
   const startedRef = useRef(false);
   const attribution = useMemo(() => getAttribution(), []);
+  const selectedCountry = phoneCountries.find((country) => country.code === phoneCountry) || phoneCountries[0];
 
   const handleStart = () => {
     if (startedRef.current) return;
@@ -41,6 +59,7 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
     const values = Object.fromEntries(data.entries());
     const intentLabel = intentOptions.find((option) => option.value === values.intent)?.label || values.intent;
     const urgencyLabel = urgencyOptions.find((option) => option.value === values.urgency)?.label || values.urgency;
+    const formattedPhone = values.phone ? `${selectedCountry.dialCode} ${values.phone.trim()}` : '';
     const attributionText = Object.entries(attribution).length
       ? `\nOrigem: ${Object.entries(attribution).map(([key, value]) => `${key.replace('utm_', '')}=${value}`).join(' | ')}`
       : '';
@@ -49,10 +68,11 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
       '',
       `Interesse: ${intentLabel}`,
       `Nome: ${values.name}`,
-      values.company ? `Empresa / cargo: ${values.company}` : null,
+      values.company ? `Empresa: ${values.company}` : null,
+      values.role ? `Cargo ou atuação: ${values.role}` : null,
       `Urgência: ${urgencyLabel}`,
       `E-mail para retorno: ${values.email}`,
-      values.phone ? `WhatsApp: ${values.phone}` : null,
+      formattedPhone ? `WhatsApp: ${formattedPhone}` : null,
       '',
       'Contexto:',
       values.challenge,
@@ -70,8 +90,9 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
           formType: 'contact',
           name: values.name,
           email: values.email,
-          phone: values.phone,
+          phone: formattedPhone,
           company: values.company,
+          role: values.role,
           interest: values.intent,
           urgency: values.urgency,
           message: values.challenge,
@@ -88,6 +109,7 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
         intent: values.intent,
         urgency: values.urgency,
         has_company: Boolean(values.company),
+        has_role: Boolean(values.role),
         source: compact ? 'home' : 'contact_page',
         utm_source: attribution.utm_source || 'direct'
       });
@@ -130,8 +152,8 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
 
         <div className="grid gap-5 md:grid-cols-2">
           <div>
-            <label htmlFor={`name-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Nome</label>
-            <input id={`name-${compact ? 'compact' : 'full'}`} name="name" autoComplete="name" required maxLength="100" placeholder="Como devo chamar você?" className={fieldClassName} />
+            <label htmlFor={`name-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Nome e sobrenome</label>
+            <input id={`name-${compact ? 'compact' : 'full'}`} name="name" autoComplete="name" required maxLength="120" placeholder="Como podemos chamar você?" className={fieldClassName} />
           </div>
           <div>
             <label htmlFor={`email-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">E-mail</label>
@@ -141,13 +163,46 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
 
         <div>
           <label htmlFor={`phone-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">WhatsApp <span className="font-normal text-white/60">(opcional)</span></label>
-          <input id={`phone-${compact ? 'compact' : 'full'}`} name="phone" type="tel" autoComplete="tel" maxLength="40" placeholder="+55 31 99999-9999" className={fieldClassName} />
+          <div className="grid gap-3 sm:grid-cols-[minmax(13rem,0.75fr)_minmax(0,1.25fr)]">
+            <div className="relative">
+              {phoneCountries.map(({ code, Flag }) => code === phoneCountry && <Flag key={code} title="" aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 h-4 w-6 -translate-y-1/2 rounded-[1px] object-cover" />)}
+              <select
+                aria-label="País do WhatsApp"
+                value={phoneCountry}
+                onChange={(event) => setPhoneCountry(event.target.value)}
+                className={`${fieldClassName} appearance-none pl-14 pr-8`}
+              >
+                {phoneCountries.map(({ code, label, dialCode }) => <option key={code} value={code}>{label} ({dialCode})</option>)}
+              </select>
+            </div>
+            <input
+              id={`phone-${compact ? 'compact' : 'full'}`}
+              name="phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel-national"
+              maxLength="40"
+              placeholder={selectedCountry.placeholder}
+              className={fieldClassName}
+            />
+          </div>
+          <p className="mt-2 text-xs leading-relaxed text-white/50">O código do país é incluído automaticamente.</p>
         </div>
 
-        <div>
-          <label htmlFor={`company-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Empresa e cargo <span className="font-normal text-white/60">(quando aplicável)</span></label>
-          <input id={`company-${compact ? 'compact' : 'full'}`} name="company" autoComplete="organization" maxLength="160" placeholder="Empresa, estágio ou responsabilidade" className={fieldClassName} />
-        </div>
+        <fieldset className="border-t border-white/10 pt-5">
+          <legend className="pr-2 text-sm font-bold text-white">Sobre seu trabalho <span className="font-normal text-white/60">(opcional)</span></legend>
+          <p className="mt-1 text-xs leading-relaxed text-white/50">Preencha apenas se isso ajudar a dar contexto. Conversas pessoais também são bem-vindas.</p>
+          <div className="mt-4 grid gap-5 md:grid-cols-2">
+            <div>
+              <label htmlFor={`company-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Empresa</label>
+              <input id={`company-${compact ? 'compact' : 'full'}`} name="company" autoComplete="organization" maxLength="120" placeholder="Onde você trabalha" className={fieldClassName} />
+            </div>
+            <div>
+              <label htmlFor={`role-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Cargo ou atuação</label>
+              <input id={`role-${compact ? 'compact' : 'full'}`} name="role" autoComplete="organization-title" maxLength="120" placeholder="Ex.: fundadora, líder ou autônoma" className={fieldClassName} />
+            </div>
+          </div>
+        </fieldset>
 
         <div>
           <label htmlFor={`urgency-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Quando isso precisa avançar?</label>
