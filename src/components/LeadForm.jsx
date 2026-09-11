@@ -1,5 +1,6 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, CheckCircle2, Mail, MessageCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { AR, BR, CA, DE, ES, FR, GB, JP, MX, PT, US } from 'country-flag-icons/react/3x2';
 import { getAttribution, trackEvent } from '@/lib/analytics';
 
@@ -39,12 +40,17 @@ const phoneCountries = [
 
 const LeadForm = ({ defaultIntent = '', compact = false }) => {
   const [status, setStatus] = useState('idle');
-  const [reference, setReference] = useState('');
+  const [respondentName, setRespondentName] = useState('');
   const [whatsappUrl, setWhatsappUrl] = useState('');
   const [phoneCountry, setPhoneCountry] = useState('BR');
   const startedRef = useRef(false);
+  const successPanelRef = useRef(null);
   const attribution = useMemo(() => getAttribution(), []);
   const selectedCountry = phoneCountries.find((country) => country.code === phoneCountry) || phoneCountries[0];
+
+  useEffect(() => {
+    if (status === 'success') successPanelRef.current?.focus();
+  }, [status]);
 
   const handleStart = () => {
     if (startedRef.current) return;
@@ -113,7 +119,7 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
         source: compact ? 'home' : 'contact_page',
         utm_source: attribution.utm_source || 'direct'
       });
-      setReference(payload.reference || '');
+      setRespondentName(values.name.trim().split(/\s+/)[0] || '');
       setStatus('success');
       form.reset();
     } catch {
@@ -124,23 +130,50 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
 
   return (
     <div className="border border-white/10 bg-[#111211] p-6 md:p-8 lg:p-10">
-      {status === 'success' && (
-        <div role="status" className="mb-7 flex gap-3 border border-[#d8ff57]/35 bg-[#d8ff57]/5 p-4 text-sm leading-relaxed text-white/75">
-          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#d8ff57]" aria-hidden="true" />
-          <p>
-            Mensagem recebida com sucesso. Enviei uma confirmação para o seu e-mail e vou ler o contexto antes de responder.
-            {reference && <span className="mt-1 block text-xs text-white/50">Referência: {reference}</span>}
+      {status === 'success' ? (
+        <motion.section
+          ref={successPanelRef}
+          role="status"
+          aria-live="polite"
+          aria-labelledby="contact-success-title"
+          tabIndex="-1"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          className="flex min-h-[33rem] flex-col items-center justify-center text-center outline-none"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.55 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.08, type: 'spring', stiffness: 260, damping: 18 }}
+            className="flex h-20 w-20 items-center justify-center rounded-full border border-[#d8ff57]/50 bg-[#d8ff57]/10 shadow-[0_0_50px_rgba(216,255,87,0.18)]"
+          >
+            <CheckCircle2 className="h-10 w-10 text-[#d8ff57]" strokeWidth={1.8} aria-hidden="true" />
+          </motion.div>
+          <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-[#d8ff57]">Envio confirmado</p>
+          <h2 id="contact-success-title" className="mt-3 max-w-md text-3xl font-bold tracking-[-0.025em] text-white md:text-4xl">
+            Sua mensagem chegou{respondentName ? `, ${respondentName}` : ''}.
+          </h2>
+          <p className="mt-5 max-w-lg text-base font-light leading-relaxed text-white/65 md:text-lg">
+            Obrigado por compartilhar seu contexto. Você receberá uma confirmação por e-mail; vou ler com atenção e responder pelo canal informado.
           </p>
-        </div>
-      )}
+          <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
+            <a href="/negocios" className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#d8ff57] px-6 text-sm font-black text-black transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">
+              Conhecer meu trabalho <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a href="/artigos" className="inline-flex min-h-12 items-center justify-center px-5 text-sm font-bold text-white/75 transition-colors hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">
+              Ler artigos
+            </a>
+          </div>
+        </motion.section>
+      ) : <>
+        {status === 'error' && (
+          <div role="alert" className="mb-7 border border-red-400/30 bg-red-400/5 p-4 text-sm leading-relaxed text-red-100">
+            Não consegui confirmar o envio agora. Tente novamente ou conclua a conversa pelo WhatsApp/e-mail abaixo.
+          </div>
+        )}
 
-      {status === 'error' && (
-        <div role="alert" className="mb-7 border border-red-400/30 bg-red-400/5 p-4 text-sm leading-relaxed text-red-100">
-          Não consegui confirmar o envio agora. Tente novamente ou conclua a conversa pelo WhatsApp/e-mail abaixo.
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit} onFocus={handleStart} className="space-y-5">
+        <form onSubmit={handleSubmit} onFocus={handleStart} className="space-y-5">
         <input type="text" name="website" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
         <div>
           <label htmlFor={`intent-${compact ? 'compact' : 'full'}`} className="mb-2 block text-sm font-bold text-white">Como posso ajudar?</label>
@@ -226,17 +259,18 @@ const LeadForm = ({ defaultIntent = '', compact = false }) => {
           {status === 'submitting' ? 'Enviando…' : 'Enviar mensagem'}
           {status !== 'submitting' && <ArrowRight className="h-4 w-4" aria-hidden="true" />}
         </button>
-      </form>
+        </form>
 
-      <div className="mt-7 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
-        <p>Você recebe confirmação por e-mail. Os dados são usados somente para responder à solicitação.</p>
-        <div className="flex flex-wrap gap-4">
-          {whatsappUrl && <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 font-bold text-white hover:text-[#d8ff57]"><MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp</a>}
-          <a href="mailto:fernando@fernandoparreiras.com.br" className="inline-flex min-h-11 items-center gap-2 font-bold text-white hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">
-            <Mail className="h-4 w-4" aria-hidden="true" /> E-mail
-          </a>
+        <div className="mt-7 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>Você recebe confirmação por e-mail. Os dados são usados somente para responder à solicitação.</p>
+          <div className="flex flex-wrap gap-4">
+            {whatsappUrl && <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 font-bold text-white hover:text-[#d8ff57]"><MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp</a>}
+            <a href="mailto:fernando@fernandoparreiras.com.br" className="inline-flex min-h-11 items-center gap-2 font-bold text-white hover:text-[#d8ff57] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57]">
+              <Mail className="h-4 w-4" aria-hidden="true" /> E-mail
+            </a>
+          </div>
         </div>
-      </div>
+      </>}
     </div>
   );
 };
