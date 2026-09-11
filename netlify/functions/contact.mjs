@@ -6,7 +6,7 @@ import { buildInternalEmail, buildRespondentEmail } from './_shared/lead-emails.
 const MAX_BODY_BYTES = 64 * 1024;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const CONTACT_ROUTES = new Set(['/', '/contato']);
-const INTENTS = new Set(['tech-human', 'advisory', 'conselho', 'palestra', 'venture', 'formacao', 'parceria']);
+const INTENTS = new Set(['tech-human', 'advisory', 'conselho', 'palestra', 'venture', 'formacao', 'mentoria', 'parceria']);
 const URGENCIES = new Set(['agora', '30-60', 'trimestre', 'exploracao']);
 const NEWSLETTER_INTERESTS = new Set(['lideranca-negocios', 'carreira-ia', 'jovens-futuro', 'mudanca-carreira']);
 
@@ -48,6 +48,7 @@ export const parseLeadRequest = (value) => {
     const name = clean(value.name, 120);
     const interest = clean(value.interest, 80);
     const urgency = clean(value.urgency, 40);
+    const role = clean(value.role, 120);
     const message = clean(value.message, 1_600);
     if (!name || !INTENTS.has(interest) || !URGENCIES.has(urgency) || message.length < 20 || !CONTACT_ROUTES.has(sourcePath)) {
       throw new Error('invalid_payload');
@@ -58,9 +59,10 @@ export const parseLeadRequest = (value) => {
       email,
       phone: clean(value.phone, 40),
       company: clean(value.company, 160),
+      role,
       interest,
       urgency,
-      message: `Momento: ${urgency}\n${message}`,
+      message: [`Momento: ${urgency}`, role ? `Cargo ou atuação: ${role}` : '', message].filter(Boolean).join('\n'),
       sourcePath,
       attribution: normalizeAttribution(value.attribution),
     };
@@ -78,6 +80,7 @@ export const parseLeadRequest = (value) => {
       email,
       phone: '',
       company: '',
+      role: '',
       interest,
       urgency: '',
       message: 'Inscrição na Carta do Fernando',

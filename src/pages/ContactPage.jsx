@@ -4,7 +4,7 @@ import Contact from '@/components/Contact';
 import PageSeo from '@/components/PageSeo';
 import { ROUTE_METADATA } from '@/data/siteMetadata';
 
-const allowedIntents = new Set(['tech-human', 'advisory', 'conselho', 'palestra', 'venture', 'formacao', 'parceria']);
+const allowedIntents = new Set(['tech-human', 'advisory', 'conselho', 'palestra', 'venture', 'formacao', 'mentoria', 'parceria']);
 
 const ContactPage = () => {
   const [searchParams] = useSearchParams();

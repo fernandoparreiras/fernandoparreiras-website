@@ -17,6 +17,7 @@ test('maps commercial and newsletter origins to the Base44 contract', () => {
     name: 'Ana Example',
     email: 'ANA@example.com',
     company: 'Example Inc.',
+    role: 'Chief Technology Officer',
     phone: '+55 31 99999-9999',
     interest: 'advisory',
     message: 'A commercial request.',
@@ -52,6 +53,22 @@ test('validates explicit consent and the route/form matrix', () => {
     sourcePath: '/contato',
     consent: true,
   }), /invalid_payload/);
+
+  const contact = parseLeadRequest({
+    formType: 'contact',
+    name: 'Ana Example',
+    email: 'ana@example.com',
+    phone: '+55 31 99999-9999',
+    company: 'Example Inc.',
+    role: 'Chief Technology Officer',
+    interest: 'mentoria',
+    urgency: '30-60',
+    message: 'Quero estruturar os próximos passos da minha transição profissional.',
+    sourcePath: '/contato',
+    consent: true,
+  });
+  assert.equal(contact.role, 'Chief Technology Officer');
+  assert.match(contact.message, /Cargo ou atuação: Chief Technology Officer/);
 });
 
 test('sends internal email, respondent confirmation and signed Base44 lead', async (t) => {
@@ -103,6 +120,7 @@ test('sends internal email, respondent confirmation and signed Base44 lead', asy
       email: 'ana@example.com',
       phone: '+55 31 99999-9999',
       company: 'Example Inc.',
+      role: 'Chief Technology Officer',
       interest: 'advisory',
       urgency: '30-60',
       message: 'Precisamos organizar a estratégia de tecnologia e inteligência artificial.',
@@ -117,6 +135,8 @@ test('sends internal email, respondent confirmation and signed Base44 lead', asy
   assert.match(payload.reference, /^FP-[A-F0-9]{8}$/);
   assert.equal(calls.filter(([url]) => url.includes('api.resend.com')).length, 2);
   assert.equal(calls.filter(([url]) => url.includes('/functions/ingestLead')).length, 1);
+  const internalEmailBody = JSON.parse(calls.find(([url]) => url.includes('api.resend.com'))[1].body);
+  assert.match(internalEmailBody.text, /Cargo ou atuação: Chief Technology Officer/);
 });
 
 test('provides branded, distinct respondent copies with useful links', () => {
