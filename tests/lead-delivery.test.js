@@ -4,7 +4,7 @@ import test from 'node:test';
 
 import contactHandler, { parseLeadRequest } from '../netlify/functions/contact.mjs';
 import { buildFernandoCrmPayload } from '../netlify/functions/_shared/base44-lead.mjs';
-import { buildRespondentEmail } from '../netlify/functions/_shared/lead-emails.mjs';
+import { buildInternalEmail, buildRespondentEmail } from '../netlify/functions/_shared/lead-emails.mjs';
 
 const submissionId = '123e4567-e89b-42d3-a456-426614174000';
 const submittedAt = '2026-09-09T12:00:00.000Z';
@@ -147,13 +147,68 @@ test('sends internal email, respondent confirmation and signed Base44 lead', asy
 });
 
 test('provides branded, distinct respondent copies with useful links', () => {
-  const contact = buildRespondentEmail({ formType: 'contact', name: '<Ana>' });
+  const contact = buildRespondentEmail({ formType: 'contact', name: '<Ana>', interest: 'palestra' });
   const newsletter = buildRespondentEmail({ formType: 'newsletter', name: '' });
 
-  assert.match(contact.subject, /Recebi sua mensagem/);
+  assert.equal(contact.subject, 'Ana, uma conversa capaz de mover pessoas');
   assert.match(contact.html, /Fernando <span style="color:#D8FF57">Parreiras<\/span>/);
   assert.match(contact.html, /&lt;Ana&gt;/);
-  assert.match(contact.text, /fernandoparreiras\.com\.br\/contato/);
+  assert.match(contact.html, /Uma boa conversa pode mover uma sala inteira/);
+  assert.match(contact.html, /fernandoparreiras\.com\.br\/palestras/);
+  assert.doesNotMatch(contact.html, /Se fizer sentido envolver Tech Human/);
+  assert.doesNotMatch(contact.html, /página de contato/);
+  assert.match(contact.html, /background:#F3F3EF/);
+  assert.match(contact.html, /background:#111211/);
+  for (const url of [
+    'https://fernandoparreiras.com.br/',
+    'https://www.linkedin.com/in/fernandoparreiras/',
+    'https://www.instagram.com/parreiras.fernando',
+    'https://techhuman.com.br/',
+    'https://trustyu.ai/',
+    'https://needyu.ai/',
+    'https://jornadacast.com.br/',
+    'https://por.life/',
+  ]) assert.match(contact.html, new RegExp(url.replace(/[./]/g, '\\$&')));
   assert.match(newsletter.subject, /Carta do Fernando/);
   assert.match(newsletter.html, /fernandoparreiras\.com\.br\/artigos/);
+});
+
+test('tailors contact subject, promise and call to action to every form intent', () => {
+  const cases = [
+    ['tech-human', 'seu desafio merece uma rota clara', '/solucoes/transformacao-tecnologia-ia'],
+    ['advisory', 'clareza para a próxima decisão', '/solucoes/advisory-executivo'],
+    ['conselho', 'perspectiva para decisões que permanecem', '/solucoes/conselho'],
+    ['palestra', 'uma conversa capaz de mover pessoas', '/palestras'],
+    ['venture', 'uma boa ideia merece direção para ganhar forma', '/negocios'],
+    ['formacao', 'conhecimento que vira capacidade real', '/conteudos'],
+    ['mentoria', 'vamos dar forma ao seu próximo movimento', '/sobre'],
+    ['parceria', 'toda boa parceria começa por uma conversa bem feita', '/negocios'],
+  ];
+
+  for (const [interest, subject, path] of cases) {
+    const email = buildRespondentEmail({ formType: 'contact', name: 'Sabrina Oliveira', interest });
+    assert.equal(email.subject, `Sabrina, ${subject}`);
+    assert.match(email.html, new RegExp(path));
+    assert.match(email.text, /Eu mesmo vou ler o que você enviou/);
+  }
+});
+
+test('makes the internal notification easier to triage without changing CRM codes', () => {
+  const email = buildInternalEmail({
+    reference: 'FP-123E4567',
+    formType: 'contact',
+    email: 'sabrina@example.com',
+    name: 'Sabrina Oliveira',
+    interest: 'formacao',
+    company: 'Example',
+    role: 'CTO',
+    phone: '+55 31 99999-9999',
+    message: 'Momento: agora\nPrecisamos desenvolver a liderança do time.',
+    sourcePath: '/contato',
+  });
+
+  assert.equal(email.subject, '[FP-123E4567] Formação ou programa para times — Sabrina Oliveira');
+  assert.match(email.html, /Responder ao contato/);
+  assert.match(email.html, /Interesse<\/td><td[^>]*>Formação ou programa para times/);
+  assert.match(email.html, /background:#F3F3EF/);
 });
