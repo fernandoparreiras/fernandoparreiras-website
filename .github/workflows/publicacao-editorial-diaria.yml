@@ -1,0 +1,54 @@
+# Por que este workflow existe
+#
+# O site decide quais artigos estao publicados comparando a data agendada de
+# cada um com um carimbo de tempo que o Vite injeta NO MOMENTO DO BUILD
+# (vite.config.js -> globalThis.__KNOWLEDGE_BUILD_AT__, lido em
+# src/data/articles.js:327). Esse valor vira um literal dentro do bundle.
+#
+# Consequencia: o site nao sabe que dia e hoje, sabe que dia era quando foi
+# construido. Um artigo agendado para amanha so aparece quando um novo build
+# rodar depois da data marcada. Sem um build periodico, a fila editorial de
+# src/data/scheduledArticles.js simplesmente nao entra no ar sozinha.
+#
+# Este job dispara um build de producao por dia. Se for removido, o
+# agendamento editorial volta a depender de alguem fazer deploy manualmente.
+
+name: Publicacao editorial diaria
+
+on:
+  schedule:
+    # 12:05 UTC = 09:05 BRT. Os artigos usam scheduledAt as 09:00:00-03:00,
+    # entao o build precisa rodar depois disso. O agendador do GitHub Actions
+    # e best-effort e pode atrasar alguns minutos; a margem cobre isso.
+    - cron: "5 12 * * *"
+  workflow_dispatch:
+
+# O job nao le nem escreve nada no repositorio.
+permissions: {}
+
+concurrency:
+  group: publicacao-editorial-diaria
+  cancel-in-progress: false
+
+jobs:
+  disparar-build:
+    name: Disparar build de producao no Netlify
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Chamar o build hook
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOK:-}" ]; then
+            echo "::error::Secret NETLIFY_BUILD_HOOK ausente ou vazio."
+            exit 1
+          fi
+          codigo=$(curl -fsS -X POST -d '{}' -o /dev/null -w '%{http_code}' "$HOOK")
+          echo "Netlify respondeu HTTP $codigo"
+          if [ "$codigo" != "200" ]; then
+            echo "::error::O build hook nao aceitou a chamada (HTTP $codigo)."
+            exit 1
+          fi
+          echo "Build de producao disparado com sucesso."
