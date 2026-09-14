@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { editorialHtml } from '../src/lib/editorial-links.js';
+import { validateEditorialPublications } from '../src/lib/editorial-publication-gate.js';
 
 if (process.env.KNOWLEDGE_BUILD_AT) {
   globalThis.__KNOWLEDGE_BUILD_AT__ = process.env.KNOWLEDGE_BUILD_AT;
@@ -168,6 +169,7 @@ function appendLlms() {
 
 export function main() {
   if (!fs.existsSync(indexPath)) throw new Error('dist/index.html não encontrado. Execute o Vite antes deste gerador.');
+  validateEditorialPublications(articles);
   const baseHtml = fs.readFileSync(indexPath, 'utf8');
 
   const landingSchema = {

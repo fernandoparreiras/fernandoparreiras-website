@@ -263,6 +263,22 @@ export const scheduledArticles = [
         quote:
           "A melhor formação é aquela que muda a qualidade do que você consegue compreender, fazer e demonstrar.",
       },
+      {
+        heading: "Fonte e natureza do texto",
+        paragraphs: [
+          "1. [Ministério da Educação — Cadastro Nacional de Cursos e Instituições de Educação Superior](https://www.gov.br/mec/pt-br/politica-regulacao-supervisao-educacao-superior/cadastro-nacional-de-cursos-e-ies). Fonte oficial para consultar atos autorizativos, reconhecimento e indicadores de instituições e cursos superiores no Brasil. O cadastro não avalia cursos livres nem determina qual formação é adequada para uma pessoa.",
+          "2. [OCDE — Education at a Glance 2025](https://doi.org/10.1787/1c0d9c79-en). Conjunto internacional de indicadores sobre educação, formação, conclusão e resultados. Comparações populacionais não predizem o retorno individual de um curso.",
+          "3. [World Economic Forum — Future of Jobs Report 2025](https://www.weforum.org/publications/the-future-of-jobs-report-2025/). Pesquisa com empregadores sobre tendências de trabalho e competências até 2030. As respostas expressam expectativas organizacionais e não garantem demanda, contratação ou renda para uma pessoa específica.",
+          "Este é um guia autoral de decisão. As quatro alternativas foram organizadas como um exercício prático de Fernando Parreiras; não constituem uma classificação oficial nem uma recomendação educacional individualizada.",
+        ],
+      },
+      {
+        heading: "Nota editorial e de responsabilidade",
+        paragraphs: [
+          "Este texto combina referências institucionais com análise e orientação profissional do autor. O conteúdo é informativo, não substitui aconselhamento educacional ou profissional individual e não promete emprego, renda ou resultado acadêmico. Antes de contratar uma graduação, consulte a regularidade da instituição e do curso no e-MEC; para cursos livres e certificações, verifique emissor, escopo, custo e reconhecimento no contexto pretendido. Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela orientação editorial publicada.",
+          "Corte das fontes: 14/09/2026. Histórico de correções: fontes, limites das evidências e nota de responsabilidade adicionados antes da primeira publicação pública.",
+        ],
+      },
     ],
   },
   {
@@ -277,7 +293,7 @@ export const scheduledArticles = [
     tags: ["carreira com IA", "valor profissional", "posicionamento"],
     readingMinutes: 9,
     publishedAt: "2026-09-10",
-    updatedAt: "2026-09-10",
+    updatedAt: "2026-09-14",
     scheduledAt: "2026-09-10T09:00:00-03:00",
     image: "/images/em-cena/fernando-parreiras-palestra-techhuman-1600.webp",
     imageAlt: "Fernando Parreiras apresentando em um evento da Tech Human.",
@@ -328,6 +344,21 @@ export const scheduledArticles = [
         ],
         quote:
           "Seu valor não está em fazer mais rápido aquilo que deixou de precisar ser feito do mesmo jeito.",
+      },
+      {
+        heading: "Fonte e natureza do texto",
+        paragraphs: [
+          "1. [Organização Internacional do Trabalho — Generative AI and Jobs: A Refined Global Index of Occupational Exposure](https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure). Working Paper 140, publicado em 20/05/2025. O estudo estima exposição potencial de tarefas e ocupações à IA generativa; não mede o valor de um profissional específico nem prevê demissões individuais.",
+          "2. [NIST — Artificial Intelligence Risk Management Framework 1.0](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10). Framework voluntário para incorporar confiabilidade e gestão de riscos ao desenho, uso e avaliação de sistemas de IA. É uma referência organizacional, não um estudo de carreira.",
+          "As quatro camadas de valor e o experimento de duas semanas são uma síntese autoral de Fernando Parreiras. Elas traduzem as referências para uma prática de reposicionamento e não são conclusões literais das fontes.",
+        ],
+      },
+      {
+        heading: "Nota editorial e de responsabilidade",
+        paragraphs: [
+          "Este texto combina referências sobre transformação do trabalho e gestão responsável de IA com análise e recomendações profissionais do autor. O conteúdo é informativo, não substitui orientação individual de carreira e não promete emprego, renda, produtividade ou resultado comercial. Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela orientação editorial publicada e mantém interesse profissional e comercial nos temas de estratégia, tecnologia, IA e desenvolvimento de lideranças.",
+          "Corte das fontes: 14/09/2026. Histórico de correções: fontes, limites das evidências e nota de responsabilidade adicionados em 14/09/2026; o texto principal foi preservado.",
+        ],
       },
     ],
   },
