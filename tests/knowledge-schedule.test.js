@@ -88,10 +88,10 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   );
 });
 
-test("data editorial e data de ativação usam o mesmo dia em São Paulo", () => {
+test("ativação usa o dia editorial e atualizações não antecedem a publicação", () => {
   for (const article of scheduledArticles) {
     assert.equal(article.scheduledAt.slice(0, 10), article.publishedAt);
-    assert.equal(article.updatedAt, article.publishedAt);
+    assert.ok(article.updatedAt >= article.publishedAt);
     assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:46):00-03:00$/);
   }
 });
