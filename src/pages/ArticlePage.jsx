@@ -128,7 +128,7 @@ const ArticlePage = () => {
                 <ArticleTags tags={article.tags} className="mt-6" />
               </div>
               <figure className="overflow-hidden border border-white/10">
-                <img src={article.image} alt={article.imageAlt} width="1122" height="1403" className="aspect-[4/3] h-full w-full object-cover object-[50%_18%]" />
+                <img src={article.image} alt={article.imageAlt} width="1122" height="1403" className={`aspect-[4/3] h-full w-full ${article.imageFit === 'contain' ? 'bg-black object-contain' : 'object-cover object-[50%_18%]'}`} />
               </figure>
             </div>
           </div>

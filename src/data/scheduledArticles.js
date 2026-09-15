@@ -1,8 +1,10 @@
 import { radarArticles } from "./radarArticles.js";
 import { radarSeptember10Articles } from "./radarSeptember10Articles.js";
 import { isRadarArticleApproved } from "./radarPublicationApprovals.js";
+import { sequoiaServicesArticle } from "./sequoiaServicesArticle.js";
 
 export const scheduledArticles = [
+  sequoiaServicesArticle,
   ...radarSeptember10Articles.filter(isRadarArticleApproved),
   ...radarArticles,
   {

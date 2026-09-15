@@ -12,6 +12,7 @@ const EXPECTED_SCHEDULE = [
   ["redesenhar-o-valor-que-voce-entrega-com-ia", "2026-09-10T09:00:00-03:00"],
   ["saber-quando-parar-uma-ia", "2026-09-10T13:46:00-03:00"],
   ["faculdade-curso-certificacao-ou-projeto", "2026-09-14T09:00:00-03:00"],
+  ["servico-e-o-novo-software", "2026-09-15T13:35:00-03:00"],
   [
     "competencias-que-sobrevivem-a-uma-mudanca-de-carreira",
     "2026-09-18T09:00:00-03:00",
@@ -35,8 +36,8 @@ const EXPECTED_SCHEDULE = [
   ],
 ];
 
-test("coleção editorial possui dezessete artigos com especiais AI-native e democratização da IA", () => {
-  assert.equal(editorialArticles.length, 17);
+test("coleção editorial possui dezoito artigos com especiais AI-native e democratização da IA", () => {
+  assert.equal(editorialArticles.length, 18);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -48,12 +49,12 @@ test("coleção editorial possui dezessete artigos com especiais AI-native e dem
   assert.deepEqual(countsByTrack, {
     "carreira-ia": 5,
     "jovens-futuro": 3,
-    "lideranca-negocios": 6,
+    "lideranca-negocios": 7,
     "mudanca-carreira": 3,
   });
 });
 
-test("fila inclui quatro especiais e preserva a agenda reconciliada", () => {
+test("fila inclui cinco especiais e preserva a agenda reconciliada", () => {
   const chronological = [...scheduledArticles].sort(
     (left, right) => new Date(left.scheduledAt) - new Date(right.scheduledAt),
   );
@@ -80,8 +81,8 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(immediatelyBeforeFirstRelease.length, 6);
   assert.equal(firstRelease.length, 7);
   assert.equal(firstRelease[0].slug, "dia-seguinte-primeira-venda");
-  assert.equal(septemberRelease.length, 15);
-  assert.equal(completeRelease.length, 17);
+  assert.equal(septemberRelease.length, 16);
+  assert.equal(completeRelease.length, 18);
   assert.equal(
     completeRelease[0].slug,
     "produtividade-sem-direcao-acelera-o-desperdicio",
@@ -92,6 +93,6 @@ test("ativação usa o dia editorial e atualizações não antecedem a publicaç
   for (const article of scheduledArticles) {
     assert.equal(article.scheduledAt.slice(0, 10), article.publishedAt);
     assert.ok(article.updatedAt >= article.publishedAt);
-    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:46):00-03:00$/);
+    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:(?:35|46)):00-03:00$/);
   }
 });
