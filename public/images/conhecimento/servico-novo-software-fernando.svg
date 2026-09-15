@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Da ferramenta ao resultado</title>
+  <desc id="desc">Três etapas mostram uma ferramenta que oferece capacidade, um autopiloto que executa trabalho e um serviço AI-native que assume um resultado.</desc>
+  <rect width="1200" height="1200" fill="#080909"/>
+  <rect x="56" y="56" width="1088" height="1088" fill="none" stroke="#d8ff57" stroke-width="2"/>
+  <text x="92" y="130" fill="#d8ff57" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="5">SERVIÇO É O NOVO SOFTWARE</text>
+  <text x="92" y="220" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="800">Da ferramenta</text>
+  <text x="92" y="292" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="800">ao resultado.</text>
+  <g transform="translate(92 390)">
+    <rect width="280" height="236" fill="#141617" stroke="#3a3d3e"/>
+    <text x="28" y="45" fill="#8f9598" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3">01 · COPILOTO</text>
+    <text x="28" y="106" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="700">Vende</text>
+    <text x="28" y="143" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="700">capacidade</text>
+    <text x="28" y="195" fill="#8f9598" font-family="Arial, sans-serif" font-size="18">O cliente faz o trabalho.</text>
+  </g>
+  <path d="M392 508h56m-18-18 18 18-18 18" fill="none" stroke="#d8ff57" stroke-width="4"/>
+  <g transform="translate(468 390)">
+    <rect width="280" height="236" fill="#141617" stroke="#3a3d3e"/>
+    <text x="28" y="45" fill="#8f9598" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3">02 · AUTOPILOTO</text>
+    <text x="28" y="106" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="700">Executa</text>
+    <text x="28" y="143" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="700">o trabalho</text>
+    <text x="28" y="195" fill="#8f9598" font-family="Arial, sans-serif" font-size="18">A empresa entrega a saída.</text>
+  </g>
+  <path d="M768 508h56m-18-18 18 18-18 18" fill="none" stroke="#d8ff57" stroke-width="4"/>
+  <g transform="translate(844 390)">
+    <rect width="280" height="236" fill="#d8ff57"/>
+    <text x="28" y="45" fill="#263000" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2">03 · AI-NATIVE</text>
+    <text x="28" y="106" fill="#080909" font-family="Arial, sans-serif" font-size="30" font-weight="800">Assume</text>
+    <text x="28" y="143" fill="#080909" font-family="Arial, sans-serif" font-size="30" font-weight="800">o resultado</text>
+    <text x="28" y="195" fill="#263000" font-family="Arial, sans-serif" font-size="18">Mais mercado. Mais dever.</text>
+  </g>
+  <line x1="92" y1="926" x2="1124" y2="926" stroke="#3a3d3e"/>
+  <text x="92" y="996" fill="#ffffff" font-family="Arial, sans-serif" font-size="32" font-weight="700">Tecnologia muda a execução.</text>
+  <text x="92" y="1044" fill="#8f9598" font-family="Arial, sans-serif" font-size="26">Liderança continua responsável pela promessa.</text>
+</svg>

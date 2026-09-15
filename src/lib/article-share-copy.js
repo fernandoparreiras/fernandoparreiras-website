@@ -1,6 +1,11 @@
 const SITE_URL = 'https://fernandoparreiras.com.br';
 
 export const ARTICLE_SHARE_INTENTS = Object.freeze({
+  'servico-e-o-novo-software': {
+    discussion: 'Sua empresa ainda vende acesso a uma ferramenta ou já consegue assumir uma parte clara do resultado do cliente?',
+    commercialCta: 'Leve esta discussão para sua liderança, conselho ou evento: converse com Fernando sobre estratégia, ofertas AI-native, advisory e palestras.',
+    destination: '/contato/',
+  },
   'saber-quando-parar-uma-ia': {
     discussion: 'Qual evidência deveria interromper uma nova rodada de IA antes que atividade seja confundida com progresso?',
     commercialCta: 'Leve esta discussão para sua liderança ou equipe: converse com Fernando sobre julgamento, produto e transformação responsável com IA.',

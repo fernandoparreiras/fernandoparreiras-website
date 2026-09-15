@@ -2,9 +2,14 @@
 
 ## Objetivo
 
-Coleção de dezessete artigos: seis já publicados, sete evergreen e quatro ensaios especiais do Radar de Evidências. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026 e 10/09/2026. A agenda ordinária foi conciliada com Tech Human e Trustyu Forge para uma publicação por dia no portfólio, às 9h no horário de São Paulo.
+Coleção de dezoito artigos: seis já publicados, sete evergreen e cinco ensaios especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026 e 15/09/2026. A agenda ordinária foi conciliada com Tech Human e Trustyu Forge para uma publicação por dia no portfólio, às 9h no horário de São Paulo.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
+
+Em 15/09/2026, a edição coordenada `services-new-software-2026-09-15` foi aprovada
+fora da cadência ordinária. O artigo autoral “Serviço é o novo software” entra às 13h35 BRT,
+com uma lente de liderança, estratégia e responsabilidade; Tech Human e Perspectivas Trustyu
+publicam leituras complementares. A edição não desloca datas evergreen.
 
 Em 10/09/2026, o Radar de Evidências originou uma edição especial coordenada para Tech Human,
 Fernando Parreiras e Trustyu Forge. O ensaio autoral ocupa um segundo slot no mesmo dia sem deslocar
