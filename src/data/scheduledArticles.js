@@ -2,11 +2,13 @@ import { radarArticles } from "./radarArticles.js";
 import { radarSeptember10Articles } from "./radarSeptember10Articles.js";
 import { isRadarArticleApproved } from "./radarPublicationApprovals.js";
 import { sequoiaServicesArticle } from "./sequoiaServicesArticle.js";
+import { aiCostCareerArticle } from "./aiCostCareerArticle.js";
 
 export const scheduledArticles = [
   sequoiaServicesArticle,
   ...radarSeptember10Articles.filter(isRadarArticleApproved),
   ...radarArticles,
+  aiCostCareerArticle,
   {
     slug: "plano-de-90-dias-para-uma-transicao-profissional-com-ia",
     title: "Um plano de 90 dias para uma transição profissional com IA",
