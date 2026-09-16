@@ -6,6 +6,11 @@ export const ARTICLE_SHARE_INTENTS = Object.freeze({
     commercialCta: 'Leve esta discussão para sua liderança, conselho ou evento: converse com Fernando sobre estratégia, ofertas AI-native, advisory e palestras.',
     destination: '/contato/',
   },
+  'profissional-ti-custo-total-da-ia': {
+    discussion: 'Você consegue ligar custo de modelo, CI, evals, infraestrutura e trabalho humano ao resultado que o produto realmente entrega?',
+    commercialCta: 'Leve esta discussão para sua carreira ou equipe: converse com Fernando sobre arquitetura, liderança e formação para trabalhar com IA.',
+    destination: '/contato/',
+  },
   'saber-quando-parar-uma-ia': {
     discussion: 'Qual evidência deveria interromper uma nova rodada de IA antes que atividade seja confundida com progresso?',
     commercialCta: 'Leve esta discussão para sua liderança ou equipe: converse com Fernando sobre julgamento, produto e transformação responsável com IA.',

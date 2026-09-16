@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">A competência que separa profissionais de TI</title>
+  <desc id="desc">Um profissional conecta arquitetura, evidência e economia ao outcome aceito.</desc>
+  <rect width="1200" height="1200" fill="#070908"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M104 232H1096M104 962H1096" stroke="#303532" stroke-width="2"/>
+    <circle cx="600" cy="574" r="190" stroke="#c9ff3d" stroke-width="4"/>
+    <circle cx="600" cy="574" r="100" stroke="#f4f6f5" stroke-width="3"/>
+    <path d="M600 384V377M790 574H930M600 764v31M410 574H270" stroke="#7d8880" stroke-width="3"/>
+    <circle cx="600" cy="315" r="62" stroke="#c9ff3d" stroke-width="3"/>
+    <circle cx="930" cy="574" r="62" stroke="#c9ff3d" stroke-width="3"/>
+    <circle cx="600" cy="850" r="55" stroke="#c9ff3d" stroke-width="3"/>
+    <circle cx="270" cy="574" r="62" stroke="#c9ff3d" stroke-width="3"/>
+    <path d="m559 579 29 29 57-72" stroke="#c9ff3d" stroke-width="9"/>
+    <path d="M504 480 414 392M696 480l90-88M504 668l-90 88M696 668l90 88" stroke="#424a44" stroke-width="2" stroke-dasharray="8 10"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="600" y="116" fill="#f4f6f5" font-size="41" font-weight="700" letter-spacing="7">A COMPETÊNCIA QUE VAI SEPARAR</text>
+    <text x="600" y="174" fill="#c9ff3d" font-size="41" font-weight="700" letter-spacing="7">PROFISSIONAIS DE TI</text>
+    <text x="600" y="321" fill="#c9ff3d" font-size="17" font-weight="700" letter-spacing="1">ARQUITETURA</text>
+    <text x="930" y="580" fill="#c9ff3d" font-size="18" font-weight="700" letter-spacing="3">ECONOMIA</text>
+    <text x="600" y="856" fill="#c9ff3d" font-size="17" font-weight="700" letter-spacing="1">EVIDÊNCIA</text>
+    <text x="270" y="580" fill="#c9ff3d" font-size="18" font-weight="700" letter-spacing="3">OPERAÇÃO</text>
+    <text x="600" y="558" fill="#f4f6f5" font-size="22" font-weight="700" letter-spacing="3">OUTCOME</text>
+    <text x="600" y="660" fill="#9da69f" font-size="20">MODELO · CONTEXTO · CI · EVALS · PESSOAS</text>
+    <text x="600" y="930" fill="#f4f6f5" font-size="25" font-weight="700">CONECTAR O CUSTO AO RESULTADO</text>
+    <text x="110" y="1042" fill="#9da69f" font-size="17" text-anchor="start">Instagram @parreiras.fernando</text>
+    <text x="1090" y="1042" fill="#9da69f" font-size="17" text-anchor="end">LinkedIn /in/fernandoparreiras/</text>
+  </g>
+</svg>
