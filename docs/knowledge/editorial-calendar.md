@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Coleção de dezoito artigos: seis já publicados, sete evergreen e cinco ensaios especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026 e 15/09/2026. A agenda ordinária foi conciliada com Tech Human e Trustyu Forge para uma publicação por dia no portfólio, às 9h no horário de São Paulo.
+Coleção de vinte artigos: seis já publicados e quatorze agendados. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026 e 18/09/2026. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
 

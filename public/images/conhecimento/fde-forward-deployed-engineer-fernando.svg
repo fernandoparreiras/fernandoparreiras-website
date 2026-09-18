@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Forward Deployed Engineer</title>
+  <desc id="desc">Fluxo da missão do cliente até produto adotado e padrão reutilizável.</desc>
+  <rect width="1200" height="1200" fill="#070908"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="600" y="108" fill="#f4f6f5" font-size="42" font-weight="700" text-anchor="middle" letter-spacing="8">FORWARD DEPLOYED ENGINEER</text>
+    <text x="600" y="164" fill="#c9ff3d" font-size="25" font-weight="700" text-anchor="middle" letter-spacing="5">DO PROBLEMA À PRODUÇÃO</text>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M105 240H1095M105 966H1095" stroke="#303532" stroke-width="2"/>
+    <path d="M174 584H1014" stroke="#3d4540" stroke-width="3"/>
+    <path d="m995 566 24 18-24 18" stroke="#c9ff3d" stroke-width="4"/>
+    <path d="M994 486C948 338 267 328 213 487" stroke="#788347" stroke-width="2" stroke-dasharray="10 12"/>
+    <path d="m199 471 14 19 21-14" stroke="#c9ff3d" stroke-width="4"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <g transform="translate(190 584)"><circle r="65" fill="#0c0f0d" stroke="#c9ff3d" stroke-width="3"/><text y="-8" fill="#f4f6f5" font-size="16" font-weight="700">MISSÃO DO</text><text y="16" fill="#c9ff3d" font-size="16" font-weight="700">CLIENTE</text></g>
+    <g transform="translate(360 584)"><rect x="-67" y="-67" width="134" height="134" rx="24" fill="#0c0f0d" stroke="#f4f6f5" stroke-width="3"/><text y="7" fill="#f4f6f5" font-size="17" font-weight="700">DESCOBERTA</text></g>
+    <g transform="translate(530 584)"><circle r="65" fill="#0c0f0d" stroke="#c9ff3d" stroke-width="3"/><text y="-8" fill="#f4f6f5" font-size="17" font-weight="700">BUILD</text><text y="16" fill="#c9ff3d" font-size="17" font-weight="700">COM IA</text></g>
+    <g transform="translate(700 584)"><rect x="-67" y="-67" width="134" height="134" rx="24" fill="#0c0f0d" stroke="#f4f6f5" stroke-width="3"/><text y="-8" fill="#f4f6f5" font-size="15" font-weight="700">EVALS E</text><text y="16" fill="#c9ff3d" font-size="15" font-weight="700">CONTROLES</text></g>
+    <g transform="translate(870 584)"><circle r="65" fill="#0c0f0d" stroke="#c9ff3d" stroke-width="3"/><text y="-8" fill="#f4f6f5" font-size="16" font-weight="700">PRODUÇÃO</text><text y="16" fill="#c9ff3d" font-size="16" font-weight="700">+ ADOÇÃO</text></g>
+    <text x="600" y="790" fill="#f4f6f5" font-size="27" font-weight="700">RESULTADO OBSERVÁVEL</text>
+    <text x="600" y="840" fill="#9da69f" font-size="21" letter-spacing="2">FEEDBACK → PRODUTO → PADRÃO REUTILIZÁVEL</text>
+    <text x="110" y="1045" fill="#9da69f" font-size="17" text-anchor="start">Instagram @parreiras.fernando</text>
+    <text x="1090" y="1045" fill="#9da69f" font-size="17" text-anchor="end">LinkedIn /in/fernandoparreiras/</text>
+  </g>
+</svg>
