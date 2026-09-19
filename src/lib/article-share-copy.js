@@ -1,6 +1,11 @@
 const SITE_URL = 'https://fernandoparreiras.com.br';
 
 export const ARTICLE_SHARE_INTENTS = Object.freeze({
+  'fde-forward-deployed-engineer-carreira-ia': {
+    discussion: 'Sua trajetória já mostra que você consegue compreender o problema do cliente, construir com IA e acompanhar a entrega até produção?',
+    commercialCta: 'Leve esta discussão para sua carreira ou equipe: converse com Fernando sobre produto, arquitetura e formação para trabalhar com IA.',
+    destination: '/contato/',
+  },
   'servico-e-o-novo-software': {
     discussion: 'Sua empresa ainda vende acesso a uma ferramenta ou já consegue assumir uma parte clara do resultado do cliente?',
     commercialCta: 'Leve esta discussão para sua liderança, conselho ou evento: converse com Fernando sobre estratégia, ofertas AI-native, advisory e palestras.',

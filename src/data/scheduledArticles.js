@@ -3,12 +3,14 @@ import { radarSeptember10Articles } from "./radarSeptember10Articles.js";
 import { isRadarArticleApproved } from "./radarPublicationApprovals.js";
 import { sequoiaServicesArticle } from "./sequoiaServicesArticle.js";
 import { aiCostCareerArticle } from "./aiCostCareerArticle.js";
+import { fdeCareerArticle } from "./fdeCareerArticle.js";
 
 export const scheduledArticles = [
   sequoiaServicesArticle,
   ...radarSeptember10Articles.filter(isRadarArticleApproved),
   ...radarArticles,
   aiCostCareerArticle,
+  fdeCareerArticle,
   {
     slug: "plano-de-90-dias-para-uma-transicao-profissional-com-ia",
     title: "Um plano de 90 dias para uma transição profissional com IA",
@@ -203,6 +205,19 @@ export const scheduledArticles = [
         ],
         quote:
           "Uma competência transferível só se torna visível quando é traduzida para um problema novo.",
+      },
+      {
+        heading: "Fontes e natureza do texto",
+        paragraphs: [
+          "1. [World Economic Forum — Future of Jobs Report 2025](https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/). Pesquisa com empregadores sobre transformações do trabalho e competências; suas projeções agregadas não determinam a trajetória de uma pessoa. 2. [OECD — Artificial intelligence and the changing demand for skills in the labour market](https://www.oecd.org/en/publications/artificial-intelligence-and-the-changing-demand-for-skills-in-the-labour-market_88684e36-en.html). Revisão sobre IA e demanda por competências; os efeitos variam por ocupação, organização e país.",
+          "As quatro competências, o método de episódios verificáveis e a orientação de construir uma ponte são síntese autoral de Fernando Parreiras, não uma taxonomia universal nem promessa de contratação.",
+        ],
+      },
+      {
+        heading: "Nota editorial e de responsabilidade",
+        paragraphs: [
+          "Conteúdo informativo sobre carreira, sem aconselhamento individual ou garantia de emprego, promoção ou renda. Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela orientação editorial publicada. Corte das fontes e revisão factual: 18/09/2026.",
+        ],
       },
     ],
   },

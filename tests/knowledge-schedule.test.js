@@ -18,6 +18,10 @@ const EXPECTED_SCHEDULE = [
     "2026-09-18T09:00:00-03:00",
   ],
   [
+    "fde-forward-deployed-engineer-carreira-ia",
+    "2026-09-20T13:30:00-03:00",
+  ],
+  [
     "equipes-com-agentes-de-ia-ainda-precisam-de-responsabilidade-humana",
     "2026-09-22T09:00:00-03:00",
   ],
@@ -37,8 +41,8 @@ const EXPECTED_SCHEDULE = [
   ],
 ];
 
-test("coleção editorial possui dezenove artigos com especiais AI-native e democratização da IA", () => {
-  assert.equal(editorialArticles.length, 19);
+test("coleção editorial possui vinte artigos com especiais AI-native, FDE e democratização da IA", () => {
+  assert.equal(editorialArticles.length, 20);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -48,7 +52,7 @@ test("coleção editorial possui dezenove artigos com especiais AI-native e demo
     {},
   );
   assert.deepEqual(countsByTrack, {
-    "carreira-ia": 6,
+    "carreira-ia": 7,
     "jovens-futuro": 3,
     "lideranca-negocios": 7,
     "mudanca-carreira": 3,
@@ -83,9 +87,9 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(immediatelyBeforeFirstRelease.length, 6);
   assert.equal(firstRelease.length, 7);
   assert.equal(firstRelease[0].slug, "dia-seguinte-primeira-venda");
-  assert.equal(septemberRelease.length, 16);
-  assert.equal(octoberRelease.length, 17);
-  assert.equal(completeRelease.length, 19);
+  assert.equal(septemberRelease.length, 17);
+  assert.equal(octoberRelease.length, 18);
+  assert.equal(completeRelease.length, 20);
   assert.equal(
     completeRelease[0].slug,
     "produtividade-sem-direcao-acelera-o-desperdicio",
@@ -96,6 +100,6 @@ test("ativação usa o dia editorial e atualizações não antecedem a publicaç
   for (const article of scheduledArticles) {
     assert.equal(article.scheduledAt.slice(0, 10), article.publishedAt);
     assert.ok(article.updatedAt >= article.publishedAt);
-    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:(?:35|46)):00-03:00$/);
+    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:(?:30|35|46)):00-03:00$/);
   }
 });
