@@ -6,18 +6,30 @@ import {
   validateEditorialPublications,
 } from "../src/lib/editorial-publication-gate.js";
 
-const dueSlugs = [
-  "redesenhar-o-valor-que-voce-entrega-com-ia",
-  "faculdade-curso-certificacao-ou-projeto",
-];
+test("toda a fila agendada passa pelo gate antes da data de publicação", () => {
+  assert.equal(scheduledArticles.length, 14);
+  assert.doesNotThrow(() => validateEditorialPublications(scheduledArticles));
+});
 
-test("artigos evergreen vencidos passam pelo gate de fontes e responsabilidade", () => {
-  const dueArticles = scheduledArticles.filter(({ slug }) =>
-    dueSlugs.includes(slug),
+test("gate orienta o título canônico quando encontra uma seção de fontes incompatível", () => {
+  assert.throws(
+    () =>
+      validateEditorialPublication({
+        slug: "titulo-de-fontes-incompativel",
+        scheduledAt: "2026-09-20T13:30:00-03:00",
+        content: [
+          {
+            heading: "Fontes e limites da análise",
+            paragraphs: ["[Fonte](https://example.org/report)."],
+          },
+          {
+            heading: "Nota editorial e de responsabilidade",
+            paragraphs: ["Revisão autoral concluída."],
+          },
+        ],
+      }),
+    /título editorial incompatível.*Fonte e natureza do texto/,
   );
-
-  assert.equal(dueArticles.length, dueSlugs.length);
-  assert.doesNotThrow(() => validateEditorialPublications(dueArticles));
 });
 
 test("gate rejeita artigo agendado sem fonte clicável", () => {

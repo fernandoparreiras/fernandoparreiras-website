@@ -85,6 +85,21 @@ export const scheduledArticles = [
           "O plano funciona menos pela quantidade de tarefas e mais pela repetição desse ciclo. Em 90 dias, você não controla a resposta do mercado, mas pode controlar a qualidade das evidências que coloca diante dele.",
         ],
       },
+      {
+        heading: "Fontes e natureza do texto",
+        paragraphs: [
+          "1. [OCDE — Promoting Better Career Choices for Longer Working Lives](https://www.oecd.org/content/dam/oecd/en/publications/reports/2024/03/promoting-better-career-choices-for-longer-working-lives_a6eaa77a/1ef9a0d0-en.pdf). O relatório discute orientação, identificação de competências transferíveis, planejamento de caminhos e apoio a transições profissionais. Ele não valida um ciclo universal de 90 dias nem prevê o resultado de uma pessoa.",
+          "2. [World Economic Forum — Future of Jobs Report 2025, skills outlook](https://www.weforum.org/publications/the-future-of-jobs-report-2025/in-full/3-skills-outlook/). Pesquisa internacional com empregadores sobre competências em transformação, incluindo pensamento analítico, resiliência, liderança, aprendizagem contínua e competências tecnológicas. Expectativas agregadas não garantem contratação ou progressão individual.",
+          "A estrutura de 90 dias, as três etapas e a cadência semanal são uma síntese autoral de Fernando Parreiras para transformar intenção em experimentos e evidências. Não constituem protocolo clínico, educacional ou promessa de recolocação.",
+        ],
+      },
+      {
+        heading: "Nota editorial e de responsabilidade",
+        paragraphs: [
+          "Este texto oferece um método informativo de desenvolvimento profissional. Não substitui aconselhamento individual de carreira, psicológico, educacional, jurídico ou financeiro e não promete emprego, renda, promoção ou prazo de transição. Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela orientação editorial publicada e mantém interesse profissional e comercial em carreira, liderança, formação e transformação com IA.",
+          "Corte das fontes e revisão factual: 23/09/2026. Versão preparada antes da primeira publicação pública, preservando a agenda original de 26/09/2026.",
+        ],
+      },
     ],
   },
   {
@@ -99,7 +114,7 @@ export const scheduledArticles = [
     tags: ["agentes de IA", "responsabilidade", "governança"],
     readingMinutes: 10,
     publishedAt: "2026-09-22",
-    updatedAt: "2026-09-22",
+    updatedAt: "2026-09-23",
     scheduledAt: "2026-09-22T09:00:00-03:00",
     image: "/images/em-cena/fernando-parreiras-palco-1600.webp",
     imageAlt:
@@ -146,6 +161,21 @@ export const scheduledArticles = [
         ],
         quote:
           "Automação amplia a execução. Governança mantém a responsabilidade visível.",
+      },
+      {
+        heading: "Fontes e natureza do texto",
+        paragraphs: [
+          "1. [NIST — AI Risk Management Framework Core](https://airc.nist.gov/airmf-resources/airmf/5-sec-core/). O framework voluntário define governança contínua, responsabilidades organizacionais, documentação, supervisão e mecanismos de gestão de riscos ao longo do ciclo de vida. Não é uma lei nem prescreve um único desenho operacional.",
+          "2. [NIST — Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf). O perfil propõe ações para governar, mapear, medir e administrar riscos específicos ou ampliados pela IA generativa. As recomendações precisam ser adaptadas ao contexto, à finalidade e à tolerância a risco de cada organização.",
+          "O contrato operacional, os pontos de supervisão e as perguntas de liderança são síntese autoral de Fernando Parreiras. Eles traduzem princípios de governança para uma prática executiva e não substituem avaliação jurídica, regulatória, de segurança ou de risco específica.",
+        ],
+      },
+      {
+        heading: "Nota editorial e de responsabilidade",
+        paragraphs: [
+          "Este artigo é conteúdo informativo sobre liderança e governança de sistemas com IA. Não oferece aconselhamento jurídico, regulatório, trabalhista, de segurança ou de conformidade. Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela orientação editorial publicada e mantém interesse profissional e comercial em estratégia, arquitetura, governança, produtos e transformação com IA.",
+          "Corte das fontes e revisão factual: 23/09/2026. Histórico de correções: fontes, limites das evidências e nota de responsabilidade adicionados antes da primeira publicação pública; a tese central foi preservada.",
+        ],
       },
     ],
   },
@@ -446,6 +476,22 @@ export const scheduledArticles = [
         quote:
           "A pergunta não é quanto conseguimos produzir. É quanto do que produzimos realmente merecia existir.",
       },
+      {
+        heading: "Fontes e natureza do texto",
+        paragraphs: [
+          "1. [DORA — State of AI-assisted Software Development 2025](https://dora.dev/research/2025/dora-report/). A pesquisa descreve a IA como amplificadora das forças e disfunções do sistema organizacional; associação e contexto não estabelecem benefício universal para toda equipe ou ferramenta.",
+          "2. [DORA — User-centric focus](https://dora.dev/capabilities/user-centric-focus/). A orientação conecta velocidade de desenvolvimento a necessidades, feedback e métricas de usuários e alerta para a produção acelerada de software de baixo valor quando a equipe otimiza apenas output. Os resultados representam o modelo e as amostras da pesquisa DORA.",
+          "3. [NBER — Generative AI at Work](https://www.nber.org/papers/w31161). Estudo sobre a introdução de um assistente generativo entre agentes de atendimento, com ganho de produtividade no contexto observado. O recorte não demonstra que toda automação gera valor, nem que o mesmo efeito ocorrerá em outros fluxos, funções ou organizações.",
+          "A rotina de liderança e as perguntas sobre resultado, retrabalho e consequência são síntese autoral de Fernando Parreiras, não conclusões literais das fontes nem promessa de redução de custos.",
+        ],
+      },
+      {
+        heading: "Nota editorial e de responsabilidade",
+        paragraphs: [
+          "Este artigo combina referências de pesquisa com análise executiva do autor. É conteúdo informativo e não constitui aconselhamento financeiro, operacional, jurídico ou de investimento, nem promete produtividade, economia ou resultado comercial. Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela orientação editorial publicada e mantém interesse profissional e comercial em estratégia, tecnologia, produtos e transformação com IA.",
+          "Corte das fontes e revisão factual: 23/09/2026. Versão preparada antes da primeira publicação pública, preservando a agenda original de 10/11/2026.",
+        ],
+      },
     ],
   },
   {
@@ -511,6 +557,22 @@ export const scheduledArticles = [
         ],
         quote:
           "Democratizar a capacidade de criar exige democratizar também a compreensão das consequências.",
+      },
+      {
+        heading: "Fontes e natureza do texto",
+        paragraphs: [
+          "1. [DORA — Empowering teams to choose tools](https://dora.dev/capabilities/teams-empowered-to-choose-tools/). A orientação associa autonomia informada a melhor entrega quando combinada com visão sistêmica, feedback e responsabilidade; também alerta que liberdade sem restrições pode ampliar dívida técnica e fragilidade.",
+          "2. [DORA — User-centric focus](https://dora.dev/capabilities/user-centric-focus/). A capacidade conecta criação de software a necessidades e resultados de usuários e descreve o risco de acelerar output sem impacto. Os achados são associações dentro do programa de pesquisa DORA, não causalidade universal.",
+          "3. [NIST — AI Risk Management Framework Core](https://airc.nist.gov/airmf-resources/airmf/5-sec-core/). O framework voluntário recomenda papéis, linhas de responsabilidade, documentação, monitoramento e supervisão ao longo do ciclo de vida de sistemas de IA. A aplicação concreta depende do risco, do setor e das obrigações da organização.",
+          "As três fronteiras de uso e as perguntas do líder são síntese autoral de Fernando Parreiras para organizar autonomia e responsabilidade. Não constituem arquitetura obrigatória nem substituem avaliações técnicas, jurídicas, de segurança ou de conformidade.",
+        ],
+      },
+      {
+        heading: "Nota editorial e de responsabilidade",
+        paragraphs: [
+          "Este texto é conteúdo informativo sobre liderança, autonomia e governança na criação de software com IA. Não oferece aconselhamento jurídico, regulatório, trabalhista, de segurança ou de investimento. Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela orientação editorial publicada e mantém interesse profissional e comercial em estratégia, arquitetura, produtos e transformação com IA.",
+          "Corte das fontes e revisão factual: 23/09/2026. Versão preparada antes da primeira publicação pública, preservando a agenda original de 24/09/2026.",
+        ],
       },
     ],
   },
