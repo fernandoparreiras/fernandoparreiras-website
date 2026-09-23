@@ -10,7 +10,7 @@ export const fdeCareerArticle = {
   tags: ["Forward Deployed Engineer", "carreira com IA", "engenharia de produto"],
   readingMinutes: 13,
   publishedAt: "2026-09-20",
-  updatedAt: "2026-09-20",
+  updatedAt: "2026-09-23",
   scheduledAt: "2026-09-20T13:30:00-03:00",
   image: "/images/conhecimento/fde-forward-deployed-engineer-fernando.png",
   imageAlt:
@@ -107,9 +107,9 @@ export const fdeCareerArticle = {
       ],
     },
     {
-      heading: "Fontes e limites da análise",
+      heading: "Fontes e natureza do texto",
       paragraphs: [
-        "1. [OpenAI — Forward Deployed Engineer](https://openai.com/careers/forward-deployed-engineer-(fde)-seattle-seattle/). Descrição de vaga que reúne descoberta, system design, build, produção, adoção e feedback ao produto. É evidência sobre o desenho da função na empresa, não sobre todo o mercado.",
+        "1. [OpenAI — Forward Deployed Engineer](https://openai.com/careers/forward-deployed-engineer-%28fde%29-seattle-seattle/). Descrição de vaga que reúne descoberta, system design, build, produção, adoção e feedback ao produto. É evidência sobre o desenho da função na empresa, não sobre todo o mercado.",
         "2. [OpenAI — Forward Deployed Software Engineer](https://openai.com/careers/forward-deployed-software-engineer-sf-san-francisco/). Descreve engenharia lado a lado com clientes, do proof of concept à produção.",
         "3. [Anthropic e DXC — aliança e formação de FDEs](https://www.anthropic.com/news/dxc-anthropic-alliance). Anúncio corporativo sobre profissionais certificados e inseridos em organizações; não é avaliação independente de resultados.",
         "4. [Palantir — Architecture Center](https://www.palantir.com/docs/foundry/architecture-center/overview). A documentação explica como problemas observados por engenheiros próximos aos usuários retornam à engenharia central.",
@@ -124,7 +124,7 @@ export const fdeCareerArticle = {
       heading: "Nota editorial e de responsabilidade",
       paragraphs: [
         "Este texto é conteúdo informativo sobre uma função emergente. Não oferece aconselhamento profissional individual nem promete emprego, remuneração ou promoção. Fernando Parreiras e as empresas com as quais atua possuem interesse profissional e comercial em arquitetura, produtos, formação e transformação com IA.",
-        "Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela tese, pela seleção das fontes e pela versão publicada. Corte das fontes: 18/09/2026. Versão inicial programada para 20/09/2026.",
+        "Pesquisa e redação tiveram assistência de IA; Fernando Parreiras responde pela tese, pela seleção das fontes e pela versão publicada. Corte das fontes: 18/09/2026. Histórico de correções: título da seção de fontes normalizado em 23/09/2026 para atender ao contrato editorial, sem alteração da tese ou das referências.",
       ],
     },
   ],

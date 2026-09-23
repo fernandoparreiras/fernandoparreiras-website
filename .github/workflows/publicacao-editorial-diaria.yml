@@ -17,14 +17,15 @@ name: Publicacao editorial diaria
 
 on:
   schedule:
-    # 12:05 UTC = 09:05 BRT. Os artigos usam scheduledAt as 09:00:00-03:00,
-    # entao o build precisa rodar depois disso. O agendador do GitHub Actions
-    # e best-effort e pode atrasar alguns minutos; a margem cobre isso.
-    - cron: "5 12 * * *"
+    # 12:35 UTC = 09:35 BRT e 17:05 UTC = 14:05 BRT. A fila atual possui
+    # publicacoes as 09:00/09:23 e 13:30/13:35/13:46. As duas janelas garantem
+    # um build no mesmo dia, sempre depois do scheduledAt correspondente.
+    - cron: "35 12 * * *"
+    - cron: "5 17 * * *"
   workflow_dispatch:
 
-# O job nao le nem escreve nada no repositorio.
-permissions: {}
+permissions:
+  contents: read
 
 concurrency:
   group: publicacao-editorial-diaria
@@ -36,6 +37,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Baixar a main vigente
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias exatas
+        run: npm ci
+
+      - name: Validar fila e artefato com a data real
+        run: |
+          set -euo pipefail
+          unset KNOWLEDGE_BUILD_AT
+          npm test
+          npm run lint
+          npm run build
+
       - name: Chamar o build hook
         env:
           HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
