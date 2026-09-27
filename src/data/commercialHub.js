@@ -160,7 +160,12 @@ export const ecosystemGroups = Object.freeze([
         description: 'Estratégia, tecnologia, produtos, dados, IA, liderança, Academy e execução digital.',
         audience: 'Empresas e times executivos',
         href: 'https://www.techhuman.com.br/',
-        cta: 'Conhecer a Tech Human'
+        cta: 'Conhecer a Tech Human',
+        logo: {
+          src: '/images/ecosystem/tech-human.png',
+          width: 1080,
+          height: 1080
+        }
       },
       {
         name: 'Fernando Parreiras',
@@ -168,7 +173,12 @@ export const ecosystemGroups = Object.freeze([
         description: 'Advisory executivo, conselho consultivo, palestras e conversas estratégicas selecionadas.',
         audience: 'Founders, CEOs, conselhos e eventos',
         href: '/solucoes',
-        cta: 'Explorar soluções'
+        cta: 'Explorar soluções',
+        logo: {
+          src: '/images/brand/fernando-parreiras-monogram-256.webp',
+          width: 256,
+          height: 256
+        }
       }
     ]
   },
@@ -184,7 +194,12 @@ export const ecosystemGroups = Object.freeze([
         description: 'Copilot de inteligência e produtividade para reuniões, com planos individuais e contexto Enterprise.',
         audience: 'Profissionais, times e empresas',
         href: 'https://needyu.ai/plans/',
-        cta: 'Conhecer planos'
+        cta: 'Conhecer planos',
+        logo: {
+          src: '/images/ecosystem/needyu.svg',
+          width: 588,
+          height: 160
+        }
       },
       {
         name: 'Trustyu / FORGE',
@@ -193,7 +208,12 @@ export const ecosystemGroups = Object.freeze([
         description: 'Co-construção de produtos de IA com domínio, arquitetura, governança e evidência.',
         audience: 'Especialistas de mercado e empresas',
         href: 'https://forge.trustyu.ai/',
-        cta: 'Conhecer a FORGE'
+        cta: 'Conhecer a FORGE',
+        logo: {
+          src: '/images/ecosystem/trustyu.svg',
+          width: 1080,
+          height: 1080
+        }
       }
     ]
   },
