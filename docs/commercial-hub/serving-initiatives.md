@@ -23,6 +23,7 @@ SER Talks usa uma superfície clara para preservar o contraste do símbolo escur
 - Artefato de produção conferido no navegador: home em 1440, 768, 390 e 320 px; Negócios em 1440, 390 e 320 px. Logos carregadas e sem rolagem horizontal.
 - Tab e Enter abriram SER Talks em nova aba. Os três destinos correspondem aos endereços fornecidos.
 - Acesso direto a `/#servir` posiciona a seção abaixo do cabeçalho fixo; o comportamento de voltar ao topo permanece para rotas sem âncora.
+- Navegação entre âncoras da mesma página preserva o foco; somente a troca de página transfere o foco ao conteúdo principal.
 - Nenhum erro de console no artefato de produção. O build mantém o aviso já existente de bundle acima de 500 kB.
 
 Essas verificações cobrem a implementação local. A publicação deve ser confirmada pelo commit integrado, recibo da Netlify e inspeção do domínio oficial.

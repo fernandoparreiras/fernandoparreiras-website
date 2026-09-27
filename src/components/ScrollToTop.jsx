@@ -3,7 +3,7 @@ import { useLayoutEffect, useRef } from 'react';
 
 const ScrollToTop = () => {
     const { pathname, hash } = useLocation();
-    const isFirstRoute = useRef(true);
+    const previousPathname = useRef(pathname);
 
     useLayoutEffect(() => {
         const section = hash ? document.getElementById(hash.slice(1)) : null;
@@ -13,12 +13,10 @@ const ScrollToTop = () => {
             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         }
 
-        if (isFirstRoute.current) {
-            isFirstRoute.current = false;
-            return;
+        if (previousPathname.current !== pathname) {
+            document.getElementById('main-content')?.focus({ preventScroll: true });
         }
-
-        document.getElementById('main-content')?.focus({ preventScroll: true });
+        previousPathname.current = pathname;
     }, [pathname, hash]);
 
     return null;
