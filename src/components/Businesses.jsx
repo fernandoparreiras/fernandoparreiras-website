@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionIntro from '@/components/SectionIntro';
+import InitiativeLogo from '@/components/InitiativeLogo';
 import { ecosystemGroups } from '@/data/commercialHub';
 import { trackEvent } from '@/lib/analytics';
 
@@ -12,6 +13,7 @@ const BusinessCard = ({ item, group, index }) => {
   const className = 'group flex h-full flex-col border border-white/10 bg-[#111211] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#d8ff57]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d8ff57] md:p-7';
   const content = (
     <>
+      {item.logo && <div className="mb-7"><InitiativeLogo item={item} /></div>}
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[#d8ff57]">{item.tag}</span>
         {item.status && <span className="border border-white/15 px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-white/55">{item.status}</span>}
@@ -45,7 +47,7 @@ const BusinessCard = ({ item, group, index }) => {
 
 const Businesses = ({ preview = false }) => {
   const groups = preview
-    ? ecosystemGroups.map((group) => ({ ...group, items: group.items.slice(0, group.id === 'purpose' ? 3 : 2) }))
+    ? ecosystemGroups.filter((group) => group.id !== 'purpose').map((group) => ({ ...group, items: group.items.slice(0, 2) }))
     : ecosystemGroups;
 
   return (
@@ -73,7 +75,7 @@ const Businesses = ({ preview = false }) => {
                 <h3 id={`group-${group.id}`} className="text-xl font-black text-white md:col-span-4">{group.label}</h3>
                 <p className="max-w-2xl text-sm leading-relaxed text-white/50 md:col-span-8">{group.description}</p>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {group.items.map((item, index) => (
                   <BusinessCard key={item.name} item={item} group={group} index={index} />
                 ))}

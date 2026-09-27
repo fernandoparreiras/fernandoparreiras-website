@@ -1,3 +1,5 @@
+import { servingInitiatives } from './initiatives.js';
+
 export const proofPoints = Object.freeze([
   {
     value: '28 anos',
@@ -200,30 +202,7 @@ export const ecosystemGroups = Object.freeze([
     label: 'Formação, mídia e propósito',
     description: 'Iniciativas que distribuem conhecimento, valores, formação e comunidade.',
     items: [
-      {
-        name: 'POR.life',
-        tag: 'Fé e trabalho',
-        description: 'Princípios e framework para integrar vida, trabalho, empresas e propósito.',
-        audience: 'Líderes, empresas e comunidades',
-        href: 'https://por.life/',
-        cta: 'Conhecer a iniciativa'
-      },
-      {
-        name: 'Jornada Cast',
-        tag: 'Podcast',
-        description: 'Conversas e histórias sobre carreira, negócios, tecnologia, liderança e jornada.',
-        audience: 'Profissionais e empreendedores',
-        href: 'https://www.jornadacast.com.br/',
-        cta: 'Ouvir episódios'
-      },
-      {
-        name: 'SER Talks',
-        tag: 'Conteúdo e palestras',
-        description: 'Conversas sobre identidade, propósito, liderança e desenvolvimento humano.',
-        audience: 'Pessoas, líderes e eventos',
-        href: 'https://sertalks.life/',
-        cta: 'Conhecer SER Talks'
-      },
+      ...servingInitiatives,
       {
         name: 'Zoe Seekers',
         tag: 'Conteúdo e comunidade',

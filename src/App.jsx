@@ -17,6 +17,7 @@ import MobileCommercialCTA from '@/components/MobileCommercialCTA';
 import PageSeo from '@/components/PageSeo';
 import ProofStrip from '@/components/ProofStrip';
 import ScrollToTop from '@/components/ScrollToTop';
+import ServingInitiatives from '@/components/ServingInitiatives';
 import EpitafioPage from '@/components/EpitafioPage';
 import AcademyLandingPage from '@/pages/AcademyLandingPage';
 import AboutPage from '@/pages/AboutPage';
@@ -43,6 +44,7 @@ function HomePage() {
         <IntentRouter />
         <ProofStrip />
         <About />
+        <ServingInitiatives />
         <Mentorship />
         <Businesses preview />
         <CaseStudies limit={4} />
