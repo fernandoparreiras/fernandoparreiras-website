@@ -21,10 +21,10 @@ const About = () => {
             <div className="relative z-10 overflow-hidden border border-white/10 bg-[#111] shadow-2xl">
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
               <img
-                src="/images/profile/fernando-parreiras-retrato-executivo.webp"
+                src="/images/profile/fernando-parreiras-retrato-executivo-2026.webp"
                 alt="Retrato executivo de Fernando Parreiras"
-                width="410"
-                height="500"
+                width="1136"
+                height="1385"
                 className="h-auto w-full object-cover"
                 decoding="async"
                 loading="lazy"
