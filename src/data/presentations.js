@@ -15,6 +15,17 @@
 
 const presentations = [
   {
+    title: 'Democratizar ideias. Governar consequências.',
+    description: 'Letramento em IA para todos os níveis e o que muda quando a empresa inteira começa a criar com IA: contexto, memória, MVP, riscos reais, harness e governança feita em time.',
+    category: 'Inteligência Artificial',
+    year: '2026',
+    event: 'AI Summit CSC 2026',
+    topics: ['Democratização de IA', 'Governança', 'MVP e software com IA'],
+    cover: '/presentations/democratizacao-ia-cover.svg',
+    presentationUrl: '/presentations/democratizacao-ia.html',
+    downloadUrl: '/presentations/democratizacao-ia.html'
+  },
+  {
     title: 'AI Human First',
     description: 'Uma visão prática sobre fundamentos, ferramentas, riscos, governança e oportunidades da inteligência artificial no mundo corporativo — com a tese de que a IA amplifica, mas quem decide é o humano.',
     category: 'Inteligência Artificial',
