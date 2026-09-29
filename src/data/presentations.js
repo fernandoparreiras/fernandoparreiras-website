@@ -15,7 +15,7 @@
 
 const presentations = [
   {
-    title: 'Democratizar ideias. Governar consequências.',
+    title: 'Democratizar a IA começa pelo letramento',
     description: 'Letramento em IA para todos os níveis e o que muda quando a empresa inteira começa a criar com IA: contexto, memória, MVP, riscos reais, harness e governança feita em time.',
     category: 'Inteligência Artificial',
     year: '2026',
