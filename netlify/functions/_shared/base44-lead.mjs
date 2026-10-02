@@ -1,5 +1,7 @@
 import { createHmac } from 'node:crypto';
 
+import { DOCKS_INTERESTS, DOCKS_ROLES, DOCKS_URGENCIES } from '../../../src/data/docks.js';
+
 const REQUEST_SCHEMA = 'lead-ingest.v1';
 const RESPONSE_SCHEMA = 'lead-ingest-result.v1';
 const DEFAULT_ENDPOINT = 'https://tech-human-crm.base44.app/functions/ingestLead';
@@ -8,7 +10,13 @@ const SAFE_ID = /^[A-Za-z0-9_-]{1,128}$/;
 
 const readEnv = (name) => globalThis.Netlify?.env?.get(name) ?? process.env[name];
 
-const sourceDescriptor = ({ formType, sourcePath, interest }) => {
+const sourceDescriptor = ({ formType, sourcePath, interest, presentationSlug, commercialConsent }) => {
+  if (formType === 'docks' && sourcePath === `/docks/${presentationSlug}`) {
+    return { route: sourcePath, routeType: 'content', formType: 'fernando-docks', formVariant: 'progressive',
+      formVersion: 'fernando-docks.v1', formName: `Docks — ${presentationSlug}`, offerKey: `fernando:docks-${presentationSlug}`,
+      offerLabel: DOCKS_INTERESTS.find((item) => item.value === interest)?.label || '',
+      consentScope: 'material_delivery', consentVersion: 'fernando-docks-2026-10-02' };
+  }
   if (formType === 'contact' && (sourcePath === '/' || sourcePath === '/contato')) {
     return {
       route: sourcePath,
@@ -72,9 +80,18 @@ export const buildFernandoCrmPayload = (input) => {
   const fullName = input.name.trim() || 'Assinante da Carta do Fernando';
   const email = input.email.trim().toLowerCase();
   const company = input.company?.trim();
-  const roleTitle = input.role?.trim();
+  const roleTitle = input.formType === 'docks' ? DOCKS_ROLES.find((item) => item.value === input.role)?.label : input.role?.trim();
   const phone = input.phone?.trim();
-  const message = input.message?.trim();
+  const q = input.qualification;
+  const message = input.formType === 'docks' ? [
+    `Apresentação: ${input.presentationTitle}`, `Evento: ${input.eventId}`,
+    `Desafio: ${input.message || 'Não informado'}`, `Prazo: ${DOCKS_URGENCIES.find((item) => item.value === input.urgency)?.label || 'Não informado'}`,
+    `Complementos D+2/D+7: ${input.followupConsent ? 'Sim' : 'Não'}`,
+    `Carta do Fernando: ${input.newsletterConsent ? 'Sim' : 'Não'}`,
+    `Contato comercial: ${input.commercialConsent ? 'Sim' : 'Não'}`,
+    `Qualificação inicial ${q.version}: ${q.score}/100; ${q.stars} estrelas. ${q.reasons.join('; ')}`,
+    `Não informado: ${q.missing.join(', ') || 'Nenhum campo'}`,
+  ].join('\n') : input.message?.trim();
   const attribution = cleanTouch(input.attribution);
 
   if (!email || !source.offerLabel) throw new Error('invalid_base44_crm_lead');
@@ -114,6 +131,18 @@ export const buildFernandoCrmPayload = (input) => {
       version: source.consentVersion,
       accepted_at: input.submittedAt,
     },
+    ...(input.formType === 'docks' ? { docks: {
+      presentation_slug: input.presentationSlug, event_id: input.eventId, interest: input.interest,
+      role: input.role, urgency: input.urgency, followup_consent: input.followupConsent,
+      newsletter_consent: input.newsletterConsent, commercial_consent: input.commercialConsent,
+      score_version: q.version, stars: q.stars, reasons: q.reasons, missing: q.missing,
+    }, qualification: {
+      score: q.score, temperature: q.temperature, priority: q.priority, urgency: input.urgency,
+      risk: 'Qualificação inicial por declaração; revisão humana necessária',
+      recommended_offer_key: `fernando:${DOCKS_INTERESTS.find((item) => item.value === input.interest).offer}`,
+      recommended_offer_label: DOCKS_INTERESTS.find((item) => item.value === input.interest).offerLabel,
+      result_id: `docks-${input.presentationSlug}`, result_url: `https://fernandoparreiras.com.br${input.sourcePath}/`,
+    } } : {}),
     ...(attribution ? { attribution: { last_touch: attribution } } : {}),
   };
 };

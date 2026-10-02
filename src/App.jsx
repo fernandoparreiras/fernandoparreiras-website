@@ -26,6 +26,7 @@ import BusinessHubPage from '@/pages/BusinessHubPage';
 import CasesPage from '@/pages/CasesPage';
 import ContactPage from '@/pages/ContactPage';
 import ContentHubPage from '@/pages/ContentHubPage';
+import DockDetailPage from '@/pages/DockDetailPage';
 import DocksPage from '@/pages/DocksPage';
 import KnowledgePage from '@/pages/KnowledgePage';
 import PrivacyPage from '@/pages/PrivacyPage';
@@ -91,6 +92,7 @@ function SiteRoutes() {
               <DocksPage />
             </>
           )} />
+          <Route path="/docks/:slug" element={<DockDetailPage />} />
           <Route path="/dock" element={<Navigate to="/docks" replace />} />
           <Route path="/epitafio" element={(
             <>

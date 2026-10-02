@@ -1,3 +1,6 @@
+import presentations from './presentations.js';
+import { dockMetadata } from './docks.js';
+
 export const SITE_ORIGIN = 'https://fernandoparreiras.com.br';
 
 export const SOCIAL_IMAGE = Object.freeze({
@@ -145,6 +148,7 @@ export const PUBLIC_BASE_ROUTES = Object.freeze([
   ROUTE_METADATA['/sobre/'],
   ROUTE_METADATA['/contato/'],
   ROUTE_METADATA['/docks/'],
+  ...presentations.map(dockMetadata),
   ROUTE_METADATA['/epitafio/'],
   ROUTE_METADATA['/privacidade/']
 ]);
