@@ -7,8 +7,8 @@ import { deliverEmail, emailConfig, readEnv } from './email-delivery.mjs';
 export const DAY = 86400000;
 export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const secret = () => {
-  const value = readEnv('FERNANDO_BASE44_CRM_SIGNING_SECRET');
-  if (!value || Buffer.byteLength(value) < 32) throw new Error('invalid_signing_configuration');
+  const value = readEnv('FERNANDO_DOCKS_CRM_SIGNING_SECRET');
+  if (!value || value.trim() !== value || Buffer.byteLength(value) < 32) throw new Error('invalid_signing_configuration');
   return value;
 };
 export const recipientKey = (email) => createHmac('sha256', secret()).update(`docks-recipient.v1:${email}`).digest('hex');

@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { createHmac } from 'node:crypto';
 import { parseDockLead } from '../netlify/functions/_shared/docks-lead.mjs';
-import { buildFernandoCrmPayload } from '../netlify/functions/_shared/base44-lead.mjs';
+import { buildFernandoCrmPayload, syncFernandoLeadToBase44 } from '../netlify/functions/_shared/base44-lead.mjs';
 import { buildDockEmail } from '../netlify/functions/_shared/lead-emails.mjs';
 import { enqueueDock, processDock, cancelToken, verifyCancelToken, recipientKey, DAY } from '../netlify/functions/_shared/docks-queue.mjs';
 import { createDocksHandler } from '../netlify/functions/docks.mjs';
@@ -26,7 +27,7 @@ export function memoryStore() {
 }
 function configure(t) {
   const before = { ...process.env };
-  Object.assign(process.env, { FERNANDO_BASE44_CRM_SIGNING_SECRET: 'synthetic-signing-secret-longer-than-32-bytes', FERNANDO_CONTACT_EMAIL_FROM: 'Test <test@example.com>', FERNANDO_CONTACT_EMAIL_TO: 'owner@example.com', RESEND_API_KEY: 'test-resend' });
+  Object.assign(process.env, { FERNANDO_DOCKS_CRM_SIGNING_SECRET: 'synthetic-signing-secret-longer-than-32-bytes', FERNANDO_CONTACT_EMAIL_FROM: 'Test <test@example.com>', FERNANDO_CONTACT_EMAIL_TO: 'owner@example.com', RESEND_API_KEY: 'test-resend' });
   t.after(() => { process.env = before; });
 }
 const sync = async () => ({ status: 'sent', outcome: 'created', leadId: 'synthetic-lead' });
@@ -137,4 +138,28 @@ test('API completes the actual queue flow using synthetic providers and durable 
   const response = await handler(new Request('https://example.com/api/docks', { method: 'POST', body: JSON.stringify({ ...material, submissionId: ID }) }));
   assert.equal(response.status, 200); assert.equal((await response.json()).ok, true); assert.equal(sent.length, 2);
   assert.ok((await store.get(`jobs/${ID}`)).receipts.crm);
+});
+
+test('Docks uses its own HMAC key and refuses the legacy key as fallback', async (t) => {
+  configure(t);
+  process.env.FERNANDO_BASE44_CRM_ENABLED = 'true';
+  process.env.FERNANDO_BASE44_CRM_SIGNING_SECRET = 'legacy-short';
+  const previousFetch = globalThis.fetch;
+  t.after(() => { globalThis.fetch = previousFetch; });
+  let calls = 0;
+  globalThis.fetch = async (_url, init) => {
+    calls++;
+    const headers = new Headers(init.headers);
+    const expected = createHmac('sha256', process.env.FERNANDO_DOCKS_CRM_SIGNING_SECRET)
+      .update(`lead-ingest.v1\n${headers.get('X-TechHuman-Timestamp')}\n${ID}\n${init.body}`).digest('hex');
+    assert.equal(headers.get('X-TechHuman-Signature'), `v1=${expected}`);
+    return Response.json({ ok: true, schema_version: 'lead-ingest-result.v1', submission_id: ID,
+      lead_id: 'test-lead', submission_record_id: 'test-submission', outcome: 'created' });
+  };
+  const input = { ...parseDockLead(material), submissionId: ID, submittedAt: new Date(NOW).toISOString() };
+  assert.equal((await syncFernandoLeadToBase44(input)).status, 'sent');
+  delete process.env.FERNANDO_DOCKS_CRM_SIGNING_SECRET;
+  process.env.FERNANDO_BASE44_CRM_SIGNING_SECRET = 'legacy-signing-secret-longer-than-32-bytes';
+  await assert.rejects(syncFernandoLeadToBase44(input), /invalid_base44_crm_signing_secret/);
+  assert.equal(calls, 1);
 });

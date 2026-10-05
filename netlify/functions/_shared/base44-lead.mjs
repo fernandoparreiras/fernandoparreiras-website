@@ -162,8 +162,8 @@ const endpoint = () => {
   return url.toString();
 };
 
-const signingSecret = () => {
-  const secret = readEnv('FERNANDO_BASE44_CRM_SIGNING_SECRET');
+const signingSecret = (formType) => {
+  const secret = readEnv(formType === 'docks' ? 'FERNANDO_DOCKS_CRM_SIGNING_SECRET' : 'FERNANDO_BASE44_CRM_SIGNING_SECRET');
   if (!secret || secret.trim() !== secret || Buffer.byteLength(secret, 'utf8') < 32) {
     throw new Error('invalid_base44_crm_signing_secret');
   }
@@ -175,7 +175,7 @@ export const syncFernandoLeadToBase44 = async (input) => {
 
   const body = JSON.stringify(buildFernandoCrmPayload(input));
   const timestamp = Math.floor(Date.now() / 1_000).toString();
-  const signature = createHmac('sha256', signingSecret())
+  const signature = createHmac('sha256', signingSecret(input.formType))
     .update(`${REQUEST_SCHEMA}\n${timestamp}\n${input.submissionId}\n${body}`, 'utf8')
     .digest('hex');
   const configuredTimeout = Number.parseInt(readEnv('FERNANDO_BASE44_CRM_TIMEOUT_MS') ?? '', 10);

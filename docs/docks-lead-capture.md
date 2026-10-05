@@ -46,7 +46,7 @@ A aba Docks do CRM lê o histórico paginado de atividades, deduplica por submis
 ## Implantação e homologação
 
 1. Revisar e implantar a PR do CRM: contrato de rota, schemas das três entidades e interface. Preservar as políticas RLS existentes.
-2. Conferir `RESEND_API_KEY`, `FERNANDO_CONTACT_EMAIL_FROM`, `FERNANDO_CONTACT_EMAIL_TO`, `FERNANDO_CONTACT_REPLY_TO`, `FERNANDO_BASE44_CRM_ENABLED=true` e segredo de assinatura existentes. Configurar token privado de relatório se esse endpoint for usado.
+2. Conferir `RESEND_API_KEY`, `FERNANDO_CONTACT_EMAIL_FROM`, `FERNANDO_CONTACT_EMAIL_TO`, `FERNANDO_CONTACT_REPLY_TO`, `FERNANDO_BASE44_CRM_ENABLED=true` e `FERNANDO_DOCKS_CRM_SIGNING_SECRET` (mínimo 32 bytes). A chave exclusiva Docks corresponde a `FERNANDO_BASE44_CRM_SIGNING_SECRET` no Base44, selecionada apenas para `source.site=fernandoparreiras.com.br` e `source.form_type=fernando-docks`. Contato e newsletter mantêm as chaves anteriores. Configurar token privado de relatório se esse endpoint for usado.
 3. Publicar a PR do site pelo fluxo normal Netlify. Registrar SHAs e recibos dos provedores. Não promover pacote local manualmente por cima de produção.
 4. Fazer um pedido real autorizado: conferir material e roteiro no e-mail, Lead, LeadSubmission e LeadActivity, consentimentos e origem. Repetir para conferir matching e reenvio.
 5. Confirmar invocação da rotina e um job de teste autorizado com vencimento controlado. Conferir cancelamento, supressão e limpeza. Nunca disparar para contatos reais sem a escolha correspondente.
@@ -54,8 +54,8 @@ A aba Docks do CRM lê o histórico paginado de atividades, deduplica por submis
 
 ## Validação local
 
-Site: 66 testes, lint e build completos; auditoria de produção sem vulnerabilidades. Browser: desktop e 390×844, sem transbordamento horizontal e sem exceções de página; abertura dos campos condicionais e escolhas opcionais desmarcadas conferidas. A prévia estática não executa Functions nem prova entrega real.
+Site: 67 testes, lint e build completos; auditoria de produção sem vulnerabilidades. Browser: desktop e 390×844, sem transbordamento horizontal e sem exceções de página; abertura dos campos condicionais e escolhas opcionais desmarcadas conferidas. A prévia estática não executa Functions nem prova entrega real.
 
-CRM: 224 verificações existentes e seis específicas Docks; payload gerado pelo site aceito pelo validador real do CRM; ingestão pura tipada; oito componentes alterados compilados isoladamente e lint dos arquivos alterados. O aplicativo completo possui problemas anteriores: lint global com 512 erros e import ausente `@/functions/getPublicDeck` em PublicDeck, confirmado em origin/main. Resolver a validação da aplicação completa ou obter o build oficial Base44 antes de publicar o CRM.
+CRM: 224 verificações existentes, seis específicas Docks, uma de schemas e uma de seleção de segredo (232 no total); payload gerado pelo site aceito pelo validador real do CRM; ingestão pura tipada; oito componentes alterados compilados isoladamente e lint dos arquivos alterados. O aplicativo completo possui problemas anteriores: lint global com 512 erros e import ausente `@/functions/getPublicDeck` em PublicDeck, confirmado em origin/main. Resolver a validação da aplicação completa ou obter o build oficial Base44 antes de publicar o CRM.
 
 Referências: [Netlify Blobs](https://docs.netlify.com/build/data-and-storage/netlify-blobs/), [Scheduled Functions](https://docs.netlify.com/build/functions/scheduled-functions/), [Resend: idempotência](https://resend.com/docs/dashboard/emails/idempotency-keys).

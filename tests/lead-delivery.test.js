@@ -87,6 +87,7 @@ test('sends internal email, respondent confirmation and signed Base44 lead', asy
   process.env.FERNANDO_CONTACT_REPLY_TO = 'fernando@fernandoparreiras.com.br';
   process.env.FERNANDO_BASE44_CRM_ENABLED = 'true';
   process.env.FERNANDO_BASE44_CRM_SIGNING_SECRET = signingSecret;
+  process.env.FERNANDO_DOCKS_CRM_SIGNING_SECRET = 'different-docks-signing-secret-more-than-32-bytes';
 
   t.after(() => {
     globalThis.fetch = previousFetch;
