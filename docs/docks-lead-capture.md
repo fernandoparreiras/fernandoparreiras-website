@@ -54,8 +54,14 @@ A aba Docks do CRM lê o histórico paginado de atividades, deduplica por submis
 
 ## Validação local
 
-Site: 67 testes, lint e build completos; auditoria de produção sem vulnerabilidades. Browser: desktop e 390×844, sem transbordamento horizontal e sem exceções de página; abertura dos campos condicionais e escolhas opcionais desmarcadas conferidas. A prévia estática não executa Functions nem prova entrega real.
+Site: 68 testes, lint e build completos; auditoria de produção sem vulnerabilidades. Browser: desktop e 390×844, sem transbordamento horizontal e sem exceções de página; abertura dos campos condicionais e escolhas opcionais desmarcadas conferidas. A prévia estática não executa Functions nem prova entrega real.
 
 CRM: 224 verificações existentes, seis específicas Docks, uma de schemas e uma de seleção de segredo (232 no total); payload gerado pelo site aceito pelo validador real do CRM; ingestão pura tipada; oito componentes alterados compilados isoladamente e lint dos arquivos alterados. O aplicativo completo possui problemas anteriores: lint global com 512 erros e import ausente `@/functions/getPublicDeck` em PublicDeck, confirmado em origin/main. Resolver a validação da aplicação completa ou obter o build oficial Base44 antes de publicar o CRM.
 
 Referências: [Netlify Blobs](https://docs.netlify.com/build/data-and-storage/netlify-blobs/), [Scheduled Functions](https://docs.netlify.com/build/functions/scheduled-functions/), [Resend: idempotência](https://resend.com/docs/dashboard/emails/idempotency-keys).
+
+## Estado da homologação em 05/10
+
+O checkpoint Base44 foi publicado após autorização específica e o endpoint confirmou a versão nova, assinatura correta (400 com corpo inválido) e assinatura incorreta (401). O pedido FP-F16E0FA7 gravou Lead, LeadSubmission e LeadActivity com score 10/uma estrela, somente material. A retomada confirmou deduplicação. Email não foi confirmado: fora do Netlify hospedado, Secrets Controller entrega uma máscara da chave Resend. O domínio principal ainda está no deploy anterior. Recibos e limites em docs/docks-homologacao-2026-10-05.md.
+
+FERNANDO_DOCKS_CRM_TIMEOUT_MS tem padrão e teto de 20000 ms, independente do prazo dos formulários existentes. Logs da fila exibem apenas códigos de falha permitidos, sem texto arbitrário do provedor.

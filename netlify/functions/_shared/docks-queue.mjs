@@ -4,6 +4,13 @@ import { buildDockEmail, buildInternalEmail } from './lead-emails.mjs';
 import { syncFernandoLeadToBase44 } from './base44-lead.mjs';
 import { deliverEmail, emailConfig, readEnv } from './email-delivery.mjs';
 
+export function safeDockDeliveryFailure(error) {
+  if (!(error instanceof Error)) return 'unknown_error';
+  if (['TimeoutError', 'AbortError'].includes(error.name)) return 'timeout';
+  if (error instanceof TypeError) return 'network_error';
+  if (/^(resend_failed|base44_crm_failed):[1-5][0-9]{2}$/.test(error.message)) return error.message;
+  return ['crm_not_recorded', 'invalid_email_receipt', 'invalid_base44_crm_response', 'ambiguous_delivery_review'].includes(error.message) ? error.message : 'unknown_error';
+}
 export const DAY = 86400000;
 export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const secret = () => {
@@ -111,7 +118,7 @@ export async function processDock(store, key, { now = Date.now(), send = deliver
   } catch (error) {
     if (job.state !== 'review') job.state = 'pending';
     // Provider error codes only; no payload, PII or secret in logs.
-    console.error('docks_delivery_pending', { submissionId: job.submissionId, state: job.state });
+    console.error('docks_delivery_pending', { submissionId: job.submissionId, state: job.state, reason: safeDockDeliveryFailure(error) });
   } finally {
     job.busyUntil = 0;
     await save();

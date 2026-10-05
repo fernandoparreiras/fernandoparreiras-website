@@ -4,7 +4,7 @@ import { createHmac } from 'node:crypto';
 import { parseDockLead } from '../netlify/functions/_shared/docks-lead.mjs';
 import { buildFernandoCrmPayload, syncFernandoLeadToBase44 } from '../netlify/functions/_shared/base44-lead.mjs';
 import { buildDockEmail } from '../netlify/functions/_shared/lead-emails.mjs';
-import { enqueueDock, processDock, cancelToken, verifyCancelToken, recipientKey, DAY } from '../netlify/functions/_shared/docks-queue.mjs';
+import { enqueueDock, processDock, cancelToken, verifyCancelToken, recipientKey, DAY, safeDockDeliveryFailure } from '../netlify/functions/_shared/docks-queue.mjs';
 import { createDocksHandler } from '../netlify/functions/docks.mjs';
 import { createCancelHandler } from '../netlify/functions/docks-cancel.mjs';
 import { summarizeDocks } from '../netlify/functions/_shared/docks-report.mjs';
@@ -144,6 +144,12 @@ test('Docks uses its own HMAC key and refuses the legacy key as fallback', async
   configure(t);
   process.env.FERNANDO_BASE44_CRM_ENABLED = 'true';
   process.env.FERNANDO_BASE44_CRM_SIGNING_SECRET = 'legacy-short';
+  process.env.FERNANDO_BASE44_CRM_TIMEOUT_MS = '4000';
+  delete process.env.FERNANDO_DOCKS_CRM_TIMEOUT_MS;
+  const previousTimeout = AbortSignal.timeout;
+  const budgets = [];
+  AbortSignal.timeout = (ms) => { budgets.push(ms); return previousTimeout(ms); };
+  t.after(() => { AbortSignal.timeout = previousTimeout; });
   const previousFetch = globalThis.fetch;
   t.after(() => { globalThis.fetch = previousFetch; });
   let calls = 0;
@@ -158,8 +164,21 @@ test('Docks uses its own HMAC key and refuses the legacy key as fallback', async
   };
   const input = { ...parseDockLead(material), submissionId: ID, submittedAt: new Date(NOW).toISOString() };
   assert.equal((await syncFernandoLeadToBase44(input)).status, 'sent');
+  assert.deepEqual(budgets, [20000]);
+  process.env.FERNANDO_DOCKS_CRM_TIMEOUT_MS = '50000';
+  assert.equal((await syncFernandoLeadToBase44(input)).status, 'sent');
+  assert.deepEqual(budgets, [20000, 20000]);
   delete process.env.FERNANDO_DOCKS_CRM_SIGNING_SECRET;
   process.env.FERNANDO_BASE44_CRM_SIGNING_SECRET = 'legacy-signing-secret-longer-than-32-bytes';
   await assert.rejects(syncFernandoLeadToBase44(input), /invalid_base44_crm_signing_secret/);
-  assert.equal(calls, 1);
+  assert.equal(calls, 2);
+});
+
+test('delivery diagnostics retain provider status without leaking arbitrary error text', () => {
+  assert.equal(safeDockDeliveryFailure(new Error('resend_failed:401')), 'resend_failed:401');
+  assert.equal(safeDockDeliveryFailure(new Error('base44_crm_failed:503')), 'base44_crm_failed:503');
+  assert.equal(safeDockDeliveryFailure(new DOMException('private diagnostic text', 'TimeoutError')), 'timeout');
+  for (const message of ['secret-value', 'resend_failed:401 email=pessoa@example.com', 'Authorization: key']) {
+    assert.equal(safeDockDeliveryFailure(new Error(message)), 'unknown_error');
+  }
 });

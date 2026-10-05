@@ -178,10 +178,11 @@ export const syncFernandoLeadToBase44 = async (input) => {
   const signature = createHmac('sha256', signingSecret(input.formType))
     .update(`${REQUEST_SCHEMA}\n${timestamp}\n${input.submissionId}\n${body}`, 'utf8')
     .digest('hex');
-  const configuredTimeout = Number.parseInt(readEnv('FERNANDO_BASE44_CRM_TIMEOUT_MS') ?? '', 10);
+  const isDocks = input.formType === 'docks';
+  const configuredTimeout = Number.parseInt(readEnv(isDocks ? 'FERNANDO_DOCKS_CRM_TIMEOUT_MS' : 'FERNANDO_BASE44_CRM_TIMEOUT_MS') ?? '', 10);
   const timeout = Number.isFinite(configuredTimeout) && configuredTimeout > 0
-    ? Math.min(configuredTimeout, 8_000)
-    : 4_000;
+    ? Math.min(configuredTimeout, isDocks ? 20_000 : 8_000)
+    : isDocks ? 20_000 : 4_000;
   const response = await fetch(endpoint(), {
     method: 'POST',
     headers: {
