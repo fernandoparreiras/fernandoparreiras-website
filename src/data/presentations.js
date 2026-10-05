@@ -15,6 +15,8 @@
 
 const presentations = [
   {
+    slug: 'democratizacao-ia',
+    eventId: 'ai-summit-csc-2026',
     title: 'Democratizar a IA começa pelo letramento',
     description: 'Letramento em IA para todos os níveis e o que muda quando a empresa inteira começa a criar com IA: contexto, memória, MVP, riscos reais, harness e governança feita em time.',
     category: 'Inteligência Artificial',
@@ -26,6 +28,8 @@ const presentations = [
     downloadUrl: '/presentations/democratizacao-ia.html'
   },
   {
+    slug: 'ai-human-first',
+    eventId: 'acervo-ai-human-first',
     title: 'AI Human First',
     description: 'Uma visão prática sobre fundamentos, ferramentas, riscos, governança e oportunidades da inteligência artificial no mundo corporativo — com a tese de que a IA amplifica, mas quem decide é o humano.',
     category: 'Inteligência Artificial',
@@ -36,6 +40,8 @@ const presentations = [
     downloadUrl: '/presentations/ai-human-first.html'
   },
   {
+    slug: 'ia-para-negocios',
+    eventId: 'acervo-ia-para-negocios',
     title: 'IA para Negócios',
     description: 'Letramento em IA para um público misto: fundamentos, as principais ferramentas do mercado (ChatGPT, Claude, Gemini), custos e tokens, casos reais por área e adoção responsável nas empresas.',
     category: 'Inteligência Artificial',

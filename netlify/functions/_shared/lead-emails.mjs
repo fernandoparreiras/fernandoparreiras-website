@@ -1,3 +1,5 @@
+import { DOCKS_GUIDE, DOCKS_INTERESTS, getDock, dockPath } from '../../../src/data/docks.js';
+
 const escapeHtml = (value) => String(value)
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
@@ -134,6 +136,23 @@ const DEFAULT_CONTACT_COPY = Object.freeze({
 
 const getContactCopy = (interest) => CONTACT_COPY[interest] ?? DEFAULT_CONTACT_COPY;
 
+export function buildDockEmail(lead, step = 'material', unsubscribeUrl = '') {
+  const presentation = getDock(lead.presentationSlug);
+  const interest = DOCKS_INTERESTS.find((item) => item.value === lead.interest);
+  const pageUrl = `https://fernandoparreiras.com.br${dockPath(presentation)}`;
+  const materialUrl = `https://fernandoparreiras.com.br${presentation.presentationUrl}`;
+  const guideUrl = `https://fernandoparreiras.com.br/docks/${presentation.slug}/roteiro.txt`;
+  const exercise = DOCKS_GUIDE.map(([title, description], index) => `${index + 1}. ${title}: ${description}`).join('\n');
+  const copy = step === 'material'
+    ? { title: 'Seu material e o roteiro de aplicação', body: `Olá, ${firstNameFrom(lead.name)}. Aqui estão a apresentação e um roteiro para levar as ideias à prática.`, label: 'Abrir a apresentação', url: materialUrl }
+    : step === 'practice'
+      ? { title: 'Uma ideia, uma aplicação nesta semana', body: 'Escolha uma ideia da palestra e aplique o roteiro abaixo em uma conversa de 20 minutos com sua equipe ou em seu próximo projeto.', label: 'Voltar ao roteiro', url: guideUrl }
+      : { title: 'Qual desafio você quer fazer avançar?', body: `Seu interesse foi ${interest.label.toLocaleLowerCase('pt-BR')}. Que desafio você está tentando resolver? Responda a este e-mail ou peça uma conversa na página da apresentação.`, label: 'Compartilhar meu desafio', url: `${pageUrl}?conversa=1#receber` };
+  const cancellation = unsubscribeUrl ? `<p style="margin-top:24px;font-size:12px;color:#C9CBCE">Você escolheu receber dois complementos desta palestra. <a style="color:#D8FF57" href="${escapeHtml(unsubscribeUrl)}">Cancelar os complementos</a>.</p>` : '';
+  return { subject: `${copy.title} — ${subjectText(presentation.title)}`,
+    html: baseEmail({ preheader: copy.body, title: copy.title, body: `<h1 style="color:#FFFFFF;font-size:26px">${escapeHtml(copy.title)}</h1><p style="color:#C9CBCE;line-height:1.75">${escapeHtml(copy.body)}</p>${button(copy.label, copy.url)}<p style="color:#C9CBCE;line-height:1.75"><a style="color:#D8FF57" href="${guideUrl}">Baixar o roteiro prático</a></p><div style="color:#C9CBCE;line-height:1.75;white-space:pre-wrap">${escapeHtml(exercise)}</div>${lead.commercialConsent && step === 'material' ? '<p style="color:#C9CBCE">Seu pedido de conversa também foi registrado. O retorno começa pelo contexto que você compartilhou.</p>' : ''}${cancellation}` }),
+    text: `${copy.body}\n\n${copy.label}: ${copy.url}\nApresentação: ${materialUrl}\nRoteiro: ${guideUrl}\n\n${exercise}\n\n${unsubscribeUrl ? `Cancelar os complementos: ${unsubscribeUrl}` : ''}` };
+}
 export const buildRespondentEmail = ({ formType, name, interest }) => {
   if (formType === 'newsletter') {
     return {
@@ -165,19 +184,25 @@ export const buildRespondentEmail = ({ formType, name, interest }) => {
   };
 };
 
-export const buildInternalEmail = ({ reference, formType, email, name, interest, company, role, phone, message, sourcePath }) => {
+export const buildInternalEmail = ({ reference, formType, email, name, interest, company, role, phone, message, sourcePath, qualification, presentationTitle, eventId, followupConsent, newsletterConsent, commercialConsent }) => {
   const copy = getContactCopy(interest);
-  const title = formType === 'newsletter' ? 'Nova inscrição — Carta do Fernando' : `Novo contato — ${copy.label}`;
+  const title = formType === 'docks' ? 'Novo pedido — Docks' : formType === 'newsletter' ? 'Nova inscrição — Carta do Fernando' : `Novo contato — ${copy.label}`;
   const contactIdentity = subjectText(name || email, 80);
   const rows = [
     ['Referência', reference], ['Origem', sourcePath], ['Nome', name || 'Não informado'],
     ['E-mail', email], ['Telefone', phone || 'Não informado'], ['Interesse', formType === 'newsletter' ? interest : copy.label],
     ['Empresa', company || 'Não informado'], ['Cargo ou atuação', role || 'Não informado'], ['Contexto', message || 'Não informado'],
   ];
+  if (formType === 'docks') rows.push(
+    ['Apresentação', presentationTitle], ['Evento', eventId],
+    ['Qualificação inicial', `${qualification.score}/100 — ${qualification.stars} estrelas (${qualification.version})`],
+    ['Motivos', qualification.reasons.join('; ')], ['Dados ausentes', qualification.missing.join(', ') || 'Nenhum'],
+    ['Complementos', followupConsent ? 'Sim' : 'Não'], ['Carta do Fernando', newsletterConsent ? 'Sim' : 'Não'], ['Conversa solicitada', commercialConsent ? 'Sim' : 'Não'],
+  );
   const htmlRows = rows.map(([label, value]) => `<tr><td style="padding:10px 8px;color:#85888C;vertical-align:top;border-bottom:1px solid #252725">${escapeHtml(label)}</td><td style="padding:10px 8px;color:#FFFFFF;white-space:pre-wrap;border-bottom:1px solid #252725">${escapeHtml(value)}</td></tr>`).join('');
   const responseButton = formType === 'contact' ? `${button('Responder ao contato', `mailto:${email}`)}<div style="height:20px;line-height:20px">&nbsp;</div>` : '';
   return {
-    subject: formType === 'newsletter' ? `[${reference}] ${title}` : `[${reference}] ${copy.label} — ${contactIdentity}`,
+    subject: formType === 'docks' ? `[${reference}] Docks — ${qualification.stars} estrelas — ${contactIdentity}` : formType === 'newsletter' ? `[${reference}] ${title}` : `[${reference}] ${copy.label} — ${contactIdentity}`,
     html: baseEmail({
       preheader: `${title}: ${contactIdentity}`,
       title,

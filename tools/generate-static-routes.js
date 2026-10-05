@@ -14,6 +14,9 @@ import {
   createStructuredData
 } from '../src/data/siteMetadata.js';
 
+import presentations from '../src/data/presentations.js';
+import { DOCKS_GUIDE } from '../src/data/docks.js';
+
 const SEO_BLOCK = /<!-- SEO:START -->[\s\S]*?<!-- SEO:END -->/;
 const ROOT_ELEMENT = /<div id="root">[\s\S]*?<\/div>/;
 const MODULE_SCRIPT = /<script\b(?=[^>]*\btype=["']module["'])[^>]*>[\s\S]*?<\/script>/gi;
@@ -279,6 +282,10 @@ export function generateStaticRoutes({ sourceHtml, outputDirectory, articles = F
     );
   }
 
+  for (const item of presentations) {
+    const guide = `${item.title}\nFernando Parreiras\n\nRoteiro para levar as ideias à prática\n\n${DOCKS_GUIDE.map(([title, description], index) => `${index + 1}. ${title}\n${description}`).join('\n\n')}\n\nhttps://fernandoparreiras.com.br/docks/${item.slug}/\n`;
+    fs.writeFileSync(path.join(outputDirectory, 'docks', item.slug, 'roteiro.txt'), guide, 'utf8');
+  }
   const articlesDirectory = routeOutputDirectory(outputDirectory, '/artigos/');
   if (articles.length === 0) {
     if (fs.existsSync(articlesDirectory)) {

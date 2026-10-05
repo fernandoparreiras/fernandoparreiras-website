@@ -32,7 +32,7 @@ export function getAttribution() {
 
   const params = new URLSearchParams(window.location.search);
   return Object.fromEntries(
-    ['utm_source', 'utm_medium', 'utm_campaign'].flatMap((key) => {
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].flatMap((key) => {
       const value = params.get(key);
       return value ? [[key, value.slice(0, 100)]] : [];
     })

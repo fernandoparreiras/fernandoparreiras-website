@@ -10,5 +10,5 @@ export function isAcademyPath(pathname) {
 
 export function shouldShowMobileCommercialCta(pathname) {
   const normalized = normalizePathname(pathname);
-  return normalized !== '/contato' && !isAcademyPath(normalized);
+  return normalized !== '/contato' && !normalized.startsWith('/docks/') && !isAcademyPath(normalized);
 }

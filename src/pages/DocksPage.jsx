@@ -8,9 +8,12 @@ import {
   Presentation,
   Search
 } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { trackEvent } from '@/lib/analytics';
 import presentations from '@/data/presentations';
 
 const DocksPage = () => {
+  const location = useLocation();
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [query, setQuery] = useState('');
 
@@ -184,6 +187,7 @@ const DocksPage = () => {
                         </div>
                       )}
 
+                      <Link to={`/docks/${item.slug}/${location.search}`} onClick={() => trackEvent('docks_detail_open', { presentation_slug: item.slug, event_id: item.eventId })} className="mt-5 inline-flex min-h-12 items-center justify-center rounded-lg bg-[#d8ff57] px-4 py-3 font-bold text-black">Material e roteiro prático →</Link>
                       <div className="mt-6 flex items-center gap-5 border-t border-white/10 pt-5">
                         {item.presentationUrl && (
                           <a
