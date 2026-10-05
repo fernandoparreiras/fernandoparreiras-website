@@ -10,6 +10,8 @@ Implementação publicada em duas entregas: este site e o contrato/interface do 
 - Nome, e-mail e interesse no pedido inicial. Contexto, atuação e prazo só são exigidos se houver pedido de conversa; empresa e WhatsApp são opcionais.
 - Material, dois complementos, Carta do Fernando e conversa têm escolhas independentes. Todas são registradas no snapshot da submissão. A Carta segue a operação existente de newsletter; este fluxo não cria um disparo recorrente adicional.
 
+O email Docks do participante usa tema claro, tipografia editorial, chamada principal para a apresentação, link do roteiro e convite a uma primeira aplicação. Os dois complementos usam a mesma identidade e somente saem com escolha explícita.
+
 ## Entrega e retomada
 
 `POST /api/docks` valida o catálogo no servidor, calcula a qualificação e cria um registro privado em Netlify Blobs. Exige configuração de Resend e CRM habilitado. Uma resposta de sucesso exige recibos de CRM, aviso interno e material. O recibo de Resend prova aceite do provedor, não chegada à caixa, leitura ou resposta.
