@@ -1,6 +1,6 @@
 # Docks — implementação e homologação em 2026-10-05
 
-Estado atual após autorização: checkpoint Base44 publicado, assinatura e persistência real confirmadas. Entrega de email ainda pendente de execução no Netlify hospedado com o segredo real. O site principal não foi publicado nesta etapa.
+Estado atual: CRM e site publicados; assinatura, deduplicação e dois aceites de email confirmados no runtime de produção. O usuário confirmou recebimento e apresentou captura do aviso interno na caixa de entrada. Continuação e recibos de produção ao final; as seções anteriores preservam o histórico de homologação.
 
 ## Configuração e correção
 
@@ -50,3 +50,31 @@ A homologação motivou duas correções no site: prazo CRM exclusivo Docks com 
 Foi criado somente um rascunho Netlify (sem --prod) para investigar a execução hospedada: deploy 6ac3f0b32c72fa9ab381dca5, state=ready, context=deploy-preview, published_at=null, URL https://6ac3f0b32c72fa9ab381dca5--fernando-parreiras.netlify.app. --context production afeta o build da CLI, mas esse rascunho continua no contexto runtime deploy-preview, sem configuração completa. Nenhum pedido foi enviado nele. A leitura dirigida do site confirmou published_deploy.id=6ac2b1a44f36280008c94c0d, context=production, published_at=2026-10-04T20:06:11.612Z; o domínio principal não mudou.
 
 Próximo gate: publicar a PR do site pelo fluxo normal autorizado e validar os recibos de aviso/material com a chave protegida no servidor Netlify. Persistência CRM e assinatura já foram homologadas. Email real, execução agendada em produção, cancelamento e retenção operacional continuam sem homologação pública; os respectivos testes locais não substituem essas provas.
+
+## Produção autorizada em 05/10
+
+O usuário autorizou “Pode publicar em producao tudo o que for necessário pra fazer funcionar”. A PR #59 foi integrada por squash, commit 2b4de953108123338f1fff3533dfe4eea8c062ba. Netlify publicou o deploy 6ac405e58800210008bc443e, context=production, state=ready, published_at=2026-10-05T20:20:39.890Z. O build oficial empacotou contact, docks, docks-cancel, docks-events, docks-followup e docks-report; a rotina docks-followup foi registrada com cron */15 * * * *.
+
+A página oficial /docks/democratizacao-ia/, o deck, roteiro e QR retornaram HTTP 200. A canonical é https://fernandoparreiras.com.br/docks/democratizacao-ia/. Deck, roteiro e QR coincidem por SHA256 com os artefatos locais. O formulário abre com todas as escolhas desmarcadas. 68 testes, lint e build passaram novamente.
+
+O pedido local pendente FP-F16E0FA7 foi recuperado na fila privada docks-delivery-v1, preservando UUID, submittedAt e hash. A montagem do payload de retomada coincide com payload_hash da LeadSubmission: 25f7c87ad10538257f3e276ecf864ef85ffe1cd5d609645deab39e7cc5eb95d2. O recibo CRM foi revalidado com o mesmo pedido para comprovar assinatura no servidor publicado; resposta outcome=duplicate, mesmo Lead, sem nova submissão ou atividade. POST /api/docks retornou HTTP 200, ok=true, mesma referência.
+
+O job terminou state=complete, com CRM e dois recibos Resend: aviso interno 01a10dbb-7d79-79ac-91c7-45a4f2946c4a; material 01a10dbb-7e06-730c-8275-3494759525f8. O material foi tentado às 2026-10-05T20:22:29.467Z. O usuário respondeu “Recebi sim. Valide.” e apresentou captura do aviso interno na caixa de entrada, enviado às 17:22 BRT, com referência, origem, nome e email corretos. A captura apresentada comprova a chegada do aviso interno; o aceite do material está confirmado pelo provedor. Não houve envio de complementos, newsletter ou contato comercial.
+
+Validação da captura identificou e corrigiu “1 estrelas” para “1 estrela” no assunto e qualificação do aviso interno. O interesse do Docks também passa a usar o rótulo do catálogo (“Aplicar IA na empresa”) no aviso interno, em vez do rótulo genérico de contato. Não reenviar o aviso já aceito para demonstrar essa correção.
+
+O relatório privado inicialmente retornou 503 por token ausente. Foi configurado FERNANDO_DOCKS_REPORT_TOKEN somente em production/functions como secret. A cópia local permanece em .netlify/docks-report-token.env, ignorada pelo Git e com permissão 0600; não incluir valor em documentos, saída ou clientes públicos. Workflow oficial 37369588271 solicitado para aplicar a configuração. Pedido inválido retorna 400 e link de cancelamento sem assinatura retorna 400.
+
+Foi preparado teste de retenção com registro sintético sem contato, email ou conteúdo: cc409d6f-97de-4086-865e-b0aee2e9f609, submetido há 31 dias; o índice D+30 está vencido. A remoção pela próxima execução da rotina em produção deve ser confirmada antes de registrar homologação de limpeza. O teste não pode enviar mensagens nem registrar contato no CRM. D+2/D+7 e cancelamento válido permanecem cobertos pelos testes locais; não foram enviados complementos sem escolha explícita.
+
+### Confirmações finais durante a homologação
+
+O usuário apresentou segunda captura, também na caixa de entrada às 17:22 BRT, do email “Seu material e o roteiro de aplicação — Democratizar a IA começa pelo letramento”. Foram conferidos saudação, botão da apresentação, link do roteiro e cinco passos. Assim, o recebimento tanto do aviso interno quanto do material está confirmado por evidência do usuário; as URLs já haviam sido verificadas com HTTP 200 e paridade de artefatos.
+
+A rotina agendada foi comprovada por efeito no armazenamento de produção: o job sintético sem dados pessoais e seu índice D+30 existiam antes das 20:30 UTC e estavam ausentes na consulta de 2026-10-05T20:31:37Z. Nenhuma chamada manual de limpeza foi feita. Isso confirma execução real do agendamento e retenção do job na versão publicada, sem enviar emails adicionais.
+
+### Tema claro solicitado pelo usuário
+
+Após confirmar os dois emails, o usuário pediu tema claro, mais clean e copy mais engajadora e premium para o email do participante. buildDockEmail agora usa template claro exclusivo Docks: fundo off-white, cartão branco, texto escuro, título editorial “Da ideia à prática.”, chamada para explorar a apresentação, link de roteiro e pergunta para uma primeira aplicação. A mensagem convida a responder voluntariamente com uma ideia ou dúvida, sem novas inscrições ou escolhas automáticas. Os dois complementos compartilham a identidade clara e conservam consentimento/cancelamento. A versão em texto conserva o roteiro completo. Aviso interno e demais emails do site mantêm sua identidade anterior.
+
+Validação: 68 testes, lint e build aprovados. Previews desktop e 390px conferidas em navegador; scrollWidth=clientWidth=390, sem transbordamento. HTML usa tabelas de apresentação, estilos inline, cores explícitas, fontes locais do cliente e nenhum asset remoto. Os previews renderizam o HTML produzido pela função real; não houve novo envio de email nem alteração do job já concluído para testar aparência. Os aceites/chegadas registrados acima correspondem à versão escura anterior.
