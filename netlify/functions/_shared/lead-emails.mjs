@@ -188,21 +188,23 @@ export const buildInternalEmail = ({ reference, formType, email, name, interest,
   const copy = getContactCopy(interest);
   const title = formType === 'docks' ? 'Novo pedido — Docks' : formType === 'newsletter' ? 'Nova inscrição — Carta do Fernando' : `Novo contato — ${copy.label}`;
   const contactIdentity = subjectText(name || email, 80);
+  const starsLabel = formType === 'docks' ? `${qualification.stars} ${qualification.stars === 1 ? 'estrela' : 'estrelas'}` : '';
+  const interestLabel = formType === 'docks' ? DOCKS_INTERESTS.find((item) => item.value === interest)?.label || interest : formType === 'newsletter' ? interest : copy.label;
   const rows = [
     ['Referência', reference], ['Origem', sourcePath], ['Nome', name || 'Não informado'],
-    ['E-mail', email], ['Telefone', phone || 'Não informado'], ['Interesse', formType === 'newsletter' ? interest : copy.label],
+    ['E-mail', email], ['Telefone', phone || 'Não informado'], ['Interesse', interestLabel],
     ['Empresa', company || 'Não informado'], ['Cargo ou atuação', role || 'Não informado'], ['Contexto', message || 'Não informado'],
   ];
   if (formType === 'docks') rows.push(
     ['Apresentação', presentationTitle], ['Evento', eventId],
-    ['Qualificação inicial', `${qualification.score}/100 — ${qualification.stars} estrelas (${qualification.version})`],
+    ['Qualificação inicial', `${qualification.score}/100 — ${starsLabel} (${qualification.version})`],
     ['Motivos', qualification.reasons.join('; ')], ['Dados ausentes', qualification.missing.join(', ') || 'Nenhum'],
     ['Complementos', followupConsent ? 'Sim' : 'Não'], ['Carta do Fernando', newsletterConsent ? 'Sim' : 'Não'], ['Conversa solicitada', commercialConsent ? 'Sim' : 'Não'],
   );
   const htmlRows = rows.map(([label, value]) => `<tr><td style="padding:10px 8px;color:#85888C;vertical-align:top;border-bottom:1px solid #252725">${escapeHtml(label)}</td><td style="padding:10px 8px;color:#FFFFFF;white-space:pre-wrap;border-bottom:1px solid #252725">${escapeHtml(value)}</td></tr>`).join('');
   const responseButton = formType === 'contact' ? `${button('Responder ao contato', `mailto:${email}`)}<div style="height:20px;line-height:20px">&nbsp;</div>` : '';
   return {
-    subject: formType === 'docks' ? `[${reference}] Docks — ${qualification.stars} estrelas — ${contactIdentity}` : formType === 'newsletter' ? `[${reference}] ${title}` : `[${reference}] ${copy.label} — ${contactIdentity}`,
+    subject: formType === 'docks' ? `[${reference}] Docks — ${starsLabel} — ${contactIdentity}` : formType === 'newsletter' ? `[${reference}] ${title}` : `[${reference}] ${copy.label} — ${contactIdentity}`,
     html: baseEmail({
       preheader: `${title}: ${contactIdentity}`,
       title,

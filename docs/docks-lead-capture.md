@@ -1,6 +1,6 @@
 # Docks: material, relacionamento e qualificação
 
-Implementação candidata em duas entregas: este site e o contrato/interface do CRM TechHuman Platform. Não habilitar o formulário em produção antes de implantar o contrato `fernando-docks.v1` no CRM. Os formulários de contato e newsletter existentes não mudam.
+Implementação publicada em duas entregas: este site e o contrato/interface do CRM TechHuman Platform. O contrato `fernando-docks.v1` foi confirmado em produção antes da publicação do formulário. Os formulários de contato e newsletter existentes não mudam.
 
 ## Experiência
 
@@ -62,6 +62,6 @@ Referências: [Netlify Blobs](https://docs.netlify.com/build/data-and-storage/ne
 
 ## Estado da homologação em 05/10
 
-O checkpoint Base44 foi publicado após autorização específica e o endpoint confirmou a versão nova, assinatura correta (400 com corpo inválido) e assinatura incorreta (401). O pedido FP-F16E0FA7 gravou Lead, LeadSubmission e LeadActivity com score 10/uma estrela, somente material. A retomada confirmou deduplicação. Email não foi confirmado: fora do Netlify hospedado, Secrets Controller entrega uma máscara da chave Resend. O domínio principal ainda está no deploy anterior. Recibos e limites em docs/docks-homologacao-2026-10-05.md.
+O checkpoint Base44 foi publicado após autorização específica e o endpoint confirmou a versão nova, assinatura correta (400 com corpo inválido) e assinatura incorreta (401). O pedido FP-F16E0FA7 gravou Lead, LeadSubmission e LeadActivity com score 10/uma estrela, somente material. A retomada confirmou deduplicação. O site foi publicado após autorização: PR #59, commit 2b4de953108123338f1fff3533dfe4eea8c062ba, deploy 6ac405e58800210008bc443e. A retomada do mesmo pedido no servidor de produção confirmou assinatura, deduplicação e aceite Resend de aviso/material. O usuário confirmou recebimento e apresentou captura do aviso interno na caixa de entrada. Recibos e limites em docs/docks-homologacao-2026-10-05.md.
 
 FERNANDO_DOCKS_CRM_TIMEOUT_MS tem padrão e teto de 20000 ms, independente do prazo dos formulários existentes. Logs da fila exibem apenas códigos de falha permitidos, sem texto arbitrário do provedor.
