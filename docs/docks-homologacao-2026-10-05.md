@@ -66,3 +66,9 @@ Validação da captura identificou e corrigiu “1 estrelas” para “1 estrela
 O relatório privado inicialmente retornou 503 por token ausente. Foi configurado FERNANDO_DOCKS_REPORT_TOKEN somente em production/functions como secret. A cópia local permanece em .netlify/docks-report-token.env, ignorada pelo Git e com permissão 0600; não incluir valor em documentos, saída ou clientes públicos. Workflow oficial 37369588271 solicitado para aplicar a configuração. Pedido inválido retorna 400 e link de cancelamento sem assinatura retorna 400.
 
 Foi preparado teste de retenção com registro sintético sem contato, email ou conteúdo: cc409d6f-97de-4086-865e-b0aee2e9f609, submetido há 31 dias; o índice D+30 está vencido. A remoção pela próxima execução da rotina em produção deve ser confirmada antes de registrar homologação de limpeza. O teste não pode enviar mensagens nem registrar contato no CRM. D+2/D+7 e cancelamento válido permanecem cobertos pelos testes locais; não foram enviados complementos sem escolha explícita.
+
+### Confirmações finais durante a homologação
+
+O usuário apresentou segunda captura, também na caixa de entrada às 17:22 BRT, do email “Seu material e o roteiro de aplicação — Democratizar a IA começa pelo letramento”. Foram conferidos saudação, botão da apresentação, link do roteiro e cinco passos. Assim, o recebimento tanto do aviso interno quanto do material está confirmado por evidência do usuário; as URLs já haviam sido verificadas com HTTP 200 e paridade de artefatos.
+
+A rotina agendada foi comprovada por efeito no armazenamento de produção: o job sintético sem dados pessoais e seu índice D+30 existiam antes das 20:30 UTC e estavam ausentes na consulta de 2026-10-05T20:31:37Z. Nenhuma chamada manual de limpeza foi feita. Isso confirma execução real do agendamento e retenção do job na versão publicada, sem enviar emails adicionais.
