@@ -1,8 +1,10 @@
 # Fernando Parreiras — site pessoal
 
-Código-fonte do [hub público de Fernando Parreiras](https://fernandoparreiras.com.br/): um ponto de entrada para advisory executivo, palestras, cases, iniciativas empresariais e conteúdo sobre inteligência artificial, liderança e tecnologia humanizada.
+Código-fonte do [hub público de Fernando Parreiras](https://fernandoparreiras.com.br/): um ponto de entrada para advisory executivo, palestras, apresentações, cases, iniciativas empresariais e conteúdo sobre inteligência artificial, liderança e tecnologia humanizada.
 
 [![Site](https://img.shields.io/badge/site-fernandoparreiras.com.br-111827?style=flat-square)](https://fernandoparreiras.com.br/)
+[![Artigos](https://img.shields.io/badge/artigos-conhecimento_autoral-111827?style=flat-square)](https://fernandoparreiras.com.br/artigos/)
+[![Docks](https://img.shields.io/badge/docks-apresenta%C3%A7%C3%B5es_p%C3%BAblicas-111827?style=flat-square)](https://fernandoparreiras.com.br/docks/)
 ![React](https://img.shields.io/badge/React_18-111827?style=flat-square&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite_7-111827?style=flat-square&logo=vite&logoColor=FFD62E)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_3-111827?style=flat-square&logo=tailwindcss&logoColor=38BDF8)
@@ -13,7 +15,9 @@ Código-fonte do [hub público de Fernando Parreiras](https://fernandoparreiras.
 - posicionamento profissional e apresentação das iniciativas Trustyu.ai e Tech Human;
 - páginas de soluções, advisory, conselho, transformação com IA e palestras;
 - área de conhecimento com artigos, trilhas, filtros e feed RSS;
-- cases, livros, apresentações e outros ativos autorais;
+- Docks com apresentações públicas, roteiro, download, QR e páginas próprias;
+- captação consentida de materiais e conversas, com entrega por email, registro no CRM, retomada e cancelamento;
+- cases, livros e outros ativos autorais;
 - rotas estáticas e metadados próprios para descoberta, SEO e agentes de IA;
 - experiência responsiva, navegação por teclado e suporte a movimento reduzido;
 - controles de segurança, cache e redirecionamento mantidos no próprio repositório.
@@ -33,6 +37,7 @@ Código-fonte do [hub público de Fernando Parreiras](https://fernandoparreiras.
 | `/sobre/` | Trajetória, princípios e posicionamento |
 | `/contato/` | Canais de contato e conversão |
 | `/docks/` | Biblioteca de apresentações públicas |
+| `/docks/:slug/` | Apresentação, roteiro, download, QR e pedido consentido de material ou conversa |
 
 O acervo de conhecimento é versionado junto com o código. Cada artigo publicado recebe rota estática, metadados `Article`, entrada no sitemap e item no feed RSS.
 
@@ -77,6 +82,16 @@ O site não depende de CMS. Navegação, soluções, cases, apresentações, art
 
 Como o site é estático, cada ativação exige um novo build de produção. O calendário e o contrato operacional estão documentados em [`docs/knowledge/editorial-calendar.md`](docs/knowledge/editorial-calendar.md). Rascunhos sem aprovação editorial devem continuar fora dos dois catálogos.
 
+## Docks: publicação e relacionamento
+
+O Docks transforma apresentações aprovadas em ativos públicos versionados. O catálogo canônico fica em `src/data/docks.js` e `src/data/presentations.js`; o build gera páginas, roteiro, download e QR sem alterar os arquivos-fonte das apresentações.
+
+O pedido de material é explícito e separado das escolhas de complementos, Carta do Fernando e conversa. As Functions registram o snapshot da submissão, exigem recibos do CRM e do provedor de email, retomam falhas parciais com idempotência e mantêm cancelamento e retenção. Um aceite do provedor não deve ser descrito como leitura, resposta ou reunião.
+
+- contrato e limites: [`docs/docks-lead-capture.md`](docs/docks-lead-capture.md);
+- evidência de produção: [`docs/docks-homologacao-2026-10-05.md`](docs/docks-homologacao-2026-10-05.md);
+- privacidade: dados pessoais não entram nos eventos analíticos e jobs são removidos conforme a política documentada.
+
 ## Estrutura do repositório
 
 ```text
@@ -84,6 +99,7 @@ src/components/       componentes de seção e primitives de interface
 src/pages/            páginas e composição das rotas
 src/data/             conteúdo estruturado e metadados canônicos
 src/lib/              analytics, navegação e utilitários
+netlify/functions/    APIs de captação, entrega, relatório, cancelamento e rotina agendada
 public/               imagens, apresentações e arquivos de descoberta
 tests/                contratos de acessibilidade, rotas e higiene de produção
 tools/                geração de páginas estáticas e arquivos para crawlers
@@ -95,7 +111,7 @@ netlify.toml           build, redirects, CSP, headers e cache
 
 O domínio canônico é [fernandoparreiras.com.br](https://fernandoparreiras.com.br/); acessos por `www` são redirecionados para o domínio apex. A configuração da Netlify aplica CSP restritiva às rotas normais e uma política isolada apenas às apresentações autocontidas em `/presentations/*`.
 
-O procedimento de DNS, verificação e rollback está em [`docs/netlify-cutover-runbook.md`](docs/netlify-cutover-runbook.md). Evidências de QA versionadas ficam em [`docs/qa/`](docs/qa/) e `output/playwright/`.
+O procedimento de DNS, verificação e rollback está em [`docs/netlify-cutover-runbook.md`](docs/netlify-cutover-runbook.md). Evidências de QA versionadas ficam em [`docs/qa/`](docs/qa/), nas homologações Docks e em `output/playwright/`. Segredos permanecem somente no servidor; o cliente público recebe apenas contratos e estados necessários à experiência.
 
 ## Contribuição
 
