@@ -51,6 +51,11 @@ export const ARTICLE_SHARE_INTENTS = Object.freeze({
     commercialCta: 'Leve esta discussão para sua liderança ou evento: converse com Fernando sobre transformação, governança e trabalho com IA.',
     destination: '/solucoes/transformacao-tecnologia-ia',
   },
+  'rea-e-a-nova-lideranca-quando-qualquer-pessoa-pode-comecar-um-software': {
+    discussion: 'Se qualquer pessoa consegue começar um software com REA e agentes, quem define quando o experimento passa a exigir responsabilidade coletiva?',
+    commercialCta: 'Leve esta discussão para sua liderança ou evento: converse com Fernando sobre produto, trabalho e transformação responsável com IA.',
+    destination: '/contato/',
+  },
   'competencias-que-sobrevivem-a-uma-mudanca-de-carreira': {
     discussion: 'Que competência da sua trajetória continua valiosa quando o cargo, o setor ou a ferramenta muda?',
     commercialCta: 'Para trabalhar reposicionamento, carreira e IA com pessoas ou equipes, converse com Fernando.',

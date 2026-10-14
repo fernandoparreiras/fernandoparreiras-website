@@ -34,6 +34,10 @@ const EXPECTED_SCHEDULE = [
     "2026-09-26T09:00:00-03:00",
   ],
   ["profissional-ti-custo-total-da-ia", "2026-10-04T09:00:00-03:00"],
+  [
+    "rea-e-a-nova-lideranca-quando-qualquer-pessoa-pode-comecar-um-software",
+    "2026-10-14T09:00:00-03:00",
+  ],
   ["valor-do-julgamento-com-ia", "2026-11-09T09:00:00-03:00"],
   [
     "produtividade-sem-direcao-acelera-o-desperdicio",
@@ -41,8 +45,8 @@ const EXPECTED_SCHEDULE = [
   ],
 ];
 
-test("coleção editorial possui vinte artigos com especiais AI-native, FDE e democratização da IA", () => {
-  assert.equal(editorialArticles.length, 20);
+test("coleção editorial possui vinte e um artigos com especiais AI-native, FDE, REA e democratização da IA", () => {
+  assert.equal(editorialArticles.length, 21);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -54,12 +58,12 @@ test("coleção editorial possui vinte artigos com especiais AI-native, FDE e de
   assert.deepEqual(countsByTrack, {
     "carreira-ia": 7,
     "jovens-futuro": 3,
-    "lideranca-negocios": 7,
+    "lideranca-negocios": 8,
     "mudanca-carreira": 3,
   });
 });
 
-test("fila inclui cinco especiais e preserva a agenda reconciliada", () => {
+test("fila inclui seis especiais e preserva a agenda reconciliada", () => {
   const chronological = [...scheduledArticles].sort(
     (left, right) => new Date(left.scheduledAt) - new Date(right.scheduledAt),
   );
@@ -89,7 +93,7 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(firstRelease[0].slug, "dia-seguinte-primeira-venda");
   assert.equal(septemberRelease.length, 17);
   assert.equal(octoberRelease.length, 18);
-  assert.equal(completeRelease.length, 20);
+  assert.equal(completeRelease.length, 21);
   assert.equal(
     completeRelease[0].slug,
     "produtividade-sem-direcao-acelera-o-desperdicio",
