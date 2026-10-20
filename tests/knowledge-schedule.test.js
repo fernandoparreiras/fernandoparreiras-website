@@ -38,6 +38,11 @@ const EXPECTED_SCHEDULE = [
     "rea-e-a-nova-lideranca-quando-qualquer-pessoa-pode-comecar-um-software",
     "2026-10-14T09:00:00-03:00",
   ],
+  ["aprender-com-ia-sem-terceirizar-o-proprio-aprendizado", "2026-10-22T09:00:00-03:00"],
+  ["decisoes-com-ia-precisam-de-um-caminho-de-volta", "2026-10-26T09:00:00-03:00"],
+  ["um-bom-acordo-vale-mais-que-mais-uma-instrucao-para-a-ia", "2026-10-30T09:00:00-03:00"],
+  ["documentar-uma-decisao-e-cuidar-de-quem-vem-depois", "2026-11-03T09:00:00-03:00"],
+  ["o-que-a-equipe-aprende-quando-so-a-velocidade-e-premiada", "2026-11-07T09:00:00-03:00"],
   ["valor-do-julgamento-com-ia", "2026-11-09T09:00:00-03:00"],
   [
     "produtividade-sem-direcao-acelera-o-desperdicio",
@@ -45,8 +50,8 @@ const EXPECTED_SCHEDULE = [
   ],
 ];
 
-test("coleção editorial possui vinte e um artigos com especiais AI-native, FDE, REA e democratização da IA", () => {
-  assert.equal(editorialArticles.length, 21);
+test("coleção editorial possui vinte e seis artigos com especiais AI-native, FDE, REA e democratização da IA", () => {
+  assert.equal(editorialArticles.length, 26);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -56,9 +61,9 @@ test("coleção editorial possui vinte e um artigos com especiais AI-native, FDE
     {},
   );
   assert.deepEqual(countsByTrack, {
-    "carreira-ia": 7,
+    "carreira-ia": 8,
     "jovens-futuro": 3,
-    "lideranca-negocios": 8,
+    "lideranca-negocios": 12,
     "mudanca-carreira": 3,
   });
 });
@@ -93,7 +98,7 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(firstRelease[0].slug, "dia-seguinte-primeira-venda");
   assert.equal(septemberRelease.length, 17);
   assert.equal(octoberRelease.length, 18);
-  assert.equal(completeRelease.length, 21);
+  assert.equal(completeRelease.length, 26);
   assert.equal(
     completeRelease[0].slug,
     "produtividade-sem-direcao-acelera-o-desperdicio",

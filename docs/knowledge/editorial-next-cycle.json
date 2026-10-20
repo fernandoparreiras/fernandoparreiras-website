@@ -1,0 +1,89 @@
+{
+  "timezone": "America/Sao_Paulo",
+  "reviewBufferDays": 14,
+  "prepared": [
+    {
+      "slug": "aprender-com-ia-sem-terceirizar-o-proprio-aprendizado",
+      "scheduledAt": "2026-10-22T09:00:00-03:00"
+    },
+    {
+      "slug": "decisoes-com-ia-precisam-de-um-caminho-de-volta",
+      "scheduledAt": "2026-10-26T09:00:00-03:00"
+    },
+    {
+      "slug": "um-bom-acordo-vale-mais-que-mais-uma-instrucao-para-a-ia",
+      "scheduledAt": "2026-10-30T09:00:00-03:00"
+    },
+    {
+      "slug": "documentar-uma-decisao-e-cuidar-de-quem-vem-depois",
+      "scheduledAt": "2026-11-03T09:00:00-03:00"
+    },
+    {
+      "slug": "o-que-a-equipe-aprende-quando-so-a-velocidade-e-premiada",
+      "scheduledAt": "2026-11-07T09:00:00-03:00"
+    }
+  ],
+  "planned": [
+    {
+      "title": "Carreira: mostrar como você verifica, além do que você produz",
+      "scheduledAt": "2026-11-14T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "A conversa de carreira que começa pelo problema, não pelo cargo",
+      "scheduledAt": "2026-11-18T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "Como discordar de uma resposta convincente da IA",
+      "scheduledAt": "2026-11-22T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "Liderar a transição entre experimentar e sustentar",
+      "scheduledAt": "2026-11-26T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "O valor de explicar uma decisão difícil",
+      "scheduledAt": "2026-11-30T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "Aprendizagem de equipe precisa sobreviver à troca de ferramenta",
+      "scheduledAt": "2026-12-04T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "Revisar metas quando a capacidade de execução muda",
+      "scheduledAt": "2026-12-08T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "Autonomia profissional também é saber pedir revisão",
+      "scheduledAt": "2026-12-12T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "O que um erro bem discutido pode ensinar à liderança",
+      "scheduledAt": "2026-12-16T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "Balanço de carreira: separar atividade, entrega e contribuição",
+      "scheduledAt": "2026-12-20T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "Trabalho com sentido depois do entusiasmo com a ferramenta",
+      "scheduledAt": "2026-12-24T09:00:00-03:00",
+      "status": "planned"
+    },
+    {
+      "title": "Preparar o próximo ciclo sem transformar previsão em compromisso",
+      "scheduledAt": "2026-12-28T09:00:00-03:00",
+      "status": "planned"
+    }
+  ],
+  "ownerRole": "editorial-fernando"
+}

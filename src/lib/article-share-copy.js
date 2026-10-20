@@ -1,6 +1,12 @@
 const SITE_URL = 'https://fernandoparreiras.com.br';
 
 export const ARTICLE_SHARE_INTENTS = Object.freeze({
+  "aprender-com-ia-sem-terceirizar-o-proprio-aprendizado": {"discussion": "O que você consegue explicar e verificar depois de usar a IA para aprender?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
+  "decisoes-com-ia-precisam-de-um-caminho-de-volta": {"discussion": "Sua equipe sabe como interromper ou desfazer uma decisão apoiada por IA?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
+  "um-bom-acordo-vale-mais-que-mais-uma-instrucao-para-a-ia": {"discussion": "As áreas envolvidas reconhecem o mesmo resultado como uma boa entrega?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
+  "documentar-uma-decisao-e-cuidar-de-quem-vem-depois": {"discussion": "Quem chega depois consegue entender por que a decisão foi tomada?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
+  "o-que-a-equipe-aprende-quando-so-a-velocidade-e-premiada": {"discussion": "O que sua equipe percebe que é reconhecido além da velocidade de execução?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
+
   'fde-forward-deployed-engineer-carreira-ia': {
     discussion: 'Sua trajetória já mostra que você consegue compreender o problema do cliente, construir com IA e acompanhar a entrega até produção?',
     commercialCta: 'Leve esta discussão para sua carreira ou equipe: converse com Fernando sobre produto, arquitetura e formação para trabalhar com IA.',

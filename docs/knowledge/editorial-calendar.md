@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Coleção de vinte artigos: seis já publicados e quatorze agendados. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026 e 18/09/2026. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo.
+Coleção de 26 artigos completos: seis originais e vinte entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026 e 18/09/2026. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
 
@@ -51,3 +51,9 @@ exato e não cria precedente automático para o radar.
 - Cada artigo possui trilha, categoria, formato, três tags controladas, natureza editorial e CTA contextual.
 - Os dois ensaios do Radar distinguem opinião, proposta e achados exploratórios; mantêm links diretos, limitações, assistência de IA e auto-revisão do original em português. Aprovação autoral não equivale a revisão independente ou confirmação científica.
 - A tradução assistida por IA é identificada no Forge; o site pessoal mantém apenas o original português.
+
+## Reserva antecipada — 20/10/2026
+
+Cinco ensaios completos em 22, 26 e 30/10, 03 e 07/11 recompõem a cadência de quatro dias a partir de 22/10. As datas aprovadas de 09 e 10/11 e todos os especiais permanecem intactos. Não se retrodatam entregas para preencher o intervalo anterior.
+
+`editorial-next-cycle.json` define pautas até 28/12 e reserva mínima de 14 dias; `planned` não equivale a texto pronto nem publicação. A sessão dona é **FERNANDO PARREIRAS: Artigos site Oficial**. Conferir worktrees e PRs por slug antes de produzir e não duplicar a fila desta integração.
