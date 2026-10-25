@@ -6,6 +6,7 @@ export const ARTICLE_SHARE_INTENTS = Object.freeze({
   "um-bom-acordo-vale-mais-que-mais-uma-instrucao-para-a-ia": {"discussion": "As áreas envolvidas reconhecem o mesmo resultado como uma boa entrega?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
   "documentar-uma-decisao-e-cuidar-de-quem-vem-depois": {"discussion": "Quem chega depois consegue entender por que a decisão foi tomada?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
   "o-que-a-equipe-aprende-quando-so-a-velocidade-e-premiada": {"discussion": "O que sua equipe percebe que é reconhecido além da velocidade de execução?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
+  "mostrar-como-voce-verifica-alem-do-que-produz": {"discussion": "Que evidência mostra como você verifica uma entrega feita com apoio de IA?", "commercialCta": "Leve esta reflexão para sua carreira, equipe ou evento: converse com Fernando sobre autoria, julgamento e trabalho com IA.", "destination": "/contato/"},
 
   'fde-forward-deployed-engineer-carreira-ia': {
     discussion: 'Sua trajetória já mostra que você consegue compreender o problema do cliente, construir com IA e acompanhar a entrega até produção?',

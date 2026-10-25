@@ -368,5 +368,79 @@ export const editorialBufferOctober2026 = [
         ]
       }
     ]
+  },
+  {
+    "slug": "mostrar-como-voce-verifica-alem-do-que-produz",
+    "title": "Mostrar como você verifica, além do que produz",
+    "excerpt": "Em um trabalho acelerado por IA, a entrega pronta diz menos sobre o profissional. Tornar visíveis critérios, testes e limites ajuda a demonstrar julgamento.",
+    "track": "carreira-ia",
+    "category": "Carreira com IA",
+    "format": "Ensaio prático",
+    "tags": [
+      "carreira",
+      "IA",
+      "verificação"
+    ],
+    "readingMinutes": 7,
+    "publishedAt": "2026-11-14",
+    "updatedAt": "2026-11-14",
+    "scheduledAt": "2026-11-14T09:00:00-03:00",
+    "image": "/images/em-cena/fernando-parreiras-palestra-microfone-1600.webp",
+    "imageAlt": "Fernando Parreiras conversando com uma audiência durante uma palestra.",
+    "nature": "Reflexão autoral sobre carreira, julgamento e verificação no trabalho com IA, com referência pública e limites explícitos.",
+    "cta": {
+      "label": "Conversar sobre carreira e trabalho com IA",
+      "href": "/solucoes/transformacao-tecnologia-ia"
+    },
+    "content": [
+      {
+        "heading": "A entrega pronta já não conta toda a história",
+        "paragraphs": [
+          "Quando ferramentas de IA ajudam a escrever, analisar, programar ou apresentar, duas pessoas podem chegar a resultados parecidos por caminhos muito diferentes. Uma compreendeu o problema, escolheu critérios e conferiu o resultado. A outra aceitou uma resposta convincente que ainda não saberia defender. O arquivo final, sozinho, não revela essa diferença.",
+          "Por isso, considero insuficiente mostrar apenas o que foi produzido. A carreira também precisa tornar visível como o profissional decidiu que a entrega merecia ser aceita. Não se trata de expor cada tentativa ou transformar o trabalho em uma prestação de contas permanente. Trata-se de preservar evidências de julgamento onde elas realmente importam."
+        ]
+      },
+      {
+        "heading": "Verificar começa antes de procurar um erro",
+        "paragraphs": [
+          "Uma verificação útil começa pela intenção: para quem é a entrega, qual decisão ela deve apoiar e o que seria um resultado inadequado? Sem essas referências, a revisão pode confirmar apenas que o texto está bem escrito ou que o sistema executou sem falhar.",
+          "Depois vêm as escolhas observáveis: quais fontes foram consultadas, que hipótese foi testada, que exemplo contrariaria a conclusão e qual pessoa tem repertório para discordar. O processo pode ser proporcional à consequência. Uma nota interna não exige o mesmo rigor de uma recomendação que afeta clientes, direitos, dinheiro ou reputação."
+        ]
+      },
+      {
+        "heading": "Um portfólio pode mostrar o raciocínio sem revelar o que é confidencial",
+        "paragraphs": [
+          "Ao apresentar um projeto, acrescente um registro curto: problema, critérios de aceite, riscos considerados, verificações realizadas e limites que permaneceram. Se não puder compartilhar dados ou materiais da organização, reconstrua a lógica com um exemplo fictício claramente identificado e sem reproduzir informação protegida.",
+          "Também vale mostrar uma correção. Explicar por que uma primeira resposta foi rejeitada pode demonstrar mais maturidade do que exibir apenas uma versão polida. A evidência não precisa provar perfeição; precisa permitir que outra pessoa compreenda como você percebeu um limite e melhorou a decisão."
+        ]
+      },
+      {
+        "heading": "A referência técnica ajuda a separar confiança de validação",
+        "paragraphs": [
+          "O NIST AI Risk Management Framework descreve validade e confiabilidade como características que dependem de evidência, condições de uso, testes e monitoramento. O referencial é voluntário e dirigido à gestão de riscos de sistemas de IA; ele não estabelece uma regra de contratação nem comprova que um formato de portfólio melhora uma carreira.",
+          "Minha leitura profissional é mais simples: se organizações precisam compreender as condições em que um resultado de IA pode ser aceito, pessoas que trabalham com essas ferramentas ganham força quando conseguem explicar a mesma fronteira. Saber produzir continua importante. Saber dizer por que algo é adequado, onde pode falhar e o que ainda requer revisão torna a contribuição mais reconhecível."
+        ]
+      },
+      {
+        "heading": "Uma evidência para construir nesta semana",
+        "paragraphs": [
+          "Escolha uma entrega recente apoiada por IA e responda em uma página: qual era o problema, que parte você delegou, quais critérios usou, o que conferiu, o que mudou depois da revisão e qual limite continua aberto. Peça a alguém que leia sem o contexto da conversa e diga o que ainda não consegue verificar.",
+          "Esse registro não substitui competência técnica, experiência ou resultado real. Ele ajuda a transformar uma afirmação genérica — “sei trabalhar com IA” — em uma conversa concreta sobre escolhas e responsabilidade. Em um mercado com mais capacidade de gerar, mostrar como você verifica pode ser uma das formas mais honestas de demonstrar autoria profissional."
+        ]
+      },
+      {
+        "heading": "Fontes e natureza do texto",
+        "paragraphs": [
+          "[NIST — Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10). Referencial voluntário para gestão de riscos de IA; a aplicação a portfólio, carreira e demonstração de julgamento é interpretação autoral e não uma conclusão do NIST.",
+          "As perguntas e o exercício são propostas autorais para reflexão. Não são transcrição de experiência pessoal, caso de cliente, pesquisa sobre contratação ou método de resultado profissional garantido."
+        ]
+      },
+      {
+        "heading": "Nota editorial e de responsabilidade",
+        "paragraphs": [
+          "Texto informativo de Fernando Parreiras sobre carreira e trabalho com IA. Pesquisa e redação tiveram assistência de IA. Ensaio preparado em 24/10/2026 sob autorização editorial do autor, com auto-revisão assistida e sem revisão humana independente adicional. O autor mantém interesse profissional e comercial em estratégia, tecnologia, carreira e desenvolvimento de lideranças. A referência e as sugestões não substituem avaliação das condições de cada pessoa ou organização."
+        ]
+      }
+    ]
   }
 ];
