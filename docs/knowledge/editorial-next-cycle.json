@@ -25,14 +25,13 @@
     {
       "slug": "mostrar-como-voce-verifica-alem-do-que-produz",
       "scheduledAt": "2026-11-14T09:00:00-03:00"
+    },
+    {
+      "slug": "conversa-de-carreira-comeca-pelo-problema-nao-pelo-cargo",
+      "scheduledAt": "2026-11-18T09:00:00-03:00"
     }
   ],
   "planned": [
-    {
-      "title": "A conversa de carreira que começa pelo problema, não pelo cargo",
-      "scheduledAt": "2026-11-18T09:00:00-03:00",
-      "status": "planned"
-    },
     {
       "title": "Como discordar de uma resposta convincente da IA",
       "scheduledAt": "2026-11-22T09:00:00-03:00",
