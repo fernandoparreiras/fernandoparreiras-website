@@ -52,10 +52,14 @@ const EXPECTED_SCHEDULE = [
     "mostrar-como-voce-verifica-alem-do-que-produz",
     "2026-11-14T09:00:00-03:00",
   ],
+  [
+    "conversa-de-carreira-comeca-pelo-problema-nao-pelo-cargo",
+    "2026-11-18T09:00:00-03:00",
+  ],
 ];
 
-test("coleção editorial possui vinte e sete artigos com especiais AI-native, FDE, REA e democratização da IA", () => {
-  assert.equal(editorialArticles.length, 27);
+test("coleção editorial possui vinte e oito artigos com especiais AI-native, FDE, REA e democratização da IA", () => {
+  assert.equal(editorialArticles.length, 28);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -68,7 +72,7 @@ test("coleção editorial possui vinte e sete artigos com especiais AI-native, F
     "carreira-ia": 9,
     "jovens-futuro": 3,
     "lideranca-negocios": 12,
-    "mudanca-carreira": 3,
+    "mudanca-carreira": 4,
   });
 });
 
@@ -96,6 +100,7 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   const septemberRelease = getPublishedArticles("2026-09-26T12:00:00Z");
   const octoberRelease = getPublishedArticles("2026-10-04T12:00:00Z");
   const completeRelease = getPublishedArticles("2026-11-14T12:00:00Z");
+  const nextCycleRelease = getPublishedArticles("2026-11-18T12:00:00Z");
 
   assert.equal(immediatelyBeforeFirstRelease.length, 6);
   assert.equal(firstRelease.length, 7);
@@ -106,6 +111,11 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(
     completeRelease[0].slug,
     "mostrar-como-voce-verifica-alem-do-que-produz",
+  );
+  assert.equal(nextCycleRelease.length, 28);
+  assert.equal(
+    nextCycleRelease[0].slug,
+    "conversa-de-carreira-comeca-pelo-problema-nao-pelo-cargo",
   );
 });
 

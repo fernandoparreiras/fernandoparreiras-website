@@ -442,5 +442,79 @@ export const editorialBufferOctober2026 = [
         ]
       }
     ]
+  },
+  {
+    "slug": "conversa-de-carreira-comeca-pelo-problema-nao-pelo-cargo",
+    "title": "A conversa de carreira que começa pelo problema, não pelo cargo",
+    "excerpt": "Cargos ajudam a organizar o mercado, mas raramente explicam toda a contribuição. Uma conversa mais útil começa pelos problemas que você sabe compreender e ajudar a resolver.",
+    "track": "mudanca-carreira",
+    "category": "Transição profissional",
+    "format": "Ensaio prático",
+    "tags": [
+      "carreira",
+      "competências",
+      "transição"
+    ],
+    "readingMinutes": 7,
+    "publishedAt": "2026-11-18",
+    "updatedAt": "2026-11-18",
+    "scheduledAt": "2026-11-18T09:00:00-03:00",
+    "image": "/images/em-cena/fernando-parreiras-palestra-microfone-1600.webp",
+    "imageAlt": "Fernando Parreiras conversando com uma audiência durante uma palestra.",
+    "nature": "Reflexão autoral sobre carreira, competências e transição profissional, com referência pública e limites explícitos.",
+    "cta": {
+      "label": "Conversar sobre carreira e transformação do trabalho",
+      "href": "/contato/"
+    },
+    "content": [
+      {
+        "heading": "O cargo é uma resposta curta para uma história longa",
+        "paragraphs": [
+          "Quando alguém pergunta o que você busca na carreira, é natural responder com um cargo. O título ajuda a localizar oportunidades e a explicar uma direção. Mas ele também pode reduzir uma trajetória inteira a uma palavra que muda entre empresas, setores e momentos do mercado.",
+          "Uma conversa mais útil começa antes: que tipo de problema você aprendeu a compreender, que contribuição consegue oferecer e em quais condições esse trabalho produz valor? O cargo continua importante, mas deixa de ser o único ponto de partida."
+        ]
+      },
+      {
+        "heading": "Problemas revelam competências que atravessam contextos",
+        "paragraphs": [
+          "Uma pessoa pode ter coordenado projetos, atendido clientes ou operado sistemas diferentes e, em todos eles, ter feito algo semelhante: transformar ambiguidade em prioridade, aproximar pessoas que discordavam ou perceber um risco antes que ele crescesse. Essa continuidade nem sempre aparece no nome da função.",
+          "Escolha três situações reais e descreva o problema, as restrições, sua decisão e o efeito observado. Não procure uma qualidade abstrata como liderança ou comunicação. Procure o trabalho que tornou a situação melhor e a evidência que permite discutir essa contribuição."
+        ]
+      },
+      {
+        "heading": "A pergunta muda a conversa com o mercado",
+        "paragraphs": [
+          "Em vez de perguntar apenas quais vagas combinam com seu currículo, investigue quais problemas aparecem repetidamente nas organizações que você quer conhecer. Converse com pessoas sobre decisões difíceis, atrasos, expectativas de clientes e mudanças que ainda não encontraram dono.",
+          "A intenção não é oferecer uma solução antes de entender o contexto nem transformar toda conversa em venda. É aprender a ligar repertório a uma necessidade reconhecível. Essa ligação permite decidir que competência aprofundar, que projeto construir e qual linguagem o mercado realmente compreende."
+        ]
+      },
+      {
+        "heading": "A abordagem por competências amplia a leitura, mas não elimina limites",
+        "paragraphs": [
+          "A OECD descreve abordagens skills-first como uma forma de colocar competências demonstradas, e não apenas credenciais, no centro de contratação, desenvolvimento e mobilidade. O relatório também ressalta a necessidade de linguagem comum, reconhecimento e condições institucionais para que essa transição funcione.",
+          "Isso não significa que diplomas, licenças ou experiência formal perderam valor. Algumas profissões dependem deles, e processos seletivos continuam sujeitos a critérios, relações e desigualdades que uma boa narrativa individual não resolve. Minha proposta é usar o problema como uma lente adicional para reconhecer e demonstrar contribuição."
+        ]
+      },
+      {
+        "heading": "Uma conversa de carreira para fazer nesta semana",
+        "paragraphs": [
+          "Convide alguém que conheça seu trabalho e faça três perguntas: em que situação você me procuraria, que parte da minha contribuição é difícil substituir e que evidência ainda falta para eu atuar em um problema maior? Compare as respostas com a forma como você apresenta sua trajetória.",
+          "Depois escreva uma frase provisória: ajudo determinado público a enfrentar determinado problema por meio de competências que consigo demonstrar. Trate a frase como hipótese, não como slogan definitivo. Teste-a em conversas e revise quando a realidade trouxer informação melhor. Uma direção profissional ganha consistência quando conecta história, aprendizagem e necessidade sem prometer o que ainda não foi provado."
+        ]
+      },
+      {
+        "heading": "Fontes e natureza do texto",
+        "paragraphs": [
+          "[OECD — A Skills-First Labour Market](https://www.oecd.org/en/publications/a-skills-first-labour-market_2e1b85f0-en.html). Relatório sobre competências, contratação, aprendizagem e mobilidade; a proposta de começar a conversa de carreira pelo problema é interpretação autoral e não uma recomendação individual comprovada pela OECD.",
+          "As perguntas e o exercício são propostas autorais para reflexão. Não são transcrição de experiência pessoal, aconselhamento psicológico, garantia de contratação ou método de transição profissional com resultado assegurado."
+        ]
+      },
+      {
+        "heading": "Nota editorial e de responsabilidade",
+        "paragraphs": [
+          "Texto informativo de Fernando Parreiras sobre carreira e transformação do trabalho. Pesquisa e redação tiveram assistência de IA. Ensaio preparado em 31/10/2026 sob autorização editorial do autor, com auto-revisão assistida e sem revisão humana independente adicional. O autor mantém interesse profissional e comercial em estratégia, tecnologia, carreira e desenvolvimento de lideranças. A referência e as sugestões não substituem avaliação das condições de cada pessoa ou organização."
+        ]
+      }
+    ]
   }
 ];
