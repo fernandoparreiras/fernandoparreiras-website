@@ -1,6 +1,11 @@
 const SITE_URL = 'https://fernandoparreiras.com.br';
 
 export const ARTICLE_SHARE_INTENTS = Object.freeze({
+  "agilidade-ia-sdlc-fluxo-completo": {
+    discussion: "Se a IA já ajuda sua equipe a construir, quem hoje consegue conduzir a mudança inteira — do problema ao aprendizado em produção?",
+    commercialCta: "Mapeie com Fernando seu SDLC AI-native, os limites de autonomia e o encaixe de Trustyu Forge e AI Works em um advisory ou palestra para lideranças e times de tecnologia.",
+    destination: "/contato/",
+  },
   "aprender-com-ia-sem-terceirizar-o-proprio-aprendizado": {"discussion": "O que você consegue explicar e verificar depois de usar a IA para aprender?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
   "decisoes-com-ia-precisam-de-um-caminho-de-volta": {"discussion": "Sua equipe sabe como interromper ou desfazer uma decisão apoiada por IA?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},
   "um-bom-acordo-vale-mais-que-mais-uma-instrucao-para-a-ia": {"discussion": "As áreas envolvidas reconhecem o mesmo resultado como uma boa entrega?", "commercialCta": "Leve esta reflexão para sua equipe, carreira ou evento: converse com Fernando sobre liderança, aprendizagem e transformação com IA.", "destination": "/contato/"},

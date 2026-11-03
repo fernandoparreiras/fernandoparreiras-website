@@ -1,8 +1,12 @@
 # Brief de publicação — Agilidade × IA
 
-Estado: preparado editorialmente; não agendado e não publicado
+Estado: promovido para implementação canônica e agendado como especial extraordinário em 03/11/2026 às 18h10 BRT; publicação pública depende de integração, deploy e verificação no domínio oficial
 
 Artigo: `agilidade-ia-sdlc-fluxo-completo.md`
+
+Slug canônico: `agilidade-ia-sdlc-fluxo-completo`
+
+`scheduledAt`: `2026-11-03T18:10:00-03:00`
 
 ## Posicionamento
 

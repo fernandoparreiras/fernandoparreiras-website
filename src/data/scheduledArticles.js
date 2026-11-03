@@ -1,3 +1,4 @@
+import { agilityAiSdlcArticle } from "./agilityAiSdlcArticle.js";
 import { editorialBufferOctober2026 } from "./editorialBufferOctober2026.js";
 import { radarArticles } from "./radarArticles.js";
 import { radarSeptember10Articles } from "./radarSeptember10Articles.js";
@@ -8,6 +9,7 @@ import { fdeCareerArticle } from "./fdeCareerArticle.js";
 import { reaLeadershipArticle } from "./reaLeadershipArticle.js";
 
 export const scheduledArticles = [
+  agilityAiSdlcArticle,
   ...editorialBufferOctober2026,
   sequoiaServicesArticle,
   ...radarSeptember10Articles.filter(isRadarArticleApproved),

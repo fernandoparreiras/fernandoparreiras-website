@@ -7,7 +7,7 @@ import {
 } from "../src/lib/editorial-publication-gate.js";
 
 test("toda a fila agendada passa pelo gate antes da data de publicação", () => {
-  assert.equal(scheduledArticles.length, 22);
+  assert.equal(scheduledArticles.length, 23);
   assert.doesNotThrow(() => validateEditorialPublications(scheduledArticles));
 });
 

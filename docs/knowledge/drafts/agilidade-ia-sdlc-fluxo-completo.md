@@ -1,7 +1,9 @@
 ---
 title: "Agilidade × IA: desenvolver deixou de ser Frontend + Backend — agora é responder pelo fluxo completo"
 subtitle: "Quando a IA reduz o custo de gerar software, a vantagem deixa de estar em produzir mais código. Ela passa a estar em conduzir uma mudança inteira — do problema ao aprendizado em produção — com evidência, segurança e capacidade de voltar atrás."
-status: "rascunho editorial completo — não agendado e não publicado"
+status: "promoted"
+slug: "agilidade-ia-sdlc-fluxo-completo"
+scheduled_at: "2026-11-03T18:10:00-03:00"
 date: "2026-11-03"
 format: "artigo especial"
 track: "lideranca-negocios"
@@ -24,7 +26,7 @@ Durante anos, a indústria organizou o desenvolvimento em caixas. Produto escrev
 
 A IA pressiona esse modelo por um motivo simples: em tarefas bem delimitadas, ela pode comprimir fortemente algumas etapas locais — pesquisa, prototipação, escrita de código, testes iniciais, documentação — e tornar visíveis os atrasos que estavam fora do editor. Quando implementar leva horas, mas entender o problema, obter contexto, revisar, integrar, liberar e observar ainda leva dias, o gargalo apenas mudou de lugar.
 
-É por isso que a discussão “Agile versus IA” começa pela pergunta errada. A IA não tornou a agilidade obsoleta. Ela tornou obsoleta uma interpretação pobre de agilidade: a ideia de que ser ágil é movimentar tickets, cumprir cerimônias ou produzir mais pontos por sprint.
+É por isso que a discussão “Agile versus IA” começa pela pergunta errada. A IA não torna a agilidade obsoleta. Ela torna insuficiente uma interpretação pobre de agilidade: a ideia de que ser ágil é movimentar tickets, cumprir cerimônias ou produzir mais pontos por sprint.
 
 Neste ensaio, tratamos agilidade como a capacidade de reduzir o tempo entre uma hipótese e uma evidência confiável para decidir. E a IA só cria vantagem quando encurta esse ciclo inteiro.
 
@@ -468,7 +470,7 @@ Mais código pode significar mais WIP, mais revisão, mais regressões e menor e
 
 **Resultado esperado:** uma capacidade organizacional repetível, e não uma demonstração isolada.
 
-## 15. A verdadeira evolução da agilidade
+## 15. A evolução necessária da agilidade
 
 A primeira geração de agilidade reagiu ao peso de ciclos longos, grandes especificações e feedback tardio. A próxima precisa reagir a um problema diferente: **produção abundante sem confiança proporcional**.
 
