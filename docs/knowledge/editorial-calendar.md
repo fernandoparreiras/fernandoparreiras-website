@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Coleção de 27 artigos completos: seis originais e vinte e uma entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026 e 24/10/2026. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo.
+Coleção de 29 artigos completos: seis originais e vinte e três entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
 
@@ -15,6 +15,8 @@ Em 10/09/2026, o Radar de Evidências originou uma edição especial coordenada 
 Fernando Parreiras e Trustyu Forge. O ensaio autoral ocupa um segundo slot no mesmo dia sem deslocar
 o evergreen já previsto; a promoção final permanece condicionada à confirmação humana do artefato
 exato e não cria precedente automático para o radar.
+
+Em 03/11/2026, Fernando aprovou a publicação extraordinária do especial “Agilidade × IA” às 18h10 BRT. O texto entra depois do ensaio regular das 09h, sem alterar a cadência, os especiais de 09 e 10/11 nem a reserva móvel. A integração no código não equivale a deploy ou publicação observada; esses estados exigem os gates operacionais do domínio oficial.
 
 ## Agenda aprovada
 
@@ -29,6 +31,7 @@ exato e não cria precedente automático para o radar.
 | 22 set. 2026 | Negócios e liderança | Equipes com agentes de IA ainda precisam de responsabilidade humana | Agendado |
 | 24 set. 2026 | Negócios e liderança | Liderar quando toda área pode criar software | Agendado — série Democratização da IA |
 | 26 set. 2026 | Mudança de carreira | Um plano de 90 dias para uma transição profissional com IA | Agendado |
+| 3 nov. 2026, 18h10 | Negócios e liderança | Agilidade × IA: desenvolver deixou de ser Frontend + Backend — agora é responder pelo fluxo completo | Especial extraordinário aprovado em 03/11/2026 |
 | 9 nov. 2026 | Carreira com IA | Seu próximo diferencial pode estar no que você não aprova | Agendado |
 | 10 nov. 2026 | Negócios e liderança | Produtividade sem direção apenas acelera o desperdício | Agendado |
 

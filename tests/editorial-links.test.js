@@ -31,8 +31,8 @@ test("fontes HTTPS viram links sem HTML arbitrário", () => {
 
 test("ensaios aprovados têm fontes diretas, nota e agenda sem colisões", () => {
   assert.equal(radarArticles.length, 3);
-  assert.equal(scheduledArticles.length, 22);
-  assert.equal(new Set(scheduledArticles.map((a) => a.scheduledAt)).size, 22);
+  assert.equal(scheduledArticles.length, 23);
+  assert.equal(new Set(scheduledArticles.map((a) => a.scheduledAt)).size, 23);
   for (const article of radarArticles) {
     const body = article.content
       .flatMap((section) => section.paragraphs)
@@ -44,6 +44,22 @@ test("ensaios aprovados têm fontes diretas, nota e agenda sem colisões", () =>
       /pendentes neste rascunho|Revisão editorial humana: pendente/,
     );
   }
+});
+
+test("especial de SDLC referencia o PNG social materializado", () => {
+  const article = scheduledArticles.find(
+    ({ slug }) => slug === "agilidade-ia-sdlc-fluxo-completo",
+  );
+
+  assert.ok(article);
+  assert.equal(
+    article.image,
+    "/images/conhecimento/agilidade-ia-sdlc-fluxo-completo.png",
+  );
+
+  const imagePath = new URL(`../public${article.image}`, import.meta.url);
+  assert.equal(fs.existsSync(imagePath), true, `ativo ausente: ${article.image}`);
+  assert.ok(fs.statSync(imagePath).size > 0, `ativo vazio: ${article.image}`);
 });
 
 test("o especial de 10/09 só entra na fila com aprovação do conteúdo exato", () => {

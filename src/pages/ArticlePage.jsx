@@ -135,7 +135,7 @@ const ArticlePage = () => {
         </header>
 
         <div className="container mx-auto grid gap-12 px-6 py-14 lg:grid-cols-[minmax(0,1fr)_21rem] lg:py-20">
-          <div className="mx-auto w-full max-w-3xl lg:mx-0">
+            <div className="mx-auto min-w-0 w-full max-w-3xl lg:mx-0">
             <div className="mb-12 grid gap-4 border-y border-white/10 py-6 sm:grid-cols-2">
               <div className="flex gap-3">
                 <UserCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#d8ff57]" aria-hidden="true" />
@@ -151,7 +151,7 @@ const ArticlePage = () => {
               {article.content.map((section) => (
                 <section key={section.heading} aria-labelledby={`${article.slug}-${section.heading.replaceAll(' ', '-').toLowerCase()}`}>
                   <h2 id={`${article.slug}-${section.heading.replaceAll(' ', '-').toLowerCase()}`} className="text-3xl font-bold leading-tight md:text-4xl">{section.heading}</h2>
-                  <div className="mt-5 space-y-5 text-lg font-light leading-[1.85] text-white/72">
+                  <div className="mt-5 space-y-5 break-words text-lg font-light leading-[1.85] text-white/72">
                     {section.paragraphs?.map((paragraph) => <p key={paragraph}>{renderEditorialText(paragraph)}</p>)}
                   </div>
                   {section.bullets && (

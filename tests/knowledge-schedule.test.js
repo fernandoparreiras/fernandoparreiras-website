@@ -42,6 +42,7 @@ const EXPECTED_SCHEDULE = [
   ["decisoes-com-ia-precisam-de-um-caminho-de-volta", "2026-10-26T09:00:00-03:00"],
   ["um-bom-acordo-vale-mais-que-mais-uma-instrucao-para-a-ia", "2026-10-30T09:00:00-03:00"],
   ["documentar-uma-decisao-e-cuidar-de-quem-vem-depois", "2026-11-03T09:00:00-03:00"],
+  ["agilidade-ia-sdlc-fluxo-completo", "2026-11-03T18:10:00-03:00"],
   ["o-que-a-equipe-aprende-quando-so-a-velocidade-e-premiada", "2026-11-07T09:00:00-03:00"],
   ["valor-do-julgamento-com-ia", "2026-11-09T09:00:00-03:00"],
   [
@@ -58,8 +59,8 @@ const EXPECTED_SCHEDULE = [
   ],
 ];
 
-test("coleção editorial possui vinte e oito artigos com especiais AI-native, FDE, REA e democratização da IA", () => {
-  assert.equal(editorialArticles.length, 28);
+test("coleção editorial possui vinte e nove artigos com especiais AI-native, FDE, REA, SDLC e democratização da IA", () => {
+  assert.equal(editorialArticles.length, 29);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -71,12 +72,12 @@ test("coleção editorial possui vinte e oito artigos com especiais AI-native, F
   assert.deepEqual(countsByTrack, {
     "carreira-ia": 9,
     "jovens-futuro": 3,
-    "lideranca-negocios": 12,
+    "lideranca-negocios": 13,
     "mudanca-carreira": 4,
   });
 });
 
-test("fila inclui seis especiais e preserva a agenda reconciliada", () => {
+test("fila inclui o especial de SDLC sem deslocar a agenda reconciliada", () => {
   const chronological = [...scheduledArticles].sort(
     (left, right) => new Date(left.scheduledAt) - new Date(right.scheduledAt),
   );
@@ -99,6 +100,10 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   const firstRelease = getPublishedArticles("2026-09-02T12:00:00Z");
   const septemberRelease = getPublishedArticles("2026-09-26T12:00:00Z");
   const octoberRelease = getPublishedArticles("2026-10-04T12:00:00Z");
+  const immediatelyBeforeAgilityRelease = getPublishedArticles(
+    "2026-11-03T21:09:59Z",
+  );
+  const agilityRelease = getPublishedArticles("2026-11-03T21:10:00Z");
   const completeRelease = getPublishedArticles("2026-11-14T12:00:00Z");
   const nextCycleRelease = getPublishedArticles("2026-11-18T12:00:00Z");
 
@@ -107,12 +112,15 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(firstRelease[0].slug, "dia-seguinte-primeira-venda");
   assert.equal(septemberRelease.length, 17);
   assert.equal(octoberRelease.length, 18);
-  assert.equal(completeRelease.length, 27);
+  assert.equal(immediatelyBeforeAgilityRelease.length, 23);
+  assert.equal(agilityRelease.length, 24);
+  assert.equal(agilityRelease[0].slug, "agilidade-ia-sdlc-fluxo-completo");
+  assert.equal(completeRelease.length, 28);
   assert.equal(
     completeRelease[0].slug,
     "mostrar-como-voce-verifica-alem-do-que-produz",
   );
-  assert.equal(nextCycleRelease.length, 28);
+  assert.equal(nextCycleRelease.length, 29);
   assert.equal(
     nextCycleRelease[0].slug,
     "conversa-de-carreira-comeca-pelo-problema-nao-pelo-cargo",
@@ -123,6 +131,6 @@ test("ativação usa o dia editorial e atualizações não antecedem a publicaç
   for (const article of scheduledArticles) {
     assert.equal(article.scheduledAt.slice(0, 10), article.publishedAt);
     assert.ok(article.updatedAt >= article.publishedAt);
-    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:(?:30|35|46)):00-03:00$/);
+    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:(?:30|35|46)|18:10):00-03:00$/);
   }
 });
