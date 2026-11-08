@@ -44,14 +44,14 @@ const EXPECTED_SCHEDULE = [
   ["documentar-uma-decisao-e-cuidar-de-quem-vem-depois", "2026-11-03T09:00:00-03:00"],
   ["agilidade-ia-sdlc-fluxo-completo", "2026-11-03T18:10:00-03:00"],
   ["o-que-a-equipe-aprende-quando-so-a-velocidade-e-premiada", "2026-11-07T09:00:00-03:00"],
+  [
+    "company-brain-quando-a-memoria-da-empresa-comeca-a-decidir",
+    "2026-11-08T19:00:00-03:00",
+  ],
   ["valor-do-julgamento-com-ia", "2026-11-09T09:00:00-03:00"],
   [
     "produtividade-sem-direcao-acelera-o-desperdicio",
     "2026-11-10T09:00:00-03:00",
-  ],
-  [
-    "company-brain-quando-a-memoria-da-empresa-comeca-a-decidir",
-    "2026-11-12T13:30:00-03:00",
   ],
   [
     "mostrar-como-voce-verifica-alem-do-que-produz",
@@ -113,9 +113,9 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   );
   const agilityRelease = getPublishedArticles("2026-11-03T21:10:00Z");
   const immediatelyBeforeCompanyBrainRelease = getPublishedArticles(
-    "2026-11-12T16:29:59Z",
+    "2026-11-08T21:59:59Z",
   );
-  const companyBrainRelease = getPublishedArticles("2026-11-12T16:30:00Z");
+  const companyBrainRelease = getPublishedArticles("2026-11-08T22:00:00Z");
   const completeRelease = getPublishedArticles("2026-11-14T12:00:00Z");
   const nextCycleRelease = getPublishedArticles("2026-11-18T12:00:00Z");
   const immediatelyBeforeNovemberBufferRelease = getPublishedArticles(
@@ -131,8 +131,8 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(immediatelyBeforeAgilityRelease.length, 23);
   assert.equal(agilityRelease.length, 24);
   assert.equal(agilityRelease[0].slug, "agilidade-ia-sdlc-fluxo-completo");
-  assert.equal(immediatelyBeforeCompanyBrainRelease.length, 27);
-  assert.equal(companyBrainRelease.length, 28);
+  assert.equal(immediatelyBeforeCompanyBrainRelease.length, 25);
+  assert.equal(companyBrainRelease.length, 26);
   assert.equal(
     companyBrainRelease[0].slug,
     "company-brain-quando-a-memoria-da-empresa-comeca-a-decidir",
@@ -159,6 +159,6 @@ test("ativação usa o dia editorial e atualizações não antecedem a publicaç
   for (const article of scheduledArticles) {
     assert.equal(article.scheduledAt.slice(0, 10), article.publishedAt);
     assert.ok(article.updatedAt >= article.publishedAt);
-    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:(?:30|35|46)|18:10):00-03:00$/);
+    assert.match(article.scheduledAt, /T(?:09:(?:00|23)|13:(?:30|35|46)|18:10|19:00):00-03:00$/);
   }
 });
