@@ -50,6 +50,10 @@ const EXPECTED_SCHEDULE = [
     "2026-11-10T09:00:00-03:00",
   ],
   [
+    "company-brain-quando-a-memoria-da-empresa-comeca-a-decidir",
+    "2026-11-12T13:30:00-03:00",
+  ],
+  [
     "mostrar-como-voce-verifica-alem-do-que-produz",
     "2026-11-14T09:00:00-03:00",
   ],
@@ -57,10 +61,14 @@ const EXPECTED_SCHEDULE = [
     "conversa-de-carreira-comeca-pelo-problema-nao-pelo-cargo",
     "2026-11-18T09:00:00-03:00",
   ],
+  [
+    "como-discordar-de-uma-resposta-convincente-da-ia",
+    "2026-11-22T09:00:00-03:00",
+  ],
 ];
 
-test("coleção editorial possui vinte e nove artigos com especiais AI-native, FDE, REA, SDLC e democratização da IA", () => {
-  assert.equal(editorialArticles.length, 29);
+test("coleção editorial possui trinta e um artigos com especiais AI-native, FDE, REA, SDLC, Company Brain e democratização da IA", () => {
+  assert.equal(editorialArticles.length, 31);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -70,9 +78,9 @@ test("coleção editorial possui vinte e nove artigos com especiais AI-native, F
     {},
   );
   assert.deepEqual(countsByTrack, {
-    "carreira-ia": 9,
+    "carreira-ia": 10,
     "jovens-futuro": 3,
-    "lideranca-negocios": 13,
+    "lideranca-negocios": 14,
     "mudanca-carreira": 4,
   });
 });
@@ -104,8 +112,16 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
     "2026-11-03T21:09:59Z",
   );
   const agilityRelease = getPublishedArticles("2026-11-03T21:10:00Z");
+  const immediatelyBeforeCompanyBrainRelease = getPublishedArticles(
+    "2026-11-12T16:29:59Z",
+  );
+  const companyBrainRelease = getPublishedArticles("2026-11-12T16:30:00Z");
   const completeRelease = getPublishedArticles("2026-11-14T12:00:00Z");
   const nextCycleRelease = getPublishedArticles("2026-11-18T12:00:00Z");
+  const immediatelyBeforeNovemberBufferRelease = getPublishedArticles(
+    "2026-11-22T11:59:59Z",
+  );
+  const novemberBufferRelease = getPublishedArticles("2026-11-22T12:00:00Z");
 
   assert.equal(immediatelyBeforeFirstRelease.length, 6);
   assert.equal(firstRelease.length, 7);
@@ -115,15 +131,27 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(immediatelyBeforeAgilityRelease.length, 23);
   assert.equal(agilityRelease.length, 24);
   assert.equal(agilityRelease[0].slug, "agilidade-ia-sdlc-fluxo-completo");
-  assert.equal(completeRelease.length, 28);
+  assert.equal(immediatelyBeforeCompanyBrainRelease.length, 27);
+  assert.equal(companyBrainRelease.length, 28);
+  assert.equal(
+    companyBrainRelease[0].slug,
+    "company-brain-quando-a-memoria-da-empresa-comeca-a-decidir",
+  );
+  assert.equal(completeRelease.length, 29);
   assert.equal(
     completeRelease[0].slug,
     "mostrar-como-voce-verifica-alem-do-que-produz",
   );
-  assert.equal(nextCycleRelease.length, 29);
+  assert.equal(nextCycleRelease.length, 30);
   assert.equal(
     nextCycleRelease[0].slug,
     "conversa-de-carreira-comeca-pelo-problema-nao-pelo-cargo",
+  );
+  assert.equal(immediatelyBeforeNovemberBufferRelease.length, 30);
+  assert.equal(novemberBufferRelease.length, 31);
+  assert.equal(
+    novemberBufferRelease[0].slug,
+    "como-discordar-de-uma-resposta-convincente-da-ia",
   );
 });
 

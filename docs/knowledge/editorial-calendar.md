@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Coleção de 29 artigos completos: seis originais e vinte e três entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo.
+Coleção proposta de 31 artigos completos: seis originais e vinte e cinco entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026 para os respectivos lotes. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo. Os dois textos preparados em 08/11/2026 permanecem proposta em PR até revisão e integração próprias.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
 
@@ -17,6 +17,8 @@ o evergreen já previsto; a promoção final permanece condicionada à confirma�
 exato e não cria precedente automático para o radar.
 
 Em 03/11/2026, Fernando aprovou a publicação extraordinária do especial “Agilidade × IA” às 18h10 BRT. O texto entra depois do ensaio regular das 09h, sem alterar a cadência, os especiais de 09 e 10/11 nem a reserva móvel. A integração no código não equivale a deploy ou publicação observada; esses estados exigem os gates operacionais do domínio oficial.
+
+Em 08/11/2026, o especial autoral “Company Brain: quando a memória da empresa começa a decidir, quem responde?” foi preparado para proposta em PR às 13h30 BRT de 12/11. O horário preserva os especiais de 09 e 10/11 e as entradas ordinárias de 14, 18 e 22/11. Somente a Perspectivas Trustyu recebeu autorização para publicar sua versão em 08/11; neste canal, preparação, integração e publicação continuam estados separados.
 
 ## Agenda aprovada
 
@@ -34,6 +36,10 @@ Em 03/11/2026, Fernando aprovou a publicação extraordinária do especial “Ag
 | 3 nov. 2026, 18h10 | Negócios e liderança | Agilidade × IA: desenvolver deixou de ser Frontend + Backend — agora é responder pelo fluxo completo | Especial extraordinário aprovado em 03/11/2026 |
 | 9 nov. 2026 | Carreira com IA | Seu próximo diferencial pode estar no que você não aprova | Agendado |
 | 10 nov. 2026 | Negócios e liderança | Produtividade sem direção apenas acelera o desperdício | Agendado |
+| 12 nov. 2026, 13h30 | Negócios e liderança | Company Brain: quando a memória da empresa começa a decidir, quem responde? | Especial preparado em PR — não integrado nem publicado |
+| 14 nov. 2026 | Carreira com IA | Mostrar como você verifica, além do que produz | Agendado |
+| 18 nov. 2026 | Carreira com IA | Conversa de carreira começa pelo problema, não pelo cargo | Agendado |
+| 22 nov. 2026 | Carreira com IA | Como discordar de uma resposta convincente da IA | Reserva preparada em PR — não integrada nem publicada |
 
 ## Contrato de publicação
 
@@ -64,3 +70,7 @@ Cinco ensaios completos em 22, 26 e 30/10, 03 e 07/11 recompõem a cadência de 
 ## Extensão da reserva — 24/10/2026
 
 O ensaio completo “Mostrar como você verifica, além do que produz” foi preparado para 14/11/2026 às 09h BRT. A entrada amplia a reserva móvel sem ocupar ou deslocar os especiais de 09 e 10/11. Até a integração em `main`, o artigo permanece apenas preparado em PR; mesmo depois da integração, o gate temporal deve mantê-lo ausente da rota, busca, RSS, sitemap e `llms.txt` antes de `scheduledAt`.
+
+## Extensão da reserva — 08/11/2026
+
+O artigo ordinário “Como discordar de uma resposta convincente da IA” foi convertido de pauta `planned` em texto completo para 22/11/2026 às 09h BRT, alcançando o limite da reserva móvel de 14 dias. O especial Company Brain ocupa um horário extraordinário próprio em 12/11 às 13h30 e não substitui essa obrigação. Ambos permanecem apenas preparados em PR até os gates de revisão e integração; depois de eventual integração, devem continuar fora de rota, busca, RSS, sitemap e `llms.txt` até os respectivos `scheduledAt`.

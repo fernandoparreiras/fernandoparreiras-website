@@ -1,6 +1,16 @@
 const SITE_URL = 'https://fernandoparreiras.com.br';
 
 export const ARTICLE_SHARE_INTENTS = Object.freeze({
+  "company-brain-quando-a-memoria-da-empresa-comeca-a-decidir": {
+    discussion: "Qual decisão importante da sua empresa ainda depende de uma pessoa lembrar do contexto inteiro?",
+    commercialCta: "Transforme esse gargalo em uma conversa de liderança: fale com Fernando sobre advisory ou palestras e, quando fizer sentido, sobre as frentes Trustyu e a iniciativa NEEDYU em seus estágios públicos.",
+    destination: "/contato/",
+  },
+  "como-discordar-de-uma-resposta-convincente-da-ia": {
+    discussion: "Na sua equipe, uma resposta bem escrita já é tratada como decisão — ou ainda precisa conquistar esse direito?",
+    commercialCta: "Leve esta discussão para sua equipe ou evento: converse com Fernando sobre julgamento, liderança, carreira e uso responsável da IA.",
+    destination: "/contato/",
+  },
   "agilidade-ia-sdlc-fluxo-completo": {
     discussion: "Se a IA já ajuda sua equipe a construir, quem hoje consegue conduzir a mudança inteira — do problema ao aprendizado em produção?",
     commercialCta: "Mapeie com Fernando seu SDLC AI-native, os limites de autonomia e o encaixe de Trustyu Forge e AI Works em um advisory ou palestra para lideranças e times de tecnologia.",
