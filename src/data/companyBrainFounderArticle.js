@@ -8,9 +8,9 @@ export const companyBrainFounderArticle = {
   format: "Ensaio autoral",
   tags: ["Company Brain", "liderança", "memória organizacional"],
   readingMinutes: 12,
-  publishedAt: "2026-11-12",
-  updatedAt: "2026-11-12",
-  scheduledAt: "2026-11-12T13:30:00-03:00",
+  publishedAt: "2026-11-08",
+  updatedAt: "2026-11-08",
+  scheduledAt: "2026-11-08T19:00:00-03:00",
   image: "/images/em-cena/fernando-parreiras-palco-1600.webp",
   imageAlt:
     "Fernando Parreiras conduzindo uma reflexão sobre liderança, tecnologia e decisões.",
