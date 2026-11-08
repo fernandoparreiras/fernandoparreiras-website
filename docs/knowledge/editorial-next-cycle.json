@@ -23,20 +23,23 @@
       "scheduledAt": "2026-11-07T09:00:00-03:00"
     },
     {
+      "slug": "company-brain-quando-a-memoria-da-empresa-comeca-a-decidir",
+      "scheduledAt": "2026-11-12T13:30:00-03:00"
+    },
+    {
       "slug": "mostrar-como-voce-verifica-alem-do-que-produz",
       "scheduledAt": "2026-11-14T09:00:00-03:00"
     },
     {
       "slug": "conversa-de-carreira-comeca-pelo-problema-nao-pelo-cargo",
       "scheduledAt": "2026-11-18T09:00:00-03:00"
+    },
+    {
+      "slug": "como-discordar-de-uma-resposta-convincente-da-ia",
+      "scheduledAt": "2026-11-22T09:00:00-03:00"
     }
   ],
   "planned": [
-    {
-      "title": "Como discordar de uma resposta convincente da IA",
-      "scheduledAt": "2026-11-22T09:00:00-03:00",
-      "status": "planned"
-    },
     {
       "title": "Liderar a transição entre experimentar e sustentar",
       "scheduledAt": "2026-11-26T09:00:00-03:00",
