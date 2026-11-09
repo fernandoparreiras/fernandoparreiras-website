@@ -65,10 +65,14 @@ const EXPECTED_SCHEDULE = [
     "como-discordar-de-uma-resposta-convincente-da-ia",
     "2026-11-22T09:00:00-03:00",
   ],
+  [
+    "liderar-transicao-entre-experimentar-e-sustentar",
+    "2026-11-26T09:00:00-03:00",
+  ],
 ];
 
-test("coleção editorial possui trinta e um artigos com especiais AI-native, FDE, REA, SDLC, Company Brain e democratização da IA", () => {
-  assert.equal(editorialArticles.length, 31);
+test("coleção editorial possui trinta e dois artigos com especiais AI-native, FDE, REA, SDLC, Company Brain e democratização da IA", () => {
+  assert.equal(editorialArticles.length, 32);
 
   const countsByTrack = editorialArticles.reduce(
     (counts, article) => ({
@@ -80,7 +84,7 @@ test("coleção editorial possui trinta e um artigos com especiais AI-native, FD
   assert.deepEqual(countsByTrack, {
     "carreira-ia": 10,
     "jovens-futuro": 3,
-    "lideranca-negocios": 14,
+    "lideranca-negocios": 15,
     "mudanca-carreira": 4,
   });
 });
@@ -122,6 +126,12 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
     "2026-11-22T11:59:59Z",
   );
   const novemberBufferRelease = getPublishedArticles("2026-11-22T12:00:00Z");
+  const immediatelyBeforeLeadershipTransitionRelease = getPublishedArticles(
+    "2026-11-26T11:59:59Z",
+  );
+  const leadershipTransitionRelease = getPublishedArticles(
+    "2026-11-26T12:00:00Z",
+  );
 
   assert.equal(immediatelyBeforeFirstRelease.length, 6);
   assert.equal(firstRelease.length, 7);
@@ -152,6 +162,12 @@ test("artigos futuros permanecem fora do acervo até o horário agendado", () =>
   assert.equal(
     novemberBufferRelease[0].slug,
     "como-discordar-de-uma-resposta-convincente-da-ia",
+  );
+  assert.equal(immediatelyBeforeLeadershipTransitionRelease.length, 31);
+  assert.equal(leadershipTransitionRelease.length, 32);
+  assert.equal(
+    leadershipTransitionRelease[0].slug,
+    "liderar-transicao-entre-experimentar-e-sustentar",
   );
 });
 
