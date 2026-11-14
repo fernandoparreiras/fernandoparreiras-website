@@ -11,6 +11,11 @@ export const ARTICLE_SHARE_INTENTS = Object.freeze({
     commercialCta: "Leve esta discussão para sua equipe ou evento: converse com Fernando sobre julgamento, liderança, carreira e uso responsável da IA.",
     destination: "/contato/",
   },
+  "liderar-transicao-entre-experimentar-e-sustentar": {
+    discussion: "Que compromisso sua empresa ainda trata como experimento, embora pessoas já dependam dele?",
+    commercialCta: "Converse com Fernando sobre como transformar experimentos de IA em capacidades sustentáveis, com direção, governança e responsabilidade.",
+    destination: "/solucoes/transformacao-tecnologia-ia",
+  },
   "agilidade-ia-sdlc-fluxo-completo": {
     discussion: "Se a IA já ajuda sua equipe a construir, quem hoje consegue conduzir a mudança inteira — do problema ao aprendizado em produção?",
     commercialCta: "Mapeie com Fernando seu SDLC AI-native, os limites de autonomia e o encaixe de Trustyu Forge e AI Works em um advisory ou palestra para lideranças e times de tecnologia.",

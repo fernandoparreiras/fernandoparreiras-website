@@ -37,14 +37,13 @@
     {
       "slug": "como-discordar-de-uma-resposta-convincente-da-ia",
       "scheduledAt": "2026-11-22T09:00:00-03:00"
+    },
+    {
+      "slug": "liderar-transicao-entre-experimentar-e-sustentar",
+      "scheduledAt": "2026-11-26T09:00:00-03:00"
     }
   ],
   "planned": [
-    {
-      "title": "Liderar a transição entre experimentar e sustentar",
-      "scheduledAt": "2026-11-26T09:00:00-03:00",
-      "status": "planned"
-    },
     {
       "title": "O valor de explicar uma decisão difícil",
       "scheduledAt": "2026-11-30T09:00:00-03:00",

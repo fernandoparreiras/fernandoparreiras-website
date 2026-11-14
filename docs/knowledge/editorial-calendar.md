@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Coleção de 31 artigos completos: seis originais e vinte e cinco entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026 para os respectivos lotes. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo. Os dois textos preparados em 08/11/2026 foram integrados pela PR #67 no SHA `a70198a802196f1ff05ece6610379f99c83f124c`; a publicação de cada um continua submetida ao respectivo horário e aos gates do site oficial.
+Coleção de 32 artigos completos: seis originais e vinte e seis entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026 para os respectivos lotes. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo. Os dois textos preparados em 08/11/2026 foram integrados pela PR #67 no SHA `a70198a802196f1ff05ece6610379f99c83f124c`; a publicação de cada um continua submetida ao respectivo horário e aos gates do site oficial.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
 
@@ -39,7 +39,8 @@ Em 08/11/2026, Fernando autorizou antecipar exclusivamente o especial autoral �
 | 10 nov. 2026 | Negócios e liderança | Produtividade sem direção apenas acelera o desperdício | Agendado |
 | 14 nov. 2026 | Carreira com IA | Mostrar como você verifica, além do que produz | Agendado |
 | 18 nov. 2026 | Carreira com IA | Conversa de carreira começa pelo problema, não pelo cargo | Agendado |
-| 22 nov. 2026 | Carreira com IA | Como discordar de uma resposta convincente da IA | Reserva preparada em PR — não integrada nem publicada |
+| 22 nov. 2026 | Carreira com IA | Como discordar de uma resposta convincente da IA | Integrado pela PR #67 — publicação protegida até `scheduledAt` |
+| 26 nov. 2026 | Negócios e liderança | Liderar a transição entre experimentar e sustentar | Reserva preparada neste lote — integração não equivale a publicação |
 
 ## Contrato de publicação
 
@@ -74,3 +75,7 @@ O ensaio completo “Mostrar como você verifica, além do que produz” foi pre
 ## Extensão da reserva — 08/11/2026
 
 O artigo ordinário “Como discordar de uma resposta convincente da IA” foi convertido de pauta `planned` em texto completo para 22/11/2026 às 09h BRT, alcançando o limite da reserva móvel de 14 dias. A antecipação extraordinária do Company Brain para 08/11 às 19h não substitui nem desloca essa obrigação. O artigo de 22/11 deve continuar fora de rota, busca, RSS, sitemap e `llms.txt` até o respectivo `scheduledAt`.
+
+## Extensão da reserva — 09/11/2026
+
+O ensaio completo “Liderar a transição entre experimentar e sustentar” foi preparado para 26/11/2026 às 09h BRT. A pauta usa uma lente executiva sobre decisão de portfólio e capacidade organizacional, sem repetir o fluxo técnico do especial “Agilidade × IA” nem alterar as datas de 10, 14, 18 e 22/11. Até a integração em `main`, o texto permanece preparado em PR; depois da integração, deve continuar ausente de rota, busca, RSS, sitemap e `llms.txt` até `scheduledAt`.
