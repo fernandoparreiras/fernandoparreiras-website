@@ -41,14 +41,13 @@
     {
       "slug": "liderar-transicao-entre-experimentar-e-sustentar",
       "scheduledAt": "2026-11-26T09:00:00-03:00"
+    },
+    {
+      "slug": "o-valor-de-explicar-uma-decisao-dificil",
+      "scheduledAt": "2026-11-30T09:00:00-03:00"
     }
   ],
   "planned": [
-    {
-      "title": "O valor de explicar uma decisão difícil",
-      "scheduledAt": "2026-11-30T09:00:00-03:00",
-      "status": "planned"
-    },
     {
       "title": "Aprendizagem de equipe precisa sobreviver à troca de ferramenta",
       "scheduledAt": "2026-12-04T09:00:00-03:00",

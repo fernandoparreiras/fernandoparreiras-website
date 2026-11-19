@@ -16,6 +16,11 @@ export const ARTICLE_SHARE_INTENTS = Object.freeze({
     commercialCta: "Converse com Fernando sobre como transformar experimentos de IA em capacidades sustentáveis, com direção, governança e responsabilidade.",
     destination: "/solucoes/transformacao-tecnologia-ia",
   },
+  "o-valor-de-explicar-uma-decisao-dificil": {
+    discussion: "Qual decisão difícil da sua organização ainda foi comunicada como conclusão, sem tornar visíveis os critérios e os trade-offs?",
+    commercialCta: "Leve esta conversa para sua liderança, conselho ou evento: converse com Fernando sobre advisory, governança e decisões difíceis em contextos de transformação.",
+    destination: "/contato/",
+  },
   "agilidade-ia-sdlc-fluxo-completo": {
     discussion: "Se a IA já ajuda sua equipe a construir, quem hoje consegue conduzir a mudança inteira — do problema ao aprendizado em produção?",
     commercialCta: "Mapeie com Fernando seu SDLC AI-native, os limites de autonomia e o encaixe de Trustyu Forge e AI Works em um advisory ou palestra para lideranças e times de tecnologia.",
