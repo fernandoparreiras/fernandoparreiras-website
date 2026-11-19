@@ -4,7 +4,7 @@ A qualificação editorial do PR #70 encontrou no lockfile herdado da main cinco
 
 ## Alteração
 
-Somente o lockfile muda: `postcss-selector-parser` 6.1.4 → 6.1.6, `source-map-js` 1.2.1 → 1.2.4, `sucrase` 3.35.0 → 3.35.1 e `vite` 7.3.6 → 7.3.8. As quatro atualizações são patches dentro dos ranges já declarados. A árvore deixa de precisar de 30 nós transitivos antigos; `package.json`, engines, scripts e APIs do site ficam idênticos. Não há overrides, shims, alteração de hashes ou uso de `--force`.
+Somente o lockfile muda: `postcss-selector-parser` 6.1.4 → 6.1.6, `source-map-js` 1.2.1 → 1.2.4, `sucrase` 3.35.0 → 3.35.1 e `vite` 7.3.6 → 7.3.8. As quatro atualizações são patches dentro dos ranges já declarados. A árvore deixa de precisar de 30 nós transitivos antigos; `package.json`, engines, scripts e APIs do site ficam idênticos. Não há overrides, shims ou uso de `--force`. O npm regenerou as integridades do lockfile junto das versões; nenhum hash foi editado manualmente.
 
 ## Qualificação local
 
