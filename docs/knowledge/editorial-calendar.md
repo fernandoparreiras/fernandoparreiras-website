@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Coleção de 33 artigos completos: seis originais e vinte e sete entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026 para os respectivos lotes. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo. Os dois textos preparados em 08/11/2026 foram integrados pela PR #67 no SHA `a70198a802196f1ff05ece6610379f99c83f124c`; a publicação de cada um continua submetida ao respectivo horário e aos gates do site oficial.
+Coleção de 34 artigos completos: seis originais e vinte e oito entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026 para os respectivos lotes; a atualização operacional de 20/10/2026 autoriza esta sessão a manter a reserva móvel de textos completos. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo. Os dois textos preparados em 08/11/2026 foram integrados pela PR #67 no SHA `a70198a802196f1ff05ece6610379f99c83f124c`; a publicação de cada um continua submetida ao respectivo horário e aos gates do site oficial.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
 
@@ -41,7 +41,8 @@ Em 08/11/2026, Fernando autorizou antecipar exclusivamente o especial autoral �
 | 18 nov. 2026 | Carreira com IA | Conversa de carreira começa pelo problema, não pelo cargo | Agendado |
 | 22 nov. 2026 | Carreira com IA | Como discordar de uma resposta convincente da IA | Integrado pela PR #67 — publicação protegida até `scheduledAt` |
 | 26 nov. 2026 | Negócios e liderança | Liderar a transição entre experimentar e sustentar | Integrado pela PR #69 no SHA `f51a058bc1d472f84547ad2f9464aad3bba87329` — publicação protegida até `scheduledAt` |
-| 30 nov. 2026 | Negócios e liderança | O valor de explicar uma decisão difícil | Reserva preparada neste lote — integração não equivale a publicação |
+| 30 nov. 2026 | Negócios e liderança | O valor de explicar uma decisão difícil | Integrado pela PR #70 no SHA `a4fa73f9a921c5874845e35c4419e56aa3400296` — publicação protegida até `scheduledAt` |
+| 4 dez. 2026 | Negócios e liderança | Aprendizagem de equipe precisa sobreviver à troca de ferramenta | Reserva preparada em 20/11 — integração não equivale a publicação |
 
 ## Contrato de publicação
 
@@ -83,4 +84,8 @@ O ensaio completo “Liderar a transição entre experimentar e sustentar” foi
 
 ## Extensão da reserva — 17/11/2026
 
-O ensaio completo “O valor de explicar uma decisão difícil” foi preparado para 30/11/2026 às 09h BRT. O recorte trata da responsabilidade de tornar compreensíveis critérios, alternativas, trade-offs, consequências e condições de revisão; não repete o foco de continuidade documental de 03/11, a reversibilidade de 26/10 nem a contestação de respostas de IA de 22/11. Até a integração em `main`, o texto permanece apenas preparado; depois da integração, deve continuar ausente de rota, busca, RSS, sitemap e `llms.txt` até `scheduledAt`.
+O ensaio completo “O valor de explicar uma decisão difícil” foi preparado para 30/11/2026 às 09h BRT. O recorte trata da responsabilidade de tornar compreensíveis critérios, alternativas, trade-offs, consequências e condições de revisão; não repete o foco de continuidade documental de 03/11, a reversibilidade de 26/10 nem a contestação de respostas de IA de 22/11. A PR #70 foi integrada em 19/11/2026 no SHA `a4fa73f9a921c5874845e35c4419e56aa3400296`; o texto continua fora de rota, busca, RSS, sitemap e `llms.txt` até `scheduledAt`.
+
+## Extensão da reserva — 20/11/2026
+
+O ensaio completo “Aprendizagem de equipe precisa sobreviver à troca de ferramenta” foi preparado para 04/12/2026 às 09h BRT, quando a pauta entrou na janela móvel de 14 dias. O texto trata da memória operacional coletiva que precisa permanecer quando modelo, fornecedor, interface ou agente muda; não repete a aprendizagem individual de 22/10, a continuidade documental de 03/11, a arquitetura do Company Brain de 08/11 nem a passagem de experimento para capacidade de 26/11. Até a integração em `main`, o artigo permanece apenas preparado; depois da integração, o gate temporal deve mantê-lo ausente de rota, busca, RSS, sitemap e `llms.txt` até `scheduledAt`.

@@ -31,8 +31,8 @@ test("fontes HTTPS viram links sem HTML arbitrário", () => {
 
 test("ensaios aprovados têm fontes diretas, nota e agenda sem colisões", () => {
   assert.equal(radarArticles.length, 3);
-  assert.equal(scheduledArticles.length, 27);
-  assert.equal(new Set(scheduledArticles.map((a) => a.scheduledAt)).size, 27);
+  assert.equal(scheduledArticles.length, 28);
+  assert.equal(new Set(scheduledArticles.map((a) => a.scheduledAt)).size, 28);
   for (const article of radarArticles) {
     const body = article.content
       .flatMap((section) => section.paragraphs)
@@ -56,6 +56,33 @@ test("especial de SDLC referencia o PNG social materializado", () => {
     article.image,
     "/images/conhecimento/agilidade-ia-sdlc-fluxo-completo.png",
   );
+
+  const imagePath = new URL(`../public${article.image}`, import.meta.url);
+  assert.equal(fs.existsSync(imagePath), true, `ativo ausente: ${article.image}`);
+  assert.ok(fs.statSync(imagePath).size > 0, `ativo vazio: ${article.image}`);
+});
+
+test("reserva de dezembro possui fontes, nota editorial, CTA e ativo materializado", () => {
+  const article = scheduledArticles.find(
+    ({ slug }) =>
+      slug ===
+      "aprendizagem-de-equipe-precisa-sobreviver-a-troca-de-ferramenta",
+  );
+
+  assert.ok(article);
+  assert.equal(article.scheduledAt, "2026-12-04T09:00:00-03:00");
+  assert.equal(article.cta.href, "/contato/");
+
+  const body = article.content
+    .flatMap((section) => section.paragraphs || [])
+    .join("\n");
+  assert.ok((body.match(/https:\/\//g) || []).length >= 5);
+  const editorialNote = article.content.find(
+    ({ heading }) => heading === "Nota editorial e de responsabilidade",
+  );
+  assert.ok(editorialNote);
+  assert.match(editorialNote.paragraphs.join("\n"), /assistência de IA/);
+  assert.match(body, /sem revisão humana independente adicional/);
 
   const imagePath = new URL(`../public${article.image}`, import.meta.url);
   assert.equal(fs.existsSync(imagePath), true, `ativo ausente: ${article.image}`);
