@@ -45,14 +45,13 @@
     {
       "slug": "o-valor-de-explicar-uma-decisao-dificil",
       "scheduledAt": "2026-11-30T09:00:00-03:00"
+    },
+    {
+      "slug": "aprendizagem-de-equipe-precisa-sobreviver-a-troca-de-ferramenta",
+      "scheduledAt": "2026-12-04T09:00:00-03:00"
     }
   ],
   "planned": [
-    {
-      "title": "Aprendizagem de equipe precisa sobreviver à troca de ferramenta",
-      "scheduledAt": "2026-12-04T09:00:00-03:00",
-      "status": "planned"
-    },
     {
       "title": "Revisar metas quando a capacidade de execução muda",
       "scheduledAt": "2026-12-08T09:00:00-03:00",

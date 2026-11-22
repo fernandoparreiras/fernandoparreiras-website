@@ -1,6 +1,11 @@
 const SITE_URL = 'https://fernandoparreiras.com.br';
 
 export const ARTICLE_SHARE_INTENTS = Object.freeze({
+  "aprendizagem-de-equipe-precisa-sobreviver-a-troca-de-ferramenta": {
+    discussion: "Se a principal ferramenta da sua equipe mudasse amanhã, vocês preservariam a capacidade — ou apenas a lembrança de que um dia ela funcionou?",
+    commercialCta: "Leve esta conversa para sua liderança ou evento: converse com Fernando sobre aprendizagem organizacional, adoção responsável de IA, advisory, formação e palestras.",
+    destination: "/contato/",
+  },
   "company-brain-quando-a-memoria-da-empresa-comeca-a-decidir": {
     discussion: "Qual decisão importante da sua empresa ainda depende de uma pessoa lembrar do contexto inteiro?",
     commercialCta: "Transforme esse gargalo em uma conversa de liderança: fale com Fernando sobre advisory ou palestras e, quando fizer sentido, sobre as frentes Trustyu e a iniciativa NEEDYU em seus estágios públicos.",
