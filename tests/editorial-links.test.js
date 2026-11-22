@@ -77,6 +77,20 @@ test("reserva de dezembro possui fontes, nota editorial, CTA e ativo materializa
     .flatMap((section) => section.paragraphs || [])
     .join("\n");
   assert.ok((body.match(/https:\/\//g) || []).length >= 5);
+
+  for (const passage of [
+    "Antes de preservar toda conversa ou toda configuração",
+    "Esses elementos não tornam duas ferramentas equivalentes",
+    "Tratar memória como um único repositório cria outra dependência",
+    "Nenhuma dessas memórias precisa virar um documento longo",
+    "A aprendizagem não precisa esperar uma grande migração",
+    "O NIST AI RMF Generative AI Profile recomenda documentação",
+    "Para um fluxo relevante, uma página curta pode conectar as quatro memórias",
+    "Esse registro é uma síntese prática, não um método cientificamente validado",
+  ]) {
+    assert.ok(body.includes(passage), `trecho perdido na exportação: ${passage}`);
+  }
+
   const editorialNote = article.content.find(
     ({ heading }) => heading === "Nota editorial e de responsabilidade",
   );

@@ -44,6 +44,7 @@ export const editorialBufferDecember2026 = [
         heading: "Cinco elementos que precisam sobreviver à troca",
         paragraphs: [
           "Antes de preservar toda conversa ou toda configuração, a equipe precisa decidir o que merece continuar disponível. Guardar volume não é o mesmo que preservar aprendizagem. Eu começaria por cinco elementos.",
+          "Esses elementos não tornam duas ferramentas equivalentes. Eles permitem que a diferença seja analisada sem perder a história que deu origem ao trabalho.",
         ],
         bullets: [
           "Problema e resultado pretendido: para quem o fluxo existe, que necessidade atende e como o valor será percebido.",
@@ -52,23 +53,18 @@ export const editorialBufferDecember2026 = [
           "Exceções, incidentes e correções: o que surpreendeu a equipe, como o impacto foi contido e que mudança reduziu a chance de repetição.",
           "Responsáveis e caminhos de conhecimento: quem decide, quem opera, quem conhece o domínio e onde encontrar os registros originais.",
         ],
-        paragraphs: [
-          "Esses elementos não tornam duas ferramentas equivalentes. Eles permitem que a diferença seja analisada sem perder a história que deu origem ao trabalho.",
-        ],
       },
       {
         heading: "A equipe precisa de mais de um tipo de memória",
         paragraphs: [
           "Tratar memória como um único repositório cria outra dependência. Parte do conhecimento está em documentos; parte está em exemplos, decisões, rotinas e relações entre pessoas. Para tornar essa diversidade administrável, ajuda separar quatro memórias complementares.",
+          "Nenhuma dessas memórias precisa virar um documento longo. Elas precisam ser encontráveis, confiáveis, atualizadas e ligadas ao trabalho real. O DORA usa atributos como clareza, encontrabilidade e confiabilidade ao discutir qualidade de documentação. A associação encontrada em seu programa de pesquisa não prova que documentar qualquer coisa causará melhor desempenho, mas reforça que a utilidade do registro depende de servir quem precisa agir.",
         ],
         bullets: [
           "Memória decisória: explica por que uma escolha foi feita e quais condições poderiam justificar sua revisão.",
           "Memória operacional: mostra como executar, observar, interromper, recuperar e manter o fluxo.",
           "Memória avaliativa: conserva casos, medidas e critérios capazes de distinguir melhora, regressão e comportamento inaceitável.",
           "Memória transativa: torna visível quem sabe o quê, quem possui autoridade e quem consegue explicar uma exceção do domínio.",
-        ],
-        paragraphs: [
-          "Nenhuma dessas memórias precisa virar um documento longo. Elas precisam ser encontráveis, confiáveis, atualizadas e ligadas ao trabalho real. O DORA usa atributos como clareza, encontrabilidade e confiabilidade ao discutir qualidade de documentação. A associação encontrada em seu programa de pesquisa não prova que documentar qualquer coisa causará melhor desempenho, mas reforça que a utilidade do registro depende de servir quem precisa agir.",
         ],
       },
       {
@@ -83,6 +79,7 @@ export const editorialBufferDecember2026 = [
         heading: "Um ciclo mínimo para transformar execução em aprendizagem",
         paragraphs: [
           "A aprendizagem não precisa esperar uma grande migração. Ela pode ser incorporada ao ciclo de trabalho com quatro movimentos simples, proporcionais ao impacto do fluxo.",
+          "O NIST AI RMF Generative AI Profile recomenda documentação, monitoramento, gestão de mudanças, avaliação e aprendizagem a partir de incidentes ao longo do ciclo de vida. É uma orientação voluntária de gestão de risco, não uma validação deste ciclo nem uma obrigação universal. A aplicação precisa acompanhar a consequência do sistema e as responsabilidades do setor.",
         ],
         bullets: [
           "Antes: registre intenção, baseline, hipótese, risco relevante e evidência de sucesso.",
@@ -90,14 +87,12 @@ export const editorialBufferDecember2026 = [
           "Depois: compare resultado e expectativa, atualize o ativo durável e remova orientação que ficou obsoleta.",
           "Na troca: repita os casos de teste, investigue diferenças e explique por que qualquer regressão ou novo compromisso foi aceito.",
         ],
-        paragraphs: [
-          "O NIST AI RMF Generative AI Profile recomenda documentação, monitoramento, gestão de mudanças, avaliação e aprendizagem a partir de incidentes ao longo do ciclo de vida. É uma orientação voluntária de gestão de risco, não uma validação deste ciclo nem uma obrigação universal. A aplicação precisa acompanhar a consequência do sistema e as responsabilidades do setor.",
-        ],
       },
       {
         heading: "Um registro de aprendizagem em uma página",
         paragraphs: [
           "Para um fluxo relevante, uma página curta pode conectar as quatro memórias sem tentar substituir documentação técnica, registros de risco ou procedimentos obrigatórios. Ela serve como porta de entrada para quem precisa compreender a capacidade.",
+          "Esse registro é uma síntese prática, não um método cientificamente validado. Seu valor está em encaminhar a equipe aos artefatos originais e tornar visível o que precisa ser revisto, não em criar mais uma página esquecida.",
         ],
         bullets: [
           "Problema: que situação motivou o trabalho e quem é afetado?",
@@ -107,9 +102,6 @@ export const editorialBufferDecember2026 = [
           "Limites: onde o fluxo não deve operar ou precisa voltar para uma pessoa?",
           "Responsabilidade: quem mantém, decide, revisa e comunica incidentes?",
           "Próxima revisão: que data ou mudança relevante exige novo olhar?",
-        ],
-        paragraphs: [
-          "Esse registro é uma síntese prática, não um método cientificamente validado. Seu valor está em encaminhar a equipe aos artefatos originais e tornar visível o que precisa ser revisto, não em criar mais uma página esquecida.",
         ],
       },
       {
