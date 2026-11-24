@@ -149,4 +149,163 @@ export const editorialBufferDecember2026 = [
       },
     ],
   },
+  {
+    slug: "revisar-metas-quando-a-capacidade-de-execucao-muda",
+    title: "Revisar metas quando a capacidade de execução muda",
+    excerpt:
+      "Quando IA, automação ou um novo desenho de trabalho altera a capacidade de executar, a meta não deveria apenas crescer. Ela precisa ser revisada com novas evidências sobre valor, qualidade, risco e sustentabilidade.",
+    track: "lideranca-negocios",
+    category: "Estratégia e liderança",
+    format: "Ensaio prático",
+    tags: ["metas", "capacidade organizacional", "liderança com IA"],
+    readingMinutes: 11,
+    publishedAt: "2026-12-08",
+    updatedAt: "2026-12-08",
+    scheduledAt: "2026-12-08T09:00:00-03:00",
+    image: "/images/em-cena/fernando-parreiras-palestra-principal-1122.webp",
+    imageAlt:
+      "Fernando Parreiras conduzindo uma reflexão sobre estratégia, capacidade e liderança.",
+    nature:
+      "Reflexão autoral sobre revisão de metas quando inteligência artificial, automação ou mudanças de processo alteram a capacidade de execução de uma equipe.",
+    cta: {
+      label: "Revisar metas e capacidade com sua liderança",
+      href: "/contato/",
+    },
+    content: [
+      {
+        heading: "Toda meta carrega uma hipótese de capacidade",
+        paragraphs: [
+          "Uma meta não descreve apenas um resultado desejado. Ela também contém uma hipótese sobre o que a organização consegue fazer com as pessoas, o tempo, os processos, as ferramentas e as restrições disponíveis naquele momento.",
+          "Quando a inteligência artificial reduz o esforço de uma etapa, uma automação elimina uma fila ou uma equipe aprende a trabalhar de outro modo, essa hipótese muda. A reação mais rápida costuma ser aumentar o número: mais entregas, mais campanhas, mais funcionalidades, mais clientes atendidos.",
+          "Mas capacidade adicional não vem acompanhada de uma instrução sobre como utilizá-la. Ela abre uma decisão. A organização pode produzir mais do mesmo, melhorar a qualidade, resolver um problema antes inviável, reduzir sobrecarga ou devolver tempo para aprendizagem. Revisar a meta é escolher conscientemente entre esses destinos.",
+        ],
+        quote:
+          "Quando a capacidade muda, repetir a meta anterior com um número maior não é estratégia. É apenas escalar uma suposição antiga.",
+      },
+      {
+        heading: "Velocidade local não é capacidade do sistema",
+        paragraphs: [
+          "Um time pode gerar uma primeira versão em minutos e continuar levando semanas para colocá-la em uso. A restrição pode estar na definição do problema, na revisão jurídica, na integração, na segurança, na decisão do cliente, na operação ou na capacidade de verificar o resultado.",
+          "Por isso, medir apenas a etapa acelerada produz uma leitura incompleta. Se o volume de artefatos cresce mais rápido do que a organização consegue avaliar, priorizar e sustentar, o ganho aparente vira fila em outro ponto. Código, apresentações, análises e propostas podem chegar antes; valor aceito pelo usuário pode continuar no mesmo ritmo.",
+          "O DORA recomenda tornar visível o fluxo inteiro e limitar trabalho em andamento de acordo com a capacidade real, incluindo suporte, reuniões e dívida técnica. A orientação vem de pesquisa e prática em entrega de software; não prova que um limite específico funcionará em toda empresa. Ela oferece um princípio útil: capacidade precisa ser observada do início ao resultado, não apenas na estação que recebeu uma nova ferramenta.",
+        ],
+      },
+      {
+        heading: "A evidência disponível não autoriza uma regra universal",
+        paragraphs: [
+          "Os estudos sobre produtividade com IA mostram resultados relevantes e, ao mesmo tempo, heterogêneos. Em atendimento ao cliente, Brynjolfsson, Li e Raymond estudaram 5.179 agentes e encontraram aumento médio de 14% em problemas resolvidos por hora, com ganho maior entre profissionais menos experientes e efeito pequeno entre os mais experientes no recorte analisado.",
+          "Em outro experimento, com 7.137 trabalhadores do conhecimento em 66 empresas, o acesso a uma ferramenta generativa reduziu em cerca de duas horas semanais o tempo de e-mail entre usuários ativos na segunda metade do estudo. Os pesquisadores não detectaram, porém, mudança correspondente na quantidade ou composição das tarefas. Tempo economizado por uma pessoa não se converte automaticamente em capacidade organizacional realocada.",
+          "Na engenharia de software, a METR encontrou em 2025 que 16 desenvolvedores experientes levaram 19% mais tempo em 246 tarefas quando puderam usar ferramentas de IA daquele período. Em uma atualização de fevereiro de 2026, a própria organização considerou provável que ferramentas mais novas já acelerassem mais o trabalho, mas classificou os dados disponíveis como evidência muito fraca para estimar o tamanho do efeito por causa de seleção de participantes e tarefas, trabalho paralelo e dificuldades de medição.",
+          "Esses recortes não se anulam e não permitem transportar uma porcentagem para qualquer equipe. Eles reforçam a mesma disciplina: medir a mudança no trabalho real antes de transformar uma expectativa de capacidade em compromisso permanente.",
+        ],
+      },
+      {
+        heading: "Não cobre antecipadamente um ganho que ainda não foi demonstrado",
+        paragraphs: [
+          "Quando a liderança anuncia uma meta maior no momento em que libera uma ferramenta, o benefício futuro vira dívida imediata da equipe. As pessoas passam a precisar provar um ganho antes de compreender onde ele existe, para quem existe e que novos custos trouxe.",
+          "Isso pode produzir três distorções. A primeira é esconder o período de aprendizagem e integração. A segunda é premiar volume mesmo quando revisão, retrabalho ou risco crescem. A terceira é impedir que o tempo liberado seja usado para corrigir causas estruturais, porque toda folga já foi convertida em nova demanda.",
+          "A prudência não exige manter metas antigas para sempre. Exige separar hipótese, observação e decisão. Primeiro se define o que deveria melhorar. Depois se mede o fluxo em condições comparáveis. Só então se revisa o compromisso, deixando explícito o que sustentaria uma nova revisão.",
+        ],
+      },
+      {
+        heading: "Quatro escolhas para alocar a nova capacidade",
+        paragraphs: [
+          "Capacidade não precisa terminar sempre em quantidade. Ao revisar metas, a liderança pode combinar quatro destinos. O equilíbrio dependerá da estratégia, do estágio do negócio e das consequências de errar.",
+        ],
+        bullets: [
+          "Mais valor: enfrentar uma necessidade importante que antes ficava fora do alcance por custo, prazo ou falta de especialização.",
+          "Mais qualidade: ampliar pesquisa, testes, clareza, acessibilidade, segurança e acompanhamento depois da entrega.",
+          "Mais resiliência: reduzir dívida, fragilidade, dependência de pessoas, incidentes e tempo de recuperação.",
+          "Mais capacidade humana: devolver foco para aprendizagem, relacionamento, julgamento, descanso sustentável e trabalho que exige presença.",
+        ],
+        quote:
+          "Essas opções competem pelo mesmo recurso. Uma revisão séria de metas torna visível quanto do ganho irá para volume, qualidade, resiliência, aprendizagem e capacidade humana.",
+      },
+      {
+        heading: "Rebase a meta em seis campos",
+        paragraphs: [
+          "Uma revisão de capacidade pode caber em uma página. Ela não precisa reabrir toda a estratégia, mas deve registrar as premissas que mudaram e impedir que uma demonstração seja tratada como novo padrão operacional.",
+          "O NIST AI RMF recomenda definir contexto, objetivos, benefícios, custos, métricas e limites, além de reavaliar valor e risco durante o ciclo de vida. É um framework voluntário de gestão de risco, não uma metodologia de metas nem validação desta página. A contribuição relevante aqui é lembrar que capacidade, contexto e impacto evoluem — e a decisão precisa evoluir com eles.",
+        ],
+        bullets: [
+          "Resultado: que mudança para cliente, equipe ou negócio a meta pretende produzir?",
+          "Baseline: qual era o tempo, a qualidade, o custo, o retrabalho e o risco antes da mudança?",
+          "Mudança de capacidade: que etapa ficou diferente, para quais pessoas, tarefas e condições?",
+          "Restrição seguinte: onde o fluxo agora espera, acumula revisão ou perde qualidade?",
+          "Alocação: quanto do ganho irá para valor, qualidade, resiliência e capacidade humana?",
+          "Condição de revisão: que evidência, data, incidente ou mudança de ferramenta fará a meta ser examinada novamente?",
+        ],
+        quote:
+          "Capacidade, contexto e impacto evoluem — e a decisão precisa evoluir com eles.",
+      },
+      {
+        heading: "Troque contagem de artefatos por um conjunto de evidências",
+        paragraphs: [
+          "Uma meta revisada pode continuar contendo quantidade. O problema é deixar que ela represente sozinha o progresso. Eu acompanharia um pequeno conjunto de sinais que obrigue a liderança a olhar para o sistema.",
+        ],
+        bullets: [
+          "Outcome aceito: o que clientes ou áreas usuárias conseguiram fazer melhor depois da entrega?",
+          "Fluxo: quanto tempo vai da necessidade reconhecida ao resultado em uso, e qual é a variabilidade?",
+          "Qualidade: quanto retrabalho, correção, rejeição ou intervenção humana a entrega exige?",
+          "Risco e confiabilidade: que incidentes, exceções, acessos indevidos ou falhas de recuperação apareceram?",
+          "Aprendizagem: a equipe consegue explicar, verificar, transferir e revisar o novo modo de trabalhar?",
+          "Sustentabilidade: o ganho reduziu sobrecarga ou apenas permitiu que mais trabalho fosse iniciado ao mesmo tempo?",
+        ],
+        quote:
+          "Nenhum indicador é neutro. Métricas mudam comportamento e podem ser manipuladas ou perder significado. O objetivo não é construir um painel perfeito, mas impedir que um aumento visível de produção esconda deterioração em outra dimensão importante.",
+      },
+      {
+        heading: "Proteja parte da capacidade para confiabilidade e aprendizagem",
+        paragraphs: [
+          "Equipes costumam prometer todo o tempo disponível para novas entregas e depois tratar estabilidade, documentação e aprendizagem como desvios. Quando a capacidade aumenta, existe a oportunidade de corrigir essa lógica antes de preencher novamente a agenda.",
+          "A prática de error budgets do Google SRE oferece um exemplo específico: velocidade de mudança e confiabilidade disputam recursos, e uma política prévia determina quando evidência de instabilidade precisa deslocar atenção de funcionalidades para confiabilidade. A política publicada é um exemplo operacional do Google, não uma regra universal nem uma recomendação para copiar seus números.",
+          "O princípio pode ser traduzido para outros fluxos: reservar capacidade explícita para verificar, recuperar, reduzir fragilidade e aprender. Essa reserva não é improdutividade. É parte do custo de transformar velocidade transitória em uma capacidade que a organização consegue sustentar.",
+        ],
+      },
+      {
+        heading: "Faça a revisão em um ciclo de 30 dias",
+        paragraphs: [
+          "Para uma mudança relevante de IA ou automação, eu começaria com um ciclo curto, sem transformar o primeiro resultado em meta anual.",
+        ],
+        bullets: [
+          "Semana 1 — hipótese: escolha um fluxo, registre baseline, usuários, limites e o ganho esperado.",
+          "Semana 2 — observação: acompanhe o trabalho completo, incluindo revisão, espera, exceções e suporte.",
+          "Semana 3 — realocação: decida qual parte da capacidade aparente merece virar valor, qualidade, resiliência ou tempo humano.",
+          "Semana 4 — compromisso: revise a meta, identifique responsável, evidência mínima e data da próxima revisão.",
+        ],
+        quote:
+          "O ciclo não prova causalidade nem elimina sazonalidade, seleção de tarefas ou efeito de novidade. Ele cria uma conversa melhor do que assumir que o ganho de uma demonstração já representa a capacidade estável do sistema.",
+      },
+      {
+        heading: "A liderança decide o que a organização fará com o ganho",
+        paragraphs: [
+          "Ferramentas podem reduzir esforço. Processos podem remover espera. Pessoas podem aprender e ampliar o que conseguem realizar. Nenhuma dessas mudanças escolhe sozinha a próxima ambição da empresa.",
+          "Essa escolha pertence à liderança: que problema merece a nova capacidade, que qualidade não será negociada, que risco precisa de recursos e quanto espaço a equipe conservará para aprender. Uma meta revisada torna essa escolha explícita e permite que ela seja discutida antes de virar pressão distribuída.",
+          "Na sua organização, quando uma equipe passa a executar mais, quem decide se o ganho vira volume, valor, qualidade, resiliência ou capacidade humana? Se você quer conduzir essa revisão com sua liderança, conselho ou equipe, [converse comigo sobre advisory, palestras ou uma jornada de transformação com IA](https://fernandoparreiras.com.br/contato/).",
+        ],
+      },
+      {
+        heading: "Fontes e natureza do texto",
+        paragraphs: [
+          "1. [DORA — State of AI-assisted Software Development 2025](https://dora.dev/research/2025/dora-report/). O relatório apresenta a IA como amplificadora das forças e fragilidades do sistema organizacional. Resultados são baseados no desenho e nas amostras do programa DORA; não demonstram ganho causal universal para toda ferramenta, equipe ou empresa.",
+          "2. [DORA — Work in process limits](https://dora.dev/capabilities/wip-limits/). A referência orienta visibilidade do fluxo, limites coerentes com capacidade e medição de lead time e variabilidade. É orientação de entrega de software baseada no programa DORA, não um estudo específico desta proposta de revisão de metas.",
+          "3. [Erik Brynjolfsson, Danielle Li e Lindsey R. Raymond — Generative AI at Work](https://www.nber.org/papers/w31161). Estudo com 5.179 agentes de atendimento, publicado posteriormente no Quarterly Journal of Economics. O ganho médio de 14% e a heterogeneidade observada pertencem ao contexto, à tecnologia, ao período e à medida de problemas resolvidos por hora; não devem ser projetados para outras funções sem validação.",
+          "4. [Eleanor W. Dillon, Sonia Jaffe, Nicole Immorlica e Christopher T. Stanton — Shifting Work Patterns with Generative AI](https://www.nber.org/papers/w33795). Experimento com 7.137 trabalhadores em 66 empresas; entre usuários ativos, encontrou redução de tempo de e-mail, sem detectar mudança correspondente na quantidade ou composição das tarefas. É working paper e inclui autores vinculados à Microsoft durante o estudo, conforme divulgação dos próprios autores.",
+          "5. [METR — Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/). Ensaio randomizado com 16 desenvolvedores e 246 tarefas encontrou aumento de 19% no tempo com as ferramentas avaliadas. Amostra, projetos, tarefas, participantes e ferramentas limitam a generalização.",
+          "6. [METR — We are Changing our Developer Productivity Experiment Design](https://metr.org/blog/2026-02-24-uplift-update/). Atualização de fevereiro de 2026 sobre um experimento posterior com 57 desenvolvedores e mais de 800 tarefas. A METR considera provável que a aceleração tenha aumentado, mas classifica a evidência sobre seu tamanho como muito fraca por seleção de participantes e tarefas, mudança de remuneração e imprecisão na medição de trabalho paralelo com agentes.",
+          "7. [METR — Measuring the Self-Reported Impact of Early-2026 AI on Technical Worker Productivity](https://metr.org/blog/2026-05-11-ai-usage-survey/). Pesquisa com 349 trabalhadores técnicos discute a diferença entre velocidade percebida e valor criado e registra limitações de seleção, autorrelato e comparabilidade. Não substitui medição causal de uma equipe específica.",
+          "8. [NIST — AI Risk Management Framework Core](https://airc.nist.gov/airmf-resources/airmf/5-sec-core/). Framework voluntário para governar, mapear, medir e gerenciar riscos de IA, incluindo objetivos, benefícios, custos, benchmarks, monitoramento e reavaliação. Não certifica sistemas nem valida o modelo proposto neste artigo.",
+          "9. [Google SRE — Example Error Budget Policy](https://sre.google/workbook/error-budget-policy/). Exemplo publicado de política que equilibra confiabilidade e velocidade de mudança. Reflete um contexto operacional específico e não constitui padrão obrigatório para outros setores.",
+          "A estrutura das quatro escolhas de alocação, os seis campos de revisão, o conjunto de evidências e o ciclo de 30 dias são síntese autoral de Fernando Parreiras para reflexão e prática profissional. Não constituem metodologia cientificamente validada, promessa de produtividade, recomendação trabalhista ou garantia de resultado comercial.",
+        ],
+      },
+      {
+        heading: "Nota editorial e de responsabilidade",
+        paragraphs: [
+          "Este artigo é conteúdo informativo sobre estratégia, liderança, metas, capacidade organizacional e adoção de inteligência artificial. Não constitui aconselhamento jurídico, regulatório, trabalhista, financeiro, de segurança, gestão ou investimento para um contexto específico. Metas e métricas precisam ser adaptadas à estratégia, às pessoas afetadas, ao setor e às responsabilidades de cada organização.",
+          "Pesquisa, triagem, estrutura e redação tiveram assistência de IA. Fernando Parreiras responde pela orientação editorial publicada e mantém interesse profissional e comercial em estratégia, liderança, produtos, arquitetura, advisory, formação, palestras e transformação com IA. Corte das fontes e revisão factual assistida: 24/11/2026. Versão preparada sob autorização editorial antes da primeira publicação pública, preservando a agenda de 08/12/2026 e sem revisão humana independente adicional.",
+        ],
+      },
+    ],
+  },
 ];

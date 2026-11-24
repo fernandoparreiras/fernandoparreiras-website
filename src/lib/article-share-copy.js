@@ -1,6 +1,11 @@
 const SITE_URL = 'https://fernandoparreiras.com.br';
 
 export const ARTICLE_SHARE_INTENTS = Object.freeze({
+  "revisar-metas-quando-a-capacidade-de-execucao-muda": {
+    discussion: "Quando sua equipe passa a executar mais, quem decide se o ganho vira volume, valor, qualidade, resiliência ou capacidade humana?",
+    commercialCta: "Leve esta revisão para sua liderança, conselho ou evento: converse com Fernando sobre estratégia, metas, advisory, palestras e transformação responsável com IA.",
+    destination: "/contato/",
+  },
   "aprendizagem-de-equipe-precisa-sobreviver-a-troca-de-ferramenta": {
     discussion: "Se a principal ferramenta da sua equipe mudasse amanhã, vocês preservariam a capacidade — ou apenas a lembrança de que um dia ela funcionou?",
     commercialCta: "Leve esta conversa para sua liderança ou evento: converse com Fernando sobre aprendizagem organizacional, adoção responsável de IA, advisory, formação e palestras.",
