@@ -49,14 +49,13 @@
     {
       "slug": "aprendizagem-de-equipe-precisa-sobreviver-a-troca-de-ferramenta",
       "scheduledAt": "2026-12-04T09:00:00-03:00"
+    },
+    {
+      "slug": "revisar-metas-quando-a-capacidade-de-execucao-muda",
+      "scheduledAt": "2026-12-08T09:00:00-03:00"
     }
   ],
   "planned": [
-    {
-      "title": "Revisar metas quando a capacidade de execução muda",
-      "scheduledAt": "2026-12-08T09:00:00-03:00",
-      "status": "planned"
-    },
     {
       "title": "Autonomia profissional também é saber pedir revisão",
       "scheduledAt": "2026-12-12T09:00:00-03:00",

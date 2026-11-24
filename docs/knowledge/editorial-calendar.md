@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Coleção de 34 artigos completos: seis originais e vinte e oito entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026 para os respectivos lotes; a atualização operacional de 20/10/2026 autoriza esta sessão a manter a reserva móvel de textos completos. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo. Os dois textos preparados em 08/11/2026 foram integrados pela PR #67 no SHA `a70198a802196f1ff05ece6610379f99c83f124c`; a publicação de cada um continua submetida ao respectivo horário e aos gates do site oficial.
+Coleção de 35 artigos completos: seis originais e vinte e nove entradas com horário editorial, incluindo especiais. Aprovação autoral e de integração recebida de Fernando Parreiras em 28/08/2026, 02/09/2026, 10/09/2026, 15/09/2026, 18/09/2026, 20/10/2026, 24/10/2026 e 03/11/2026 para os respectivos lotes; a atualização operacional de 20/10/2026 autoriza esta sessão a manter a reserva móvel de textos completos. A agenda foi conciliada com Tech Human e Trustyu Forge; o especial canônico sobre Forward Deployed Engineer entra em 20/09/2026 às 13h30 no horário de São Paulo. Os dois textos preparados em 08/11/2026 foram integrados pela PR #67 no SHA `a70198a802196f1ff05ece6610379f99c83f124c`; a publicação de cada um continua submetida ao respectivo horário e aos gates do site oficial.
 
 Em 02/09/2026, a campanha Technical Product Owner / AI-Native Product Lead foi antecipada por decisão editorial explícita. O artigo autoral entra às 09h23 BRT, depois do texto já agendado para o mesmo dia. A exceção regulariza um especial aprovado e não autoriza antecipações automáticas futuras.
 
@@ -42,7 +42,8 @@ Em 08/11/2026, Fernando autorizou antecipar exclusivamente o especial autoral �
 | 22 nov. 2026 | Carreira com IA | Como discordar de uma resposta convincente da IA | Integrado pela PR #67 — publicação protegida até `scheduledAt` |
 | 26 nov. 2026 | Negócios e liderança | Liderar a transição entre experimentar e sustentar | Integrado pela PR #69 no SHA `f51a058bc1d472f84547ad2f9464aad3bba87329` — publicação protegida até `scheduledAt` |
 | 30 nov. 2026 | Negócios e liderança | O valor de explicar uma decisão difícil | Integrado pela PR #70 no SHA `a4fa73f9a921c5874845e35c4419e56aa3400296` — publicação protegida até `scheduledAt` |
-| 4 dez. 2026 | Negócios e liderança | Aprendizagem de equipe precisa sobreviver à troca de ferramenta | Reserva preparada em 20/11 — integração não equivale a publicação |
+| 4 dez. 2026 | Negócios e liderança | Aprendizagem de equipe precisa sobreviver à troca de ferramenta | Integrado pela PR #72 no SHA `90547e44fd656f6eb98cc50a160841d4f0e747c1` — publicação protegida até `scheduledAt` |
+| 8 dez. 2026 | Negócios e liderança | Revisar metas quando a capacidade de execução muda | Reserva preparada em 24/11 — integração não equivale a publicação |
 
 ## Contrato de publicação
 
@@ -89,3 +90,7 @@ O ensaio completo “O valor de explicar uma decisão difícil” foi preparado 
 ## Extensão da reserva — 20/11/2026
 
 O ensaio completo “Aprendizagem de equipe precisa sobreviver à troca de ferramenta” foi preparado para 04/12/2026 às 09h BRT, quando a pauta entrou na janela móvel de 14 dias. O texto trata da memória operacional coletiva que precisa permanecer quando modelo, fornecedor, interface ou agente muda; não repete a aprendizagem individual de 22/10, a continuidade documental de 03/11, a arquitetura do Company Brain de 08/11 nem a passagem de experimento para capacidade de 26/11. Até a integração em `main`, o artigo permanece apenas preparado; depois da integração, o gate temporal deve mantê-lo ausente de rota, busca, RSS, sitemap e `llms.txt` até `scheduledAt`.
+
+## Extensão da reserva — 24/11/2026
+
+O ensaio completo “Revisar metas quando a capacidade de execução muda” foi preparado para 08/12/2026 às 09h BRT, quando a pauta entrou na janela móvel de 14 dias. O recorte trata da decisão de realocar capacidade entre valor, qualidade, resiliência e capacidade humana; não repete a priorização anterior à automação de 10/11, a passagem de experimento para operação de 26/11 nem a preservação de aprendizagem durante troca de ferramenta de 04/12. Até a integração em `main`, o artigo permanece apenas preparado; depois da integração, o gate temporal deve mantê-lo ausente de rota, busca, RSS, sitemap e `llms.txt` até `scheduledAt`.

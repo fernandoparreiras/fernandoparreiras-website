@@ -31,8 +31,8 @@ test("fontes HTTPS viram links sem HTML arbitrário", () => {
 
 test("ensaios aprovados têm fontes diretas, nota e agenda sem colisões", () => {
   assert.equal(radarArticles.length, 3);
-  assert.equal(scheduledArticles.length, 28);
-  assert.equal(new Set(scheduledArticles.map((a) => a.scheduledAt)).size, 28);
+  assert.equal(scheduledArticles.length, 29);
+  assert.equal(new Set(scheduledArticles.map((a) => a.scheduledAt)).size, 29);
   for (const article of radarArticles) {
     const body = article.content
       .flatMap((section) => section.paragraphs)
@@ -74,7 +74,12 @@ test("reserva de dezembro possui fontes, nota editorial, CTA e ativo materializa
   assert.equal(article.cta.href, "/contato/");
 
   const body = article.content
-    .flatMap((section) => section.paragraphs || [])
+    .flatMap((section) => [
+      section.heading,
+      ...(section.paragraphs || []),
+      ...(section.bullets || []),
+      section.quote || "",
+    ])
     .join("\n");
   assert.ok((body.match(/https:\/\//g) || []).length >= 5);
 
@@ -97,6 +102,66 @@ test("reserva de dezembro possui fontes, nota editorial, CTA e ativo materializa
   assert.ok(editorialNote);
   assert.match(editorialNote.paragraphs.join("\n"), /assistência de IA/);
   assert.match(body, /sem revisão humana independente adicional/);
+
+  const imagePath = new URL(`../public${article.image}`, import.meta.url);
+  assert.equal(fs.existsSync(imagePath), true, `ativo ausente: ${article.image}`);
+  assert.ok(fs.statSync(imagePath).size > 0, `ativo vazio: ${article.image}`);
+});
+
+test("revisão de metas possui evidências, limites, CTA de leads e agenda protegida", () => {
+  const article = scheduledArticles.find(
+    ({ slug }) => slug === "revisar-metas-quando-a-capacidade-de-execucao-muda",
+  );
+
+  assert.ok(article);
+  assert.equal(article.scheduledAt, "2026-12-08T09:00:00-03:00");
+  assert.equal(article.cta.href, "/contato/");
+
+  const body = article.content
+    .flatMap((section) => [
+      section.heading,
+      ...(section.paragraphs || []),
+      ...(section.bullets || []),
+      section.quote || "",
+    ])
+    .join("\n");
+  assert.ok((body.match(/https:\/\//g) || []).length >= 8);
+
+  for (const passage of [
+    "Toda meta carrega uma hipótese de capacidade",
+    "Velocidade local não é capacidade do sistema",
+    "Quatro escolhas para alocar a nova capacidade",
+    "Rebase a meta em seis campos",
+    "Proteja parte da capacidade para confiabilidade e aprendizagem",
+    "Faça a revisão em um ciclo de 30 dias",
+  ]) {
+    assert.ok(
+      article.content.some(({ heading }) => heading === passage),
+      `seção ausente: ${passage}`,
+    );
+  }
+
+  for (const passage of [
+    "Capacidade não precisa terminar sempre em quantidade",
+    "Essas opções competem pelo mesmo recurso",
+    "Uma revisão de capacidade pode caber em uma página",
+    "O NIST AI RMF recomenda definir contexto",
+    "Uma meta revisada pode continuar contendo quantidade",
+    "Nenhum indicador é neutro",
+    "Para uma mudança relevante de IA ou automação",
+    "O ciclo não prova causalidade",
+  ]) {
+    assert.ok(body.includes(passage), `trecho perdido na exportação: ${passage}`);
+  }
+
+  assert.match(body, /sem revisão humana independente adicional/);
+  assert.match(body, /converse comigo sobre advisory, palestras/);
+
+  const editorialNote = article.content.find(
+    ({ heading }) => heading === "Nota editorial e de responsabilidade",
+  );
+  assert.ok(editorialNote);
+  assert.match(editorialNote.paragraphs.join("\n"), /assistência de IA/);
 
   const imagePath = new URL(`../public${article.image}`, import.meta.url);
   assert.equal(fs.existsSync(imagePath), true, `ativo ausente: ${article.image}`);
